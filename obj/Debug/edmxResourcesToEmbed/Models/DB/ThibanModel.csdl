@@ -1174,6 +1174,8 @@
     <Property Name="vechicle_max_capacity" Type="Int32" />
     <Property Name="vechicle_status" Type="Boolean" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__vechicle__driver__160F4887" FromRole="vechicle" ToRole="driver" />
+    <Property Name="vehicle_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="plat_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="vender">
     <Key>

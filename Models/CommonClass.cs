@@ -100,7 +100,7 @@ namespace Final_ThibanProject.Models
         public int ProductId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public byte[] Image { get; set; }
+      //  public byte[] Image { get; set; }
         public string categoryname { get; set; }
         public int? Availability { get; set; }
         public int? VenderSource { get; set; }
@@ -109,7 +109,7 @@ namespace Final_ThibanProject.Models
         public string discount { get; set; }
         public string Status { get; set; }
         public int? Vender_id { get; set; }
-        public byte[] Vender_Image { get; set; }
+     //   public byte[] Vender_Image { get; set; }
         public int? cat_id { get; set; }
         public Nullable<decimal> productprice { get; set; }
         public int? Favourite { get; set; }
@@ -117,6 +117,7 @@ namespace Final_ThibanProject.Models
         public string Volume { get; set; }
         public string Material { get; set; }
         public string Image_path { get; set; }
+        public string vender_Image { get; set; }
         public int Stock { get; set; }
     }
     public partial class order_view
@@ -125,7 +126,6 @@ namespace Final_ThibanProject.Models
         public Nullable<System.DateTime> orderdate { get; set; }
         public Nullable<int> product_id { get; set; }
         public string product_title { get; set; }
-        public byte[] imageattachment { get; set; }
         public Nullable<int> customer_id { get; set; }
         public Nullable<int> vender_id { get; set; }
 
@@ -133,7 +133,7 @@ namespace Final_ThibanProject.Models
         public Nullable<decimal> price { get; set; }
         public Nullable<decimal> total { get; set; }
         public Nullable<int> quantity { get; set; }
-        public Nullable<int> discount { get; set; }
+        public Nullable<decimal> discount { get; set; }
         public string status { get; set; }
         //Product
         public string prod_image { get; set; }

@@ -613,7 +613,7 @@ namespace Final_ThibanProject_api.Controllers
                                         prod.status,
                                         ca.category_name,
                                         ve.name,
-                                        img.Imageattachment,
+                                       prod.Image_path,
                                         prod.brand,
                                         prod.volume,
                                         prod.bottle_material
@@ -625,7 +625,7 @@ namespace Final_ThibanProject_api.Controllers
                                         ProdId = rc.Key.productid,
                                         ProductTitle = rc.Key.product_title,
                                         Description = rc.Key.description,
-                                        Image = rc.Key.Imageattachment,
+                                        Image = rc.Key.Image_path,
                                         ProdPrice = rc.Key.customer_price,
                                         SKU = rc.Key.sku,
                                         Stock = rc.Key.stock,
@@ -661,7 +661,7 @@ namespace Final_ThibanProject_api.Controllers
                         categoryname = item.categoryname,
                         ProductId = item.ProdId,
                         Description = item.Description,
-                        Image = item.Image,
+                        Image_path = item.Image,
                         Title = item.ProductTitle,
                         ProductSKU = item.SKU,
                         productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
@@ -1061,10 +1061,10 @@ namespace Final_ThibanProject_api.Controllers
                                     join vadd in DB.warehouseaddresses on ve.venderid equals vadd.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
-                                    join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
-                                    from img in imgd.DefaultIfEmpty()
-                                    join img_v in DB.ImageFiles on ve.image equals img_v.ImageId into imgd_v
-                                    from img_v in imgd_v.DefaultIfEmpty()
+                                    //join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
+                                    //from img in imgd.DefaultIfEmpty()
+                                    //join img_v in DB.ImageFiles on ve.image equals img_v.ImageId into imgd_v
+                                    //from img_v in imgd_v.DefaultIfEmpty()
                                     join fav in DB.customerfavoriteproducts on prod.productid equals fav.product_id into favd
                                     from fav in favd.DefaultIfEmpty()
                                     where vadd.city == city && vadd.state == state && prod.status != "Delete"
@@ -1074,7 +1074,7 @@ namespace Final_ThibanProject_api.Controllers
                                         prod.productid,
                                         prod.product_title,
                                         prod.description,
-                                        img.Imageattachment,
+                                        prod.Image_path,
                                         prod.customer_price,
                                         prod.sku,
                                         prod.stock,
@@ -1083,7 +1083,7 @@ namespace Final_ThibanProject_api.Controllers
                                         ca.category_name,
                                         prod.vender_id,
                                         ve.name,
-                                        vender_img = img_v.Imageattachment,
+                                        vender_img = ve.Image_path,
                                         prod.discount,
                                         fav.customer_id //(fav.customer_id != null) ? 1: 0 as custid
                                     }
@@ -1093,7 +1093,7 @@ namespace Final_ThibanProject_api.Controllers
                                         ProdId = rc.Key.productid,
                                         ProductTitle = rc.Key.product_title,
                                         Description = rc.Key.description,
-                                        Image = rc.Key.Imageattachment,
+                                        Image = rc.Key.Image_path,
                                         ProdPrice = rc.Key.customer_price,
                                         SKU = rc.Key.sku,
                                         Stock = rc.Key.stock,
@@ -1106,6 +1106,7 @@ namespace Final_ThibanProject_api.Controllers
                                         discount = rc.Key.discount,
                                         Favourite = rc.Key.customer_id
                                     }).ToList();
+                productQuery = productQuery.Where(x=>x.Favourite == custid || x.Favourite==null).ToList();// || x=>x.Favourite == null);
                 foreach (var item in productQuery)
                 {
                     objProduct.Add(new Product_view()
@@ -1113,7 +1114,7 @@ namespace Final_ThibanProject_api.Controllers
                         ProductId = item.ProdId,
                         Title = item.ProductTitle,
                         Description = item.Description,
-                        Image = item.Image,
+                        Image_path = item.Image,
                         productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
                         ProductSKU = item.SKU,
                         Status = item.Status,
@@ -1121,7 +1122,7 @@ namespace Final_ThibanProject_api.Controllers
                         categoryname = item.categoryname,
                         Vender_id = item.Vender_id,
                         Vendername = item.Vendername,
-                        Vender_Image = item.Vender_Image,
+                       vender_Image  = item.Vender_Image,
                         discount = item.discount,
                         Favourite = item.Favourite == custid ? 1 : 0,
                         Availability = item.Stock
@@ -1349,7 +1350,7 @@ namespace Final_ThibanProject_api.Controllers
                                         ord.orderdate,
                                         prod.productid,
                                         prod.product_title,
-                                        img.Imageattachment,
+                                        prod.Image_path,
                                         prod.vender_id,
                                         ve.name,
                                         ord.quantity,
@@ -1364,7 +1365,7 @@ namespace Final_ThibanProject_api.Controllers
                                         orderdate = rc.Key.orderdate,
                                         productid = rc.Key.productid,
                                         product_title = rc.Key.product_title,
-                                        imageattachment = rc.Key.Imageattachment,
+                                        imageattachment = rc.Key.Image_path,
                                         vender_id = rc.Key.vender_id,
                                         vender_name = rc.Key.name,
                                         quantity = rc.Key.quantity,
@@ -1379,7 +1380,7 @@ namespace Final_ThibanProject_api.Controllers
                         orderdate = item.orderdate,
                         product_id = item.productid,
                         product_title = item.product_title,
-                        imageattachment = item.imageattachment,
+                        prod_image = item.imageattachment,
                         vender_id = item.vender_id,
                         vender_name = item.vender_name,
                         quantity = item.quantity,
@@ -1799,13 +1800,8 @@ namespace Final_ThibanProject_api.Controllers
             try
             {
                 ThibanWaterDBEntities db = new ThibanWaterDBEntities();
-                //  string baseurl = "/Contents/flags/";
                 CustAllAddresses objCust = new CustAllAddresses();
                 return Ok(db.customerappartmentaddresses.Where(x => x.customerid == custid).ToList());
-                //  Final_ThibanProject.Models.CustAllAddresses.Where(XmlSiteMapProvider=)
-                // customerappartmentaddress_view objApprt = db.customers.Where(x => x.customerid == custid).ToList(List<customerappartmentaddress_view>);
-                //    return Ok(db.customers.Where(x=>x.customerid==custid).ToList());
-                // (x => new CountryFlagDetail { countryid = x.id, code = x.alpha_2, name = x.name, flag = baseurl+x.alpha_2 + ".png" }).ToList());
             }
             catch (Exception ex)
             {
@@ -1816,8 +1812,7 @@ namespace Final_ThibanProject_api.Controllers
         }
         #endregion
         #region Notification
-        [HttpPost]
-        [Route]
+        [HttpPost][Route]
         public IHttpActionResult AddCustomer_Notification(int custid, bool from_thiban, bool changes_to_acc, bool coupon_alerts, bool feature_updates)
         {
             try
@@ -1858,8 +1853,7 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost]
-        [Route]
+        [HttpPost][Route]
         public IHttpActionResult GetCustNotificationSetting(int custid)
         {
             try
@@ -1876,8 +1870,7 @@ namespace Final_ThibanProject_api.Controllers
         }
         #endregion
 
-        [HttpPost]
-        [Route]
+        [HttpPost][Route]
         public IHttpActionResult GetProductFeedback(int productid)
         {
             try
@@ -1961,8 +1954,7 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost]
-        [Route]
+        [HttpPost][Route]
         public IHttpActionResult GetOrderDetails(int orderid)
         {
             try
@@ -1971,30 +1963,55 @@ namespace Final_ThibanProject_api.Controllers
 
                 List<order_view> objProduct = new List<order_view>();
                 var driverqry = (from ord in DB.orders
-                                 where ord.orderid==orderid
+                                 join pro in DB.products on ord.product_id equals pro.productid
+                                 join ve in DB.venders on pro.vender_id equals ve.venderid
+                                 where ord.orderid == orderid
                                  select new
                                  {
-                                     
+                                     ord.orderid,
+                                     ord.orderdate,
+                                     ord.product_id,
+                                     pro.product_title,
+                                     ord.customer_id,
+                                     pro.vender_id,
+                                     ve.name,
+                                     ord.price,
+                                     ord.total,
+                                     ord.quantity,
+                                     ord.discount,
+                                     ord.status,
+                                     pro.Image_path,
+                                     ord.expected_delivery_time,
+                                     ord.payment_type
                                  }).ToList();
+                /*
+      
+        //Driver
+        public string driver_name { get; set; }
+        public string driver_image { get; set; }
+        //Vehicle
+        public string vehicle_type { get; set; }
+        public string plat_no { get; set; }
+                 */
                 foreach (var item in driverqry)
                 {
-                    objProduct.Add(new driver_view()
+                    objProduct.Add(new order_view()
                     {
-                        driverid = item.driverid,
-                        emailid = item.emailid,
-                        name = item.name,
-                        dusername = item.dusername,
-                        mobile_no = item.mobile_no,
-                        registration_date = item.registration_date,
+                        orderid = item.orderid,
+                        orderdate = item.orderdate,
+                        product_id = item.product_id,
+                        product_title = item.product_title,
+                        customer_id = item.customer_id,
                         vender_id = item.vender_id,
-                        driver_nationality = item.driver_nationality,
-                        gender = item.gender,
-                        driver_phone_type = item.driver_phone_type,
-                        driver_divice_id = item.driver_divice_id,
-                        driver_telicom_carrer = item.driver_telicom_carrer,
+                        vender_name = item.name,
+                        price = item.price,
+                        total = item.total,
+                        quantity = item.quantity,
+                        discount = item.discount,
                         status = item.status,
-                        Image_path = item.Image_path,
-                        rating = totalrating
+                        prod_image = item.Image_path,
+                        deliverydate = item.expected_delivery_time,
+                        paid_via = item.payment_type
                     });
                 }
                 if (objProduct.Count > 0)
@@ -2002,7 +2019,7 @@ namespace Final_ThibanProject_api.Controllers
                 else
                 {
                     objR.status = 1;
-                    objR.message = "No Vender Found";
+                    objR.message = "No Order Found";
                 }
 
             }
@@ -2015,5 +2032,41 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
 
         }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult UPdateOrderDelivey(int orderid, decimal grandtotal, decimal total, string deliverydate,string address_type, string payment_mode)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                order objOrder = db.orders.Where(x => x.orderid == orderid).FirstOrDefault();
+                if (objOrder != null)
+                {
+                    objOrder.orderid = orderid;
+                    objOrder.total = total;
+                    objOrder.price = grandtotal;
+                    objOrder.ship_date =Convert.ToDateTime(deliverydate);
+                    objOrder.address_type = address_type;
+                    objOrder.payment_type = payment_mode;
+                    db.SaveChanges();
+                    objR.status = 1;
+                    objR.message = "Order Delivery Updated Successfully";
+                }
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Order Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
     }
 }

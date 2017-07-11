@@ -830,6 +830,8 @@
     <Property Name="vechicle_assistant" Type="int" />
     <Property Name="vechicle_max_capacity" Type="int" />
     <Property Name="vechicle_status" Type="bit" />
+    <Property Name="vehicle_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="plat_no" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="vender">
     <Key>

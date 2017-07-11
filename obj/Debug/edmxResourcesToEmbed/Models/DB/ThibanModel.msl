@@ -738,6 +738,8 @@
     <EntitySetMapping Name="vechicles">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.vechicle">
         <MappingFragment StoreEntitySet="vechicle">
+          <ScalarProperty Name="plat_no" ColumnName="plat_no" />
+          <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
           <ScalarProperty Name="vechicle_status" ColumnName="vechicle_status" />
           <ScalarProperty Name="vechicle_max_capacity" ColumnName="vechicle_max_capacity" />
           <ScalarProperty Name="vechicle_assistant" ColumnName="vechicle_assistant" />
