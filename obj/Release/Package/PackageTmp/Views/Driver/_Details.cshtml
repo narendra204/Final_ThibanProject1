@@ -1,0 +1,86 @@
+﻿@model Final_ThibanProject.Models.viewmodel.DiverRating
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $("#closbtn").click(function () {
+        debugger;
+        $('#myModal').hide();
+        window.location.reload();
+    });
+    $("#btnclose").click(function () {
+        debugger;
+        $('#myModal').hide();
+        window.location.reload();
+    });
+   
+</script>
+           
+                    <div class="modal-header">
+                        <button type="button" class="close" id="closbtn" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">DRIVER RATING &amp REVIEW</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="popup-content-block">
+                            <h5>@Html.DisplayFor(model => model.name)</h5>
+                            <p>
+                                @{
+                                    var base64 = Convert.ToBase64String(Model.image);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+
+                            </p>
+                            <p><strong>Best Water is here</strong></p>
+                            <p>@for(int i=1;i<=Model.rating; i++)
+                               {<i class="fa fa-star"></i>}@Html.DisplayFor(model => model.rating)</p>
+                            <p>@Html.DisplayFor(model => model.comment)</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
+                    </div>
+               
+     
+
+
+
+
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+
+   

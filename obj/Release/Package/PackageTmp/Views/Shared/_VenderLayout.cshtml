@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THIBAN-VENDOR-DASHBOARD</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Font-Styles -->
+    <!--   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">-->
+    <!-- Custom Theme Style -->
+    <link href="~/Content/assets/css/custom.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme2.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme3.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/vendor-css.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/vendor-custom.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/vendor-responsive.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+
+    <!-- Admin Forms CSS -->
+    <link href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css" rel="stylesheet" />
+    <style>
+        .nav_menu {
+            border-bottom: none;
+        }
+
+        .bg {
+            background: #fff;
+        }
+
+        .menu_section {
+            margin-bottom: 0px;
+        }
+        /*ul.nav.navbar-nav.navbar-right {
+            width: 60%;
+        }*/
+        .nav_title {
+            width: 233px;
+        }
+
+        input, select, textarea {
+            border-radius: 3px !important;
+        }
+
+        ul.dropdown-menu.side-dropdown {
+            position: absolute;
+            top: 48px !important;
+            left: 0px !important;
+            border: 1px solid #eee !important;
+            border-radius: 1px;
+            background: #f2f2f2 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            background-clip: !important;
+        }
+
+            ul.dropdown-menu.side-dropdown a {
+                color: #888 !important;
+            }
+
+        .dropdown:hover ul.dropdown-menu.side-dropdown {
+            display: block;
+            padding: 0px;
+        }
+
+        .dropdown.current-page.active .side-dropdown {
+            display: none !important;
+        }
+
+        .dropdown.current-page.active:hover .side-dropdown {
+            display: block !important;
+        }
+
+        .left_col {
+            background: #f7f7f7;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100% !important;
+            position: fixed;
+        }
+
+        .col-md-3.left_col {
+            overflow: hidden;
+        }
+
+        .nav-sm #menu_toggle {
+            margin-left: 10px;
+        }
+
+        .nav-sm .navbar-search {
+            margin-left: 0px;
+        }
+
+        .side-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2;
+        }
+
+        li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
+            display: block !important;
+        }
+
+        .side-dropdown li a {
+            background: #f7f7f7 !important;
+            color: #888 !important;
+        }
+
+            .side-dropdown li a:hover {
+                background: #f2f2f2 !important;
+                color: #222;
+            }
+
+        ul.nav.side-menu.sub-menu li a {
+            padding-left: 30px;
+        }
+
+        ul.nav.side-menu li.active a {
+            background: transparent !important;
+            color: #888;
+        }
+
+        ul.nav.side-menu.sub-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2 !important;
+        }
+
+        a.dropdown-sub-menu {
+            padding-left: 40px !important;
+        }
+
+        a.drop-down-mainmenu {
+            cursor: default;
+        }
+
+        .dropdown-sub-menu img {
+            width: 16px !important;
+        }
+
+        a.drop-down-mainmenu {
+            color: #687888 !important;
+            font-weight: 400 !important;
+            font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+        }
+
+            a.drop-down-mainmenu:hover {
+                color: #687888 !important;
+            }
+        /*   input.form-control {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-left: 0px;
+        }
+         form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
+                border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            background: #fff;
+            border-right: 0px;
+        }
+         form.navbar-form.navbar-left input.form-control{
+             border-top-right-radius: 25px !important;
+            border-bottom-right-radius: 25px !important;
+            border-top-left-radius: 1px !important;
+            border-bottom-left-radius: 0px !important;
+            padding-left:0px;
+            border-color: #dddddd !important;
+        }*/
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body main-container-body">
+        <div class="main_container">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title">
+                                <a href="vendor-index.php" class="site_title">
+                                    <span class="main-heading"> </span>
+                                    <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
+
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- sidebar menu -->
+
+                            <ul class="nav side-menu">
+                                <li class="">
+                                    <a href="vendor-index.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" />
+                                        <span class="sidebar-title"> Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" />
+                                        <span class="sidebar-title">Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Product/AddVenderProduct" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" />
+                                        <span class="sidebar-title"> Product </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" />
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" />
+                                        <span class="sidebar-title">Order</span>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" />
+                                        <span class="sidebar-title">Rating and Review </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" />
+                                        <span class="sidebar-title">Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" />
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor-analytics.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" />
+                                        <span class="sidebar-title">Analytics </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-geo-fence.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Geo Fence.png" />
+                                        <span class="sidebar-title">Geo Fence</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" />
+                                        <span class="sidebar-title">Team</span>
+                                    </a>
+
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" />
+                                        <span class="sidebar-title">Team Member</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" />
+                                        <span class="sidebar-title">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="~/Advertisement/AddAdvertisement">
+                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
+                                        <span class="sidebar-title"> advertisement </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Advertisement/CouponList">
+                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" />
+                                        <span class="sidebar-title"> Promotion Code </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-downloads.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" />
+                                        <span class="sidebar-title">Downloads </span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="user-agreement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" />
+                                        <span class="sidebar-title"> Settings </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="navbar navbar-default bg">
+                        <div class="container-fluid">
+                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                                <div class="form-group serch-div">
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon" />
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+                                </div>
+                            </form>
+                            <!--<form class="navbar-form navbar-left">
+                              <div class="input-group">
+                               <div class="input-group-btn">
+                                  <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                  </button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search">
+
+                              </div>
+                            </form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav top-nav-menu pull-right">
+
+
+                                    <li><a href="">English</a></li>
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color:#57ad68 !important">
+                                            <!--<i class="fa fa-envelope-o"></i>
+                                                  <span class="badge bg-green">6</span>-->
+                                            Seller support
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                            <div class="img-user-pic">
+                                                <div class=" col-md-5 col-sm-5 col-xs-4">
+                                                    <div class="user-profile-photo">
+                                                        <span>
+                                                            <img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round " />
+                                                            <span>
+                                                                <img src="~/Content/assets/img/images/user.png" class="img-responsive user-photo" />
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                                                    <div class=" user-txt">
+                                                        <h3> Kinely seller</h3>
+                                                        <p>aamirali@gmail.com</p>
+                                                    </div>
+                                                </div>
+                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+                                            <li class="list-group-item">
+                                                <a href="#" class="animated animated-short fadeInUp ">
+                                                    Amair Ali<br>
+                                                    aamirali@gmail.com
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item"> <a href="user-agreement.php" class="animated animated-short fadeInUp"> Profile </a> </li>
+                                        </ul>
+                                    </li>
+                                    <li class="">
+                                        <a href="login.php" aria-expanded="false">
+                                            <img src="~/Content/assets/img/images/logout.jpg" class="logout-img" style="" alt="1" />
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

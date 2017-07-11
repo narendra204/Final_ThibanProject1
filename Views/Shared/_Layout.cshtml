@@ -1,0 +1,551 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THIBAN-ADMIN-DASHBOARD</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Font-Styles -->
+    <!-- Custom Theme Style -->
+    <link href="~/Content/assets/css/custom.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme2.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/theme3.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/admin-css.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/admin-custom.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/modification.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/assets/skin/css/admin-responsive.css" rel="stylesheet" />
+    <link href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+    <!-- Admin Forms CSS -->
+    <link href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css" rel="stylesheet" />
+    <!-- TABLE-SORTING CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <style>
+        .navbar-nav .open .dropdown-menu {
+            position: absolute;
+            background: #fff;
+            margin-top: 25px;
+            border: 1px solid #D9DEE4;
+            -webkit-box-shadow: none;
+            right: 0;
+            left: 22px;
+        }
+
+        .navbar .nav > li.dropdown.open .dropdown-menu:after {
+            right: 5px !important;
+        }
+        /*ul.nav.navbar-nav.navbar-right {
+            width: 60%;
+        }*/
+        /*.nav_title {
+            width: 233px !important;
+        }*/
+        .lists-block {
+            border: 1px solid #c2c2c2;
+            border-radius: 50%;
+            float: left;
+            height: 5px;
+            margin-top: 3px;
+            width: 5px;
+            background: #c2c2c2;
+        }
+
+        .dropdown.list li a {
+            font-size: 10px !important;
+        }
+
+        h5.media-heading.h5 {
+            font-size: 11px;
+            color: #777;
+            font-weight: normal;
+            margin-bottom: 5px;
+            margin-left: 10px;
+        }
+
+        .viewall-btn {
+            background: #c2c2c2 none repeat scroll 0 0;
+            border-radius: 16px;
+            padding: 4px !important;
+            color: #ffffff !important;
+        }
+
+        li.dropdown-header {
+            background: #f2f2f2 !important;
+        }
+
+        .navbar .dropdown-menu > li.dropdown-header {
+            padding: 8px;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .dropdown-header {
+            display: block;
+            padding: 10px 20px;
+            font-size: 12px;
+            line-height: 17px;
+            color: #777777;
+            white-space: nowrap;
+            margin-top: -5px !important;
+        }
+
+        .navbar .dropdown-menu > li.dropdown-header .dropdown-title {
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            padding-left: 2px;
+            line-height: 15px;
+        }
+
+        .navbar .media-list > li.media {
+            margin: 0 !important;
+            padding: 10px !important;
+        }
+
+        a.li_btn_1, a.li_btn_2, a.li_btn_3, a.li_btn_4, a.li_btn_5, a.li_btn_6, a.li_btn_7 {
+            background: #efefef !important;
+            border-radius: 2px;
+            color: #202020;
+            font-size: 8px;
+            padding: 9px !important;
+            line-height: 16px;
+        }
+
+        li.listli {
+            padding: 14px 0px;
+            border-top: 1px solid #eee;
+        }
+
+        li.media.line_1 {
+            padding: 14px 0px;
+        }
+
+        a.li_btn_2 {
+            margin-left: 30px;
+        }
+
+        a.li_btn_3 {
+            margin-left: 30px;
+        }
+
+        a.li_btn_4 {
+            margin-left: 10px;
+        }
+
+        a.li_btn_5 {
+            margin-left: 14px;
+        }
+
+        a.li_btn_6 {
+            margin-left: 15px;
+        }
+
+        a.li_btn_7 {
+            margin-left: 20px;
+        }
+
+        .navbar .media-list > li.media > a {
+            padding: 0;
+            padding-right: 10px;
+            display: flex;
+        }
+
+        .b-four {
+            color: #ff914e;
+            border-color: #ffc481;
+            position: relative;
+            top: -12px;
+            display: inline-block;
+            min-width: 10px;
+            padding: 2px 5px;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1;
+            vertical-align: baseline;
+            white-space: nowrap;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 10px;
+            right: 10px;
+            border: 1px solid;
+        }
+
+        .lists-block {
+            position: relative;
+            border: 1px solid #c2c2c2;
+            border-radius: 50%;
+            float: left;
+            height: 5px;
+            margin-top: 3px;
+            width: 5px;
+            background: #c2c2c2;
+            top: 10px;
+        }
+
+        .bg {
+            background: #fff;
+        }
+
+        .navbar-nav .open .dropdown-menu {
+            position: absolute;
+            background: #fff;
+            margin-top: 25px;
+            border: 1px solid #D9DEE4;
+            -webkit-box-shadow: none;
+            right: 0;
+            top: 31px !important;
+            left: auto;
+        }
+
+        .nav_menu {
+            border-bottom: none;
+        }
+
+        ul.dropdown-menu.side-dropdown {
+            position: absolute;
+            top: 48px !important;
+            left: 0px !important;
+            border: 1px solid #eee !important;
+            border-radius: 1px;
+            background: #f7f7f7;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            background-clip: !important;
+        }
+
+        .dropdown:hover ul.dropdown-menu.side-dropdown {
+            display: block;
+        }
+
+        .side-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2;
+        }
+
+        .dropdown.current-page.active .side-dropdown {
+            display: none !important;
+        }
+
+        .dropdown.current-page.active:hover .side-dropdown {
+            display: block !important;
+        }
+
+        .new-smallimgs img {
+            /*width:24px !important;
+            margin-left:-10px !important;*/
+        }
+
+        .new-smallimgs span {
+            /*
+            margin-left:3px !important*/
+        }
+
+        .nav-sm .navbar-search {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body main-container-body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title">
+                        <a href="admin-index.php" class="site_title">
+                            <span class="main-heading"></span>
+                                <p class="test">THIBAN <span class="side-heading">ADMIN</span></p>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li class="">
+                                    <a href="admin-index.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" />
+                                        <span class="sidebar-title" id="dashbord"> Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" />
+                                        <span class="sidebar-title" id="management">Management</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="~/Customer/AddCustomer" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Customer.png" />
+                                        <span class="sidebar-title" id="customer"> Customer</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Product/AddProduct" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" />
+                                        <span class="sidebar-title" id="product"> Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Order/AddOrder" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" />
+                                        <span class="sidebar-title" id="order">Order</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Vender/AddVender" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Vendor.png" />
+                                        <span class="sidebar-title" id="vendor">Vendor</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Driver/AddDriver" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" />
+
+                                        <span class="sidebar-title" id="driver">Driver</span>
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" class="" alt="" />
+                                        <span class="sidebar-title" id="rating">Rating and Review</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Product/ProductRating" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" />
+                                        <span class="sidebar-title" id="productrate">Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Driver/DriverRating" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" />
+                                        <span class="sidebar-title" id="driverrate">Driver</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Billing Management.png" />
+                                        <span class="sidebar-title" id="billing">Billing Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Billing/ProductPayment" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product Payments.png" />
+                                        <span class="sidebar-title" id="payment">Product Payments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admin-vendor-requested-transactions.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Vendor Requested Tra.png" />
+                                        <span class="sidebar-title" id="vrt">Vendor Requested Transactions</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admin-vendor-all-transactions.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Vendor All Transacti.png" />
+                                        <span class="sidebar-title" id="vat"> Vendor All Transactions</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admin-driver-requested-transactions.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver Requested Transactions.png" />
+                                        <span class="sidebar-title" id="drt">Driver Requested Transactions</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admin-driver-all-transactions.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver All Transactions.png" />
+                                        <span class="sidebar-title" id="dat">Driver All  Transactions</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="admin-static-pages.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Static Pages.png" />
+                                        <span class="sidebar-title" id="sp">Static Pages</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admin-geo-fence.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Geo Fence.png" />
+                                        <span class="sidebar-title" id="gf">Geo Fence</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" class="new-smallimgs" alt="" />
+                                        <span class="sidebar-title" id="tmanagement">Team Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/TeamManagement/TeamMember" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" />
+                                        <span class="sidebar-title" id="tmember">Team Members</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Role/AddRole" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Roles.png" />
+                                        <span class="sidebar-title" id="role">Roles</span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="admin-analytics.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" class="new-smallimgs" alt="" />
+                                        <span class="sidebar-title" id="analytics"> Analytics </span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="my-profile.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" />
+                                        <span class="sidebar-title" id="setting"> Settings </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="navbar navbar-default bg">
+                        <div class="container-fluid">
+                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                                <div class="form-group serch-div">
+
+                                    <!-- <i class="fa fa-search"></i>-->
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon" />
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+                                </div>
+                            </form>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="nav navbar-nav  pull-right">
+                                    <li class="dropdown list">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                            <span class="fa fa-bell-o"></span>
+                                            <span class="badge badge-default b-four"> 4 </span>
+                                        </a>
+                                        <ul class="dropdown-menu media-list width250 animated animated-shorter fadeIn" role="menu">
+                                            <li class="dropdown-header"> <span class="dropdown-title">12 Pending Notifications <a class="viewall-btn clr-wht" href="admin-view-all.php" style="color:#ffffff !important">View All</a></span> </li>
+                                            <li class="media line_1">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">New Vendor Registered <small class="text-muted"><a class="li_btn_1 wdt" href="javascript:">just now</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">5 Payout requests. <small class="text-muted"><a class="li_btn_2" href="javascript:">3 min</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">You have received <small class="text-muted"><a class="li_btn_3" href="javascript:">15 min</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">Vendor Payout amount <small class="text-muted"><a class="li_btn_4" href="javascript:">5 hrs</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">Product stock are low <small class="text-muted"><a class="li_btn_5" href="javascript:">2 days</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">New user registered <small class="text-muted"><a class="li_btn_6" href="javascript:">just now</a></small> </h5>
+                                                </div>
+                                            </li>
+                                            <li class="media listli">
+                                                <a class="media-left" href="#">
+                                                    <div class="lists-block"> </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading h5">5 amount requested <small class="text-muted"><a class="li_btn_7" href="javascript:">1 day</a></small> </h5>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                            <div class="img-user-pic">
+                                                <div class=" col-md-5 col-sm-5 col-xs-5">
+                                                    <div class="user-profile-photo">
+                                                        <span>
+                                                            <img src="@Session["Image"]" class="img-responsive user-profile-round " /><span>
+                                                                
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                                                    <div class=" user-txt">
+                                                        <h3> @Session["Username"]</h3>
+                                                        <p>@Session["Email"]</p>
+                                                    </div>
+                                                </div>
+                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+                                            <li class="list-group-item"> <a href="~/Home/MyProfile" class="animated animated-short fadeInUp"> <span class="fa fa-user icons fs18"></span>&nbsp;&nbsp; Profile </a> </li>
+                                            <li class="list-group-item"> <a href="admin-index.php" class="animated animated-short fadeInUp"> <span class="fa fa-bell-o icons fs18"></span>&nbsp; &nbsp;Notification </a> </li>
+                                        </ul>
+                                    </li>
+                                    <li class=""> <a href="~/MyAccount/Logout" aria-expanded="false">
+                                                      <img src="~/Content/assets/img/images/logout.jpg" class="logout-img" style="" alt="1" />  <span>Logout</span> </a> </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            @RenderBody()
+           </div>
+        </div>
+
+</body>
+</html>

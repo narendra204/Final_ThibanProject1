@@ -1,0 +1,6 @@
+﻿Generated model file: ThibanModel.edmx.
+Loading metadata from the database took 00:00:00.9636383.
+Generating the model took 00:00:06.8218815.
+Generated model file: ThibanModel.edmx.
+Loading metadata from the database took 00:00:00.7104311.
+Generating the model took 00:00:03.6158349.

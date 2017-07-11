@@ -1,0 +1,976 @@
+﻿
+
+@*header*@
+
+@{
+   
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> :: Thiban :: </title>
+
+
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/prettyPhoto.css">
+    <link rel="stylesheet" href="~/Content/assets/css/main.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/vendor-custom.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/custom.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/theme.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/theme2.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/theme3.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/vendor-responsive.css">
+    <link rel="stylesheet" href="~/Content/assets/skin/css/owl.carousel.css">
+    
+    <style>
+        span.field-validation-error {
+        color: red;
+    }
+        .main-menu {
+            background-color: #2196F3 !important;
+            padding-top: 9px;
+            height: 46px;
+            min-height: 46px;
+        }
+
+        .navbar-fixed {
+            padding: 0px !important;
+        }
+
+        .main-menu .navbar-nav li.active a {
+            color: #fff !important;
+        }
+
+        .main-menu .bottom-menu li a {
+            color: #fff !important;
+        }
+
+        .navbar .nav > li > a {
+            padding-top: 0px;
+            height: 29px;
+        }
+
+        .main-menu .navbar-brand {
+            margin-left: 56px !important;
+        }
+
+        .bottom-menu li {
+            margin-left: 16px;
+            margin-right: 0px !important;
+        }
+
+        .main-menu .navbar-header .navbar-brand img {
+            height: 29px;
+            margin-right: 40px;
+            margin-top: 3px;
+        }
+
+        .main-menu .navbar-nav > li > a:hover {
+            color: #fff !important;
+        }
+
+        .main-menu .navbar-nav > li > a {
+            padding: 1px 2px;
+            font-size: 14px !important;
+        }
+
+        a.loginimg.btn.btn-xs.btn-default {
+            color: #555 !important;
+            padding: 1px 19px;
+            border-color: #fff !important;
+            background-color: #fff !important;
+            margin-left: 15px;
+        }
+
+        .main-menu .navbar-nav .default-li {
+            margin-left: 47px !important;
+        }
+
+        a.loginimg.btn.btn-xs.btn-default:hover, a.loginimg.btn.btn-xs.btn-default:active, a.loginimg.btn.btn-xs.btn-default:focus {
+            border-color: #fff !important;
+            background-color: #fff !important;
+        }
+
+        .features {
+            padding: 0;
+            margin: 0px 48px;
+        }
+    </style>
+    <style>
+        .feature-wrap {
+            margin-bottom: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0px 0px 16px 1px #d7d4d4;
+            padding: 18px 0px;
+        }
+
+        .slider-sub-txt {
+            font-size: 16px;
+            margin-top: 0px;
+        }
+
+        .slider-txt {
+            text-align: center;
+            font-size: 40px;
+            line-height: 80px;
+            font-weight: 900;
+            color: #4e4e4e;
+            margin-top: 112px;
+            letter-spacing: 1px;
+            margin-right: 0;
+            margin-bottom: 0px;
+        }
+
+        #home {
+            background-image: url(images/bg-home.png);
+            background-repeat: no-repeat;
+            background-size: 100% 714px;
+            height: 714px;
+        }
+
+        .row.slide-margin {
+            margin-top: 134px;
+            margin-left: 150px !important;
+            margin-right: 0px !important;
+        }
+
+        .slider-img img {
+            height: 574px;
+        }
+
+        .carousel-content {
+            position: absolute;
+            width: 100%;
+            left: 12%;
+            top: 0%;
+        }
+
+            .carousel-content .appimgdiv {
+                width: 27%;
+                margin-top: 62px;
+            }
+
+            .carousel-content .appimg {
+                width: 153px;
+                margin-bottom: 0px;
+                float: left;
+                margin-left: 27px;
+                margin-right: 0px;
+            }
+
+            .carousel-content .play {
+                width: 84px;
+                margin-top: 62px;
+                left: 18%;
+                position: relative;
+            }
+
+        .bcm-prtnr-rght h4 {
+            font-weight: 600;
+            margin-top: 25px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .bcm-prtnr-rght {
+            margin-left: 20px;
+        }
+
+            .bcm-prtnr-rght img {
+                width: 67px;
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+        .carousel-indicators li {
+            width: 13px;
+            height: 13px;
+            border: 1px solid #ccc;
+            background-color: #fff !important;
+            box-shadow: 0px 0px 3px 1px #ccc;
+        }
+
+        .carousel-indicators .active {
+            width: 13px;
+            height: 13px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 3px 1px #ccc;
+        }
+    </style>
+    <style>
+        .place-card.place-card-large {
+            display: none !important;
+        }
+
+        .get-in-touc h2 {
+            font-weight: normal !important;
+            font-size: 36px !important;
+            color: #333;
+        }
+
+        .locationSpt-img img {
+            height: 346px;
+            margin-left: 244px;
+        }
+
+        #touch-with {
+            background: #f5f5f8;
+            padding: 20px 0px 0px 0px;
+        }
+
+        .footerbtn .form-control {
+            height: 33px;
+        }
+
+        .footerleftDiv .form-control {
+            height: 33px;
+            border: 0px;
+            box-shadow: 0px 0px 8px 1px #dedede;
+            border-radius: 4px;
+        }
+
+        .footerleftDiv .form-group .btn-primary {
+            margin-top: 0px !important;
+        }
+
+        textarea.form-control {
+            height: 83px !important;
+        }
+
+        .footerrightDiv, .footerleftDiv {
+            padding-top: 30px;
+        }
+
+        .subheads-blue {
+            color: #2196f3;
+            text-transform: uppercase;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .footerbtn {
+            border-top: 1px solid #e8e8e8;
+            padding-top: 15px;
+            margin: 0px 27px;
+        }
+
+        .footer-txt p {
+            margin-bottom: 3px;
+            font-size: 15px;
+            letter-spacing: 1px;
+            color: #1d1d1d;
+        }
+
+        .say-hello {
+            margin-left: 100px;
+            margin-top: 0;
+        }
+
+        .blue {
+            color: #2196f3;
+        }
+
+        .footer-scl-icons ul {
+            text-align: left;
+            padding-left: 0px;
+            margin-top: 18px;
+        }
+
+            .footer-scl-icons ul li {
+                margin-right: 30px;
+            }
+
+        .scrollToTop {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background: whiteSmoke;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            bottom: 0px;
+            right: 0;
+            display: none;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .copyrightdivfttr {
+            overflow: hidden;
+            padding: 0px 95px;
+            background: #eeeef0;
+        }
+
+            .copyrightdivfttr a {
+                color: #555;
+            }
+
+        .subscribe-btn {
+            background: #60b6fd !important;
+            padding: 6px 15px !important;
+            border-radius: 0px 5px 5px 0px !important;
+        }
+    </style>
+</head>
+<body class="homepage">
+
+    <header id="header" class="navbar-fixed">
+        <nav class="navbar navbar-inverse main-menu" role="banner">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php"><img src="~/Content/images_vender/logo-new1.png" />></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav my-navbar bottom-menu">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#conn-faetur">Features</a></li>
+                        <li><a href="#becom-part">Become a partner</a></li>
+                        <li><a href="#touch-with">Get in touch with us</a></li>
+                        <li class="default-li"><a href="~/Vender/CreateVender" class="loginimg btn btn-xs btn-default" style="color: #555 !important;">Sell on Thiban</a></li>
+                        <li class=""><a href="~/MyAccount/Login" class="loginimg btn btn-xs btn-default" style="color: #555 !important;">Admin Login</a></li>
+                        <li><a href="javascript:">Call Us on <span><strong>9977002233</strong></span></a></li>
+                        <li><a href="javascript:">|</a></li>
+                        <li><a href="javascript:" style="font-size: 18px;">العربية</a></li>                      
+                    </ul>                  
+                </div>
+            </div>
+        </nav>
+    </header>
+    @*header end*@
+    @*Middle-part*@
+    <div id="home">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="row slide-margin">
+
+                        <div class="media">
+                            <div class="pull-left hidden-xs animation animated-item-4">
+                                <div class="slider-img animation animated-item-1">
+                                    <img src="~/Content/images_vender/bnr-mobile.png" class="media-object" />
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-2 slider-txt">TRIM THE DRAME, DOWNLOAD THIBAN</h1>
+                                    <h2 class="animation animated-item-2 text-center slider-sub-txt">Now you can buy water and get bthem delivered to your doorstep.</h2>
+                                    <div class="appimgdiv center-block">
+                                        <a href="javascript:"><img src="~/Content/images_vender/how-wrksbtn1.png" class="img img-responsive animation animated-item-2 m-b-lg appimg" /></a>                                            
+                                        <a href="javascript:"><img src="~/Content/images_vender/how-wrksbtn2.png" class="img img-responsive animation animated-item-2 m-b-lg appimg" /></a>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-center">
+                                        <a href="" data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/GaLRCETDwnc">
+                                            <img src="~/Content/images_vender/bnr-plybtn.png" alt=" " class=" play img img-responsive center-block animation animated-item-2">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row slide-margin">
+
+                        <div class="media">
+                            <div class="pull-left hidden-xs animation animated-item-4">
+                                <div class="slider-img animation animated-item-1">
+                                    <img src="images/bnr-mobile.png" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-2 slider-txt">TRIM THE DRAME, DOWNLOAD THIBAN</h1>
+                                    <h2 class="animation animated-item-2 text-center slider-sub-txt">Now you can buy water and get bthem delivered to your doorstep.</h2>
+                                    <div class="appimgdiv center-block">
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn1.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn2.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-center">
+                                        <a href="" data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/GaLRCETDwnc">
+                                            <img src="images/bnr-plybtn.png" alt="" class=" play img img-responsive center-block  animation animated-item-2">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row slide-margin">
+
+                        <div class="media">
+                            <div class="pull-left hidden-xs animation animated-item-4">
+                                <div class="slider-img animation animated-item-1">
+                                    <img src="images/bnr-mobile.png" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-2 slider-txt">TRIM THE DRAME, DOWNLOAD THIBAN</h1>
+                                    <h2 class="animation animated-item-2 text-center slider-sub-txt">Now you can buy water and get bthem delivered to your doorstep.</h2>
+                                    <div class="appimgdiv center-block">
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn1.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn2.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-center">
+                                        <a href="" data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/GaLRCETDwnc">
+                                            <img src="images/bnr-plybtn.png" alt="" class=" play img img-responsive center-block  animation animated-item-2">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row slide-margin">
+
+                        <div class="media">
+                            <div class="pull-left hidden-xs animation animated-item-4">
+                                <div class="slider-img animation animated-item-1">
+                                    <img src="images/bnr-mobile.png" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-2 slider-txt">TRIM THE DRAME, DOWNLOAD THIBAN</h1>
+                                    <h2 class="animation animated-item-2 text-center slider-sub-txt">Now you can buy water and get bthem delivered to your doorstep.</h2>
+                                    <div class="appimgdiv center-block">
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn1.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                        <a href="javascript:"> <img src="~/Content/images_vender/how-wrksbtn2.png" class="img img-responsive animation animated-item-2 m-b-lg appimg"></a>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-center">
+                                        <a href="" data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/GaLRCETDwnc">
+                                            <img src="~/Content/images_vender/bnr-plybtn.png" alt="" class=" play img img-responsive center-block  animation animated-item-2">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+    <!----------------------------Connecting features-------------------->
+    <section id="feature main-connect-feat" style="background:#f5f5f8;">
+        <div class="container-fluid" id="conn-faetur">
+            <div class=" center text-center wow fadeInDown animated feature-head" style="visibility: visible; animation-name: fadeInDown;">
+                <h2 style="font-weight:normal;"> Features</h2>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="features">
+
+                    <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md  wow fadeInDown animated block1" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-1.png" class="img img-responsive center-block m-b-md" alt="hw-img1" />
+                            <h2 class="m-b-sm">East to use,Order within seconds</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md wow fadeInDown animated block2" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-2.png" class="img img-responsive center-block m-b-md" alt="hw-img2" />
+                            <h2 class="m-b-sm">Flexible Scheduled delivery </h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md wow fadeInDown animated block3" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-3.png" class="img img-responsive center-block m-b-md" alt="hw-img3" />
+                            <h2 class="m-b-sm">Re-Order easy & fast</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+
+
+
+                    <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md  wow fadeInDown animated block1" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-4.png" class="img img-responsive center-block m-b-md" alt="hw-img4" />
+                            <h2 class="m-b-sm">Online secure payment</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md wow fadeInDown animated block2" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-5.png" class="img img-responsive center-block m-b-md" alt="hw-img5" />
+                            <h2 class="m-b-sm">Fast delivery depending on your location </h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-b-md wow fadeInDown animated block3" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+                        <div class="feature-wrap">
+                            <img src="~/Content/images_vender/featurs-6.png" class="img img-responsive center-block m-b-md" alt="hw-img6" />
+                            <h2 class="m-b-sm">Track your order from device</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!----------------------------HOW-ITS-WORK-------------------->
+    <!--<section id="feature main-how-work">
+      <div class="container p-t-lg" id="how-works" >
+        <div class="center wow fadeInDown animated how-wrks-head" style="visibility: visible; animation-name: fadeInDown;">
+          <h2> How it Works</h2>
+          <p>Integrate your business with us and bost your sales offering same day delivery service to yourcustomer.</p>
+        </div>
+        <div class="row">
+          <div class="features how-work-content">
+
+
+
+
+            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12  wow fadeInDown animated block1" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+              <div class=" how-work-cntnt">
+              <img src="images/how-wrks1.png" class="img img-responsive center-block m-b-sm" alt="hw-img1" />
+                <h2  class="">Download</h2>
+
+              </div>
+            </div>
+
+            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12  wow fadeInDown animated block1" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+              <div class=" how-work-cntnt">
+              <img src="images/how-wrks2.png" class="img img-responsive center-block m-b-sm" alt="hw-img1" />
+                <h2  class="">Order</h2>
+
+              </div>
+            </div>
+
+            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12   wow fadeInDown animated block1" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+              <div class=" how-work-cntnt">
+               <img src="images/how-wrks3.png" class="img img-responsive center-block m-b-sm" alt="hw-img1" />
+                <h2  class="">Recive</h2>
+
+              </div>
+            </div>
+
+            <div class="main-step-wizard">
+
+            <div class="stepwizard row m-b-lg ">
+        <div class="stepwizard-row setup-panel">
+              <div class="stepwizard-step col-lg-4  col-md-4 col-sm-4 col-xs-12">
+            <a href="#step-1" type="button" class="btn btn-circle btn-default">1</a>
+
+          </div>
+              <div class="stepwizard-step col-lg-4  col-md-4 col-sm-4 col-xs-12 ">
+            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+
+          </div>
+              <div class="stepwizard-step col-lg-4  col-md-4 col-sm-4 col-xs-12">
+            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+
+          </div>
+            </div>
+      </div>
+      </div>
+            <div class=" clearfix"></div>
+
+
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 m-t-lg">
+          <div class="mobile-appimg wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeft;">
+          <img src="images/how-wrksmain.png" class="img img-responsive" alt="mobile-appimg">
+          </div>
+
+          </div>
+
+         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="dwnld-app  wow fadeInRight animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+          <div class="mbl-app-download">
+          <h2>Download Our App Today!</h2>
+          <p class="m-b-lg">We will send a link,it on your phone to download the app.</p>
+          <form>
+          <div class=" col-md-9 col-sm-12  input-group get-app-btn text-center m-b-lg">
+
+          <div class="input-group">
+             <span class="input-group-addon btn-number">+91</span>
+             <input type="text" class=" form-control">
+             <span class="input-group-addon btn-applink"><a href="javascript:" class="btn btn-custom btn-applink">Text App Link</a></span>
+          </div>
+
+
+
+    </div>
+    </form>
+    <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12  ">
+            <div class="dwnl-app-ggl">
+            <a href="javascript:">
+            <img src="images/how-wrksbtn1.png" class="img img-responsive center-block">
+            </a>
+
+            </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+             <div class="dwnl-app-apl">
+              <a href="javascript:">
+            <img src="images/how-wrksbtn2.png" class="img img-responsive">
+            </a>
+
+            </div>
+            </div>
+            </div>
+
+          </div>
+          </div>
+          </div>
+
+
+        </div>
+      </div>
+      </div>
+    </section>-->
+    <!----------------------------Become-a-Partner------------------->
+    <section>
+        <div class="row">
+            <div class="container main-become-prtnr" id="becom-part">
+
+                <div class=" wow fadeInDown animated become-partnet-head how-wrks-head " style="visibility: visible; animation-name: fadeInDown;">
+                    <h2 class="text-center"> Become a Partner</h2>
+                    <p class="m-b-lg text-center  m-b-lg col-md-8 col-md-offset-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt. </p>
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+                    <div class=" wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+                        <img src="/Content/images_vender/partner-img.png" class="img img-responsive" alt="bcm-part-img">
+                    </div>
+                    
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                    <div class="bcm-prtnr-rght wow fadeInRight animated ">
+                        <div class="media m-b-lg">
+
+                            <div class="pull-left">
+                                <img src="/Content/images_vender/partner-img1.png" class="media-object" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h4>Ease of access to data</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="media m-b-lg">
+
+                            <div class="pull-left ">
+                                <img src="/Content/images_vender/partner-img2.png" class="media-object" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h4>Management  & follow-up requests delivery</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="media m-b-lg">
+
+                            <div class="pull-left ">
+                                <img src="/Content/images_vender/partner-img3.png" class="media-object" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h4>Track all order from customers</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="media m-b-lg">
+
+                            <div class="pull-left">
+                                <img src="/Content/images_vender/partner-img4.png" class="media-object" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h4>Quick Reports</h4>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!----------------------------MODAL VIDEO-PALYING-------------------->
+    <div class="modal fade in" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true" style="display: none; z-index: 9999999;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-lg">
+                <div class="modal-body">
+                    <!--      <button type="button" class="close active" data-dismiss="modal" aria-hidden="true">×</button>-->
+                    <button type="button" class="close active mdl-close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div>
+                        <!--<iframe width="100%" height="497" src="http://www.youtube.com/embed/s37WWSAgIBw"></iframe>-->
+                        <iframe width="100%" height="497" src="https://www.youtube.com/embed/GaLRCETDwnc?autoplay=0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*footer*@
+
+    <section id="touch-with">
+        <div class="row">
+
+            <h2 class="text-center main-header">Connect with us</h2>
+            <div class="container">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                    <div class="footerleftDiv">
+                        <h4 class="subheads-blue">Contact Us</h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Telephone">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+                            </div>
+                            <div class="form-group text-right">
+                                <input type="submit" class="btn btn-xs btn-primary pull-right" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 locationSpt-img">
+                    <div class="footerrightDiv">
+                        <img src="~/Content/images_vender/location-spot.png" class="img-responsive" alt="imgg">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="footerbtn">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class=" footer-txt visit-us">
+                            <h4 class="subheads-blue">Main Office</h4>
+                            <p>Abi Bakr As Saddeq Branch Rd,</p>
+                            <p>An Narjis  Riyadh 13322,</p>
+                            <p>Saudi  Arabia.</p>
+                            <p><a href="javascript:"><b><u>Join Our Great Team</u></b></a></p>
+                            <div class="media" style="width: 190px;">
+                                <div class="pull-right"><img src="~/Content/images_vender/chat-us.png" class="media-object" alt="" style="width: 45px;"></div>
+                                <div class="media-body"><h4>Chat With Us</h4></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
+                        <div class="  footer-txt say-hello">
+                            <h4 class="subheads-blue">Say Hello</h4>
+                            <p>Give us a call at<b> &nbsp; <span class="blue">9658744122</span></b></p>
+                            <p>Send us on email Click here! </p>
+                            <h4 class="subheads-blue">Inquiry</h4>
+                            <p><a href="javascript:">Hello@thiban.com</a></p>
+                            <h4 class="subheads-blue">Bussines</h4>
+                            <p><a href="javascript:">CEO@thiban.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <div class="">
+                            <h4 class="subheads-blue">Newsletter</h4>
+                            <div class="input-group subcrb-btn">
+                                <input type="text" class="form-control" placeholder="Enter Your Email">
+                                <div class="input-group-btn ">
+                                    <button class="btn btn-primary active subscribe-btn" type="submit" style="margin-top:10px !important;"> SUBSCRIBE </button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="subheads-blue m-t-md">Follow us</h4>
+                        <div class="footer-scl-icons">
+                            <ul>
+                                <li><a href="javascript:"><i class=" fa fa-facebook"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-twitter"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-instagram"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-linkedin"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-youtube-play"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="copyrightdivfttr">
+                    <p>
+                        <span class="pull-left" style="padding-top: 10px;"><a class="javascript:">Terms and conditions</a></span>
+                        <span class="pull-right">
+                            <a style="display: block; padding-top: 0px;font-size: 13px;text-align: center;" class="scrollToTop" href="#">
+                                <i class="fa fa-angle-up"></i> <br> TOP
+                            </a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="~/Content/assets/skin/js/jquery.js"></script>
+    <script src="~/Content/assets/skin/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('.topfilm-owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                items: 4,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    480: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $(".owl-prev").html('<i class="fa fa-angle-left"></i>');
+            $(".owl-next").html('<i class="fa fa-angle-right"></i>');
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Add scrollspy to <body>
+            var offsetHeight = 130;
+
+            $('.post-fix').scrollspy({
+                offset: offsetHeight
+            });
+
+            $('body').scrollspy({ target: ".navbar", offset: 50 });
+
+            // Add smooth scrolling on all links inside the navbar
+            $(".my-navbar li a").on('click', function (event) {
+
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - offsetHeight
+                }, 800, function () {
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            });
+        });
+    </script>
+    <script>
+
+
+        var $ = jQuery.noConflict();
+        jQuery(document).ready(function ($) {
+            scrollToTop.init();
+        });
+
+        var scrollToTop =
+        {
+            /**
+             * When the user has scrolled more than 100 pixels then we display the scroll to top button using the fadeIn function
+             * If the scroll position is less than 100 then hide the scroll up button
+             *
+             * On the click event of the scroll to top button scroll the window to the top
+             */
+            init: function () {
+
+                //Check to see if the window is top if not then display button
+                /*$(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $('.scrollToTop').fadeIn();
+                    } else {
+                        $('.scrollToTop').fadeOut();
+                    }
+                });*/
+
+                // Click event to scroll to top
+                $('.scrollToTop').click(function () {
+                    $('html, body').animate({ scrollTop: 0 }, 800);
+                    return false;
+                });
+            }
+        };
+    </script>
+    <script src="~/Content/assets/skin/js/jquery.backstretch.js"></script>
+    <script src="~/Content/assets/skin/js/scripts.js"></script>
+    <script src="~/Content/assets/skin/js/main.js"></script>
+    <script src="~/Content/assets/skin/js/wow.min.js"></script>
+    <script src="~/Content/assets/skin/js/owl.carousel.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿@model IEnumerable<Final_ThibanProject.Models.viewmodel.ProductPay>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $("#closbtn").click(function () {
+        debugger;
+        $('#myModal').hide();
+        window.location.reload();
+    });
+    $("#btnclose").click(function () {
+        debugger;
+        $('#myModal').hide();
+        window.location.reload();
+    });
+
+</script>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        @foreach (var item in Model)
+        {
+        <!-- Modal content-->
+            <div class="modal-content vendor-alltrans-block">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">DRIVER TRANSACTIONS DETAILS</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="">
+                        <h5 class="mb20 mtn">Benificiary Details</h5>
+                        <div class="col-lg-12 mb5">
+                            <div class="col-lg-4">
+                                <label for="inputInline" class="control-label">Driver Name</label>
+                            </div>
+                            <div class="col-lg-8 pl5"> <span class=""> @item.drivername</span> </div>
+                        </div>
+                        <div class="col-lg-12 mb5">
+                            <div class="col-lg-4">
+                                <label for="inputInline" class="control-label">Payment Method</label>
+                            </div>
+                            <div class="col-lg-8 pl5"> <span class=""> @item.paymentmethod</span> </div>
+                        </div>
+                        <div class="col-lg-12 mb5">
+                            <div class="col-lg-4">
+                                <label for="inputInline" class="control-label">Benificiary Details</label>
+                            </div>
+                            <div class="col-lg-8 pl5"> <span class=""> n/a</span> </div>
+                        </div>
+                        <div class="hr-line">
+                            <h5 class="mb20">Amount Request</h5>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Request Details</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> @item.orderid. Amount $@item.amount</span> </div>
+                            </div>
+                            <h5 class="mb20">Transaction Details</h5>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Transaction ID#</label>
+                                </div>
+
+                                <div class="col-lg-8 pl5"> <span class=""> @item.transactionid</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Transaction Date</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> @item.transactiondate</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Transaction Mode</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> @item.transactionmode</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Transaction Type</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> @item.transactiontype</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Amount</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class="">$@item.amount</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Adjusment Amount</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> $@item.adjamount</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Net Amount</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> $@item.netamount</span> </div>
+                            </div>
+                            <div class="col-lg-12 mb5">
+                                <div class="col-lg-4">
+                                    <label for="inputInline" class="control-label">Notes</label>
+                                </div>
+                                <div class="col-lg-8 pl5"> <span class=""> @item.notes</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+
+
+
+
+

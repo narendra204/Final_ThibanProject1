@@ -1,0 +1,1087 @@
+﻿@model Final_ThibanProject.Models.viewmodel.CreateVender
+@{
+    ViewBag.Title = "CreateVender";
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnsubmit").click(function () {
+            debugger;
+            var emailId = $("#lg_username").val();
+            if (emailId != null && emailId != "") {
+                $.ajax({
+
+                    url: '/Vender/VerifyEmail',
+                    type: "Get",
+                    async: false,
+                    data: { "user": emailId },
+                    dataType: "json",
+                    success: function (Data) {
+                        debugger;
+                        if (Data=="true") {
+                            alert("Email id already Exist");
+                            //$("#step1").hide();
+                            //$("#step2").show();
+                            //$("#step3").hide();
+                            return false;
+
+                        }
+                        else {
+                            
+                            return true;
+
+                        }
+                    },
+                    error: function () {
+                        alert("please try again")
+                        return false;
+                    }
+                });
+            }
+
+        });
+    });
+    </script>
+
+        @* header*@
+        <!DOCTYPE html>
+
+        <html lang="en">
+
+        <head>
+
+            <meta charset="utf-8">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <meta name="description" content="">
+
+            <meta name="author" content="">
+
+            <title> :: Thiban :: </title>
+
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bootstrap.min.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/css/main.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/responsive.css">
+
+            <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/owl.carousel.css">
+
+        </head>
+
+        <body class="homepage">
+
+
+            <header id="header" class="main-emailhdr">
+
+
+                <nav class="navbar navbar-inverse main-email-header " role="banner">
+
+                    <div class="container">
+
+                        <div class="navbar-header email-logo">
+
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                                <span class="sr-only">Toggle navigation</span>
+
+                                <span class="icon-bar"></span>
+
+                                <span class="icon-bar"></span>
+
+                                <span class="icon-bar"></span>
+
+                            </button>
+
+                            <a class="navbar-brand" href="index.php"><img src="images/logo-gray.png" alt="logo"></a>
+
+                        </div>
+
+                        <div class="collapse navbar-collapse">
+
+                            <ul class="nav navbar-nav navbar-right email-header">
+
+
+                                <li>Already a seller ?<span>@Html.ActionLink("Login", "VenderLogin", "Vender",new { @class="loginimg"  }, htmlAttributes: null)@*<a href="" class="loginimg" style=" color:#a7a7a7 ">Login</a>*@</span></li>
+
+
+                                <li><a href="javascript:">|</a></li>
+
+                                <li>Call Us On<span><a href="javascript:" class="loginimg" style=" color:#a7a7a7 "> 9977002233</a></span></li>
+
+                                <!--<li><a href="javascript:">Call Us on <span style="color:#a7a7a7 !important">9977002233</span></a></li>-->
+
+                                <li><a href="javascript:">|</a></li>
+
+                                <li><a href="javascript:" style="font-size: 18px;">العربية</a></li>
+
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </header>
+
+
+        @*end**@
+
+
+
+
+
+
+
+            <div class="container-fluid clr">
+
+                <div class="text-center bdy marketplc-header">
+
+                    <h1>Sell on Thaiban Marketplace</h1>
+
+                    <p>Join thousands of merchants selling their items on Saudhi Arabia largest<br> mobile platform app!</p>
+
+                </div>
+
+                <div class="container">
+
+                    <div class="top">
+
+                        <div class="pos">
+
+                            <div class="well  f-align">
+
+                                <div class="container">
+
+
+
+                                    <div class="row m-b-lg">
+
+                                        <div class="col-md-5 ">
+
+                                            <div class="media vendor-logo">
+
+                                                <div class="media-left" style="float:left">
+
+                                                    <a href="index.php">
+
+                                                        <img src="images/lft-logo.png" class="media-object img img-responsive center-block">
+
+                                                    </a>
+
+                                                </div>
+
+                                                <div class="media-body">
+
+                                                    <h1 class="media-heading">THIBAN</h1>
+
+                                                    <p class="vndr">VENDOR</p>
+
+
+
+                                                </div>
+
+                                                <h3>Get your Free Registration and Enjoy Services</h3>
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="col-md-7">
+
+                                            <div class="login-form-1">
+
+        @*<form id="login-form" class="text-left">*@
+
+                                                <div class="login-form-main-message"></div>
+
+
+
+        @using (Html.BeginForm("CreateVender", "Vender", new { @class = "text-left" }))
+                                        {
+                                            @*@Html.ValidationSummary(true)
+                                                @Html.AntiForgeryToken()*@
+
+                                            <div class="login-group">
+
+                <div class="form-group col-md-10">
+
+                    <label for="lg_username" class="sr-only">Email Id</label>
+                        @Html.TextBoxFor(model => model.emailid, new { @name = "emailid", @id = "lg_username", @class = "form-control", @placeholder = "Email ID" })
+                        @*<input type="text" class="form-control" id="lg_username" name="emailid" placeholder="Email ID">*@
+                        @Html.ValidationMessageFor(model => model.emailid)
+
+                </div>
+
+                <div class="form-group col-md-10">
+
+                    <label for="lg_password" class="sr-only">Name</label>
+                        @Html.TextBoxFor(model => model.name, new { @name = "name", @id = "lg_emailid", @class = "form-control", @placeholder = "Company Name" })
+                        @*<input type="text" class="form-control" id="lg_password" name="name" placeholder="Company Name">*@
+                        @Html.ValidationMessageFor(model => model.name)
+
+                </div>
+
+                <div class="form-group col-md-10">
+
+                    <label for="lg_password" class="sr-only">Mobile Number</label>
+                        @Html.TextBoxFor(model => model.mobile_no, new { @name = "mobile_no", @id = "lg_mobileno", @class = "form-control", @placeholder = "Mobile Number" })
+                        @Html.ValidationMessageFor(model => model.mobile_no)
+
+                </div>
+
+
+                <div class="form-group col-md-10">
+
+                    <label for="lg_password" class="sr-only">Password</label>
+                        @Html.PasswordFor(model => model.password, new { @name = "password", @id = "lg_password", @class = "form-control", @placeholder = "password" })
+                        @*<input type="password" class="form-control" id="lg_password" name="password" placeholder="Password">*@
+                        @Html.ValidationMessageFor(model => model.password)
+
+                </div>
+
+
+                <div class="form-group col-md-10">
+
+                    <label for="lg_password" class="sr-only">Confirm Password</label>
+                        @Html.PasswordFor(model => model.Confirmpassword, new { @name = "Confirmpassword", @id = "lg_Confirmpassword", @class = "form-control", @placeholder = "Confirm Password" })
+                        @*<input type="password" class="form-control" id="lg_password" name="Confirmpassword" placeholder="Confirm Password">*@
+                        @Html.ValidationMessageFor(model => model.Confirmpassword)
+                </div>
+
+
+
+
+
+                <div class=" col-md-10 text-center">
+
+                    <button type="submit" style="color:#fff;" value="Register Now it is free" id="btnsubmit" class="btn  btn-lg btn-sellthiban mt30">
+                        @*style="color:#fff;"*@
+
+                        @*<a href="thanks_sign.php" style="color:#fff;">Register Now it is free</a>*@
+                        Register Now it is free
+                    </button>
+
+                    <p class="bcls">
+                        Already a Seller <a href="login.php" class="login loginimg" style="color:#9d9d9d;">
+
+
+                          <img src="~/Content/images/login.png">Log in
+                        </a>
+
+                    </p>
+
+
+                </div>
+
+            </div>
+                                        }
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="Grow_Your_Business_clr">
+
+    <div class="grow-buss-div">
+
+        <h2 class="text-center m-b-lg">Grow Your Business with Thiban</h2>
+
+
+
+        <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12  wow fadeInDown animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+
+            <div class="feature-wrap how-work-cntnt grw-busns-cntnt">
+
+                <img src="images/grw-img-1.png" class="img img-responsive center-block m-b-sm" alt="hw-img1">
+
+                <h2>10K+</h2>
+
+                <p>Customers</p>
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12  wow fadeInDown animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+
+            <div class="feature-wrap how-work-cntnt grw-busns-cntnt">
+
+                <img src="~/Content/images/grw-img-2.png" class="img img-responsive center-block m-b-sm" alt="hw-img1">
+
+                <h2>100K+</h2>
+
+                <p>Merchants selling successfully</p>
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12  wow fadeInDown animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+
+            <div class="feature-wrap how-work-cntnt grw-busns-cntnt">
+
+                <img src="~/Content/images/grw-img-3.png" class="img img-responsive center-block m-b-sm" alt="hw-img1">
+
+                <h2>24,000</h2>
+
+                <p>Delivery reached</p>
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12  wow fadeInDown animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInDown;">
+
+            <div class="feature-wrap how-work-cntnt grw-busns-cntnt">
+
+                <img src="~/Content/images/grw-img-4.png" class="img img-responsive center-block m-b-sm" alt="hw-img1">
+
+                <h2>500+</h2>
+
+                <p>Products</p>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <hr class="hr-line">
+
+    <div class="clearfix"></div>
+
+    <div class="rnge-solutions">
+
+        <h2 class="text-center"> The Full range solutions </h2>
+
+        <h3 class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metu</h3>
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-sm-offset-1  main-range-solu">
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInLeft animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeft;">
+
+                <div class="range-solu-img">
+
+                    <img src="~/Content/images/ful-rng-img1.png" class="img img-responsive center-block">
+
+                </div>
+
+            </div>
+
+
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInRight animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+
+                <div class="range-solu-txt ">
+
+                    <h2>Easy of access to Data</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum . </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-sm-offset-1  main-range-solu">
+
+
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInRight animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+
+                <div class="range-solu-txt   range-solulft-txt">
+
+                    <h2>Management & follow-up request deliver</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam . </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInLeft animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeft;">
+
+                <div class="range-solu-img">
+
+                    <img src="~/Content/images/ful-rng-img2.png" class="img img-responsive center-block">
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-sm-offset-1  main-range-solu">
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInLeft animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeft;">
+
+                <div class="range-solu-img">
+
+                    <img src="~/Content/images/ful-rng-img3.png" class="img img-responsive center-block">
+
+                </div>
+
+            </div>
+
+
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInRight animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+
+                <div class="range-solu-txt ">
+
+                    <h2>Track all order from customers</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam . </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-sm-offset-1  main-range-solu mg-btm">
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInRight animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInRight;">
+
+                <div class="range-solu-txt  range-solulft-txt ">
+
+                    <h2>Quick Report</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam. </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12  wow fadeInLeft animated block1 animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeft;">
+
+                <div class="range-solu-img">
+
+                    <img src="~/Content/images/ful-rng-img4.png" class="img img-responsive center-block">
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <!--<div class="well  ">
+
+
+
+     <div class="row text-center">
+
+
+
+      <h3 class="h3">Grow your business with Thiban</h3>
+
+      <div class="col-md-3 col-sm-6 g-p">
+
+          <img src="images/grw-img-1.png" alt="">
+
+          <h2>10K+</h2>
+
+          <p>Customers</p>
+
+      </div>
+
+      <div class="col-md-3  col-sm-6 g-p">
+
+           <img src="images/grw-img-2.png" alt="">
+
+          <h2>24,000</h2>
+
+          <p>Deliver reached</p>
+
+      </div>
+
+      <div class="col-md-3  col-sm-6 g-p">
+
+           <img src="images/grw-img-3.png" alt="">
+
+          <h2>500+</h2>
+
+          <p>Products</p>
+
+      </div>
+
+      <div class="col-md-3  col-sm-6 g-p">
+
+           <img src="images/grw-img-4.png" alt="">
+
+          <h2>10K+</h2>
+
+          <p>Customers</p>
+
+      </div>
+
+        </div>
+
+
+
+        <hr>
+
+        <div class="row text-center img">
+
+        <h3 class="h3">The full range solutions</h3>
+
+            <p>We have simplified everything behind the screens, so you can focus on your bussiness</p>
+
+
+
+               <div class="row margin">
+
+                <div class="col-md-6">
+
+                    <img src="images/ful-rng-img1.png" alt="">
+
+                </div>
+
+            <div class="col-md-6 f-p">
+
+                <h3>Ease ofaccess to Data</h3>
+
+
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laborum. In fugiat, alias officia libero distinctio totam dolor sapiente natus.</p>
+
+           </div>
+
+            </div>
+
+              <div class="row m-d">
+
+                <div class="col-md-6 f-p">
+
+                   <h3>Management & follow-up requests delivery</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laborum. In fugiat, alias officia libero distinctio totam dolor sapiente natus.</p>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-6">
+
+                                      <img src="images/ful-rng-img2.png" alt="" class="img">
+
+
+
+
+
+            </div>
+
+
+
+         </div>
+
+          <div class="row m-d">
+
+                <div class="col-md-6">
+
+                    <img src="images/ful-rng-img3.png" alt="">
+
+                </div>
+
+            <div class="col-md-6 f-p">
+
+                <h3>Track all order from customers</h3>
+
+
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laborum. In fugiat, alias officia libero distinctio totam dolor sapiente natus.</p>
+
+        </div>
+
+            </div>
+
+              <div class="row">
+
+                <div class="col-md-6 f-p">
+
+                   <h3>Quick Report</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laborum. In fugiat, alias officia libero distinctio totam dolor sapiente natus.</p>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-6">
+
+                                      <img src="images/ful-rng-img4.png" alt="">
+
+
+
+
+
+            </div>
+
+
+
+         </div></div>
+
+
+
+    </div>-->
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+<style>
+     /*.input-validation-error {
+        border: 1px solid #ff0000 !important;
+        background-color: #FF0000;
+    }*/
+
+    span.field-validation-error {
+        color: red;
+    }
+
+.place-card.place-card-large {
+            display: none !important;
+}
+
+        .get-in-touc h2 {
+            font-weight: normal !important;
+            font-size: 36px !important;
+            color: #333;
+        }
+
+        .locationSpt-img img {
+            height: 346px;
+            margin-left: 244px;
+        }
+
+        #touch-with {
+        background: #f5f5f8;
+        padding: 20px 0px 0px 0px;
+    }
+
+        .footerbtn .form-control {
+    height: 33px;
+    }
+
+        .footerleftDiv .form-control {
+        height: 33px;
+        border: 0px;
+            box-shadow: 0px 0px 8px 1px #dedede;
+            border-radius: 4px;
+        }
+
+    .footerleftDiv .form-group .btn-primary {
+        margin-top: 0px !important;
+    }
+
+    textarea.form-control {
+        height: 83px !important;
+    }
+
+    .footerrightDiv, .footerleftDiv {
+        padding-top: 30px;
+    }
+
+    .subheads-blue {
+        color: #2196f3;
+        text-transform: uppercase;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .footerbtn {
+        border-top: 1px solid #e8e8e8;
+        padding-top: 15px;
+        margin: 0px 27px;
+    }
+
+    .footer-txt p {
+        margin-bottom: 3px;
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: #1d1d1d;
+    }
+
+    .say-hello {
+        margin-left: 100px;
+        margin-top: 0;
+    }
+
+    .blue {
+        color: #2196f3;
+    }
+
+    .footer-scl-icons ul {
+        text-align: left;
+        padding-left: 0px;
+        margin-top: 18px;
+    }
+
+    .footer-scl-icons ul li {
+        margin-right: 30px;
+    }
+
+    .scrollToTop {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        background: whiteSmoke;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+        position: relative;
+        bottom: 0px;
+        right: 0;
+        display: none;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .copyrightdivfttr {
+        overflow: hidden;
+        padding: 0px 95px;
+        background: #eeeef0;
+    }
+
+    .copyrightdivfttr a {
+        color: #555;
+    }
+
+    .subscribe-btn {
+        background: #60b6fd !important;
+        padding: 6px 15px !important;
+        border-radius: 0px 5px 5px 0px !important;
+    }
+    </style>
+
+    <section id="touch-with">
+        <div class="row">
+
+            <h2 class="text-center main-header">Connect with us</h2>
+            <div class="container">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                    <div class="footerleftDiv">
+                        <h4 class="subheads-blue">Contact Us</h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Telephone">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+                            </div>
+                            <div class="form-group text-right">
+                                <input type="submit" class="btn btn-xs btn-primary pull-right" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 locationSpt-img">
+                    <div class="footerrightDiv">
+                        <img src="~/Content/images/location-spot.png" class="img-responsive" alt="imgg">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="footerbtn">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class=" footer-txt visit-us">
+                            <h4 class="subheads-blue">Main Office</h4>
+                            <p>Abi Bakr As Saddeq Branch Rd,</p>
+                            <p>An Narjis  Riyadh 13322,</p>
+                            <p>Saudi  Arabia.</p>
+                            <p><a href="javascript:"><b><u>Join Our Great Team</u></b></a></p>
+                            <div class="media" style="width: 190px;">
+                                <div class="pull-right"><img src="~/Content/images/chat-us.png" class="media-object" alt="" style="width: 45px;"></div>
+                                <div class="media-body"><h4>Chat With Us</h4></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
+                        <div class="  footer-txt say-hello">
+                            <h4 class="subheads-blue">Say Hello</h4>
+                            <p>Give us a call at<b> &nbsp; <span class="blue">9658744122</span></b></p>
+                            <p>Send us on email Click here! </p>
+                            <h4 class="subheads-blue">Inquiry</h4>
+                            <p><a href="javascript:">Hello@thiban.com</a></p>
+                            <h4 class="subheads-blue">Bussines</h4>
+                            <p><a href="javascript:">CEO@thiban.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <div class="">
+                            <h4 class="subheads-blue">Newsletter</h4>
+                            <div class="input-group subcrb-btn">
+                                <input type="text" class="form-control" placeholder="Enter Your Email">
+                                <div class="input-group-btn ">
+                                    <button class="btn btn-primary active subscribe-btn" type="submit" style="margin-top:10px !important;"> SUBSCRIBE </button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="subheads-blue m-t-md">Follow us</h4>
+                        <div class="footer-scl-icons">
+                            <ul>
+                                <li><a href="javascript:"><i class=" fa fa-facebook"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-twitter"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-instagram"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-linkedin"></i></a></li>
+                                <li><a href="javascript:"><i class=" fa fa-youtube-play"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="copyrightdivfttr">
+                    <p>
+                        <span class="pull-left" style="padding-top: 10px;"><a class="javascript:">Terms and conditions</a></span>
+                        <span class="pull-right">
+                            <a style="display: block; padding-top: 0px;font-size: 13px;text-align: center;" class="scrollToTop" href="#">
+                                <i class="fa fa-angle-up"></i> <br> TOP
+                            </a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="assets/skin/js/jquery.js"></script>
+
+    <script src="assets/skin/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('.topfilm-owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                items: 4,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    480: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $(".owl-prev").html('<i class="fa fa-angle-left"></i>');
+            $(".owl-next").html('<i class="fa fa-angle-right"></i>');
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Add scrollspy to <body>
+            var offsetHeight = 130;
+
+            $('.post-fix').scrollspy({
+                offset: offsetHeight
+            });
+
+            $('body').scrollspy({ target: ".navbar", offset: 50 });
+
+            // Add smooth scrolling on all links inside the navbar
+            $(".my-navbar li a").on('click', function (event) {
+
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - offsetHeight
+                }, 800, function () {
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            });
+        });
+    </script>
+    <script>
+
+
+        var $ = jQuery.noConflict();
+        jQuery(document).ready(function ($) {
+            scrollToTop.init();
+        });
+
+        var scrollToTop =
+        {
+            /**
+             * When the user has scrolled more than 100 pixels then we display the scroll to top button using the fadeIn function
+             * If the scroll position is less than 100 then hide the scroll up button
+             *
+             * On the click event of the scroll to top button scroll the window to the top
+             */
+            init: function () {
+
+                //Check to see if the window is top if not then display button
+                /*$(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $('.scrollToTop').fadeIn();
+                    } else {
+                        $('.scrollToTop').fadeOut();
+                    }
+                });*/
+
+                // Click event to scroll to top
+                $('.scrollToTop').click(function () {
+                    $('html, body').animate({ scrollTop: 0 }, 800);
+                    return false;
+                });
+            }
+        };
+    </script>
+    <script src="~/Content/assets/skin/js/jquery.backstretch.js"></script>
+    <script src="~/Content/assets/skin/js/scripts.js"></script>
+    <script src="~/Content/assets/skin/js/main.js"></script>
+    <script src="~/Content/assets/skin/js/wow.min.js"></script>
+    <script src="~/Content/assets/skin/js/owl.carousel.js"></script>
+
+
+
+
+</body>
+</html>                     

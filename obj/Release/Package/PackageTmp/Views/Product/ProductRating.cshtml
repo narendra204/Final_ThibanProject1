@@ -1,0 +1,315 @@
+﻿@model PagedList.IPagedList<Final_ThibanProject.Models.viewmodel.ProductRating>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "DriverRating";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var a = Model.TotalItemCount / Model.PageSize;
+    var b = Model.TotalItemCount / 10;
+}
+
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<!-- Start: Content-Wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$("#btnView").click(function () {
+        //    var datratid = $("#btnView").val();
+        //    alert(datratid);
+        //});
+
+        var TeamDetailPostBackURL = '/Product/ProductDetails';
+        $(function () {
+            $(".vendor-view-btn").click(function () {
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        debugger;
+                        $('#myModalContent').html(data);
+                        //$('#myModal').modal(options);
+                        $('#myModal').show();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+            //$("#closbtn").on('click', function () {
+            //    debugger;
+            //    $('#myModalDetails').hide();
+
+
+            //});
+
+        });
+    });
+</script>
+
+
+<div class="right_col" role="main">
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Rating &amp Review <small style="  color: #47525d !important;">PRODUCT RATING & REVIEW</small></h1>
+    </div>
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr15">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li> <a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">PRODUCT RATING & REVIEW</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center pr15">
+
+            <!-- recent orders table -->
+
+            <div class="panel">
+                <div class="panel-menu admin-form theme-primary brdr-none pbn">
+                    <div class="heading-title list-items">
+                        <h1 class=" panel-title product-rting-reviewhead">PRODUCT RATING & REVIEW</h1>
+                    </div>
+
+                   
+                    <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none brdr-btm-none">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                            <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                <div class="pagination-panel">
+
+                                    <div class="page-text">Page</div><div class="show-number"> @Html.PagedListPager(Model, page => Url.Action("ProductRating", new { page,pageSizeValue= Model.PageSize }))</div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    {
+                                        if (i == Model.PageNumber)
+                                        {
+                                            //this is the current page, so change the style of the link
+                                            <div class="show-number">
+                                                @Html.ActionLink(String.Format("{0}", i.ToString()), "ProductRating", new { page = i, pageSizeValue = Model.PageSize })</div>
+                                            }
+                                            else
+                                            {
+                                            //this is not the current page, I would like to limit this section to only 4 links
+                                            <div class="show-number">
+                                                @Html.ActionLink(String.Format("{0}", i.ToString()), "ProductRating", new { page = i, pageSizeValue = Model.PageSize })</div>
+                                                    }
+                                                    @Html.Raw(" ")
+                                                    }*@ <div class="of-text">of @Model.PageCount </div>
+                                                    @*Page &nbsp; <a href="#" class="btn btn-sm default prev disabled"> <i class="fa fa-angle-left"></i></a>
+                                                        <input class="pagination-panel-input form-control input-sm input-inline input-mini" value="@Model.PageNumber" maxlenght="5" placeholder="1" style="text-align:center; margin: 0 5px;" type="text">
+                                                        <a href="#" class="btn btn-sm default next"><i class="fa fa-angle-right"></i></a> of <span class="pagination-panel-total">@a&nbsp;</span>*@
+                                                </div>
+                            </div>
+                            <div class="dataTables_length">
+                                <label>
+                                    <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                </label>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn  dropdown-toggle pagination-sellct-button-toogle " data-toggle="dropdown" style="background:#FFFFFF"> @Model.PageSize <span class="fa fa-angle-down down-number-btn"></span></button>
+                                        <span class="records">records</span>
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "productrating", "Product", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                            </div>
+                            
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                            <div class="table-group-actions pull-right">
+                                <span></span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                    <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                        <li><a href="#">Edit</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-body pn">
+                    <div class="table-responsive border-round brdr-top-none">
+                        <table class="table admin-form theme-warning tc-checkbox-1 main-admin-table">
+                            <thead>
+                                <tr class=" clr-blck fs13">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn selelct-check-box"></span>
+                                        </label>
+                                    </th>
+                                    <th class="">Avatar</th>
+                                    <th class="">User Name</th>
+                                    <th class="">Email ID</th>
+                                    <th class="">Product</th>
+                                    <th class="">Rating</th>
+                                    <th class=" text-center">Comments</th>
+                                    <th class="">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var rating in Model)
+                                {
+
+                                    <tr class="t-m-tr">
+                                        <td class="text-center">
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+                                        @{
+                                    var base64 = Convert.ToBase64String(rating.image);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <td data-val-col="Avatar" data-val="@imgSrc" class="w50">
+
+                                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                                        </td>
+                                        <td class="">@rating.username</td>
+                                        <td class="">@rating.emailid</td>
+                                        <td class="">@rating.product_title</td>
+                                        <td class=""><div class="star-rating"><span>@rating.ratting</span> <i class="fa fa-star"></i></div></td>
+                                        <td class="">@(rating.comment.Length > 45 ? rating.comment.Substring(0, 45) + "..." : rating.comment)</td>
+
+                                        <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" name="btnView" data-toggle="modal" data-target="#myModal" data-id="@rating.rateid" id="btnView" type="button"><i class="fa fa-search fs12"></i>View</button></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content" id='myModalContent'>
+
+            @*<button type="button" class="close" id="closbtn" data-dismiss="modal" aria-hidden="true">Close</button>*@
+        </div>
+    </div>
+
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row main-footer">
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+@*<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">PRODUCT RATING &amp REVIEW</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="popup-content-block">
+                        <h5>Aqua Panna</h5>
+                        <p><img class="img-responsive ib" title="user" src="assets/img/1.png"></p>
+                        <p><strong>Best Water is here</strong></p>
+                        <p><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 5.5</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+

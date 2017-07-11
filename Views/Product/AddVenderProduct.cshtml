@@ -1,0 +1,734 @@
+﻿@model PagedList.IPagedList<Final_ThibanProject.Models.viewmodel.VenderProduct>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AddVenderProduct";
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
+}
+<style>
+    .md-size-list {
+        padding: 0px;
+        overflow-y: scroll;
+    }
+
+
+
+    .bootstrap-select.btn-group .dropdown-toggle .caret {
+        width: 10px;
+        height: 10px;
+        border: none;
+        font-family: 'Glyphicons Halflings';
+        display: none;
+    }
+
+
+
+        .bootstrap-select.btn-group .dropdown-toggle .caret:before {
+            content: "";
+        }
+
+
+
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 240px;
+        margin-left: -6px;
+        margin-top: -12px;
+    }
+
+    button.btn.dropdown-toggle.btn-default {
+        border-radius: 4px;
+        background: #fff;
+        border-color: #ccc;
+    }
+
+    .admin-form .select {
+        z-index: inherit !important;
+    }
+
+    .dropdown-menu.open {
+        position: absolute;
+        top: 40px !important;
+    }
+
+    ul.dropdown-menu.inner {
+        max-height: 300px !important;
+        overflow-y: auto !important;
+        min-height: 0px !important;
+    }
+
+        ul.dropdown-menu.inner li a:hover {
+            background: #2196F3 !important;
+            color: #fff !important;
+        }
+
+        ul.dropdown-menu.inner li a {
+            font-size: 16px;
+        }
+
+    .admin-form .select option {
+        background: #fff;
+        font-size: 14px;
+    }
+
+    .product-mangemnet-font .filter-selection-box {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        color: #5c5c5c !important;
+    }
+
+
+
+    .dropdown-toggle.btn-default:hover {
+        background-color: transparent !important;
+    }
+
+    input[type="text"]::-webkit-input-placeholder {
+        color: #5c5c5c;
+    }
+
+    i.arrow.double.sideone {
+        right: 0px !important;
+    }
+
+    input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light::-webkit-input-placeholder {
+        color: #fff !important;
+    }
+
+    input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light {
+        margin-left: -2px;
+        clear: both;
+        margin-bottom: 20px;
+        height: 36px;
+        line-height: 36px;
+    }
+
+    span.button.btn-system.btn-file.btn-block.border-radius99.ml5 {
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        background-color: #57ad68 !important;
+        border-color: #4d9e5d !important;
+    }
+
+    input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light {
+        height: 30px;
+        line-height: 30px;
+        border-color: #ddd !important;
+    }
+
+    input:hover, select:hover, textarea:hover {
+        border-color: #ccc !important;
+    }
+
+    .form-control:focus {
+        border-color: #afafaf !important;
+    }
+
+    button.btn.btn-default.sellct-button {
+        background: #fff !important;
+    }
+
+    .pagination-block button.btn.btn-default.dropdown-toggle.select-btn-right {
+        background: #fff !important;
+    }
+
+
+
+    .btn-group.open .dropdown-toggle {
+        box-shadow: none !important;
+    }
+
+
+
+    .filter-selectpicker i.arrow.double {
+        top: 1px !important;
+        right: 0px !important;
+    }
+
+    .filter-selectpicker .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 330px;
+        margin-left: -6px;
+        margin-top: 0px;
+    }
+
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 240px;
+        margin-left: -6px;
+        margin-top: 15px;
+    }
+
+    .main-vndrproduct-section input#email {
+        padding-left: 10px;
+    }
+</style>
+
+<!-- Start: Content-Wrapper -->
+
+<div class="right_col main-vndrproduct-section" role="main">
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Vendor Product Management</h1>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row mb10  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li><a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Vendor Product Management</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center product-mangemnet-font">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 border-round ">
+                <div class="heading-title">
+                    <h1 class="panel-title main-lft-hdr"> Product</h1>
+                </div>
+                @using (Html.BeginForm("AddVenderProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="panel-heading br-n pt5 lh30"> <span class="panel-title hidden-xs font-size-12 pl25 panel-sub-content "> Add New Product</span> </div>
+                    <div class="panel-body p20 pb10">
+                        <div class="tab-content pn br-n admin-form">
+                            <div id="tab1_1" class="tab-pane active">
+                                <div class="row">
+                                    <div class=" col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb15 img-width">
+                                                <img id="output" src="~/Content/assets/img/upload.png" alt="Your Image" style="padding: 20px;">
+                                            </div>
+                                            <span class="button btn-system btn-file btn-block  mb15 ph5 border-radius99">
+                                                <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                <script>
+                                                    var loadFile = function (event) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            var output = document.getElementById('output');
+                                                            output.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(event.target.files[0]);
+                                                    };
+                                                </script>
+
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <input type="text" class="form-control filter-selection-box mb5" name="productname" id="productname" placeholder="Water Product">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="brandname" class="form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                <option value="Brand Name" avtive="">Brand Name</option>
+                                                                <option value="Aqua Panna">Aqua Panna</option>
+                                                                <option value="Kinley">Kinley</option>
+                                                                <option value="Arwa">Arwa</option>
+                                                                <option value="Alain">Alain</option>
+                                                                <option value="Monvio">Monvio</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="status" class="form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                <option value="0" avtive>Product Availability</option>
+                                                                <option value="In Stock">In Stock</option>
+                                                                <option value="Out of Stock">Out of Stock</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5 ">
+                                                            <select id="filter-status" name="volumn" class=" form-control V_select filter-selection-box br-radius-4" placeholder="Volume">
+                                                                <option value="0">Volume</option>
+                                                                <option value="1">200 ml</option>
+                                                                <option value="1">250 ml</option>
+                                                                <option value="2">500 ml</option>
+                                                                <option value="3">750 ml</option>
+                                                                <option value="4">1 liter</option>
+                                                                <option value="5">2 liter</option>
+                                                                <option value="6">5 liter</option>
+                                                                <option value="7">10 liter</option>
+                                                                <option value="8">20 liter</option>
+                                                                <option value="8">30 liter</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="bottelmaterial" class="form-control V_select filter-selection-box br-radius-4" placeholder="Bottle Material">
+                                                                <option value="-1">Bottle Material</option>
+                                                                <option value="0">Plastic Bottle </option>
+                                                                <option value="1">Glass bottles</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="bottleperbox" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Bottle Per Box">
+                                                                <option value="">Bottle Per Box</option>
+                                                                <option value="0">10</option>
+                                                                <option value="1">20</option>
+                                                                <option value="2">30</option>
+                                                                <option value="3">40</option>
+                                                                <option value="4">50</option>
+                                                                <option value="5">60</option>
+                                                                <option value="6">70</option>
+                                                                <option value="7">80</option>
+                                                                <option value="8">90</option>
+                                                                <option value="9">100</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="phno" class=" selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Ph Number">
+                                                                <option value="-1">PH Number</option>
+                                                                <option value="0">3.0 PH</option>
+                                                                <option value="1">3.5 PH</option>
+                                                                <option value="2">4.0 PH</option>
+                                                                <option value="3">4.5 PH</option>
+                                                                <option value="4">5.0 PH</option>
+                                                                <option value="5">5.5 PH</option>
+                                                                <option value="6">6.0 PH</option>
+                                                                <option value="7">6.5 PH</option>
+                                                                <option value="8">7.0 PH</option>
+                                                                <option value="9">7.5 PH</option>
+                                                                <option value="10">8.0 PH</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select">
+                                                            <input type="text" id="filter-status" name="custprice" class="form-control V_select filter-selection-box" placeholder="Customer price">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select">
+                                                            <input type="text" id="filter-status" name="custstoreprice" class="form-control V_select filter-selection-box" placeholder="Customer store price">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="custminorder" class=" selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                <option value="0" avtive>Customer Minimum Order</option>
+                                                                <option value="1">10</option>
+                                                                <option value="2">15</option>
+                                                                <option value="3">20</option>
+                                                                <option value="4">25</option>
+                                                                <option value="5">30</option>
+                                                                <option value="6">35</option>
+                                                                <option value="7">40</option>
+                                                                <option value="8">45</option>
+                                                                <option value="9">50</option>
+                                                                <option value="10">55</option>
+                                                                <option value="11">60</option>
+                                                                <option value="12">65</option>
+                                                                <option value="13">70</option>
+                                                                <option value="13">75</option>
+                                                                <option value="14">80</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="conventionalminorder" class="selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                <option value="0" avtive>Conventional store Minimum Order</option>
+                                                                <option value="1">10</option>
+                                                                <option value="2">15</option>
+                                                                <option value="3">20</option>
+                                                                <option value="4">25</option>
+                                                                <option value="5">30</option>
+                                                                <option value="6">35</option>
+                                                                <option value="7">40</option>
+                                                                <option value="8">45</option>
+                                                                <option value="9">50</option>
+                                                                <option value="10">55</option>
+                                                                <option value="11">60</option>
+                                                                <option value="12">65</option>
+                                                                <option value="13">70</option>
+                                                                <option value="13">75</option>
+                                                                <option value="14">80</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="custmaxorder" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                <option value="0" avtive>Customer Maximum Order Quality</option>
+                                                                <option value="1">10</option>
+                                                                <option value="2">15</option>
+                                                                <option value="3">20</option>
+                                                                <option value="4">25</option>
+                                                                <option value="5">30</option>
+                                                                <option value="6">35</option>
+                                                                <option value="7">40</option>
+                                                                <option value="8">45</option>
+                                                                <option value="9">50</option>
+                                                                <option value="10">55</option>
+                                                                <option value="11">60</option>
+                                                                <option value="12">65</option>
+                                                                <option value="13">70</option>
+                                                                <option value="13">75</option>
+                                                                <option value="14">80</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="field select mb5">
+                                                            <select id="filter-status" name="conventionalmaxorder" class=" selectpicker br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                <option value="0" avtive>Conventional store Miximum Order Quality</option>
+                                                                <option value="1">10</option>
+                                                                <option value="2">15</option>
+                                                                <option value="3">20</option>
+                                                                <option value="4">25</option>
+                                                                <option value="5">30</option>
+                                                                <option value="6">35</option>
+                                                                <option value="7">40</option>
+                                                                <option value="8">45</option>
+                                                                <option value="9">50</option>
+                                                                <option value="10">55</option>
+                                                                <option value="11">60</option>
+                                                                <option value="12">65</option>
+                                                                <option value="13">70</option>
+                                                                <option value="13">75</option>
+                                                                <option value="14">80</option>
+                                                            </select>
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="    border-bottom: 1px solid #e5e5e5;
+
+    padding-bottom: 20px;">
+                                    <textarea style="height: 160px;" class=" from-control gui-textarea br-light text-btm filter-selection-box" id="comment"
+                                              name="comment" placeholder="Product Description"></textarea>
+                                </div>
+                                <br>
+                                <br>
+                                <hr>
+                                <div class="section row mbn">
+                                    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+                                        <p class="text-left vendor_save">
+
+                                            <!-- <input type="checkbox">&nbsp;
+
+                                            <span class="checkbox mn"></span>-->
+
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobiles" value="FR">
+                                                <span class="checkbox mn"></span> <span class="font-size-13">&nbsp;Save Product - A Random Unique ID will be generated</span>
+                                            </label>
+                                            <span> </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                                        <p class="text-right">
+                                            <input type="submit" id="save" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+
+
+            <!-- recent orders table -->
+
+            <div class="panel border-round">
+                <div class="panel-menu admin-form theme-primary">
+                    <div class="heading-title list-items">
+                        <h1 class="panel-title">List of products</h1>
+                    </div>
+                    <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                            <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                <div class="pagination-panel">
+                                    <div class="page-text">
+                                        Page &nbsp;
+                                        <div class="show-number">
+                                            <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                                @for (var i = 10; i <= 90; i += 10)
+                                                {
+                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddVenderProduct", "Product", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                                }
+                                            </ul>
+                                            @Html.PagedListPager(Model, page => Url.Action("AddVenderProduct", new { page, pageSizeValue = Model.PageSize }))
+                                        </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                        *@ <div class="of-text">of @Model.PageCount </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dataTables_length">
+                                <label>
+                                    <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                </label>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  dropdown-toggle pagination-sellct-button-toogle " data-toggle="dropdown" style="background:#FFFFFF"> @Model.PageSize <span class="fa fa-angle-down down-number-btn"></span></button>
+                                    <span class="records">&nbsp; records</span>
+
+                                </div>
+                            </div>
+
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                            <div class="table-group-actions pull-right">
+                                <span></span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                    <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                        <li><a href="#">Edit</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top-margn pt20 pb5">
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select ">
+                                <select id="filterpurchases" onchange="GetVal(this)" name="filter-purchases" class="brdr-color br-light">
+                                    <option value="0">Filter by Purchases</option>
+                                    <option value="1">1-49</option>
+                                    <option value="2">50-499</option>
+                                    <option value="3">500-999</option>
+                                    <option value="4">1000+</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-group" name="filter-group" class=" brdr-color br-light">
+                                    <option value="0">Filter by Group</option>
+                                    <option value="1">Customers</option>
+                                    <option value="2">Vendors</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
+                                    <option value="0">Filter by Status</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Inactive</option>
+                                    <option value="3">Suspended</option>
+                                    <option value="4">Online</option>
+                                    <option value="5">Offline</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body pn">
+                    <div class="table-responsive">
+                        <table class="table admin-form theme-warning tc-checkbox-1  main-vndr-table main-downloads-table ">
+                            <thead>
+                                <tr class="bg-light  brdr-top t-m-tr fs13 clr-blck">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn"></span>
+                                        </label>
+                                    </th>
+                                    <th class="">Image</th>
+                                    <th class="">Product Title</th>
+                                    <th class=""> Brand</th>
+                                    <th class="">SKU</th>
+                                    <th class="">Price</th>
+                                    <th class=" text-center">Volume</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-left ml20">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="t-m-tr" id="@item.productid">
+                                        <td class="text-center">
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+                                        @{
+                                    var base64 = Convert.ToBase64String(item.image);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                        }
+                                        <td data-val-col="Avatar" data-val="@imgSrc" class="w50">
+
+                                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                                        </td>
+                                        <td class="">@item.productname</td>
+                                        <td class="">@item.brandname</td>
+                                        <td class="">#@item.sku</td>
+                                        <td class="">$@item.custprice</td>
+                                        <td class="text-center">@item.volumn</td>
+                                        <td data-val-col="Status" class="">
+                                            <div class="btn-group  text-right">
+                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                    <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu" id="action_@item.productid">
+                                                    <li onclick="makeSelected(this)" title="Pending">Pending</li>
+                                                    <li onclick="makeSelected(this)" title="Pending1">Pending Approval</li>
+                                                    <li onclick="makeSelected(this)" title="Suspend">Disabled</li>
+                                                    <li onclick="makeSelected(this)" title="soldout">soldout</li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- begin: .tray-right -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+<div class="row main-footer">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+<script src="~/Content/assets/js/raphael.min.js"></script>
+<script src="~/Content/assets/js/Chart.min.js"></script>
+<script src="~/Content/assets/js/morris.min.js"></script>
+<script src="~/Content/assets/js/custom.min.js"></script>
+<script src="~/Content/assets/js/wizard.js"></script>
+<script src="~/Content/assets/js/date.js"></script>
+<script src="~/Content/assets/js/moment.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Content/assets/js/visitor.js"></script>
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $(".datepicker").datepicker();
+
+    });
+
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function (e) {
+
+        $('.selectpicker').selectpicker();
+
+    });
+
+</script>

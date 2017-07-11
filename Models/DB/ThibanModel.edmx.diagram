@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c60942c872b24329bf17f29195b05ffa" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="ThibanWaterDBModel.admin" Width="1.5" PointX="3" PointY="135.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.advertisement" Width="1.5" PointX="5.25" PointY="145" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.agreement" Width="1.5" PointX="8.25" PointY="117.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.AverageCompositionPPM" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.bank" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.BottleMaterial" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.BottlePerBox" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.BrandName" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.bussinessofficehour" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.bussinesstype" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.category" Width="1.5" PointX="3" PointY="68.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.CompanyType" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.ConventionalstoreMinimumOrder" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.ConventionalstoreMiximumOrderQuality" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.coupon" Width="1.5" PointX="5.25" PointY="122.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.CREATETABLEBottlePerBox" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customer" Width="1.5" PointX="3" PointY="51.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customeraddressproof" Width="1.5" PointX="8.25" PointY="63.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerappartmentaddress" Width="1.5" PointX="5.25" PointY="45.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerbankdetail" Width="1.5" PointX="5.25" PointY="65.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerchaletaddress" Width="1.5" PointX="5.25" PointY="59" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerdefaultaddress" Width="1.5" PointX="5.25" PointY="55.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerfavoriteproduct" Width="1.5" PointX="7.5" PointY="74" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.CustomerMaximumOrderQuality" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.CustomerMinimumOrder" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerofficeaddress" Width="1.5" PointX="5.25" PointY="49.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerotheraddress" Width="1.5" PointX="5.25" PointY="68.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerpaymentcard" Width="1.5" PointX="5.25" PointY="42.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customervillaaddress" Width="1.5" PointX="5.25" PointY="52.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.dgeofence" Width="1.5" PointX="11.25" PointY="119.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driver" Width="1.5" PointX="8.25" PointY="94.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driveraddressproff" Width="1.5" PointX="13.5" PointY="86.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverbankdetail" Width="1.5" PointX="10.5" PointY="86" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverdefaultaddress" Width="1.5" PointX="10.5" PointY="108.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverlog" Width="1.5" PointX="10.5" PointY="115.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverpayoutrequested" Width="1.5" PointX="10.5" PointY="112.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverrating" Width="1.5" PointX="12.75" PointY="75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverworkinghour" Width="1.5" PointX="10.5" PointY="100.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.filestore" Width="1.5" PointX="6" PointY="113.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.geofence" Width="1.5" PointX="13.5" PointY="107.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.ImageFile" Width="1.5" PointX="0.75" PointY="73.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.Language" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.menuitem" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.minimumorderstatu" Width="1.5" PointX="5.25" PointY="142" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.order" Width="1.5" PointX="10.5" PointY="72" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.oredercanclefeedback" Width="1.5" PointX="12.75" PointY="63.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.pandetail" Width="1.5" PointX="11.25" PointY="96.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.payoutall" Width="1.5" PointX="10.5" PointY="82.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.PHNumber" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.product" Width="1.5" PointX="5.25" PointY="92.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.ProductAvailability" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.productratting" Width="1.5" PointX="12.75" PointY="83" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.Province" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.role" Width="1.5" PointX="3" PointY="111.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.rolemanagement" Width="1.5" PointX="5.25" PointY="110.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.shippingaddress" Width="1.5" PointX="15.75" PointY="63.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.shippinghistory" Width="1.5" PointX="15.75" PointY="85.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.storedetail" Width="1.5" PointX="5.25" PointY="136.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.teammanagement" Width="1.5" PointX="5.25" PointY="116.875" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.vattandetail" Width="1.5" PointX="8.25" PointY="90.875" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.vechicle" Width="1.5" PointX="10.5" PointY="104.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.vender" Width="1.5" PointX="3" PointY="114.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderaddressproof" Width="1.5" PointX="11.25" PointY="90.5" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderbankdetail" Width="1.5" PointX="5.25" PointY="102.375" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderdefaultaddress" Width="1.5" PointX="5.25" PointY="133.125" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderlog" Width="1.5" PointX="5.25" PointY="106.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderpayoutall" Width="1.5" PointX="5.25" PointY="126.25" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.venderpayoutrequested" Width="1.5" PointX="5.25" PointY="130" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.Volume" Width="1.5" PointX="6.75" PointY="9.75" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__admin__Image__5E8A0973" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__advertise__vende__6A30C649" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__agreement__FileI__37703C52" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__agreement__Vende__367C1819" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__category__Image__5F7E2DAC" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__product__categor__09A971A2" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__coupon__vender_i__6B24EA82" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customer__Image__5D95E53A" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customera__custo__6C190EBB" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customera__custo__6D0D32F4" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerb__custo__6E01572D" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerc__custo__6EF57B66" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerd__custi__6FE99F9F" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerf__custo__70DDC3D8" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customero__custo__72C60C4A" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customero__custo__73BA3083" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerp__custo__74AE54BC" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerv__custo__75A278F5" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverrat__custo__7C4F7684" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__orders__customer__03F0984C" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__oredercan__custo__05D8E0BE" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__shippinga__custo__0E6E26BF" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customera__Image__607251E5" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__customerf__produ__71D1E811" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driver__image__662B2B3B" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driver__vender_i__76969D2E" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driveradd__drive__778AC167" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverban__drive__787EE5A0" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverdef__drive__797309D9" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverlog__drive__7A672E12" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverpay__drive__7B5B524B" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverrat__drive__7D439ABD" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverwor__drive__7F2BE32F" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__geofence__driver__00200768" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__payoutall__drive__08B54D69" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__shippingh__drive__10566F31" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__vechicle__driver__160F4887" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driveradd__Image__6166761E" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__driverrat__order__7E37BEF6" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__geofence__vender__02084FDA" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__pandetail__Image__625A9A57" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__product__image__671F4F74" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__vattandet__Image__634EBE90" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__vender__image__65370702" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderadd__Image__6442E2C9" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__minimumor__vende__02FC7413" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__orders__product___04E4BC85" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__oredercan__order__06CD04F7" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__productra__order__0B91BA14" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__shippinga__order__0F624AF8" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__shippingh__order__114A936A" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__pandetail__vende__07C12930" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__product__vender___0A9D95DB" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__productra__produ__0C85DE4D" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__storedeta__vende__123EB7A3" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__teammanag__vende__14270015" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__vattandet__vende__151B244E" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderadd__vende__17036CC0" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderban__vende__17F790F9" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderdef__vende__18EBB532" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderlog__vende__19DFD96B" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderpay__vende__1AD3FDA4" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__venderpay__vende__1BC821DD" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.CmsPage" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.mobile_otp" Width="1.5" PointX="11.375" PointY="6.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.country" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.delivery" Width="1.5" PointX="10.5" PointY="127" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.national_address" Width="1.5" PointX="5.25" PointY="38.625" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.odometerreading" Width="1.5" PointX="10.5" PointY="68.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.onspotsale" Width="1.5" PointX="15.75" PointY="88.875" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.orderdeliveryweather" Width="1.5" PointX="10.5" PointY="122.875" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.warehouseaddress" Width="1.5" PointX="11.375" PointY="9.75" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__national___custo__4F12BBB9" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__delivery__driver__4B422AD5" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__odometerr__drive__5006DFF2" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__orderdeli__drive__55BFB948" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.cust_notification" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.General_feeback" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.product_feedback" Width="1.5" PointX="2.75" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

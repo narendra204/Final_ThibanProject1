@@ -1,0 +1,225 @@
+﻿@model PagedList.IPagedList<Final_ThibanProject.Models.RoleManagement>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table tbody > tr:last-child > td {
+        border-bottom: none;
+    }
+
+    .table > thead:first-child > tr:first-child > td {
+        border-top: 1px solid #eee !important;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        border-top: 1px solid #eee;
+    }
+</style>
+
+<!-- Start: Content-Wrapper -->
+
+<div class="right_col" role="main">
+    <div class="row mb5 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Team Management <small>Roles</small></h1>
+    </div>
+
+    <div class="row col-md-12 col-lg-12 col-sm-12 col-xs-12 pr10">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li> <a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Roles</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 mt5 border-round">
+                <div class="panel-body p10 pb10">
+                    <div class="tab-content pn br-n admin-form">
+                        <div id="tab1_1" class="tab-pane active">
+                            <div class="heading-title">
+                                <h3 class="panel-title role_h3"> Add A New team member</h3>
+                            </div>
+                            <p class="role_p fw200 font-size-14"> Create a New Team Member to Access Permisssions </p>
+                            <a href="~/Role/CreateRole" class="btn btn-md role_btn border-radius99 add-new-role">Add a New Role </a>
+                        </div>
+
+                        <!---->
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel border-round">
+                <div class="heading-title list-items">
+                    <h1 class="panel-title">List of products</h1>
+                </div>
+                <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
+                    <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                            <div class="pagination-panel">
+                                <div class="page-text">
+                                    Page &nbsp;
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddRole", "Role", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddRole", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dataTables_length">
+                            <label>
+                                <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                            </label>
+                            <div class="btn-group">
+                                <button type="button" class="btn  dropdown-toggle pagination-sellct-button-toogle " data-toggle="dropdown" style="background:#FFFFFF"> @Model.PageSize <span class="fa fa-angle-down down-number-btn"></span></button>
+                                <span class="records">&nbsp; records</span>
+
+                            </div>
+                        </div>
+
+                        <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                    </div>
+
+
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                        <div class="table-group-actions pull-right">
+                            <span></span>
+                            <div class="btn-group">
+                                <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                    <li><a href="#">Edit</a></li>
+                                    <li><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="panel-body pn">
+                    <div class="table-responsive">
+                        <table class="table admin-form table-f-color  ">
+                            <thead class="vndr-brdr-btm-1">
+                                <tr class="bg-light clr-blck fs13">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn"></span>
+                                        </label>
+                                    </th>
+                                    <th>Role Name</th>
+                                    <th>Edit Role</th>
+                                    <th>Delete Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="t-m-tr" id="@item.Roleid">
+                                        <td class="text-center" data-val-col="checkbox" data-val="false">
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <span class="checkbox mn outline"></span>
+                                            </label>
+                                        </td>
+                                        <td id="roleid" style="display:none;" data-val-col="Address" data-val="@item.Roleid" class="">@item.Roleid</td>
+                                        <td>@item.RoleName</td>
+                                        <td><button class="btn btn-default  btn-sm  edit_btn">Edit</button></td>
+                                        <td><button class="btn btn-default  btn-sm  delete_btn">Delete</button></td>
+                                        <td></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+<!-- MODAL-END-HERE-->
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+<script src="~/Content/assets/js/raphael.min.js"></script>
+<script src="~/Content/assets/js/Chart.min.js"></script>
+<script src="~/Content/assets/js/morris.min.js"></script>
+<script src="~/Content/assets/js/custom.min.js"></script>
+<script src="~/Content/assets/js/wizard.js"></script>
+<script src="~/Content/assets/js/date.js"></script>
+<script src="~/Content/assets/js/moment.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Content/assets/js/visitor.js"></script>
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).delegate('.delete_btn', 'click', function (e) {
+            debugger;
+            if (confirm("Are you sure you want to delete this Record?")) {
+                var currentRow = $(this).closest("tr");
+                var col1 = currentRow.find("#roleid").text();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Delete","Role")",
+                    ajaxasync: true,
+                    data: { id: col1 },
+                    success: function () {
+                        // Perform redirect
+                        window.location.reload(true);
+                    },
+                    error: function (data) {
+                        alert(data.x);
+                    }
+                });
+            }
+            return false;
+        });
+        $(document).delegate('.edit_btn','click',function(e){
+            debugger;
+            var crow = $(this).closest("tr");
+            var col = crow.find("#roleid").text();
+        })
+    });
+</script>

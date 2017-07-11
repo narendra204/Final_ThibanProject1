@@ -1,0 +1,155 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderAddProff
+<div class="container">
+    <div class="accunt-setting">
+        <p>Account Setting</p>
+        <form class="form-horizontal">
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Merchant ID</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="5468">*@
+                    @Html.TextBoxFor(model => model.MerchantId, new { @name = "MerchantId", @id = "MerchantId", @class = "form-control", @placeholder = "5468" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Name</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="Amir">*@
+                    @Html.TextBoxFor(model => model.name, new { @name = "name", @id = "name", @class = "form-control", @placeholder = "Amir" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Store/Company Name</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="5468">*@
+                    @Html.TextBoxFor(model => model.display_name, new { @name = "display_name", @id = "display_name", @class = "form-control", @placeholder = "5468" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Email ID</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="email" class="form-control" id="" placeholder="aamit@gmail.com">*@
+                    @Html.TextBoxFor(model => model.emailid, new { @name = "emailid", @id = "emailid", @class = "form-control", @placeholder = "aamit@gmail.com" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Mobile Number</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="tel" class="form-control" id="" placeholder="984801253">*@
+                    @Html.TextBoxFor(model => model.mobile_no, new { @name = "mobile_no", @id = "mobile_no", @class = "form-control", @placeholder = "984801253" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Additional Information</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<textarea class="form-control" id="" placeholder="Other Info"></textarea>*@
+                    @Html.TextAreaFor(model => model.AdditionalInfor, new { @name = "AdditionalInfor", @id = "AdditionalInfor", @class = "form-control", @placeholder = "Other Info" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="accunt-setting">
+        <p>Account Setting</p>
+        <form class="form-horizontal">
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">PAN Number </label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="BSRP4A8">*@
+                    @Html.TextBoxFor(model => model.PanNumber, new { @name = "PanNumber", @id = "PanNumber", @class = "form-control", @placeholder = "BSRP4A8" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Vat Identification Number</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="XW12589">*@
+                    @Html.TextBoxFor(model => model.VatIdentityFicationNumber, new { @name = "VatIdentityFicationNumber", @id = "VatIdentityFicationNumber", @class = "form-control", @placeholder = "XW12589" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Beneficiary Name</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="5468">*@
+                    @Html.TextBoxFor(model => model.benificary_name_in_bank, new { @name = "benificary_name_in_bank", @id = "benificary_name_in_bank", @class = "form-control", @placeholder = "5468" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Account Number</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="12874148974156">*@
+                    @Html.TextBoxFor(model => model.account_no, new { @name = "account_no", @id = "account_no", @class = "form-control", @placeholder = "12874148974156" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Bank Name</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="ICICI">*@
+                    @Html.TextBoxFor(model => model.BankNameOther, new { @name = "BankNameOther", @id = "BankNameOther", @class = "form-control", @placeholder = "ICICI" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Branch Name</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="Riyadh">*@
+                    @Html.TextBoxFor(model => model.branch_name, new { @name = "branch_name", @id = "branch_name", @class = "form-control", @placeholder = "Riyadh" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">IFSC Code</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="ICIC89874">*@
+                    @Html.TextBoxFor(model => model.ifsc_code, new { @name = "ifsc_code", @id = "ifsc_code", @class = "form-control", @placeholder = "ICIC89874" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="accunt-setting">
+        <p>Account Setting</p>
+        <form class="form-horizontal">
+            <div class="form-group m--30">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12" for="email">Address </label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="Address">*@
+                    @Html.TextBoxFor(model => model.Address, new { @name = "Address", @id = "Address", @class = "form-control", @placeholder = "Address" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="email">City</label>
+                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="Riyadh">*@
+                    @Html.TextBoxFor(model => model.City, new { @name = "City", @id = "City", @class = "form-control", @placeholder = "Riyadh" })
+                </div>
+            </div>
+            <div class="form-group m--30">
+                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="email">State</label>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    @*<input type="text" class="form-control" id="" placeholder="Riyadh">*@
+                    @Html.TextBoxFor(model => model.State, new { @name = "State", @id = "State", @class = "form-control", @placeholder = "Riyadh" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--<div class="container">
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+    <form>
+        <a href="#" class="btn btn-default pull-right prf-sbt-btn border-radius99 ">Submit</a>
+      </form>
+  </div>
+  </div>-->
+
+<div class=" col-md-offset-4 col-lg-offset-4 col col-sm-offset-4 col-lg-2 col-md-2 col-sm-2">
+    <div class="">
+        <button type="button" id="btnProfileSubmit" data-id="@Model.venderid" class="btn btn-primary prf-sbt-btn  create-submit-grnbtn border-radius99 btn-block">Submit</button>
+    </div>
+</div>
+
+<style>
+    span.field-validation-error {
+        color: red;
+    }
+</style>

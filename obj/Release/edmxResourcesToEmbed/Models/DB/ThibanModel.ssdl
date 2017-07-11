@@ -1,0 +1,2203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThibanWaterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="100" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="100" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="website" Type="nvarchar" MaxLength="100" />
+    <Property Name="regdate" Type="datetime" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="status" Type="bit" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="advertisement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="video_image" Type="varbinary(max)" />
+    <Property Name="status" Type="bit" />
+    <Property Name="type" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="agreement">
+    <Key>
+      <PropertyRef Name="AgreementId" />
+    </Key>
+    <Property Name="AgreementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VenderId" Type="int" />
+    <Property Name="AgreementVersion" Type="nvarchar" MaxLength="150" />
+    <Property Name="AcceptedDate" Type="datetime" />
+    <Property Name="FileId" Type="int" />
+  </EntityType>
+  <EntityType Name="AverageCompositionPPM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BottleMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="BottlePerBox">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="BrandName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="bussinessofficehours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bussinessoffice" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bussinesstype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bussinesstypetext" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="categoryid" />
+    </Key>
+    <Property Name="categoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="CmsPage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageTitle" Type="varchar" MaxLength="50" />
+    <Property Name="PageContent" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CompanyType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyTypeText" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConventionalstoreMinimumOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="ConventionalstoreMiximumOrderQuality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="countries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_name" Type="varchar" MaxLength="100" />
+    <Property Name="country_code" Type="varchar" MaxLength="5" />
+    <Property Name="phone_no_length" Type="int" />
+  </EntityType>
+  <EntityType Name="coupon">
+    <Key>
+      <PropertyRef Name="couponid" />
+    </Key>
+    <Property Name="couponid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="coupon_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="coupon_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="coupon_type" Type="int" />
+    <Property Name="coupon_valid_start_date" Type="datetime" />
+    <Property Name="coupon_valid_end_date" Type="datetime" />
+    <Property Name="coupon_description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="coupon_status" Type="bit" />
+    <Property Name="discount" Type="float" />
+  </EntityType>
+  <EntityType Name="CREATETABLEBottlePerBox">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="cust_notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="from_thiban" Type="bit" />
+    <Property Name="changes_to_acc" Type="bit" />
+    <Property Name="coupon_alerts" Type="bit" />
+    <Property Name="feature_updates" Type="bit" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="mobileno" Type="nvarchar" MaxLength="15" />
+    <Property Name="verifyotp" Type="int" />
+    <Property Name="verifyemail" Type="nvarchar" MaxLength="100" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="regdate" Type="datetime" />
+    <Property Name="customer_gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="customer_phonetype" Type="nvarchar" MaxLength="50" />
+    <Property Name="customer_nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="customer_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="telicon_carrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="custstatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image" Type="int" />
+    <Property Name="DOB" Type="varchar" MaxLength="10" />
+    <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="customeraddressproof">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="addressproof" Type="nvarchar" MaxLength="100" />
+    <Property Name="addressimage" Type="nvarchar" MaxLength="200" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="customerappartmentaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="appartment_street" Type="nvarchar" MaxLength="100" />
+    <Property Name="appartment_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="floor_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="building_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="building_address_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customerbankdetail">
+    <Key>
+      <PropertyRef Name="customer_bank_id" />
+    </Key>
+    <Property Name="customer_bank_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account_no" Type="int" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="benificary_name_in_bank" Type="nvarchar" MaxLength="100" />
+    <Property Name="bank_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="branch_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ifsc_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="benificary_name_in_bank_image" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="customerchaletaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="chalet_street" Type="nvarchar" MaxLength="100" />
+    <Property Name="chalet_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="chalet_address_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customerdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custid" Type="int" />
+    <Property Name="custnote1" Type="nvarchar" MaxLength="500" />
+    <Property Name="customernote2" Type="nvarchar" MaxLength="500" />
+    <Property Name="streetaddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="zip" Type="int" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="country" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="customerfavoriteproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+  </EntityType>
+  <EntityType Name="CustomerMaximumOrderQuality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CustomerMinimumOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="customerofficeaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="office_street" Type="nvarchar" MaxLength="100" />
+    <Property Name="office_building_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="offie_floor_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="office_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="office_address_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customerotheraddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="other_street" Type="nvarchar" MaxLength="100" />
+    <Property Name="other_specificaqtion" Type="nvarchar" MaxLength="100" />
+    <Property Name="other_address_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customerpaymentcard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="card_number" Type="int" />
+    <Property Name="card_expiry" Type="date" />
+    <Property Name="card_cvv" Type="nvarchar" MaxLength="50" />
+    <Property Name="card_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="card_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customervillaaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="villa_street" Type="nvarchar" MaxLength="100" />
+    <Property Name="villa_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="villa_address_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="delivery">
+    <Key>
+      <PropertyRef Name="deliveryid" />
+    </Key>
+    <Property Name="deliveryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="deliverystarttime" Type="datetime" />
+    <Property Name="startlongitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="startlatitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="endlongitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="endlatitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="startgeofence" Type="int" />
+    <Property Name="endgeofence" Type="int" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="reachedtime" Type="datetime" />
+    <Property Name="deliverytime" Type="datetime" />
+    <Property Name="weatingtime" Type="int" />
+    <Property Name="delaytime" Type="int" />
+  </EntityType>
+  <EntityType Name="dgeofence">
+    <Key>
+      <PropertyRef Name="geofenceid" />
+    </Key>
+    <Property Name="geofenceid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="location" Type="geography" />
+    <Property Name="zone_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="city_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="direction_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="driver">
+    <Key>
+      <PropertyRef Name="driverid" />
+    </Key>
+    <Property Name="driverid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="dusername" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mobile_no" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="registration_date" Type="datetime" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="driver_nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="driver_phone_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="driver_divice_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="driver_telicom_carrer" Type="nvarchar" MaxLength="100" />
+    <Property Name="creation_date" Type="datetime" />
+    <Property Name="verify_otp" Type="int" />
+    <Property Name="verify_email" Type="nvarchar" MaxLength="150" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" />
+    <Property Name="image" Type="int" />
+    <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="driveraddressproff">
+    <Key>
+      <PropertyRef Name="daddressid" />
+    </Key>
+    <Property Name="daddressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="address_proff" Type="nvarchar" MaxLength="100" />
+    <Property Name="address_image" Type="nvarchar" MaxLength="150" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="driverbankdetail">
+    <Key>
+      <PropertyRef Name="driver_bank_id" />
+    </Key>
+    <Property Name="driver_bank_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="accountno" Type="int" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="benificary_name_in_bank" Type="nvarchar" MaxLength="100" />
+    <Property Name="bank_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="branch_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ifsc_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="benificary_name_in_bank_image" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="driverdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="drivernote1" Type="nvarchar" MaxLength="500" />
+    <Property Name="drivernote2" Type="nvarchar" MaxLength="500" />
+    <Property Name="streetaddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="zip" Type="int" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="country" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="driverlog">
+    <Key>
+      <PropertyRef Name="dlogid" />
+    </Key>
+    <Property Name="dlogid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="login_date" Type="datetime" />
+    <Property Name="logout" Type="datetime" />
+    <Property Name="online_time" Type="int" />
+  </EntityType>
+  <EntityType Name="driverpayoutrequested">
+    <Key>
+      <PropertyRef Name="dpayoutid" />
+    </Key>
+    <Property Name="dpayoutid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="request_date" Type="datetime" />
+    <Property Name="tran_id" Type="int" />
+    <Property Name="amount" Type="money" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="driverrating">
+    <Key>
+      <PropertyRef Name="drateid" />
+    </Key>
+    <Property Name="drateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="rating" Type="int" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="rating_date" Type="datetime" />
+    <Property Name="comment" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="driverworkinghours">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="working_hours_mondey" Type="int" />
+    <Property Name="working_hours_tuesday" Type="int" />
+    <Property Name="working_hours_wednesday" Type="int" />
+    <Property Name="working_hours_thursday" Type="int" />
+    <Property Name="working_hour_friday" Type="int" />
+    <Property Name="working_hour_saturday" Type="int" />
+    <Property Name="working_hour_sunday" Type="int" />
+  </EntityType>
+  <EntityType Name="filestore">
+    <Key>
+      <PropertyRef Name="FileId" />
+    </Key>
+    <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="fileSize" Type="int" />
+    <Property Name="attachment" Type="varbinary(max)" />
+    <Property Name="FileExtension" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="General_feeback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="feedback" Type="nvarchar(max)" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="geofence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="geofence_id" Type="int" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="ImageFile">
+    <Key>
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ImageSize" Type="int" />
+    <Property Name="Imageattachment" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageText" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="menuitem">
+    <Key>
+      <PropertyRef Name="menuid" />
+    </Key>
+    <Property Name="menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menuname" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="minimumorderstatus">
+    <Key>
+      <PropertyRef Name="min_order_id" />
+    </Key>
+    <Property Name="min_order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="order_type" Type="nvarchar" MaxLength="200" />
+    <Property Name="order_quantity" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="mobile_otp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mobileno" Type="varchar" MaxLength="50" />
+    <Property Name="otp" Type="varchar" MaxLength="50" />
+    <Property Name="active" Type="bit" />
+    <Property Name="created_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="national_address">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="buildingnumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="streetname" Type="nvarchar" MaxLength="100" />
+    <Property Name="neighborhood" Type="nvarchar" MaxLength="100" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="postal_zip_code" Type="int" />
+    <Property Name="district" Type="nvarchar" MaxLength="100" />
+    <Property Name="additionalnumber" Type="int" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="address_type" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="odometerreading">
+    <Key>
+      <PropertyRef Name="odometerid" />
+    </Key>
+    <Property Name="odometerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="trukid" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="startodometter" Type="int" />
+    <Property Name="endodometter" Type="int" />
+  </EntityType>
+  <EntityType Name="onspotsale">
+    <Key>
+      <PropertyRef Name="onspotsaleid" />
+    </Key>
+    <Property Name="onspotsaleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="trukid" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="onspotqty" Type="int" />
+    <Property Name="onspotprice" Type="money" />
+    <Property Name="totalqty" Type="int" />
+    <Property Name="totalprice" Type="money" />
+    <Property Name="available" Type="int" />
+    <Property Name="onsopt_sale_latitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="onspot_sale_longitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="geofence" Type="int" />
+    <Property Name="total_inventory" Type="int" />
+    <Property Name="total_inventory_price" Type="money" />
+    <Property Name="available_inventory" Type="int" />
+    <Property Name="orderid" Type="int" />
+  </EntityType>
+  <EntityType Name="orderdeliveryweather">
+    <Key>
+      <PropertyRef Name="orderdeliveryweather_id" />
+    </Key>
+    <Property Name="orderdeliveryweather_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="weathertemp" Type="nvarchar" MaxLength="100" />
+    <Property Name="weatherhumidity" Type="nvarchar" MaxLength="100" />
+    <Property Name="weatherpressure" Type="nvarchar" MaxLength="100" />
+    <Property Name="weather_temp_max" Type="nvarchar" MaxLength="100" />
+    <Property Name="weather_temp_min" Type="nvarchar" MaxLength="100" />
+    <Property Name="weathertime" Type="datetime" />
+    <Property Name="wind" Type="nvarchar" MaxLength="100" />
+    <Property Name="rain" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="ship_address" Type="nvarchar" MaxLength="1000" />
+    <Property Name="price" Type="money" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="ship_date" Type="datetime" />
+    <Property Name="order_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="expected_delivery_time" Type="datetime" />
+    <Property Name="couponid" Type="int" />
+    <Property Name="discount" Type="money" />
+    <Property Name="total" Type="money" />
+    <Property Name="bill_address" Type="nvarchar" MaxLength="1000" />
+    <Property Name="paid" Type="bit" />
+    <Property Name="orderdate" Type="datetime" />
+    <Property Name="payment_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="payment_date" Type="datetime" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" />
+    <Property Name="address_type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="oredercanclefeedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="feedback" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="pandetail">
+    <Key>
+      <PropertyRef Name="panid" />
+    </Key>
+    <Property Name="panid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pancardno" Type="nvarchar" MaxLength="50" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="pan_image" Type="nvarchar" MaxLength="150" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="payoutall">
+    <Key>
+      <PropertyRef Name="dpayallid" />
+    </Key>
+    <Property Name="dpayallid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="transaction_date" Type="datetime" />
+    <Property Name="transaction_id" Type="int" />
+    <Property Name="payment_mode" Type="nvarchar" MaxLength="50" />
+    <Property Name="amount" Type="money" />
+    <Property Name="adjustment_amount" Type="money" />
+    <Property Name="net_amount" Type="money" />
+  </EntityType>
+  <EntityType Name="PHNumber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="product_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="brand" Type="nvarchar" MaxLength="100" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="customer_price" Type="money" />
+    <Property Name="customer_min_order_quantity" Type="int" />
+    <Property Name="customer_max_order_quantity" Type="int" />
+    <Property Name="store_price" Type="money" />
+    <Property Name="store_min_order_quantity" Type="int" />
+    <Property Name="store_max_order_quantity" Type="int" />
+    <Property Name="phno" Type="nvarchar" MaxLength="50" />
+    <Property Name="bottle_per_box" Type="int" />
+    <Property Name="stock" Type="int" />
+    <Property Name="sku" Type="int" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProductAvaibility" Type="nvarchar" MaxLength="250" />
+    <Property Name="volume" Type="nvarchar" MaxLength="250" />
+    <Property Name="image" Type="int" />
+    <Property Name="bottle_material" Type="varchar" MaxLength="200" />
+    <Property Name="av_composition_ppm" Type="varchar" MaxLength="11" />
+    <Property Name="discount" Type="varchar" MaxLength="50" />
+    <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="product_feedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="producu_id" Type="int" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="feedback" Type="nvarchar(max)" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProductAvailability">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="productratting">
+    <Key>
+      <PropertyRef Name="rateid" />
+    </Key>
+    <Property Name="rateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="ratting" Type="int" />
+    <Property Name="comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="ratting_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProvinceText" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="roleid" />
+    </Key>
+    <Property Name="roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rolename" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="rolemanagement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleid" Type="int" />
+    <Property Name="menuitem" Type="nvarchar" MaxLength="100" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="shippingaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="streetaddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="500" />
+    <Property Name="zip" Type="int" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="country" Type="nvarchar" MaxLength="100" />
+    <Property Name="orderid" Type="int" />
+  </EntityType>
+  <EntityType Name="shippinghistory">
+    <Key>
+      <PropertyRef Name="shiphistoryid" />
+    </Key>
+    <Property Name="shiphistoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="reached_time" Type="datetime" />
+    <Property Name="delivery_time" Type="datetime" />
+    <Property Name="wating_time" Type="int" />
+    <Property Name="delay_time" Type="int" />
+  </EntityType>
+  <EntityType Name="storedetail">
+    <Key>
+      <PropertyRef Name="storeid" />
+    </Key>
+    <Property Name="storeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="business_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="language" Type="nvarchar" MaxLength="50" />
+    <Property Name="display_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="reg_business_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="business_address1" Type="nvarchar" MaxLength="1000" />
+    <Property Name="business_address2" Type="nvarchar" MaxLength="1000" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="warehouse_address1" Type="nvarchar" MaxLength="500" />
+    <Property Name="warehouse_address2" Type="nvarchar" MaxLength="500" />
+    <Property Name="Province" Type="nvarchar" MaxLength="100" />
+    <Property Name="RegistrationName" Type="nvarchar" MaxLength="100" />
+    <Property Name="WarehouseCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="Bussinessofficehours" Type="nvarchar" MaxLength="100" />
+    <Property Name="WarehouseProvince" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="teammanagement">
+    <Key>
+      <PropertyRef Name="memberid" />
+    </Key>
+    <Property Name="memberid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="membername" Type="nvarchar" MaxLength="100" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="100" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="roleid" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="creadteby" Type="int" />
+  </EntityType>
+  <EntityType Name="vattandetail">
+    <Key>
+      <PropertyRef Name="vatid" />
+    </Key>
+    <Property Name="vatid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="vat_image" Type="nvarchar" MaxLength="150" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="vechicle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driver_id" Type="int" />
+    <Property Name="vechicle_model" Type="nvarchar" MaxLength="100" />
+    <Property Name="vechicle_company_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="vechicle_year" Type="nvarchar" MaxLength="100" />
+    <Property Name="vechicle_energy_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="vechicle_cylender_type" Type="int" />
+    <Property Name="vechicle_fule_consumption_short" Type="int" />
+    <Property Name="vechicle_fule_consumption_long" Type="int" />
+    <Property Name="vechicle_assistant" Type="int" />
+    <Property Name="vechicle_max_capacity" Type="int" />
+    <Property Name="vechicle_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="vender">
+    <Key>
+      <PropertyRef Name="venderid" />
+    </Key>
+    <Property Name="venderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="registration_date" Type="datetime" />
+    <Property Name="mobile_no" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="verifyotp" Type="int" />
+    <Property Name="verifyemail" Type="nvarchar" MaxLength="100" />
+    <Property Name="createdby" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" />
+    <Property Name="Activationid" Type="uniqueidentifier" />
+    <Property Name="Accepted" Type="bit" />
+    <Property Name="MerchantId" Type="nvarchar" MaxLength="150" />
+    <Property Name="AdditionalInfor" Type="nvarchar" MaxLength="200" />
+    <Property Name="ForgotActivationId" Type="uniqueidentifier" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="150" />
+    <Property Name="image" Type="int" />
+    <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="venderaddressproof">
+    <Key>
+      <PropertyRef Name="vender_address_id" />
+    </Key>
+    <Property Name="vender_address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="address_proof" Type="nvarchar" MaxLength="100" />
+    <Property Name="address_image" Type="nvarchar" MaxLength="150" />
+    <Property Name="CompanyTradeName" Type="nvarchar" MaxLength="150" />
+    <Property Name="CompanyType" Type="nvarchar" MaxLength="150" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="150" />
+    <Property Name="MainOffice" Type="nvarchar" MaxLength="150" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="150" />
+    <Property Name="TlelphoneNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="RegistrationDate" Type="nvarchar" MaxLength="150" />
+    <Property Name="POBox" Type="nvarchar" MaxLength="150" />
+    <Property Name="CompanyType2" Type="nvarchar" MaxLength="150" />
+    <Property Name="PanNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="City" Type="nvarchar" MaxLength="150" />
+    <Property Name="State" Type="nvarchar" MaxLength="150" />
+    <Property Name="Image" Type="int" />
+  </EntityType>
+  <EntityType Name="venderbankdetail">
+    <Key>
+      <PropertyRef Name="vender_bank_id" />
+    </Key>
+    <Property Name="vender_bank_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="account_no" Type="int" Nullable="false" />
+    <Property Name="benificary_name_in_bank" Type="nvarchar" MaxLength="100" />
+    <Property Name="bank_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="branch_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ifsc_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="benificary_name_in_bank_image" Type="nvarchar" MaxLength="150" />
+    <Property Name="HolderName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IBANCode" Type="nvarchar" MaxLength="150" />
+    <Property Name="VatIdentityFicationNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="BankNameCaseOther" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="venderdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="vendernote1" Type="nvarchar" MaxLength="500" />
+    <Property Name="vendernote2" Type="nvarchar" MaxLength="500" />
+    <Property Name="streetaddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="zip" Type="int" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="country" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="venderlog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vender_id" Type="int" />
+    <Property Name="login_date" Type="datetime" />
+    <Property Name="logout" Type="datetime" />
+    <Property Name="online_time" Type="int" />
+  </EntityType>
+  <EntityType Name="venderpayoutall">
+    <Key>
+      <PropertyRef Name="vpayallid" />
+    </Key>
+    <Property Name="vpayallid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="transactiondate" Type="datetime" />
+    <Property Name="transactionid" Type="int" />
+    <Property Name="paymentmode" Type="nvarchar" MaxLength="100" />
+    <Property Name="amount" Type="money" />
+    <Property Name="adjustment_amount" Type="money" />
+    <Property Name="net_amount" Type="money" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="venderpayoutrequested">
+    <Key>
+      <PropertyRef Name="vpayoutid" />
+    </Key>
+    <Property Name="vpayoutid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="requestdate" Type="datetime" />
+    <Property Name="transactionid" Type="int" />
+    <Property Name="amount" Type="money" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Volume">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="warehouseaddress">
+    <Key>
+      <PropertyRef Name="warehouseid" />
+    </Key>
+    <Property Name="warehouseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venderid" Type="int" />
+    <Property Name="address" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" />
+    <Property Name="state" Type="nvarchar" MaxLength="100" />
+    <Property Name="latitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="longitude" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="geofenceid" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <Association Name="FK__admin__Image__5E8A0973">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="admin" Type="Self.admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__vende__6A30C649">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="advertisement" Type="Self.advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="advertisement">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__agreement__FileI__37703C52">
+    <End Role="filestore" Type="Self.filestore" Multiplicity="0..1" />
+    <End Role="agreement" Type="Self.agreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filestore">
+        <PropertyRef Name="FileId" />
+      </Principal>
+      <Dependent Role="agreement">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__agreement__Vende__367C1819">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="agreement" Type="Self.agreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="agreement">
+        <PropertyRef Name="VenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__category__Image__5F7E2DAC">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="category" Type="Self.category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="category">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__coupon__vender_i__6B24EA82">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="coupon" Type="Self.coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="coupon">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customer__Image__5D95E53A">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__custo__6C190EBB">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customeraddressproof" Type="Self.customeraddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customeraddressproof">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__custo__6D0D32F4">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerappartmentaddress" Type="Self.customerappartmentaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerappartmentaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__Image__607251E5">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="customeraddressproof" Type="Self.customeraddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="customeraddressproof">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerb__custo__6E01572D">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerbankdetail" Type="Self.customerbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerbankdetail">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerc__custo__6EF57B66">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerchaletaddress" Type="Self.customerchaletaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerchaletaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerd__custi__6FE99F9F">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerdefaultaddress" Type="Self.customerdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerdefaultaddress">
+        <PropertyRef Name="custid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerf__custo__70DDC3D8">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerfavoriteproduct" Type="Self.customerfavoriteproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerfavoriteproduct">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerf__produ__71D1E811">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="customerfavoriteproduct" Type="Self.customerfavoriteproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="customerfavoriteproduct">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customero__custo__72C60C4A">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerofficeaddress" Type="Self.customerofficeaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerofficeaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customero__custo__73BA3083">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerotheraddress" Type="Self.customerotheraddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerotheraddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerp__custo__74AE54BC">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customerpaymentcard" Type="Self.customerpaymentcard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerpaymentcard">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerv__custo__75A278F5">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="customervillaaddress" Type="Self.customervillaaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customervillaaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__delivery__driver__4B422AD5">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="delivery">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driver__image__662B2B3B">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="driver" Type="Self.driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="driver">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driver__vender_i__76969D2E">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="driver" Type="Self.driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="driver">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driveradd__drive__778AC167">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driveraddressproff" Type="Self.driveraddressproff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driveraddressproff">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driveradd__Image__6166761E">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="driveraddressproff" Type="Self.driveraddressproff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="driveraddressproff">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverban__drive__787EE5A0">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverbankdetail" Type="Self.driverbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverbankdetail">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverdef__drive__797309D9">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverdefaultaddress" Type="Self.driverdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverdefaultaddress">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverlog__drive__7A672E12">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverlog" Type="Self.driverlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverlog">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverpay__drive__7B5B524B">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverpayoutrequested" Type="Self.driverpayoutrequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverpayoutrequested">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__custo__7C4F7684">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="driverrating" Type="Self.driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__drive__7D439ABD">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverrating" Type="Self.driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__order__7E37BEF6">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="driverrating" Type="Self.driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverwor__drive__7F2BE32F">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="driverworkinghours" Type="Self.driverworkinghours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverworkinghours">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__driver__00200768">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="geofence" Type="Self.geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__geofen__01142BA1">
+    <End Role="dgeofence" Type="Self.dgeofence" Multiplicity="0..1" />
+    <End Role="geofence" Type="Self.geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dgeofence">
+        <PropertyRef Name="geofenceid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="geofence_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__vender__02084FDA">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="geofence" Type="Self.geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__minimumor__vende__02FC7413">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="minimumorderstatus" Type="Self.minimumorderstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="minimumorderstatus">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__national___custo__4F12BBB9">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="national_address" Type="Self.national_address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="national_address">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__odometerr__drive__5006DFF2">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="odometerreading" Type="Self.odometerreading" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="odometerreading">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__onspotsal__drive__51EF2864">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="onspotsale" Type="Self.onspotsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="onspotsale">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__onspotsal__order__54CB950F">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="onspotsale" Type="Self.onspotsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="onspotsale">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderdeli__drive__55BFB948">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="orderdeliveryweather" Type="Self.orderdeliveryweather" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="orderdeliveryweather">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__customer__03F0984C">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__product___04E4BC85">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__oredercan__custo__05D8E0BE">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="oredercanclefeedback" Type="Self.oredercanclefeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="oredercanclefeedback">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__oredercan__order__06CD04F7">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="oredercanclefeedback" Type="Self.oredercanclefeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="oredercanclefeedback">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pandetail__Image__625A9A57">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="pandetail" Type="Self.pandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="pandetail">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pandetail__vende__07C12930">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="pandetail" Type="Self.pandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="pandetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payoutall__drive__08B54D69">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="payoutall" Type="Self.payoutall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="payoutall">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__categor__09A971A2">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="categoryid" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__image__671F4F74">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__vender___0A9D95DB">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productra__order__0B91BA14">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="productratting" Type="Self.productratting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="productratting">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productra__produ__0C85DE4D">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="productratting" Type="Self.productratting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="productratting">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolemanag__rolei__5AB9788F">
+    <End Role="role" Type="Self.role" Multiplicity="0..1" />
+    <End Role="rolemanagement" Type="Self.rolemanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="rolemanagement">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippinga__custo__0E6E26BF">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="shippingaddress" Type="Self.shippingaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="shippingaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippinga__order__0F624AF8">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="shippingaddress" Type="Self.shippingaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="shippingaddress">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippingh__drive__10566F31">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="shippinghistory" Type="Self.shippinghistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="shippinghistory">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippingh__order__114A936A">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="shippinghistory" Type="Self.shippinghistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="shippinghistory">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__storedeta__vende__123EB7A3">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="storedetail" Type="Self.storedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="storedetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teammanag__rolei__57DD0BE4">
+    <End Role="role" Type="Self.role" Multiplicity="0..1" />
+    <End Role="teammanagement" Type="Self.teammanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="teammanagement">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teammanag__vende__14270015">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="teammanagement" Type="Self.teammanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="teammanagement">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vattandet__Image__634EBE90">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="vattandetail" Type="Self.vattandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="vattandetail">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vattandet__vende__151B244E">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="vattandetail" Type="Self.vattandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="vattandetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vechicle__driver__160F4887">
+    <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+    <End Role="vechicle" Type="Self.vechicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="vechicle">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vender__image__65370702">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="vender" Type="Self.vender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="vender">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderadd__Image__6442E2C9">
+    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
+    <End Role="venderaddressproof" Type="Self.venderaddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="venderaddressproof">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderadd__vende__17036CC0">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderaddressproof" Type="Self.venderaddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderaddressproof">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderban__vende__17F790F9">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderbankdetail" Type="Self.venderbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderbankdetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderdef__vende__18EBB532">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderdefaultaddress" Type="Self.venderdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderdefaultaddress">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderlog__vende__19DFD96B">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderlog" Type="Self.venderlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderlog">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderpay__vende__1AD3FDA4">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderpayoutall" Type="Self.venderpayoutall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderpayoutall">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderpay__vende__1BC821DD">
+    <End Role="vender" Type="Self.vender" Multiplicity="0..1" />
+    <End Role="venderpayoutrequested" Type="Self.venderpayoutrequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderpayoutrequested">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ThibanWaterDBModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="advertisement" EntityType="Self.advertisement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="agreement" EntityType="Self.agreement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AverageCompositionPPM" EntityType="Self.AverageCompositionPPM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bank" EntityType="Self.bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BottleMaterial" EntityType="Self.BottleMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BottlePerBox" EntityType="Self.BottlePerBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BrandName" EntityType="Self.BrandName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bussinessofficehours" EntityType="Self.bussinessofficehours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bussinesstype" EntityType="Self.bussinesstype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CmsPage" EntityType="Self.CmsPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyType" EntityType="Self.CompanyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConventionalstoreMinimumOrder" EntityType="Self.ConventionalstoreMinimumOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConventionalstoreMiximumOrderQuality" EntityType="Self.ConventionalstoreMiximumOrderQuality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="coupon" EntityType="Self.coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CREATETABLEBottlePerBox" EntityType="Self.CREATETABLEBottlePerBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cust_notification" EntityType="Self.cust_notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customeraddressproof" EntityType="Self.customeraddressproof" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerappartmentaddress" EntityType="Self.customerappartmentaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerbankdetail" EntityType="Self.customerbankdetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerchaletaddress" EntityType="Self.customerchaletaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerdefaultaddress" EntityType="Self.customerdefaultaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerfavoriteproduct" EntityType="Self.customerfavoriteproduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerMaximumOrderQuality" EntityType="Self.CustomerMaximumOrderQuality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerMinimumOrder" EntityType="Self.CustomerMinimumOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerofficeaddress" EntityType="Self.customerofficeaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerotheraddress" EntityType="Self.customerotheraddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerpaymentcard" EntityType="Self.customerpaymentcard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customervillaaddress" EntityType="Self.customervillaaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverlog" EntityType="Self.driverlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverpayoutrequested" EntityType="Self.driverpayoutrequested" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverrating" EntityType="Self.driverrating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverworkinghours" EntityType="Self.driverworkinghours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filestore" EntityType="Self.filestore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="General_feeback" EntityType="Self.General_feeback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="geofence" EntityType="Self.geofence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageFile" EntityType="Self.ImageFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menuitem" EntityType="Self.menuitem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="minimumorderstatus" EntityType="Self.minimumorderstatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mobile_otp" EntityType="Self.mobile_otp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="national_address" EntityType="Self.national_address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="odometerreading" EntityType="Self.odometerreading" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="onspotsale" EntityType="Self.onspotsale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderdeliveryweather" EntityType="Self.orderdeliveryweather" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oredercanclefeedback" EntityType="Self.oredercanclefeedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pandetail" EntityType="Self.pandetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payoutall" EntityType="Self.payoutall" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHNumber" EntityType="Self.PHNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_feedback" EntityType="Self.product_feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductAvailability" EntityType="Self.ProductAvailability" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productratting" EntityType="Self.productratting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rolemanagement" EntityType="Self.rolemanagement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shippingaddress" EntityType="Self.shippingaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shippinghistory" EntityType="Self.shippinghistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="storedetail" EntityType="Self.storedetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="teammanagement" EntityType="Self.teammanagement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vattandetail" EntityType="Self.vattandetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vechicle" EntityType="Self.vechicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vender" EntityType="Self.vender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderaddressproof" EntityType="Self.venderaddressproof" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderbankdetail" EntityType="Self.venderbankdetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderdefaultaddress" EntityType="Self.venderdefaultaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderlog" EntityType="Self.venderlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderpayoutall" EntityType="Self.venderpayoutall" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venderpayoutrequested" EntityType="Self.venderpayoutrequested" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Volume" EntityType="Self.Volume" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="warehouseaddress" EntityType="Self.warehouseaddress" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__admin__Image__5E8A0973" Association="Self.FK__admin__Image__5E8A0973">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="admin" EntitySet="admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__vende__6A30C649" Association="Self.FK__advertise__vende__6A30C649">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="advertisement" EntitySet="advertisement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__agreement__FileI__37703C52" Association="Self.FK__agreement__FileI__37703C52">
+      <End Role="filestore" EntitySet="filestore" />
+      <End Role="agreement" EntitySet="agreement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__agreement__Vende__367C1819" Association="Self.FK__agreement__Vende__367C1819">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="agreement" EntitySet="agreement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__category__Image__5F7E2DAC" Association="Self.FK__category__Image__5F7E2DAC">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="category" EntitySet="category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__coupon__vender_i__6B24EA82" Association="Self.FK__coupon__vender_i__6B24EA82">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="coupon" EntitySet="coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customer__Image__5D95E53A" Association="Self.FK__customer__Image__5D95E53A">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__custo__6C190EBB" Association="Self.FK__customera__custo__6C190EBB">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customeraddressproof" EntitySet="customeraddressproof" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__custo__6D0D32F4" Association="Self.FK__customera__custo__6D0D32F4">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerappartmentaddress" EntitySet="customerappartmentaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__Image__607251E5" Association="Self.FK__customera__Image__607251E5">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="customeraddressproof" EntitySet="customeraddressproof" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerb__custo__6E01572D" Association="Self.FK__customerb__custo__6E01572D">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerbankdetail" EntitySet="customerbankdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerc__custo__6EF57B66" Association="Self.FK__customerc__custo__6EF57B66">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerchaletaddress" EntitySet="customerchaletaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerd__custi__6FE99F9F" Association="Self.FK__customerd__custi__6FE99F9F">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerdefaultaddress" EntitySet="customerdefaultaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerf__custo__70DDC3D8" Association="Self.FK__customerf__custo__70DDC3D8">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerfavoriteproduct" EntitySet="customerfavoriteproduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerf__produ__71D1E811" Association="Self.FK__customerf__produ__71D1E811">
+      <End Role="product" EntitySet="product" />
+      <End Role="customerfavoriteproduct" EntitySet="customerfavoriteproduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customero__custo__72C60C4A" Association="Self.FK__customero__custo__72C60C4A">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerofficeaddress" EntitySet="customerofficeaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customero__custo__73BA3083" Association="Self.FK__customero__custo__73BA3083">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerotheraddress" EntitySet="customerotheraddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerp__custo__74AE54BC" Association="Self.FK__customerp__custo__74AE54BC">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customerpaymentcard" EntitySet="customerpaymentcard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerv__custo__75A278F5" Association="Self.FK__customerv__custo__75A278F5">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customervillaaddress" EntitySet="customervillaaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__delivery__driver__4B422AD5" Association="Self.FK__delivery__driver__4B422AD5">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="delivery" EntitySet="delivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driver__image__662B2B3B" Association="Self.FK__driver__image__662B2B3B">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="driver" EntitySet="driver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driver__vender_i__76969D2E" Association="Self.FK__driver__vender_i__76969D2E">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="driver" EntitySet="driver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driveradd__drive__778AC167" Association="Self.FK__driveradd__drive__778AC167">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driveraddressproff" EntitySet="driveraddressproff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driveradd__Image__6166761E" Association="Self.FK__driveradd__Image__6166761E">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="driveraddressproff" EntitySet="driveraddressproff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverban__drive__787EE5A0" Association="Self.FK__driverban__drive__787EE5A0">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverbankdetail" EntitySet="driverbankdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverdef__drive__797309D9" Association="Self.FK__driverdef__drive__797309D9">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverdefaultaddress" EntitySet="driverdefaultaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverlog__drive__7A672E12" Association="Self.FK__driverlog__drive__7A672E12">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverlog" EntitySet="driverlog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverpay__drive__7B5B524B" Association="Self.FK__driverpay__drive__7B5B524B">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverpayoutrequested" EntitySet="driverpayoutrequested" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__custo__7C4F7684" Association="Self.FK__driverrat__custo__7C4F7684">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="driverrating" EntitySet="driverrating" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__drive__7D439ABD" Association="Self.FK__driverrat__drive__7D439ABD">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverrating" EntitySet="driverrating" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__order__7E37BEF6" Association="Self.FK__driverrat__order__7E37BEF6">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="driverrating" EntitySet="driverrating" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverwor__drive__7F2BE32F" Association="Self.FK__driverwor__drive__7F2BE32F">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="driverworkinghours" EntitySet="driverworkinghours" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__driver__00200768" Association="Self.FK__geofence__driver__00200768">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="geofence" EntitySet="geofence" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__geofen__01142BA1" Association="Self.FK__geofence__geofen__01142BA1">
+      <End Role="dgeofence" EntitySet="dgeofence" />
+      <End Role="geofence" EntitySet="geofence" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__vender__02084FDA" Association="Self.FK__geofence__vender__02084FDA">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="geofence" EntitySet="geofence" />
+    </AssociationSet>
+    <AssociationSet Name="FK__minimumor__vende__02FC7413" Association="Self.FK__minimumor__vende__02FC7413">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="minimumorderstatus" EntitySet="minimumorderstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__national___custo__4F12BBB9" Association="Self.FK__national___custo__4F12BBB9">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="national_address" EntitySet="national_address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__odometerr__drive__5006DFF2" Association="Self.FK__odometerr__drive__5006DFF2">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="odometerreading" EntitySet="odometerreading" />
+    </AssociationSet>
+    <AssociationSet Name="FK__onspotsal__drive__51EF2864" Association="Self.FK__onspotsal__drive__51EF2864">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="onspotsale" EntitySet="onspotsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__onspotsal__order__54CB950F" Association="Self.FK__onspotsal__order__54CB950F">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="onspotsale" EntitySet="onspotsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderdeli__drive__55BFB948" Association="Self.FK__orderdeli__drive__55BFB948">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="orderdeliveryweather" EntitySet="orderdeliveryweather" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__customer__03F0984C" Association="Self.FK__orders__customer__03F0984C">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__product___04E4BC85" Association="Self.FK__orders__product___04E4BC85">
+      <End Role="product" EntitySet="product" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__oredercan__custo__05D8E0BE" Association="Self.FK__oredercan__custo__05D8E0BE">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="oredercanclefeedback" EntitySet="oredercanclefeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__oredercan__order__06CD04F7" Association="Self.FK__oredercan__order__06CD04F7">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="oredercanclefeedback" EntitySet="oredercanclefeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pandetail__Image__625A9A57" Association="Self.FK__pandetail__Image__625A9A57">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="pandetail" EntitySet="pandetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pandetail__vende__07C12930" Association="Self.FK__pandetail__vende__07C12930">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="pandetail" EntitySet="pandetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payoutall__drive__08B54D69" Association="Self.FK__payoutall__drive__08B54D69">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="payoutall" EntitySet="payoutall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__categor__09A971A2" Association="Self.FK__product__categor__09A971A2">
+      <End Role="category" EntitySet="category" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__image__671F4F74" Association="Self.FK__product__image__671F4F74">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__vender___0A9D95DB" Association="Self.FK__product__vender___0A9D95DB">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productra__order__0B91BA14" Association="Self.FK__productra__order__0B91BA14">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="productratting" EntitySet="productratting" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productra__produ__0C85DE4D" Association="Self.FK__productra__produ__0C85DE4D">
+      <End Role="product" EntitySet="product" />
+      <End Role="productratting" EntitySet="productratting" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolemanag__rolei__5AB9788F" Association="Self.FK__rolemanag__rolei__5AB9788F">
+      <End Role="role" EntitySet="role" />
+      <End Role="rolemanagement" EntitySet="rolemanagement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippinga__custo__0E6E26BF" Association="Self.FK__shippinga__custo__0E6E26BF">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="shippingaddress" EntitySet="shippingaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippinga__order__0F624AF8" Association="Self.FK__shippinga__order__0F624AF8">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="shippingaddress" EntitySet="shippingaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippingh__drive__10566F31" Association="Self.FK__shippingh__drive__10566F31">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="shippinghistory" EntitySet="shippinghistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippingh__order__114A936A" Association="Self.FK__shippingh__order__114A936A">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="shippinghistory" EntitySet="shippinghistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__storedeta__vende__123EB7A3" Association="Self.FK__storedeta__vende__123EB7A3">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="storedetail" EntitySet="storedetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teammanag__rolei__57DD0BE4" Association="Self.FK__teammanag__rolei__57DD0BE4">
+      <End Role="role" EntitySet="role" />
+      <End Role="teammanagement" EntitySet="teammanagement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teammanag__vende__14270015" Association="Self.FK__teammanag__vende__14270015">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="teammanagement" EntitySet="teammanagement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vattandet__Image__634EBE90" Association="Self.FK__vattandet__Image__634EBE90">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="vattandetail" EntitySet="vattandetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vattandet__vende__151B244E" Association="Self.FK__vattandet__vende__151B244E">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="vattandetail" EntitySet="vattandetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vechicle__driver__160F4887" Association="Self.FK__vechicle__driver__160F4887">
+      <End Role="driver" EntitySet="driver" />
+      <End Role="vechicle" EntitySet="vechicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vender__image__65370702" Association="Self.FK__vender__image__65370702">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="vender" EntitySet="vender" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderadd__Image__6442E2C9" Association="Self.FK__venderadd__Image__6442E2C9">
+      <End Role="ImageFile" EntitySet="ImageFile" />
+      <End Role="venderaddressproof" EntitySet="venderaddressproof" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderadd__vende__17036CC0" Association="Self.FK__venderadd__vende__17036CC0">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderaddressproof" EntitySet="venderaddressproof" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderban__vende__17F790F9" Association="Self.FK__venderban__vende__17F790F9">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderbankdetail" EntitySet="venderbankdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderdef__vende__18EBB532" Association="Self.FK__venderdef__vende__18EBB532">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderdefaultaddress" EntitySet="venderdefaultaddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderlog__vende__19DFD96B" Association="Self.FK__venderlog__vende__19DFD96B">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderlog" EntitySet="venderlog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderpay__vende__1AD3FDA4" Association="Self.FK__venderpay__vende__1AD3FDA4">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderpayoutall" EntitySet="venderpayoutall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderpay__vende__1BC821DD" Association="Self.FK__venderpay__vende__1BC821DD">
+      <End Role="vender" EntitySet="vender" />
+      <End Role="venderpayoutrequested" EntitySet="venderpayoutrequested" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

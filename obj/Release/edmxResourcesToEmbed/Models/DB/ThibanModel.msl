@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ThibanWaterDBModelStoreContainer" CdmEntityContainer="ThibanWaterDBEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="regdate" ColumnName="regdate" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="advertisements">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.advertisement">
+        <MappingFragment StoreEntitySet="advertisement">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="video_image" ColumnName="video_image" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="agreements">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.agreement">
+        <MappingFragment StoreEntitySet="agreement">
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="AcceptedDate" ColumnName="AcceptedDate" />
+          <ScalarProperty Name="AgreementVersion" ColumnName="AgreementVersion" />
+          <ScalarProperty Name="VenderId" ColumnName="VenderId" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AverageCompositionPPMs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.AverageCompositionPPM">
+        <MappingFragment StoreEntitySet="AverageCompositionPPM">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banks">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.bank">
+        <MappingFragment StoreEntitySet="bank">
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BottleMaterials">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.BottleMaterial">
+        <MappingFragment StoreEntitySet="BottleMaterial">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BottlePerBoxes">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.BottlePerBox">
+        <MappingFragment StoreEntitySet="BottlePerBox">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandNames">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.BrandName">
+        <MappingFragment StoreEntitySet="BrandName">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bussinessofficehours">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.bussinessofficehour">
+        <MappingFragment StoreEntitySet="bussinessofficehours">
+          <ScalarProperty Name="bussinessoffice" ColumnName="bussinessoffice" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bussinesstypes">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.bussinesstype">
+        <MappingFragment StoreEntitySet="bussinesstype">
+          <ScalarProperty Name="bussinesstypetext" ColumnName="bussinesstypetext" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyTypes">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.CompanyType">
+        <MappingFragment StoreEntitySet="CompanyType">
+          <ScalarProperty Name="CompanyTypeText" ColumnName="CompanyTypeText" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConventionalstoreMinimumOrders">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.ConventionalstoreMinimumOrder">
+        <MappingFragment StoreEntitySet="ConventionalstoreMinimumOrder">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConventionalstoreMiximumOrderQualities">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.ConventionalstoreMiximumOrderQuality">
+        <MappingFragment StoreEntitySet="ConventionalstoreMiximumOrderQuality">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="coupons">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.coupon">
+        <MappingFragment StoreEntitySet="coupon">
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="coupon_status" ColumnName="coupon_status" />
+          <ScalarProperty Name="coupon_description" ColumnName="coupon_description" />
+          <ScalarProperty Name="coupon_valid_end_date" ColumnName="coupon_valid_end_date" />
+          <ScalarProperty Name="coupon_valid_start_date" ColumnName="coupon_valid_start_date" />
+          <ScalarProperty Name="coupon_type" ColumnName="coupon_type" />
+          <ScalarProperty Name="coupon_code" ColumnName="coupon_code" />
+          <ScalarProperty Name="coupon_name" ColumnName="coupon_name" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="couponid" ColumnName="couponid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREATETABLEBottlePerBoxes">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.CREATETABLEBottlePerBox">
+        <MappingFragment StoreEntitySet="CREATETABLEBottlePerBox">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="custstatus" ColumnName="custstatus" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="telicon_carrier" ColumnName="telicon_carrier" />
+          <ScalarProperty Name="customer_type" ColumnName="customer_type" />
+          <ScalarProperty Name="customer_nationality" ColumnName="customer_nationality" />
+          <ScalarProperty Name="customer_phonetype" ColumnName="customer_phonetype" />
+          <ScalarProperty Name="customer_gender" ColumnName="customer_gender" />
+          <ScalarProperty Name="regdate" ColumnName="regdate" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="verifyemail" ColumnName="verifyemail" />
+          <ScalarProperty Name="verifyotp" ColumnName="verifyotp" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customeraddressproofs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customeraddressproof">
+        <MappingFragment StoreEntitySet="customeraddressproof">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="addressimage" ColumnName="addressimage" />
+          <ScalarProperty Name="addressproof" ColumnName="addressproof" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerappartmentaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerappartmentaddress">
+        <MappingFragment StoreEntitySet="customerappartmentaddress">
+          <ScalarProperty Name="building_address_status" ColumnName="building_address_status" />
+          <ScalarProperty Name="building_name" ColumnName="building_name" />
+          <ScalarProperty Name="floor_number" ColumnName="floor_number" />
+          <ScalarProperty Name="appartment_number" ColumnName="appartment_number" />
+          <ScalarProperty Name="appartment_street" ColumnName="appartment_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerbankdetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerbankdetail">
+        <MappingFragment StoreEntitySet="customerbankdetail">
+          <ScalarProperty Name="benificary_name_in_bank_image" ColumnName="benificary_name_in_bank_image" />
+          <ScalarProperty Name="ifsc_code" ColumnName="ifsc_code" />
+          <ScalarProperty Name="branch_name" ColumnName="branch_name" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+          <ScalarProperty Name="benificary_name_in_bank" ColumnName="benificary_name_in_bank" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="account_no" ColumnName="account_no" />
+          <ScalarProperty Name="customer_bank_id" ColumnName="customer_bank_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerchaletaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerchaletaddress">
+        <MappingFragment StoreEntitySet="customerchaletaddress">
+          <ScalarProperty Name="chalet_address_status" ColumnName="chalet_address_status" />
+          <ScalarProperty Name="chalet_number" ColumnName="chalet_number" />
+          <ScalarProperty Name="chalet_street" ColumnName="chalet_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerdefaultaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerdefaultaddress">
+        <MappingFragment StoreEntitySet="customerdefaultaddress">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="streetaddress" ColumnName="streetaddress" />
+          <ScalarProperty Name="customernote2" ColumnName="customernote2" />
+          <ScalarProperty Name="custnote1" ColumnName="custnote1" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerfavoriteproducts">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerfavoriteproduct">
+        <MappingFragment StoreEntitySet="customerfavoriteproduct">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerMaximumOrderQualities">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.CustomerMaximumOrderQuality">
+        <MappingFragment StoreEntitySet="CustomerMaximumOrderQuality">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerMinimumOrders">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.CustomerMinimumOrder">
+        <MappingFragment StoreEntitySet="CustomerMinimumOrder">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerofficeaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerofficeaddress">
+        <MappingFragment StoreEntitySet="customerofficeaddress">
+          <ScalarProperty Name="office_address_status" ColumnName="office_address_status" />
+          <ScalarProperty Name="office_number" ColumnName="office_number" />
+          <ScalarProperty Name="offie_floor_number" ColumnName="offie_floor_number" />
+          <ScalarProperty Name="office_building_name" ColumnName="office_building_name" />
+          <ScalarProperty Name="office_street" ColumnName="office_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerotheraddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerotheraddress">
+        <MappingFragment StoreEntitySet="customerotheraddress">
+          <ScalarProperty Name="other_address_status" ColumnName="other_address_status" />
+          <ScalarProperty Name="other_specificaqtion" ColumnName="other_specificaqtion" />
+          <ScalarProperty Name="other_street" ColumnName="other_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerpaymentcards">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerpaymentcard">
+        <MappingFragment StoreEntitySet="customerpaymentcard">
+          <ScalarProperty Name="card_status" ColumnName="card_status" />
+          <ScalarProperty Name="card_type" ColumnName="card_type" />
+          <ScalarProperty Name="card_cvv" ColumnName="card_cvv" />
+          <ScalarProperty Name="card_expiry" ColumnName="card_expiry" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customervillaaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customervillaaddress">
+        <MappingFragment StoreEntitySet="customervillaaddress">
+          <ScalarProperty Name="villa_address_status" ColumnName="villa_address_status" />
+          <ScalarProperty Name="villa_name" ColumnName="villa_name" />
+          <ScalarProperty Name="villa_street" ColumnName="villa_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dgeofences">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.dgeofence">
+        <MappingFragment StoreEntitySet="dgeofence">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="direction_name" ColumnName="direction_name" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="zone_name" ColumnName="zone_name" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="drivers">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driver">
+        <MappingFragment StoreEntitySet="driver">
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="verify_email" ColumnName="verify_email" />
+          <ScalarProperty Name="verify_otp" ColumnName="verify_otp" />
+          <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+          <ScalarProperty Name="driver_telicom_carrer" ColumnName="driver_telicom_carrer" />
+          <ScalarProperty Name="driver_divice_id" ColumnName="driver_divice_id" />
+          <ScalarProperty Name="driver_phone_type" ColumnName="driver_phone_type" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="driver_nationality" ColumnName="driver_nationality" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="dusername" ColumnName="dusername" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driveraddressproffs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driveraddressproff">
+        <MappingFragment StoreEntitySet="driveraddressproff">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="address_image" ColumnName="address_image" />
+          <ScalarProperty Name="address_proff" ColumnName="address_proff" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="daddressid" ColumnName="daddressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverbankdetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverbankdetail">
+        <MappingFragment StoreEntitySet="driverbankdetail">
+          <ScalarProperty Name="benificary_name_in_bank_image" ColumnName="benificary_name_in_bank_image" />
+          <ScalarProperty Name="ifsc_code" ColumnName="ifsc_code" />
+          <ScalarProperty Name="branch_name" ColumnName="branch_name" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+          <ScalarProperty Name="benificary_name_in_bank" ColumnName="benificary_name_in_bank" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="accountno" ColumnName="accountno" />
+          <ScalarProperty Name="driver_bank_id" ColumnName="driver_bank_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverdefaultaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverdefaultaddress">
+        <MappingFragment StoreEntitySet="driverdefaultaddress">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="streetaddress" ColumnName="streetaddress" />
+          <ScalarProperty Name="drivernote2" ColumnName="drivernote2" />
+          <ScalarProperty Name="drivernote1" ColumnName="drivernote1" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverlogs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverlog">
+        <MappingFragment StoreEntitySet="driverlog">
+          <ScalarProperty Name="online_time" ColumnName="online_time" />
+          <ScalarProperty Name="logout" ColumnName="logout" />
+          <ScalarProperty Name="login_date" ColumnName="login_date" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="dlogid" ColumnName="dlogid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverpayoutrequesteds">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverpayoutrequested">
+        <MappingFragment StoreEntitySet="driverpayoutrequested">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="tran_id" ColumnName="tran_id" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="dpayoutid" ColumnName="dpayoutid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverratings">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverrating">
+        <MappingFragment StoreEntitySet="driverrating">
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="rating_date" ColumnName="rating_date" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="drateid" ColumnName="drateid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverworkinghours">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverworkinghour">
+        <MappingFragment StoreEntitySet="driverworkinghours">
+          <ScalarProperty Name="working_hour_sunday" ColumnName="working_hour_sunday" />
+          <ScalarProperty Name="working_hour_saturday" ColumnName="working_hour_saturday" />
+          <ScalarProperty Name="working_hour_friday" ColumnName="working_hour_friday" />
+          <ScalarProperty Name="working_hours_thursday" ColumnName="working_hours_thursday" />
+          <ScalarProperty Name="working_hours_wednesday" ColumnName="working_hours_wednesday" />
+          <ScalarProperty Name="working_hours_tuesday" ColumnName="working_hours_tuesday" />
+          <ScalarProperty Name="working_hours_mondey" ColumnName="working_hours_mondey" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="filestores">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.filestore">
+        <MappingFragment StoreEntitySet="filestore">
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="attachment" ColumnName="attachment" />
+          <ScalarProperty Name="fileSize" ColumnName="fileSize" />
+          <ScalarProperty Name="fileName" ColumnName="fileName" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="geofences">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.geofence">
+        <MappingFragment StoreEntitySet="geofence">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="geofence_id" ColumnName="geofence_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageFiles">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.ImageFile">
+        <MappingFragment StoreEntitySet="ImageFile">
+          <ScalarProperty Name="Imageattachment" ColumnName="Imageattachment" />
+          <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="LanguageText" ColumnName="LanguageText" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menuitems">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.menuitem">
+        <MappingFragment StoreEntitySet="menuitem">
+          <ScalarProperty Name="menuname" ColumnName="menuname" />
+          <ScalarProperty Name="menuid" ColumnName="menuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="minimumorderstatus">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.minimumorderstatu">
+        <MappingFragment StoreEntitySet="minimumorderstatus">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="order_quantity" ColumnName="order_quantity" />
+          <ScalarProperty Name="order_type" ColumnName="order_type" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="min_order_id" ColumnName="min_order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="address_type" ColumnName="address_type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="bill_address" ColumnName="bill_address" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="couponid" ColumnName="couponid" />
+          <ScalarProperty Name="expected_delivery_time" ColumnName="expected_delivery_time" />
+          <ScalarProperty Name="order_type" ColumnName="order_type" />
+          <ScalarProperty Name="ship_date" ColumnName="ship_date" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ship_address" ColumnName="ship_address" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oredercanclefeedbacks">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.oredercanclefeedback">
+        <MappingFragment StoreEntitySet="oredercanclefeedback">
+          <ScalarProperty Name="feedback" ColumnName="feedback" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pandetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.pandetail">
+        <MappingFragment StoreEntitySet="pandetail">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="pan_image" ColumnName="pan_image" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="pancardno" ColumnName="pancardno" />
+          <ScalarProperty Name="panid" ColumnName="panid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payoutalls">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.payoutall">
+        <MappingFragment StoreEntitySet="payoutall">
+          <ScalarProperty Name="net_amount" ColumnName="net_amount" />
+          <ScalarProperty Name="adjustment_amount" ColumnName="adjustment_amount" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="dpayallid" ColumnName="dpayallid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHNumbers">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.PHNumber">
+        <MappingFragment StoreEntitySet="PHNumber">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="av_composition_ppm" ColumnName="av_composition_ppm" />
+          <ScalarProperty Name="bottle_material" ColumnName="bottle_material" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="volume" ColumnName="volume" />
+          <ScalarProperty Name="ProductAvaibility" ColumnName="ProductAvaibility" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="bottle_per_box" ColumnName="bottle_per_box" />
+          <ScalarProperty Name="phno" ColumnName="phno" />
+          <ScalarProperty Name="store_max_order_quantity" ColumnName="store_max_order_quantity" />
+          <ScalarProperty Name="store_min_order_quantity" ColumnName="store_min_order_quantity" />
+          <ScalarProperty Name="store_price" ColumnName="store_price" />
+          <ScalarProperty Name="customer_max_order_quantity" ColumnName="customer_max_order_quantity" />
+          <ScalarProperty Name="customer_min_order_quantity" ColumnName="customer_min_order_quantity" />
+          <ScalarProperty Name="customer_price" ColumnName="customer_price" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="product_title" ColumnName="product_title" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAvailabilities">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.ProductAvailability">
+        <MappingFragment StoreEntitySet="ProductAvailability">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productrattings">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.productratting">
+        <MappingFragment StoreEntitySet="productratting">
+          <ScalarProperty Name="ratting_date" ColumnName="ratting_date" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="ratting" ColumnName="ratting" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="rateid" ColumnName="rateid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ProvinceText" ColumnName="ProvinceText" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="rolename" ColumnName="rolename" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolemanagements">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.rolemanagement">
+        <MappingFragment StoreEntitySet="rolemanagement">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="menuitem" ColumnName="menuitem" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippingaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.shippingaddress">
+        <MappingFragment StoreEntitySet="shippingaddress">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="streetaddress" ColumnName="streetaddress" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippinghistories">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.shippinghistory">
+        <MappingFragment StoreEntitySet="shippinghistory">
+          <ScalarProperty Name="delay_time" ColumnName="delay_time" />
+          <ScalarProperty Name="wating_time" ColumnName="wating_time" />
+          <ScalarProperty Name="delivery_time" ColumnName="delivery_time" />
+          <ScalarProperty Name="reached_time" ColumnName="reached_time" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="shiphistoryid" ColumnName="shiphistoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="storedetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.storedetail">
+        <MappingFragment StoreEntitySet="storedetail">
+          <ScalarProperty Name="WarehouseProvince" ColumnName="WarehouseProvince" />
+          <ScalarProperty Name="Bussinessofficehours" ColumnName="Bussinessofficehours" />
+          <ScalarProperty Name="WarehouseCity" ColumnName="WarehouseCity" />
+          <ScalarProperty Name="RegistrationName" ColumnName="RegistrationName" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="warehouse_address2" ColumnName="warehouse_address2" />
+          <ScalarProperty Name="warehouse_address1" ColumnName="warehouse_address1" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="business_address2" ColumnName="business_address2" />
+          <ScalarProperty Name="business_address1" ColumnName="business_address1" />
+          <ScalarProperty Name="reg_business_name" ColumnName="reg_business_name" />
+          <ScalarProperty Name="display_name" ColumnName="display_name" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="business_type" ColumnName="business_type" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="storeid" ColumnName="storeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teammanagements">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.teammanagement">
+        <MappingFragment StoreEntitySet="teammanagement">
+          <ScalarProperty Name="creadteby" ColumnName="creadteby" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="membername" ColumnName="membername" />
+          <ScalarProperty Name="memberid" ColumnName="memberid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vattandetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.vattandetail">
+        <MappingFragment StoreEntitySet="vattandetail">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="vat_image" ColumnName="vat_image" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="vatid" ColumnName="vatid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vechicles">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.vechicle">
+        <MappingFragment StoreEntitySet="vechicle">
+          <ScalarProperty Name="vechicle_status" ColumnName="vechicle_status" />
+          <ScalarProperty Name="vechicle_max_capacity" ColumnName="vechicle_max_capacity" />
+          <ScalarProperty Name="vechicle_assistant" ColumnName="vechicle_assistant" />
+          <ScalarProperty Name="vechicle_fule_consumption_long" ColumnName="vechicle_fule_consumption_long" />
+          <ScalarProperty Name="vechicle_fule_consumption_short" ColumnName="vechicle_fule_consumption_short" />
+          <ScalarProperty Name="vechicle_cylender_type" ColumnName="vechicle_cylender_type" />
+          <ScalarProperty Name="vechicle_energy_type" ColumnName="vechicle_energy_type" />
+          <ScalarProperty Name="vechicle_year" ColumnName="vechicle_year" />
+          <ScalarProperty Name="vechicle_company_name" ColumnName="vechicle_company_name" />
+          <ScalarProperty Name="vechicle_model" ColumnName="vechicle_model" />
+          <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venders">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.vender">
+        <MappingFragment StoreEntitySet="vender">
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ForgotActivationId" ColumnName="ForgotActivationId" />
+          <ScalarProperty Name="AdditionalInfor" ColumnName="AdditionalInfor" />
+          <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="Activationid" ColumnName="Activationid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="verifyemail" ColumnName="verifyemail" />
+          <ScalarProperty Name="verifyotp" ColumnName="verifyotp" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderaddressproofs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderaddressproof">
+        <MappingFragment StoreEntitySet="venderaddressproof">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+          <ScalarProperty Name="CompanyType2" ColumnName="CompanyType2" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="TlelphoneNumber" ColumnName="TlelphoneNumber" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="MainOffice" ColumnName="MainOffice" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="CompanyTradeName" ColumnName="CompanyTradeName" />
+          <ScalarProperty Name="address_image" ColumnName="address_image" />
+          <ScalarProperty Name="address_proof" ColumnName="address_proof" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="vender_address_id" ColumnName="vender_address_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderbankdetails">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderbankdetail">
+        <MappingFragment StoreEntitySet="venderbankdetail">
+          <ScalarProperty Name="BankNameCaseOther" ColumnName="BankNameCaseOther" />
+          <ScalarProperty Name="VatIdentityFicationNumber" ColumnName="VatIdentityFicationNumber" />
+          <ScalarProperty Name="IBANCode" ColumnName="IBANCode" />
+          <ScalarProperty Name="HolderName" ColumnName="HolderName" />
+          <ScalarProperty Name="benificary_name_in_bank_image" ColumnName="benificary_name_in_bank_image" />
+          <ScalarProperty Name="ifsc_code" ColumnName="ifsc_code" />
+          <ScalarProperty Name="branch_name" ColumnName="branch_name" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+          <ScalarProperty Name="benificary_name_in_bank" ColumnName="benificary_name_in_bank" />
+          <ScalarProperty Name="account_no" ColumnName="account_no" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="vender_bank_id" ColumnName="vender_bank_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderdefaultaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderdefaultaddress">
+        <MappingFragment StoreEntitySet="venderdefaultaddress">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="streetaddress" ColumnName="streetaddress" />
+          <ScalarProperty Name="vendernote2" ColumnName="vendernote2" />
+          <ScalarProperty Name="vendernote1" ColumnName="vendernote1" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderlogs">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderlog">
+        <MappingFragment StoreEntitySet="venderlog">
+          <ScalarProperty Name="online_time" ColumnName="online_time" />
+          <ScalarProperty Name="logout" ColumnName="logout" />
+          <ScalarProperty Name="login_date" ColumnName="login_date" />
+          <ScalarProperty Name="vender_id" ColumnName="vender_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderpayoutalls">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderpayoutall">
+        <MappingFragment StoreEntitySet="venderpayoutall">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="net_amount" ColumnName="net_amount" />
+          <ScalarProperty Name="adjustment_amount" ColumnName="adjustment_amount" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+          <ScalarProperty Name="transactiondate" ColumnName="transactiondate" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="vpayallid" ColumnName="vpayallid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venderpayoutrequesteds">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.venderpayoutrequested">
+        <MappingFragment StoreEntitySet="venderpayoutrequested">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+          <ScalarProperty Name="requestdate" ColumnName="requestdate" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="vpayoutid" ColumnName="vpayoutid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volumes">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.Volume">
+        <MappingFragment StoreEntitySet="Volume">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CmsPages">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.CmsPage">
+        <MappingFragment StoreEntitySet="CmsPage">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mobile_otp">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.mobile_otp">
+        <MappingFragment StoreEntitySet="mobile_otp">
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="otp" ColumnName="otp" />
+          <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.country">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="phone_no_length" ColumnName="phone_no_length" />
+          <ScalarProperty Name="country_code" ColumnName="country_code" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deliveries">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.delivery">
+        <MappingFragment StoreEntitySet="delivery">
+          <ScalarProperty Name="delaytime" ColumnName="delaytime" />
+          <ScalarProperty Name="weatingtime" ColumnName="weatingtime" />
+          <ScalarProperty Name="deliverytime" ColumnName="deliverytime" />
+          <ScalarProperty Name="reachedtime" ColumnName="reachedtime" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="endgeofence" ColumnName="endgeofence" />
+          <ScalarProperty Name="startgeofence" ColumnName="startgeofence" />
+          <ScalarProperty Name="endlatitude" ColumnName="endlatitude" />
+          <ScalarProperty Name="endlongitude" ColumnName="endlongitude" />
+          <ScalarProperty Name="startlatitude" ColumnName="startlatitude" />
+          <ScalarProperty Name="startlongitude" ColumnName="startlongitude" />
+          <ScalarProperty Name="deliverystarttime" ColumnName="deliverystarttime" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="deliveryid" ColumnName="deliveryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="national_address">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.national_address">
+        <MappingFragment StoreEntitySet="national_address">
+          <ScalarProperty Name="address_type" ColumnName="address_type" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="additionalnumber" ColumnName="additionalnumber" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="postal_zip_code" ColumnName="postal_zip_code" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="neighborhood" ColumnName="neighborhood" />
+          <ScalarProperty Name="streetname" ColumnName="streetname" />
+          <ScalarProperty Name="buildingnumber" ColumnName="buildingnumber" />
+          <ScalarProperty Name="addressid" ColumnName="addressid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="odometerreadings">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.odometerreading">
+        <MappingFragment StoreEntitySet="odometerreading">
+          <ScalarProperty Name="endodometter" ColumnName="endodometter" />
+          <ScalarProperty Name="startodometter" ColumnName="startodometter" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="trukid" ColumnName="trukid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="odometerid" ColumnName="odometerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="onspotsales">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.onspotsale">
+        <MappingFragment StoreEntitySet="onspotsale">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="available_inventory" ColumnName="available_inventory" />
+          <ScalarProperty Name="total_inventory_price" ColumnName="total_inventory_price" />
+          <ScalarProperty Name="total_inventory" ColumnName="total_inventory" />
+          <ScalarProperty Name="geofence" ColumnName="geofence" />
+          <ScalarProperty Name="onspot_sale_longitude" ColumnName="onspot_sale_longitude" />
+          <ScalarProperty Name="onsopt_sale_latitude" ColumnName="onsopt_sale_latitude" />
+          <ScalarProperty Name="available" ColumnName="available" />
+          <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+          <ScalarProperty Name="totalqty" ColumnName="totalqty" />
+          <ScalarProperty Name="onspotprice" ColumnName="onspotprice" />
+          <ScalarProperty Name="onspotqty" ColumnName="onspotqty" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="trukid" ColumnName="trukid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="onspotsaleid" ColumnName="onspotsaleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderdeliveryweathers">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.orderdeliveryweather">
+        <MappingFragment StoreEntitySet="orderdeliveryweather">
+          <ScalarProperty Name="rain" ColumnName="rain" />
+          <ScalarProperty Name="wind" ColumnName="wind" />
+          <ScalarProperty Name="weathertime" ColumnName="weathertime" />
+          <ScalarProperty Name="weather_temp_min" ColumnName="weather_temp_min" />
+          <ScalarProperty Name="weather_temp_max" ColumnName="weather_temp_max" />
+          <ScalarProperty Name="weatherpressure" ColumnName="weatherpressure" />
+          <ScalarProperty Name="weatherhumidity" ColumnName="weatherhumidity" />
+          <ScalarProperty Name="weathertemp" ColumnName="weathertemp" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="orderdeliveryweather_id" ColumnName="orderdeliveryweather_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouseaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.warehouseaddress">
+        <MappingFragment StoreEntitySet="warehouseaddress">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="venderid" ColumnName="venderid" />
+          <ScalarProperty Name="warehouseid" ColumnName="warehouseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cust_notification">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.cust_notification">
+        <MappingFragment StoreEntitySet="cust_notification">
+          <ScalarProperty Name="feature_updates" ColumnName="feature_updates" />
+          <ScalarProperty Name="coupon_alerts" ColumnName="coupon_alerts" />
+          <ScalarProperty Name="changes_to_acc" ColumnName="changes_to_acc" />
+          <ScalarProperty Name="from_thiban" ColumnName="from_thiban" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="General_feeback">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.General_feeback">
+        <MappingFragment StoreEntitySet="General_feeback">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="feedback" ColumnName="feedback" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_feedback">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.product_feedback">
+        <MappingFragment StoreEntitySet="product_feedback">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="feedback" ColumnName="feedback" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="producu_id" ColumnName="producu_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

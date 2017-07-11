@@ -1,0 +1,1101 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderAddProff
+
+
+@{
+    ViewBag.Title = "UserAgreement";
+  //  Layout = null;
+    Layout = null;//"~/Views/Shared/_Layout.cshtml";
+
+   
+       List<SelectListItem> listItems = new List<SelectListItem>();
+       listItems.Add(new SelectListItem
+            {
+                Text = "Company A",
+                Value = "1"
+            });
+       listItems.Add(new SelectListItem
+            {
+                Text = "Company B",
+                Value = "2",
+                
+            });
+       listItems.Add(new SelectListItem
+            {
+                Text = "Company C",
+                Value = "3"
+            });
+
+       List<SelectListItem> listItemsbank = new List<SelectListItem>();
+       listItemsbank.Add(new SelectListItem
+       {
+           Text = "Kotak Bank",
+           Value = "1"
+       });
+       listItemsbank.Add(new SelectListItem
+       {
+           Text = "yes bank",
+           Value = "2",
+
+       });
+       listItemsbank.Add(new SelectListItem
+       {
+           Text = "sbi bank",
+           Value = "3"
+       });
+
+
+}
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        @*var a='@ViewBag.valueoftab';
+        if (a == "profile")
+        {
+            var pathname="profile";
+            debugger;
+           // var pathname = $(location).attr('pathname');
+            $('a[href="' + pathname + '"]').parent().addClass('active').siblings().removeClass('active');
+           // $(this).parent().addClass('active').siblings().removeClass('active');
+           // $("#bank").hide();
+            //$("#profile").show();
+
+        }*@
+
+        $("#btnsubmitnext").click(function () {
+            debugger;
+            $("#spanbank_name").hide();
+            $("#spanHolderName").hide();
+            $("#spanIBANCode").hide();
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            var CompanyTradeName = $("#CompanyTradeName").val();
+            var CompanyType = $("#CompanyType").val();
+            var Nationality = $("#Nationality").val();
+            var MainOffice = $("#MainOffice").val();
+            var POBox = $("#POBox").val();
+            var PostalCode = $("#PostalCode").val();
+            var TlelphoneNumber = $("#TlelphoneNumber").val();
+           // var CompanyType2 = $("#CompanyType2").val();
+            var RegistrationDate = $("#RegistrationDate").val();
+            var Bank = $("#bank_name").val();
+            var HolderName = $("#HolderName").val();
+            var IBANCode = $("#IBANCode").val();
+
+            if (Bank == null || Bank == "" || Bank=="0") {
+                $("#spanbank_name").show();
+
+            }
+            if (HolderName == null || HolderName == "") {
+                $("#spanHolderName").show();
+            }
+
+            if (IBANCode == null || IBANCode == "") {
+                $("#spanIBANCode").show();
+            }
+
+            if (Bank != null && Bank != "" && Bank != "0" && HolderName != null && HolderName != "" && IBANCode != null && IBANCode != "") {
+
+
+                $.ajax({
+
+                    url: '/Vender/UserAgreementSubmit',
+                    type: "Get",
+                    async: false,
+                    data: { "user": id, "Bank": Bank, "Holder": HolderName, "IBAN": IBANCode, "TradeName": CompanyTradeName, "ComType": CompanyType, "Nationality": Nationality, "MainOffice": MainOffice, "POBox": POBox, "Postal": PostalCode, "TphNum": TlelphoneNumber, "RegisDate": RegistrationDate },
+                    dataType: "json",
+                    success: function (Data) {
+                        debugger;
+                        if (Data=="true") {
+                           // window.location.href = '@Url.Action("VenderRedirectIndex", "Vender", new {user=@Model.venderid })';
+                            //$("#bank").hide();
+                            //$("#profile").show();
+                            //$("#step3").hide();
+                           // $("#bank").removeClass("active");
+                            // $("#profile").addClass("active");
+                            $("ul.nav-tabs li").eq(0).removeClass("active").show();
+                           // $(".tab-content:eq(0)").hide();
+                            //$("ul.nav-tabs li").eq(1).addClass("active").show();
+                            // $(".tab_content:eq(1)").show();
+                            //  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+                            $('.nav-tabs a[href="#profile"]').tab('show')
+
+                            return true;
+
+                        }
+                        else {
+                            alert("Something Went Wrong .Please try again");
+                            return false;
+
+                        }
+                    },
+                    error: function () {
+                        alert("please try again")
+                        return false;
+                    }
+                });
+            }
+
+        });
+
+        $("#btnProfileSubmit").click(function () {
+            debugger;
+
+            var $buttonClickedProfile = $(this);
+            var id = $buttonClickedProfile.attr('data-id');
+            var MerchantId = $("#MerchantId").val();
+            var name = $("#name").val();
+            var display_name = $("#display_name").val();
+            var emailid = $("#emailid").val();
+            var mobile_no = $("#mobile_no").val();
+            var AdditionalInfor = $("#AdditionalInfor").val();
+            var PanNumber = $("#PanNumber").val();
+            var VatIdentity = $("#VatIdentityFicationNumber").val();
+            var benificary_name = $("#benificary_name_in_bank").val();
+            var account_no = $("#account_no").val();
+            var bank_name = $("#BankNameOther").val();
+            var branch_name = $("#branch_name").val();
+            var ifsc_code = $("#ifsc_code").val();
+            var Address = $("#Address").val();
+            var City = $("#City").val();
+            var State = $("#State").val();
+
+
+
+
+            $.ajax({
+
+                url: '/Vender/VenderProfileSubmit',
+                type: "Get",
+                async: false,
+                data: { "user": id, "MerchantId": MerchantId, "name": name, "display_name": display_name, "emailid": emailid, "mobile_no": mobile_no, "AdditionalInfor": AdditionalInfor, "PanNumber": PanNumber, "VatIdentity": VatIdentity, "benificary_name": benificary_name, "account_no": account_no, "bank_name": bank_name, "branch_name": branch_name, "ifsc_code": ifsc_code, "Address": Address, "City": City, "State": State },
+                dataType: "json",
+                success: function (Data) {
+                    debugger;
+                    if (Data == "true") {
+                         window.location.href = '@Url.Action("VenderRedirectIndex", "Vender", new {user=@Model.venderid })';
+                        //$("#step1").hide();
+                        //$("#step2").show();
+                        //$("#step3").hide();
+                        return true;
+
+                    }
+                    else {
+                        alert("Something Went Wrong .Please try again");
+                        return false;
+
+                    }
+                },
+                error: function () {
+                    alert("please try again")
+                    return false;
+                }
+            });
+
+
+        });
+    });
+    </script>
+
+    @*header*@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>THIBAN-VENDOR-DASHBOARD</title>
+
+        <!-- Bootstrap -->
+        <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Font-Styles -->
+        <!--   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">-->
+        <!-- Custom Theme Style -->
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/css/custom.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-responsive.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+        <!-- Admin Forms CSS -->
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
+        <style>
+            .nav_menu {
+                border-bottom: none;
+            }
+
+    .bg {
+        background: #fff;
+    }
+
+    .menu_section {
+        margin-bottom: 0px;
+    }
+    /*ul.nav.navbar-nav.navbar-right {
+        width: 60%;
+    }*/
+    .nav_title {
+        width: 233px;
+    }
+
+    input, select, textarea {
+        border-radius: 3px !important;
+    }
+
+    ul.dropdown-menu.side-dropdown {
+        position: absolute;
+        top: 48px !important;
+        left: 0px !important;
+        border: 1px solid #eee !important;
+        border-radius: 1px;
+        background: #f2f2f2 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        background-clip: none !important;
+    }
+
+    ul.dropdown-menu.side-dropdown a {
+        color: #888 !important;
+    }
+
+    .dropdown:hover ul.dropdown-menu.side-dropdown {
+        display: block;
+        padding: 0px;
+    }
+
+    .dropdown.current-page.active .side-dropdown {
+        display: none !important;
+    }
+
+    .dropdown.current-page.active:hover .side-dropdown {
+        display: block !important;
+    }
+
+    .left_col {
+        background: #f7f7f7;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100% !important;
+        position: fixed;
+    }
+
+    .col-md-3.left_col {
+        overflow: hidden;
+    }
+
+    .nav-sm #menu_toggle {
+        margin-left: 10px;
+    }
+
+    .nav-sm .navbar-search {
+        margin-left: 0px;
+    }
+
+    .side-menu li.current-page a {
+        color: #57ad68 !important;
+        background: #f2f2f2;
+    }
+
+    li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
+        display: block !important;
+    }
+
+    .side-dropdown li a {
+        background: #f7f7f7 !important;
+        color: #888 !important;
+    }
+
+    .side-dropdown li a:hover {
+        background: #f2f2f2 !important;
+        color: #222;
+    }
+
+    ul.nav.side-menu.sub-menu li a {
+        padding-left: 30px;
+    }
+
+    ul.nav.side-menu li.active a {
+        background: transparent !important;
+        color: #888;
+    }
+
+    ul.nav.side-menu.sub-menu li.current-page a {
+        color: #57ad68 !important;
+        background: #f2f2f2 !important;
+    }
+
+    a.dropdown-sub-menu {
+        padding-left: 40px !important;
+    }
+
+    a.drop-down-mainmenu {
+        cursor: default;
+    }
+
+    .dropdown-sub-menu img {
+        width: 16px !important;
+    }
+
+    a.drop-down-mainmenu {
+        color: #687888 !important;
+        font-weight: 400 !important;
+        font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+    }
+
+    a.drop-down-mainmenu:hover {
+        color: #687888 !important;
+    }
+    /*   input.form-control {
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-left: 0px;
+    }
+     form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
+            border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        background: #fff;
+        border-right: 0px;
+    }
+     form.navbar-form.navbar-left input.form-control{
+         border-top-right-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        border-top-left-radius: 1px !important;
+        border-bottom-left-radius: 0px !important;
+        padding-left:0px;
+        border-color: #dddddd !important;
+    }*/
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body main-container-body">
+        <div class="main_container">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title">
+                                <a href="vendor-index.php" class="site_title">
+                                    <span class="main-heading">
+                                        <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- sidebar menu -->
+
+                            <ul class="nav side-menu">
+                                <li class="">
+                                    <a href="vendor-index.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" alt="">
+                                        <span class="sidebar-title"> Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" alt="">
+                                        <span class="sidebar-title">Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_product-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" alt="">
+                                        <span class="sidebar-title"> Product </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" alt="">
+                                        <span class="sidebar-title">Order</span>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" alt="">
+                                        <span class="sidebar-title">Rating and Review </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" alt="">
+                                        <span class="sidebar-title">Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor-analytics.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" alt="">
+                                        <span class="sidebar-title">Analytics </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-geo-fence.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/new-geo-fenece.png" alt="">
+                                        <span class="sidebar-title">Geo Fence</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" alt="">
+                                        <span class="sidebar-title">Team</span>
+                                    </a>
+
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Team Member</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor_add-advertisement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
+                                        <span class="sidebar-title"> advertisement </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_add-promotioncode.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" alt="">
+                                        <span class="sidebar-title"> Promotion Code </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-downloads.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" alt="">
+                                        <span class="sidebar-title">Downloads </span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="user-agreement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" alt="">
+                                        <span class="sidebar-title"> Settings </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="navbar navbar-default bg">
+                        <div class="container-fluid">
+                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                                <div class="form-group serch-div">
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon">
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+                                </div>
+                            </form>
+                            <!--<form class="navbar-form navbar-left">
+                              <div class="input-group">
+                               <div class="input-group-btn">
+                                  <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                  </button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search">
+
+                              </div>
+                            </form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav top-nav-menu pull-right">
+
+
+                                    <li><a href="">English</a></li>
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color:#57ad68 !important">
+                                            <!--<i class="fa fa-envelope-o"></i>
+                                                  <span class="badge bg-green">6</span>-->
+    Seller support
+</a>
+</li>
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+        <div class="img-user-pic">
+            <div class=" col-md-5 col-sm-5 col-xs-4">
+                <div class="user-profile-photo"> <span><img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round "> <span> <img src="@Model.image" class="img-responsive user-photo"></span> </span> </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                <div class=" user-txt">
+                    <h3> Kinely seller</h3>
+                    <p>@Model.emailid</p>
+                </div>
+            </div>
+            <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+        </div>
+    </a>
+    <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+        <li class="list-group-item">
+            <a href="#" class="animated animated-short fadeInUp ">
+                @Model.name<br>
+                @Model.emailid
+            </a>
+        </li>
+        <li class="list-group-item"> @Html.ActionLink("Profile", "UserAgreement", "Vender", new { User = Model.venderid }, new { @class = "animated animated-short fadeInUp" })@*<a href="user-agreement.php" > Profile </a>*@ </li>
+    </ul>
+</li>
+<li class=""> <a href="/Vender/VenderLogout" aria-expanded="false"> <img src="~/Content/assets/img/side-menu-icons/logout.png" class="logout-img" style="" alt="1"> <span>Logout</span> </a> </li>
+</ul>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+
+@*end header*@
+<style>
+
+    span.field-validation-error {
+        color: red;
+    }
+
+.form-control:focus {
+    border-color: #888 !important;
+}
+
+    .input-group:hover .input-group-addon, .input-group:hover .form-control {
+        border-color: #ddd !important;
+    }
+
+    .input-group:focus .input-group-addon, .input-group:focus .form-control {
+        border-color: #888 !important;
+    }
+
+    .input-group:visited .input-group-addon, .input-group:visited .form-control {
+        border-color: #888 !important;
+    }
+
+    .user-down-line1 {
+        margin-top: -6px !important;
+        margin-bottom: 0px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #47525d;
+        margin-right: 6px;
+        font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+    }
+
+    .user-down-line2 {
+        margin-top: -6px !important;
+        margin-bottom: 0px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #47525d;
+        margin-right: 6px;
+        font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+    }
+
+    .stepwizard-step p {
+        margin-top: 3px;
+        font-weight: 400;
+        font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+    }
+    </style>
+    <div class="clearfix"></div>
+
+    <!-- Start: Content-Wrapper -->
+
+    <div class="right_col" role="main">
+
+        <!-- Begin: Content -->
+
+        <section id="content" class="animated fadeIn">
+            <div class="row mb10 col-md-12 pr25 main-user-agreement">
+                <div class="inner-header mb10">
+                    <ul class="nav nav-tabs user-dtls">
+                        @**@<li class="active"><a data-toggle="tab" href="#bank">Bank Details </a></li>
+                        @**@ <li><a data-toggle="tab" href="#profile">Profile</a></li>
+                        @*data-toggle="tab" data-target="#profile"*@     @*data-target="#profile"*@  @*<li data-toggle="tab"><a href="/vender/VenderProfile?user=@Model.venderid">Profile</a></li>*@
+                        @*<li> @Html.ActionLink("Profile", "VenderProfile", new { user = Model.venderid })*@@*<a href="user-agreement.php" > Profile </a>*@
+                        <li><a data-toggle="tab" href="#aggrement">Aggrement History</a></li>
+                    </ul>
+              @using (Html.BeginForm("VenderProfile", "Vender", FormMethod.Post, new { @class = "form-horizontal" }))
+                  {
+                    <div class="tab-content">
+                        <div id="bank" class="tab-pane fade in active usr-prsnl-dtl m--40">
+                            <div class="container">
+                                <div class="dcku-stus">
+                                    <p>Document Status:<small>Documnet Not Uploaded</small></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="container">
+                                <div class="stepwizard col-md-offset-2">
+                                    <div class="stepwizard-row setup-panel">
+                                        <div class="stepwizard-step">
+                                            <a href="#step-1" type="button" class="btn btn-circle btn-default btn-primary"><i class="fa fa-check"></i></a>
+                                            <p class="user-down-line1">|</p>
+                                            <p>Identify Details</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="fa fa-check"></i></a>
+                                            <p class="user-down-line2">|</p>
+                                            <p>Bank Details</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                  
+                                        @*<form role="form" action="" method="post" class="form-horizontal">*@
+                                            <div class="row setup-content" id="step-1" style="display: block;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 identify-dtls ">
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Company trade Name</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.CompanyTradeName, new { @name = "CompanyTradeName", @id = "CompanyTradeName", @class = "form-control", @placeholder = "" })
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group m--30">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Company Type</label>
+
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @Html.DropDownListFor(model => model.CompanyType, (IEnumerable<SelectListItem>)ViewData["listItems"], new { @class = "form-control", @id = "CompanyType", @placeholder = "" })
+                                                    @*<select class="form-control" id="" placeholder="">
+                                                                <option> Slect company </option>
+                                                            </select>*@
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Nationality</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.Nationality, new { @name = "Nationality", @id = "Nationality", @class = "form-control", @placeholder = "" })
+                                                </div>
+                                            </div>
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Main Office</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.MainOffice, new { @name = "MainOffice", @id = "MainOffice", @class = "form-control", @placeholder = "" })
+                                                </div>
+                                            </div>
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">P.O.Box</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.POBox, new { @name = "POBox", @id = "POBox", @class = "form-control", @placeholder = " " })
+                                                </div>
+                                            </div>
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Postal Code</label>
+                                                <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.PostalCode, new { @name = "PostalCode", @id = "PostalCode", @class = "form-control", @placeholder = " " })
+                                                </div>
+                                            </div>
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Tlelphone Number</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="">*@
+                                                    @Html.TextBoxFor(model => model.TlelphoneNumber, new { @name = "TlelphoneNumber", @id = "TlelphoneNumber", @class = "form-control", @placeholder = " " })
+                                                </div>
+                                            </div>
+                                           
+
+                                            <div class=" form-group m--30 ">
+                                                <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Registration Date</label>
+                                                <div class="  col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
+                                                    <!--<input type="text" class="form-control" id="" placeholder="">-->
+                                                    <div class="input-group ">
+                                                    @*<input type="text" class="form-control datepicker" placeholder="" style="    border-right: 0px;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;">*@
+                                                    @Html.TextBoxFor(model => model.RegistrationDate, new { @name = "RegistrationDate", @id = "RegistrationDate", @class = "form-control datepicker", @placeholder = " " })
+                                                        <span class="input-group-btn ">
+                                                            <i class="fa fa-calendar input-group-addon  " style="    border-top-right-radius: 3px;
+
+border-bottom-right-radius: 3px; border-right:1px solid #ddd"></i>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class=" col-md-offset-4 col-lg-offset-4  col-sm-offset-4 col-lg-3 col-md-3 col-sm-3">
+                                                <div class="">
+                                                    <button type="button" class="btn btn-primary prf-sbt-btn  create-submit-grnbtn btn-block btn btn-primary nextBtn btn-lg pull-right prf-sbt-btn border-radius99 ">Next</button>
+                                                </div>
+                                            </div>
+                                            <!--<button class="btn btn-primary nextBtn btn-lg pull-right prf-sbt-btn border-radius99 " type="button">Next</button>-->
+                                        </div>
+
+                                    </div>
+                                            <div class="row setup-content" id="step-2" style="display: none;">
+                                        <div class="col-md-12">
+                                            <div class=" container">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium metus, in convallis ex. Aliquam elementum eros in tincidunt .
+                                                    </p>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class=" form-group m--30 ">
+                                                            <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Bank *</label>
+                                                            <div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                    @Html.DropDownListFor(model => model.bank_name, (IEnumerable<SelectListItem>)ViewData["listItemsbank"], new { @class = "form-control", @id = "bank_name", @placeholder = "" })
+                                                                <span id="spanbank_name" style="display:none;color:red">*</span>
+                                                                      @Html.ValidationMessageFor(model => model.bank_name)
+                                                                      @*<select class="form-control">
+                                                                            <option>Select Option</option>
+                                                                        </select>*@
+                                                            </div>
+                                                        </div>
+                                                        <div class=" form-group m--30 ">
+                                                            <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">Holder Name *</label>
+                                                            <div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="Account Holder Name">*@
+                                                    @Html.TextBoxFor(model => model.HolderName, new { @name = "HolderName", @id = "HolderName", @class = "form-control", @placeholder = "Account Holder Name" })
+                                                                <span id="spanHolderName" style="display:none;color:red">*</span>
+                                                    @Html.ValidationMessageFor(model => model.HolderName)
+                                                            </div>
+                                                        </div>
+                                                        <div class=" form-group m--30 ">
+                                                            <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12 " for="">IBAN Code *</label>
+                                                            <div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                    @*<input type="text" class="form-control" id="" placeholder="IBAN Code">*@
+                                                    @Html.TextBoxFor(model => model.IBANCode, new { @name = "IBANCode", @id = "IBANCode", @class = "form-control", @placeholder = "IBAN Code" })
+                                                                <span id="spanIBANCode" style="display:none;color:red">*</span>
+                                                    @Html.ValidationMessageFor(model => model.IBANCode)
+                                                                <small>Ex:0025 02584 9875 685755</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" col-md-offset-3 col-lg-offset-3 col-sm-offset-3 col-lg-6 col-md-6 col-sm-6">
+                                                        <div class=" col-md-offset-2 col-lg-offset-2 col-sm-offset-2 col-md-5 col-lg-5 col-sm-5 col-xs-12">
+                                                            <button type="button" class="btn btn-primary prf-sbt-btn  create-submit-grnbtn btn-block btn btn-primary nextBtn btn-lg pull-right prf-sbt-btn border-radius99 mr30"> <a href="" id="step-1" style="color:#fff;">Back</a></button>
+                                                        </div>
+                                                        <div class=" col-md-5 col-lg-5 col-sm-5 col-xs-12">
+                                                            <button type="button" id="btnsubmitnext" data-id="@Model.venderid" class="btn btn-primary prf-sbt-btn  create-submit-grnbtn btn-block btn btn-primary nextBtn btn-lg pull-right prf-sbt-btn border-radius99"> Next</button> @*<a href="vendor-index.php" style="color:#fff;">*@
+                                                        </div>
+                                                    </div>
+
+                                                    <!--<div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-5 col-sm-offset-5 col-lg-offset-5 ">
+                                                     <div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                    <button class="btn btn-primary nextBtn btn-lg  prf-sbt-btn border-radius99 " type="button" style="margin-right:20px;">
+                                                      <a href="" id="step-1" style="color:#fff;">Back</a>
+                                                      </button>
+                                                      </div>
+                                                       <div class="  col-lg-6 col-md-6 col-sm-6 col-xs-12  ">
+                                                      <button class="btn btn-primary nextBtn btn-lg  prf-sbt-btn border-radius99 " type="button" style="margin-right:50px">
+                                                      <a href="vendor-index.php" style="color:#fff;">Submit</a>
+                                                      </button>
+                                                      </div>
+
+                                                      </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                        @*</form>*@
+                                           
+                            </div>
+                        </div>
+                        <div id="profile" class="tab-pane fade main-profile m--40">
+                            @{Html.RenderAction("VenderProfile",
+                            new { user = @Model.venderid });}
+                        </div>
+                          
+                        <div id="aggrement" class="tab-pane fade">
+                            <div class="container">
+                                <div class="agrmnt-tbl">
+                                    <table class="table table-striped m--40">
+                                        <thead>
+                                            <tr>
+                                                <th>Agreement Version </th>
+                                                <th>Accepted Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach (var a in Model.Agreementlist)
+                                            {
+                                                
+                                                <tr>
+                                                    <td>@a.AgreementVersion</td>
+                                                    <td>@a.AcceptedDate</td>
+                                                    @*<td><a href="@a.attachment">Click here to Download</a></td>*@
+                                                    <td>@Html.ActionLink("Click here to Download", "content", new { FileValue = @a.FileId })</td>
+                                                    
+                                                </tr>
+
+                                            }
+                                            @*<tr>
+                                                <td>2.200</td>
+                                                <td>10 Jan 2017</td>
+                                                <td><a href="javascript:">Click here to Download</a></td>
+                                            </tr>
+                                                }
+                                            <tr>
+                                                <td>3.200</td>
+                                                <td>18 Feb 2017</td>
+                                                <td><a href="javascript:">Click here to Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3.200</td>
+                                                <td>25 Mar 2017</td>
+                                                <td><a href="javascript:">Click here to Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.200</td>
+                                                <td>10 Jan 2017</td>
+                                                <td><a href="javascript:">Click here to Download</a></td>
+                                            </tr>*@
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   }
+                </div>
+            </div>
+        </section>
+
+        <!-- End: Content -->
+        <!-- <div class="col-md-12">
+
+          <div class="col-md-4 col-sm-4 col-xs-12"> </div>
+
+        </div>-->
+
+    </div>
+
+    <!-- End: Content-Wrapper -->
+    <!-- Start: Right Sidebar -->
+                                                    @*footer*@
+    <div class="row main-footer">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/assets/js/raphael.min.js"></script>
+
+    <script src="~/Content/assets/js/Chart.min.js"></script>
+
+    <script src="~/Content/assets/js/morris.min.js"></script>
+
+    <script src="~/Content/assets/js/custom.min.js"></script>
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <script src="~/Content/assets/js/date.js"></script>
+
+    <script src="~/Content/assets/js/moment.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="~/Content/assets/js/visitor.js"></script>
+
+    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".datepicker").datepicker();
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function (e) {
+
+            $('.selectpicker').selectpicker();
+
+        });
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+@*footer end*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+
+                allWells = $('.setup-content'),
+
+                allNextBtn = $('.nextBtn');
+
+
+
+        allWells.hide();
+
+
+
+        navListItems.click(function (e) {
+
+            //  e.preventDefault();
+
+            var $target = $($(this).attr('href')),
+
+                    $item = $(this);
+
+
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+
+                $item.addClass('btn-primary');
+
+                allWells.hide();
+
+                $target.show();
+
+                $target.find('input:eq(0)').focus();
+
+            }
+
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            var curStep = $(this).closest(".setup-content"),
+
+                curStepBtn = curStep.attr("id"),
+
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+
+                curInputs = curStep.find("input[type='text'],input[type='url'],textarea[textarea]"),
+
+                isValid = true;
+
+
+
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+
+                if (!curInputs[i].validity.valid) {
+
+                    isValid = false;
+
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+
+                }
+
+            }
+
+
+
+            if (isValid)
+
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+</script>
+

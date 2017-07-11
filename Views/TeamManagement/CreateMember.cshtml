@@ -1,0 +1,325 @@
+﻿@model IEnumerable<Final_ThibanProject.Models.TeamManage>
+
+@{
+    ViewBag.Title = "CreateMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Start: Content-Wrapper -->
+
+<div class="right_col" role="main">
+    <div class="row mb5 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Team Management <small>New team member</small></h1>
+    </div>
+    <div class="row col-md-12 col-lg-12 col-sm-12 xol-xs-12 mb10 col-md-12 mb10 col-md-12 pr20">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li> <a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">New team member</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn main-admin-teammngmnt">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 mt5" style="border:1px solid #eee">
+                <div class="heading-title">
+                    <h1 class="panel-title  t-m-r_h1"> New team member</h1>
+                </div>
+                <div class="panel-heading"> <span class="panel-title tm-spn"> Account  Information</span> </div>
+                <div class="panel-body p20 pb10">
+                    <div class="tab-content pn br-n admin-form">
+                        <div id="tab1_1" class="tab-pane active">
+                            @using (Html.BeginForm("CreateMember", "TeamManagement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal ml25" }))
+                            {
+                                <div class="form-group ">
+                                    <label class="control-label col-sm-2 ldl-lft  pl10" for="email">Member Name*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="text" name="MemberName" class="form-control" id="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">First Name*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="text" name="FirstName" class="form-control" id="firstname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">Last Name*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="text" name="Lastname" class="form-control" id="lastname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">Email*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="email" name="Email" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft text-left" for="pwd">Current Admin Password*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="password" name="AdminPassword" class="form-control" id="pwd">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">Password*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="password" name="Password" class="form-control" id="pwd">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">Password Confirmation*</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <input type="password" name="conf_password" class="form-control" id="pwd">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">This Account is</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <select name="Status" class="form-control">
+                                            <option value="True">Active</option>
+                                            <option value="False">InActive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2 ldl-lft" for="pwd">Assigned Role Name</label>
+                                    <div class=" col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                        <select name="Rolename" class="form-control">
+                                            @foreach (var item in ViewBag.menudata)
+                                            {
+                                                <option>@item</option>
+                                            }
+                                        </select>
+                                        @*<select name="RoleId" class="form-control">
+                                            <option value="">Select Assigned Role Name</option>
+                                            <option value="1">Product Management</option>
+                                            <option value="2">Order Management</option>
+                                            <option value="3">Driver Management</option>
+                                            <option value="4">Rating and Review</option>
+                                            <option value="5">Billing Management</option>
+                                            <option value="6">Payouts</option>
+                                            <option value="7">Team Management</option>
+                                            <option value="8">Analytics</option>
+                                        </select>*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class=" col-lg-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-offset-4 col-sm-11">
+                                        <button type="submit" class="btn  btn-md t-btn border-radius99  create-submit-grnbtn  mr-btn ">Create New Team  Member</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div id="tab1_2" class="tab-pane">
+                            <div class="section row">
+                                <div class="col-md-6">
+                                    <label for="product-category" class="field select">
+                                        <select id="product-category" name="product-category">
+                                            <option value="0" selected="selected">Product Category...</option>
+                                            <option value="1">Software</option>
+                                            <option value="2">Computers</option>
+                                            <option value="3">Gadgets</option>
+                                            <option value="4">Clothing</option>
+                                        </select>
+                                        <i class="arrow double"></i>
+                                    </label>
+                                </div>
+
+                                <!-- end section -->
+
+                                <div class="col-md-6">
+                                    <label class="field select">
+                                        <select id="product-status" name="product-status">
+                                            <option value="0" selected="selected">Product Availability</option>
+                                            <option value="1">Available</option>
+                                            <option value="2">Unavailable</option>
+                                            <option value="3">Discontinued</option>
+                                            <option value="4">Out of Stock</option>
+                                        </select>
+                                        <i class="arrow double"></i>
+                                    </label>
+                                </div>
+
+                                <!-- end section -->
+
+                            </div>
+
+                            <!-- end section row section -->
+
+                            <div class="section row">
+                                <div class="col-md-4">
+                                    <label for="product-price" class="field prepend-icon">
+                                        <input type="text" name="product-price" id="product-price" class="gui-input" placeholder="Product Price...">
+                                    </label>
+                                </div>
+
+                                <!-- end section -->
+
+                                <div class="col-md-4">
+                                    <label for="product-vendor" class="field prepend-icon">
+                                        <input type="text" name="product-vendor" id="product-vendor" class="gui-input" placeholder="Vendor Source...">
+                                    </label>
+                                </div>
+
+                                <!-- end section -->
+
+                                <div class="col-md-4">
+                                    <label for="product-sku" class="field prepend-icon">
+                                        <input type="text" name="product-sku" id="product-sku" class="gui-input" placeholder="Product SKU...">
+                                    </label>
+                                </div>
+
+                                <!-- end section -->
+
+                            </div>
+                            <div class="section mb15 col-md-12">
+                                <label class="field prepend-icon">
+                                    <textarea class="gui-textarea br-light bg-light" id="cust-note" name="cust-note" placeholder="Description"></textarea>
+                                </label>
+                            </div>
+
+                            <!-- end section row section -->
+
+                            <hr class="short alt">
+                            <div class="section row mbn">
+                                <div class="col-sm-8">
+                                    <label class="field option mt10">
+                                        <input type="checkbox" name="info" checked>
+                                        <span class="checkbox"></span>Save Customer <em class="small-text text-muted">- A Random Unique ID will be generated</em>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="text-right">
+                                        <button class="btn btn-primary" type="button">Save</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- end section -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- recent orders table -->
+
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+
+<div class="clearfix"></div>
+
+<div class="row main-footer">
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#update").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker();
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+
+

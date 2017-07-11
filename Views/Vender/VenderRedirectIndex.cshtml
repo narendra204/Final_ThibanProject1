@@ -1,0 +1,1423 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderDetails
+@{
+    ViewBag.Title = "VenderRedirectIndex";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THIBAN-VENDOR-DASHBOARD</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font-Styles -->
+    <!--   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">-->
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/custom.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
+    <style>
+        .nav_menu {
+            border-bottom: none;
+        }
+
+        .bg {
+            background: #fff;
+        }
+
+        .menu_section {
+            margin-bottom: 0px;
+        }
+        /*ul.nav.navbar-nav.navbar-right {
+            width: 60%;
+        }*/
+        .nav_title {
+            width: 233px;
+        }
+
+        input, select, textarea {
+            border-radius: 3px !important;
+        }
+
+        ul.dropdown-menu.side-dropdown {
+            position: absolute;
+            top: 48px !important;
+            left: 0px !important;
+            border: 1px solid #eee !important;
+            border-radius: 1px;
+            background: #f2f2f2 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            background-clip: none !important;
+        }
+
+            ul.dropdown-menu.side-dropdown a {
+                color: #888 !important;
+            }
+
+        .dropdown:hover ul.dropdown-menu.side-dropdown {
+            display: block;
+            padding: 0px;
+        }
+
+        .dropdown.current-page.active .side-dropdown {
+            display: none !important;
+        }
+
+        .dropdown.current-page.active:hover .side-dropdown {
+            display: block !important;
+        }
+
+        .left_col {
+            background: #f7f7f7;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100% !important;
+            position: fixed;
+        }
+
+        .col-md-3.left_col {
+            overflow: hidden;
+        }
+
+        .nav-sm #menu_toggle {
+            margin-left: 10px;
+        }
+
+        .nav-sm .navbar-search {
+            margin-left: 0px;
+        }
+
+        .side-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2;
+        }
+
+        li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
+            display: block !important;
+        }
+
+        .side-dropdown li a {
+            background: #f7f7f7 !important;
+            color: #888 !important;
+        }
+
+            .side-dropdown li a:hover {
+                background: #f2f2f2 !important;
+                color: #222;
+            }
+
+        ul.nav.side-menu.sub-menu li a {
+            padding-left: 30px;
+        }
+
+        ul.nav.side-menu li.active a {
+            background: transparent !important;
+            color: #888;
+        }
+
+        ul.nav.side-menu.sub-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2 !important;
+        }
+
+        a.dropdown-sub-menu {
+            padding-left: 40px !important;
+        }
+
+        a.drop-down-mainmenu {
+            cursor: default;
+        }
+
+        .dropdown-sub-menu img {
+            width: 16px !important;
+        }
+
+        a.drop-down-mainmenu {
+            color: #687888 !important;
+            font-weight: 400 !important;
+            font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+        }
+
+            a.drop-down-mainmenu:hover {
+                color: #687888 !important;
+            }
+        /*   input.form-control {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-left: 0px;
+        }
+         form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
+                border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            background: #fff;
+            border-right: 0px;
+        }
+         form.navbar-form.navbar-left input.form-control{
+             border-top-right-radius: 25px !important;
+            border-bottom-right-radius: 25px !important;
+            border-top-left-radius: 1px !important;
+            border-bottom-left-radius: 0px !important;
+            padding-left:0px;
+            border-color: #dddddd !important;
+        }*/
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body main-container-body">
+        <div class="main_container">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title">
+                                <a href="vendor-index.php" class="site_title">
+                                    <span class="main-heading">
+                                        <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- sidebar menu -->
+
+                            <ul class="nav side-menu">
+                                <li class="">
+                                    <a href="vendor-index.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" alt="">
+                                        <span class="sidebar-title"> Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" alt="">
+                                        <span class="sidebar-title">Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Product/AddVenderProduct" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" alt="">
+                                        <span class="sidebar-title"> Product </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" alt="">
+                                        <span class="sidebar-title">Order</span>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" alt="">
+                                        <span class="sidebar-title">Rating and Review </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" alt="">
+                                        <span class="sidebar-title">Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor-analytics.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" alt="">
+                                        <span class="sidebar-title">Analytics </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-geo-fence.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/new-geo-fenece.png" alt="">
+                                        <span class="sidebar-title">Geo Fence</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" alt="">
+                                        <span class="sidebar-title">Team</span>
+                                    </a>
+
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Team Member</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="~/Advertisement/AddAdvertisement">
+                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
+                                        <span class="sidebar-title"> advertisement </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Advertisement/CouponList">
+                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" alt="">
+                                        <span class="sidebar-title"> Promotion Code </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-downloads.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" alt="">
+                                        <span class="sidebar-title">Downloads </span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="user-agreement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" alt="">
+                                        <span class="sidebar-title"> Settings </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="navbar navbar-default bg">
+                        <div class="container-fluid">
+                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                                <div class="form-group serch-div">
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon">
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+                                </div>
+                            </form>
+                            <!--<form class="navbar-form navbar-left">
+                              <div class="input-group">
+                               <div class="input-group-btn">
+                                  <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                  </button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search">
+
+                              </div>
+                            </form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav top-nav-menu pull-right">
+
+
+                                    <li><a href="">English</a></li>
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color:#57ad68 !important">
+                                            <!--<i class="fa fa-envelope-o"></i>
+                                                  <span class="badge bg-green">6</span>-->
+                                            Seller support
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                            <div class="img-user-pic">
+                                                <div class=" col-md-5 col-sm-5 col-xs-4">
+                                                    <div class="user-profile-photo"> <span><img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round "> <span> <img src="@Model.image" class="img-responsive user-photo"></span> </span> </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                                                    <div class=" user-txt">
+                                                        <h3> Kinely seller</h3>
+                                                        <p>@Model.emailid</p>
+                                                    </div>
+                                                </div>
+                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+                                            <li class="list-group-item">
+                                                <a href="#" class="animated animated-short fadeInUp ">
+                                                   @Model.name<br>
+                                                    @Model.emailid
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item"> @Html.ActionLink("Profile", "UserAgreement", "Vender", new { User = Model.venderid }, new { @class = "animated animated-short fadeInUp" })  </li>
+                                        </ul>
+                                    </li>
+                                    <li class=""> <a href="/Vender/VenderLogout" aria-expanded="false"> <img src="~/Content/assets/img/side-menu-icons/logout.png" class="logout-img" style="" alt="1"> <span>Logout</span> </a> </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <style>
+                span.field-validation-error {
+        color: red;
+    }
+                .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+                    color: #ffffff;
+                    text-decoration: none;
+                    outline: 0;
+                    background-color: #97C898;
+                }
+
+
+
+                .cancel-drop-menu > .active > a,
+                .cancel-drop-menu > .active > a:hover,
+                .cancel-drop-menu > .active > a:focus {
+                    color: #ffffff;
+                    text-decoration: none;
+                    outline: 0;
+                    background-color: #F9989C;
+                }
+
+                .btn-success:focus {
+                    background: #97C898 !important;
+                    border: 1px solid #97C898;
+                    color: #ffffff !important;
+                }
+
+                .btn-table:focus {
+                    background: #F9989C !important;
+                    border: 1px solid #F9989C !important;
+                    color: #fff !important;
+                }
+
+                .dash-bred-cumb {
+                    padding-top: 3px !important;
+                }
+
+                span.fa.fa-angle-down {
+                    float: right;
+                    margin-right: 5px;
+                    border-left: 1px solid #dddddd;
+                    margin-top: 0;
+                    height: 26px;
+                    line-height: 26px;
+                    padding-left: 5px;
+                }
+
+                span.fa.fa-angle-down1 {
+                    float: right;
+                    margin-right: 5px;
+                    border-left: 1px solid #dddddd;
+                    margin-top: 0;
+                    height: 26px;
+                    line-height: 26px;
+                    padding-left: 5px;
+                }
+
+                button.inn-head-btn {
+                    width: 250px;
+                    height: 28px;
+                    text-align: left;
+                    line-height: 26px;
+                    padding-left: 7px;
+                    font-size: 13px;
+                    color: #666;
+                    font-weight: normal;
+                    border-color: #dddddd !important;
+                }
+
+                ul.dropdown-menu.index-drpdown {
+                    left: 0px !important;
+                }
+
+                .datepicker-down-arrow {
+                    border-left: 1px solid #ddd;
+                    height: 26px;
+                    margin-top: -3px;
+                    line-height: 32px;
+                    padding-left: 6px;
+                    margin-right: -5px;
+                    position: relative;
+                    top: 3px;
+                    ;
+                }
+
+                .fa-angle-down1:before {
+                    content: "\f107";
+                    position: relative;
+                    top: 0px;
+                    left: 0px;
+                    font-size: 16px;
+                }
+
+                .fa-angle-down2:before {
+                    content: "\f107";
+                    position: relative;
+                    top: -3px;
+                    left: -2px;
+                    font-size: 16px;
+                }
+
+                .font {
+                    font-size: 13px;
+                }
+
+                .daterangepicker.opensleft:after {
+                    right: 4px;
+                }
+
+                span.inn-head-text {
+                    margin-left: 13px;
+                }
+
+                table.table.d2-table ul.dropdown-menu {
+                    padding: 0px;
+                    top: 28px !important;
+                }
+
+                table.table.d2-table .dropdown-menu > li > a:hover {
+                    text-decoration: none;
+                    color: #595959;
+                    background-color: #f2f2f2;
+                }
+
+                table.table.d2-table ul.dropdown-menu {
+                    padding: 0px;
+                    top: 28px !important;
+                }
+
+                table.table.d2-table .dropdown-menu > li > a:hover {
+                    text-decoration: none;
+                    color: #595959;
+                    background-color: #f2f2f2;
+                }
+
+                .btn-group.inn-head-btn-grp.pull-right {
+                    position: relative;
+                    left: -2px;
+                }
+
+                .d-table > tbody > tr > td {
+                    line-height: 40px !important;
+                }
+
+                .d2-table > tbody > tr > td {
+                    line-height: 40px !important;
+                }
+            </style>
+            <div class="right_col" role="main">
+                <div class="row mb10 col-md-12 mb20 top-title-bar">
+                    <h1 class="main-top-header ml5">Welcome to Thiban Vendor Dashboard&nbsp;<small class="small" style="  color: #47525d !important;">statistics,charts and reports</small></h1>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 col-sm-12  inn-head  mb15">
+                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12 pn">
+                        <ol class="breadcrumb dash-bred-cumb">
+                            <li><a href="#" style="    color: #57ad68;"> <span><img src="~/Content/assets/img/bred-home.png"></span> Home</a></li>
+                            <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                            <li class="ml5">
+                                <a href="#" class="fs14">Vendor Home</a>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-lg-9 col-xs-12 pn ">
+                        <form class="form-inline">
+
+
+
+                            <div class="btn-group">
+                                <button type="button" class="btn  br-radius-4 icon-btn inn-head-btn dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF;color: #47525d;"> Select the brand <span class="fa fa-angle-down1"></span></button>
+                                <ul class="dropdown-menu index-drpdown" role="menu">
+                                    <li><a href="#">Acqua</a></li>
+                                    <li><a href="#">Panna</a></li>
+                                    <li><a href="#">Alain</a></li>
+                                    <li><a href="#">Kinley</a></li>
+                                    <li><a href="#">Arwa</a></li>
+                                </ul>
+                            </div>
+                            <div class="form-group"> <span class="inn-head-text">Showing result for</span> </div>
+                            <div class="btn-group inn-head-btn-grp pull-right">
+                                <button type="button" class="btn btn-default inn-head-btn1 bg-wht bred-last-week">Last Week</button>
+                                <button type="button" class="btn btn-default inn-head-btn1 bg-wht">Last Month</button>
+                                <button type="button" class="btn btn-default inn-head-btn1 bg-wht">
+                                    <div id="reportrange" style="background: #fff; cursor: pointer;right: 78.2969px;left: auto; top:10px !important; margin-top:-3px;"> <span class="font"> </span> <i class="fa fa-angle-down2 datepicker-down-arrow ml5"></i> </div>
+
+
+
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row today-panels">
+                    <div class="col-sm-6 col-md-6 col-xs-12 text-center">
+                        <div class="panel panel-default panel-orders">
+                            <div class="panel-body">
+                                <h5 class="t-p1">TODAY'S ORDERS</h5>
+                                <div class="row brdr-top">
+                                    <div class="col-md-5 col-sm-5 col-lg-5 col-xs-6 border-right mt40">
+                                        <h3>1,325</h3>
+                                        <h5 class="">ORDERS</h5>
+                                    </div>
+                                    <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6 text-colr mt20">
+                                        <table id="table-sparkline" style=" margin-top: 35px !important;">
+                                            <tbody id="tbody-sparkline">
+                                                <tr class="color">
+                                                    <td data-sparkline="71, 78, 39, 66 " />
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="o-graph mt5">1,325 Orders</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-xs-12 text-center">
+                        <div class="panel panel-default panel-orders">
+                            <div class="panel-body">
+                                <h5 class="t-p1">TODAY'S REVENUE</h5>
+                                <div class="row brdr-top">
+                                    <div class="col-md-5 col-sm-5 col-lg-5 col-xs-6 border-right mt40">
+                                        <h3>1,325</h3>
+                                        <h5 class="">TOTAL REVENUE</h5>
+                                    </div>
+                                    <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6 text-colr mt20">
+                                        <table id="table-sparkline" style=" margin-top: 35px !important;">
+                                            <tbody id="tbody-sparkline">
+                                                <tr class="color">
+                                                    <td data-sparkline="71, 78, 39, 66 " />
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="o-graph mt5">1,325 Revenue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row bar-line-graphs">
+                    <div class="col-sm-6 col-md-6 col-xs-12 text-center ">
+                        <div class="panel panel-default">
+                            <div class="panel-body trucks-bdylst">
+                                <h5 class="t-p1">DRIVER+TRUCKS</h5>
+                                <div class="row brdr-top number-trucklist">
+                                    <p class="">NUMBER OF WORKING TRUCKS</p>
+                                    <h5 class="">1,325</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /graph area -->
+                    <!-- line graph -->
+
+                    <div class="col-sm-6 col-md-6 col-xs-12 text-center ">
+                        <div class="panel panel-default">
+                            <div class="panel-body trucks-bdylst">
+                                <h5 class="t-p1">ORDER STATUS</h5>
+                                <div class="row order-staus-div brdr-top  trucks-bdylst-order ">
+                                    <div class=" col-md-8 col-lg-8 col-sm-8 col-xs-8 ">
+                                        <div class="x_panel br-n">
+                                            <div class="x_title br-n">
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content2">
+                                                <div id="graph_donut" style=" height:300px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                                        <div class="">
+                                            <ul class="total-orderslist">
+                                                <li>
+                                                    <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i> Pending Order</h5>
+                                                    <p class="">40</p>
+                                                </li>
+                                                <li>
+                                                    <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i> Delivery Order</h5>
+                                                    <p class="">30</p>
+                                                </li>
+                                                <li>
+                                                    <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i> Cancel Order</h5>
+                                                    <p class="">30</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+                    <div class="panel-heading se-payments">ORDERS</div>
+                    <div class="panel-body">
+                        <div class="row text-center inner-row">
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no">Pending </div>
+                                    <div class=" p-bdy">
+                                        <h2>182</h2>
+                                        <h5> SR 2500.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no ">Delivered</div>
+                                    <div class="p-bdy">
+                                        <h2>23358</h2>
+                                        <h5> SR 2500</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no">Canceled</div>
+                                    <div class="p-bdy">
+                                        <h2>1,345</h2>
+                                        <h5> SR 2500</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no">Total</div>
+                                    <div class="p-bdy">
+                                        <h2>35</h2>
+                                        <h5> SR 2500.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+                    <div class="panel-heading se-payments">SALES</div>
+                    <div class="panel-body">
+                        <div class="row text-center inner-row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no">Revenue</div>
+                                    <div class=" p-bdy">
+                                        <h2>182</h2>
+                                        <h5> SR 2500.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no ">Cash on Delivery</div>
+                                    <div class="p-bdy">
+                                        <h2>23358</h2>
+                                        <h5> SR 2500</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading p-heading border-t-l-r-no">e-Payments </div>
+                                    <div class="p-bdy">
+                                        <h2>1,345</h2>
+                                        <h5> SR 2500</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+                    <div class="panel-body list-table-heading"> TOP SELLING PRODUCT </div>
+                    <div style="height: 410px; overflow: auto;">
+                        <table class="table d-table ">
+                            <thead class="theader">
+                                <tr class="">
+                                    <th class="text-center pl20">No</th>
+                                    <th class="">Image</th>
+                                    <th class="">SKU</th>
+                                    <th class="">Product Title</th>
+                                    <th class="">Price</th>
+                                    <th class="">Sold</th>
+                                </tr>
+                            </thead>
+                            <tbody class="fs14">
+                                <tr>
+                                    <td class="text-center pl20">01</td>
+                                    <td class=""><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua Panna</td>
+                                    <td class="">$25</td>
+                                    <td class="">215</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">02</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Monviso</td>
+                                    <td class="">$15</td>
+                                    <td class="">175</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">03</td>
+                                    <td class=""><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Alain</td>
+                                    <td class="">$06</td>
+                                    <td class="">76</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">04</td>
+                                    <td class=""><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Masafi</td>
+                                    <td class="">$58</td>
+                                    <td class="">178</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">05</td>
+                                    <td class=""><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Arwa</td>
+                                    <td class="">$12</td>
+                                    <td class="">512</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">06</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua fresh</td>
+                                    <td class="">$16</td>
+                                    <td class="">315</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">07</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua fresh</td>
+                                    <td class="">$16</td>
+                                    <td class="">315</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">08</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua fresh</td>
+                                    <td class="">$16</td>
+                                    <td class="">315</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">09</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua fresh</td>
+                                    <td class="">$16</td>
+                                    <td class="">315</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center pl20">10</td>
+                                    <td><img title="user" src="~/Content/assets/img/6.png" class="table-img"></td>
+                                    <td class="">#21365</td>
+                                    <td class="">Acqua fresh</td>
+                                    <td class="">$16</td>
+                                    <td class="">315</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="panel panel-default last-table" style="margin-left:8px; margin-right:8px;">
+                    <div class="panel-body list-table-heading"> TODAY ORDERS </div>
+                    <div style="height: 410px; overflow: auto;">
+                        <table class="table   d2-table">
+                            <thead class="theader">
+                                <tr class="h-40">
+                                    <th class="text-center">Image</th>
+                                    <th class="">Product Title</th>
+                                    <th class="">SKU</th>
+                                    <th class="">Price</th>
+                                    <th class="">Volume</th>
+                                    <th class="">Purchased on</th>
+                                    <th class="">Payment Status</th>
+                                    <th class="">Status</th>
+                                    <th class="">Tracking No#</th>
+                                </tr>
+                            </thead>
+                            <tbody class="fs14">
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Acqua</td>
+                                    <td class="">#21365</td>
+                                    <td>$25</td>
+                                    <td class="">5</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-default btn-table" data-toggle="dropdown" aria-expanded="false"> cancelled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li class="active"> <a href="#">cancelled</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> On the way <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">On the way</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG6JUYT73</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">MOnviso</td>
+                                    <td class="">#21365</td>
+                                    <td>$15</td>
+                                    <td class="">12</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Paid <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Paid</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Delivery <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Delivery</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbj</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alain</td>
+                                    <td class="">#21365</td>
+                                    <td>$06</td>
+                                    <td class="">4</td>
+                                    <td class="">01/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success  " data-toggle="dropdown" aria-expanded="false"> E-Payment <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li class="active"> <a href="#">E-Payment</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-default  btn-table" data-toggle="dropdown"> Cancelled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kb58</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Masafi</td>
+                                    <td class="">#21365</td>
+                                    <td>$58</td>
+                                    <td class="">8</td>
+                                    <td class="">29/12/2016</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Cah on Delivery <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Cah on Delivery</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Scheduled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Scheduled</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-warning dropdown-toggle pending-btn" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Pending Payment</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Rescheduled</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-warning dropdown-toggle pending-btn" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Pending Payment</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-danger dropdown-toggle   disabled-btn border-radius99" data-toggle="dropdown"> Suspend <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Suspend</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-warning dropdown-toggle pending-btn" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Pending Payment</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Rescheduled</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Cah on Delivery <span class="caret ml5" style="margin-left:5px !important;"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Cah on Delivery</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Rescheduled</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Cah on Delivery <span class="caret ml5" style="margin-left:5px !important;"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">ah on Delivery</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-danger dropdown-toggle   disabled-btn border-radius99" data-toggle="dropdown"> Suspend <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Suspend</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-default btn-table" data-toggle="dropdown" aria-expanded="false"> cancelled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">cancelled</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-danger dropdown-toggle   disabled-btn border-radius99" data-toggle="dropdown"> Suspend <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Suspend</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><img class="" title="user" src="assets/img/6.png"></td>
+                                    <td class="">Alian</td>
+                                    <td class="">#21365</td>
+                                    <td>$100</td>
+                                    <td class="">30</td>
+                                    <td class="">02/01/2017</td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp">
+                                            <button type="button" class="btn btn-default btn-table" data-toggle="dropdown" aria-expanded="false"> cancelled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">cancelled</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="btn-group table-btn-grp ">
+                                            <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li> <a href="#">Edit</a> </li>
+                                                <li> <a href="#">Delete</a> </li>
+                                                <li> <a href="#">Archive</a> </li>
+                                                <li class="divider"></li>
+                                                <li> <a href="#">Complete</a> </li>
+                                                <li> <a href="#">Pending</a> </li>
+                                                <li class="active"> <a href="#">Rescheduled</a> </li>
+                                                <li> <a href="#">Canceled</a> </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>#BG56kbjgygfs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default brdr-btm-none" style="margin-left:8px; margin-right:8px;">
+                    <div class="panel-heading map-panel brdr-top-none">VEHICAL TARCKING MAP </div>
+                    <div class="panel-body">
+                        <iframe src="https://google-developers.appspot.com/maps/documentation/javascript/examples/full/drawing-tools" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row main-footer">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+                    </div>
+
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/assets/js/raphael.min.js"></script>
+
+    <script src="~/Content/assets/js/Chart.min.js"></script>
+
+    <script src="~/Content/assets/js/morris.min.js"></script>
+
+    <script src="~/Content/assets/js/custom.min.js"></script>
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <script src="~/Content/assets/js/date.js"></script>
+
+    <script src="~/Content/assets/js/moment.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="~/Content/assets/js/visitor.js"></script>
+
+    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <script>
+
+  $(document).ready(function() {
+
+    $(".datepicker").datepicker();
+
+  });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function(e) {
+
+  $('.selectpicker').selectpicker();
+
+});
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

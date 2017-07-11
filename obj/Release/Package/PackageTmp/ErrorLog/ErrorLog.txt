@@ -1,0 +1,20 @@
+﻿Time: 16/05/2017 04:54:15 PM
+-----------------------------------------------------------
+Message: Value was either too large or too small for an Int32.
+StackTrace:    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Final_ThibanProject.Controllers.VenderController.VenderProfileSubmit(Int32 user, String MerchantId, String name, String display_name, String emailid, String mobile_no, String AdditionalInfor, String PanNumber, String VatIdentity, String benificary_name, String account_no, String bank_name, String branch_name, String ifsc_code, String Address, String City, String State) in e:\ThibanWaterProject\Final_ThibanProject\Final_ThibanProject\Controllers\VenderController.cs:line 1332
+Source: mscorlib
+TargetSite: Int32 ParseInt32(System.String, System.Globalization.NumberStyles, System.Globalization.NumberFormatInfo)
+-----------------------------------------------------------
+
+Time: 16/05/2017 04:54:45 PM
+-----------------------------------------------------------
+Message: Value was either too large or too small for an Int32.
+StackTrace:    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Final_ThibanProject.Controllers.VenderController.VenderProfileSubmit(Int32 user, String MerchantId, String name, String display_name, String emailid, String mobile_no, String AdditionalInfor, String PanNumber, String VatIdentity, String benificary_name, String account_no, String bank_name, String branch_name, String ifsc_code, String Address, String City, String State) in e:\ThibanWaterProject\Final_ThibanProject\Final_ThibanProject\Controllers\VenderController.cs:line 1332
+Source: mscorlib
+TargetSite: Int32 ParseInt32(System.String, System.Globalization.NumberStyles, System.Globalization.NumberFormatInfo)
+-----------------------------------------------------------
+

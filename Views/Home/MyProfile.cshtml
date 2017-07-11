@@ -1,0 +1,427 @@
+﻿@model Final_ThibanProject.Models.Admin
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h1, h4 {
+        color: #47525d !important;
+    }
+
+    .right_col.main-adminprofile-section hr.short {
+        float: left;
+        margin: 10px 0 20px;
+        width: 100%;
+    }
+</style>
+
+<!-- Start: Content-Wrapper -->
+<div class="right_col main-adminprofile-section" role="main">
+    <div class="row mb10 col-md-12 top-title-bar">
+        <h1>Thiban Profile Settings</h1>
+    </div>
+    <div class="row mb10 col-md-12 col-lg-12 col-sm-12 col-xs-12 ">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/Content/assets/img/bred-home.png" />>
+                            </span> Home
+                        </a>
+                    </li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Profile</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+            <!-- recent orders table -->
+
+            <div class="panel">
+                <div class="panel-menu admin-form theme-primary brdr-no brdr-top-none mb15" style="border:none !important;">
+                    <div class="heading-title list-items">
+                        <h1 class="panel-title profile-title">Profile </h1>
+                    </div>
+                </div>
+
+
+
+                <div class="panel-body pn">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @using (Html.BeginForm("MyProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal add-new-form" }))
+                        {
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 proile-left">
+                                <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                    <div class="fileupload-preview thumbnail mb20 btn-file" style="outline:none;">
+                                        <img src="@Session["Image"]" id="output" alt="holder" class="fileupload-new"> <span class="fileupload-exists">Change</span>
+                                        <input type="file" name="file" onchange="loadFile(event)" value="@Model.image">
+                                        <script>
+                                            var loadFile = function (event) {
+                                                var reader = new FileReader();
+                                                reader.onload = function () {
+                                                    var output = document.getElementById('output');
+                                                    output.src = reader.result;
+                                                };
+                                                reader.readAsDataURL(event.target.files[0]);
+                                            };
+                                        </script>
+
+                                        <output id="list"></output>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center"> <span class="button btn-system  prfile-upadte br-radius-4"> <span class="fileupload-new ">Update</span> </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                <h4 class="mb20 ml30">Account Settings</h4>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Email</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="email" class="form-control" placeholder="Eamil@domain.com" value="@Model.email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">User Name</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="username" class="form-control" placeholder="Username" value="@Model.username">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Password</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Confirm Password</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="short alt">
+                                <h4 class="mb20 ml30">Profile Settings</h4>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">First Name</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="firstname" class="form-control" placeholder="Firstname" value="@Model.firstname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Last Name</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="lastname" class="form-control" placeholder="Lastname" value="@Model.lastname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label ptn">Gender</label>
+
+
+                                    <div class="col-lg-1">
+                                        <div class="radio-custom mb5">
+                                            <input type="radio" id="radioExample4" name="gender" value="male" checked="@(Model.Male=="on"?true:false)">
+                                            <label for="radioExample3">Male</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="radio-custom mb5">
+                                            <input type="radio" id="radioExample3" name="gender" value="female" checked="@(Model.Female=="on"?true:false)">
+                                            <label for="radioExample3">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="short alt">
+                                <h4 class="mb20 ml30">Contact Settings</h4>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3  col-xs-3 control-label">Mobile No</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="mobile" class="form-control" placeholder="987654321" value="@Model.mobile">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Website</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                        <div class="">
+                                            <input type="text" id="inputStandard" name="website" class="form-control" placeholder="Websitename" value="@Model.website">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputStandard" class="col-lg-2 col-md-2 col-sm-2 col-xs-12 control-label"></label>
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="">
+                                            <input type="submit" id="update" class="btn btn-primary  create-submit-grnbtn border-radius99 btn-block ml15" value="Update" onclick="return Validate();">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">PRODUCT RATING &amp REVIEW</h4>
+            </div>
+            <div class="modal-body">
+                <div class="popup-content-block">
+                    <h5>Sayegh Vendor</h5>
+                    <p><img class="img-responsive ib" title="user" src="assets/img/1.png"></p>
+                    <p><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 5.5</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+
+
+<div class="clearfix"></div>
+
+<div class="row main-footer">
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#update").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+
+
+        $(".datepicker").datepicker();
+
+
+
+    });
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function (e) {
+
+
+
+        $('.selectpicker').selectpicker();
+
+
+
+    });
+
+   
+
+</script>
+
+<script type="text/jscript">
+    //get file size
+    function GetFileSize(fileid) {
+        try {
+            var fileSize = 0;
+            //for IE
+            if ($.browser.msie) {
+                //before making an object of ActiveXObject,
+                //please make sure ActiveX is enabled in your IE browser
+                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                var objFile = objFSO.getFile(filePath);
+                var fileSize = objFile.size; //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+                //for FF, Safari, Opeara and Others
+            else {
+                fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+            return fileSize;
+        }
+        catch (e) {
+            alert("Error is :" + e);
+        }
+    }
+
+    //get file path from client system
+    function getNameFromPath(strFilepath) {
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec(strFilepath);
+
+        if (strName == null) {
+            return null;
+        }
+        else {
+            return strName[0];
+        }
+    }
+
+    $("#btnSubmit").live("click", function () {
+        if ($('#fileToUpload').val() == "") {
+            $("#spanfile").html("Please upload file");
+            return false;
+        }
+        else {
+            return checkfile();
+        }
+    });
+
+    function checkfile() {
+        var file = getNameFromPath($("#fileToUpload").val());
+        if (file != null) {
+            var extension = file.substr((file.lastIndexOf('.') + 1));
+            // alert(extension);
+            switch (extension) {
+                case 'jpg':
+                case 'png':
+                case 'gif':
+                case 'pdf':
+                    flag = true;
+                    break;
+                default:
+                    flag = false;
+            }
+        }
+        if (flag == false) {
+            $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
+            return false;
+        }
+        else {
+            var size = GetFileSize('fileToUpload');
+            if (size > 3) {
+                $("#spanfile").text("You can upload file up to 3 MB");
+                return false;
+            }
+            else {
+                $("#spanfile").text("");
+            }
+        }
+    }
+
+    $(function () {
+        $("#fileToUpload").change(function () {
+            checkfile();
+        });
+    });
+
+</script>
+

@@ -1,0 +1,1063 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+        color: #ffffff;
+        text-decoration: none;
+        outline: 0;
+        background-color: #97C898;
+    }
+
+    .cancel-drop-menu > .active > a,
+    .cancel-drop-menu > .active > a:hover,
+    .cancel-drop-menu > .active > a:focus {
+        color: #ffffff;
+        text-decoration: none;
+        outline: 0;
+        background-color: #F9989C;
+    }
+
+    .btn-success:focus {
+        background: #97C898 !important;
+        border: 1px solid #97C898;
+        color: #ffffff;
+    }
+
+    .btn-table:focus {
+        background: #F9989C !important;
+        border: 1px solid #F9989C !important;
+        color: #fff !important;
+    }
+
+    .panel-heading.p-heading.border-t-l-r-no {
+        background: #ffffff;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .dash-bred-cumb {
+        padding-top: 3px !important;
+    }
+
+    span.fa.fa-angle-down {
+        float: right;
+        margin-right: 5px;
+        border-left: 1px solid #dddddd;
+        margin-top: 0;
+        height: 26px;
+        line-height: 26px;
+        padding-left: 5px;
+    }
+
+    span.fa.fa-angle-down1 {
+        float: right;
+        margin-right: 5px;
+        border-left: 1px solid #dddddd;
+        margin-top: 0;
+        height: 26px;
+        line-height: 26px;
+        padding-left: 5px;
+    }
+
+    button.inn-head-btn {
+        width: 250px;
+        height: 28px;
+        text-align: left;
+        line-height: 26px;
+        padding-left: 7px;
+        font-size: 13px !important;
+        color: #666;
+        font-weight: normal;
+        border-color: #dddddd !important;
+    }
+
+    ul.dropdown-menu.index-drpdown {
+        left: 0px !important;
+    }
+
+    .btn-group.open .dropdown-toggle {
+        box-shadow: none !important;
+    }
+
+    .datepicker-down-arrow {
+        border-left: 1px solid #ddd;
+        height: 26px;
+        margin-top: -3px;
+        line-height: 32px;
+        padding-left: 6px;
+        margin-right: -5px;
+        position: relative;
+        top: 3px;
+    }
+
+    .fa-angle-down1:before {
+        content: "\f107";
+        position: relative;
+        top: 0px;
+        left: 0px;
+        font-size: 16px;
+    }
+
+    .fa-angle-down2:before {
+        content: "\f107";
+        position: relative;
+        top: -3px;
+        left: -2px;
+        font-size: 16px;
+    }
+
+    .font {
+        font-size: 13px;
+    }
+
+    .daterangepicker.opensleft:after {
+        right: 4px;
+    }
+
+    span.inn-head-text {
+        margin-left: 13px;
+    }
+
+    .table tbody > tr:last-child > td {
+        border-bottom: none;
+    }
+
+    table.table.d2-table ul.dropdown-menu {
+        padding: 0px;
+        top: 28px !important;
+    }
+
+    table.table.d2-table .dropdown-menu > li > a:hover {
+        text-decoration: none;
+        color: #595959;
+        background-color: #f2f2f2;
+    }
+
+    .btn-group.inn-head-btn-grp.pull-right {
+        position: relative;
+        left: -2px;
+    }
+
+    .d-table > tbody > tr > td {
+        line-height: 40px !important;
+    }
+
+    .d2-table > tbody > tr > td {
+        line-height: 40px !important;
+    }
+</style>
+<div class="right_col" role="main">
+    <div class="row mb10 col-md-12 col-xs-12  mb20 top-title-bar">
+        <h1 class="main-top-header ml5">Welcome to Thiban Admin Dashboard&nbsp;<small class="small" style="  color: #47525d !important;">statistics,charts and reports</small></h1>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  inn-head  mb15">
+        <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12  pn">
+            <ol class="breadcrumb dash-bred-cumb">
+                <li><a href="#" style="    color: #57ad68;"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                <li class="ml5"><a href="#">Admin Home</a></li>
+            </ol>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12  pn ">
+            <form class="form-inline">
+
+                <div class="btn-group">
+                    <button type="button" class="btn  br-radius-4 icon-btn inn-head-btn brdr-color  dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF">
+                        Select the brand
+                        <span class="fa fa-angle-down1"></span>
+                    </button>
+                    <ul class="dropdown-menu index-drpdown" role="menu">
+                        <li><a href="#">Acqua</a></li>
+                        <li><a href="#">Panna</a></li>
+                        <li><a href="#">Alain</a></li>
+                        <li><a href="#">Kinley</a></li>
+                        <li><a href="#">Arwa</a></li>
+                    </ul>
+                </div>
+                <div class="form-group"> <span class="inn-head-text">Showing result for</span> </div>
+                <div class="btn-group inn-head-btn-grp pull-right">
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht bred-last-week">Last Week</button>
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht">Last Month</button>
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht">
+                        <div id="reportrange" style="background: #fff; cursor: pointer;right: 78.2969px;left: auto; top:200px !important; margin-top:-3px;">
+                            <span class="font"> </span> <i class="fa fa-angle-down2 datepicker-down-arrow ml5"></i>
+
+
+
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row today-panels">
+        <div class="col-sm-6 col-md-6 col-xs-12 text-center">
+            <div class="panel panel-default panel-orders">
+                <div class="panel-body">
+                    <h5 class="t-p1">TODAY'S ORDERS</h5>
+                    <div class="row brdr-top">
+                        <div class="col-md-5 col-sm-5 col-lg-5 col-xs-6 border-right mt40">
+                            <h3>1,325</h3>
+                            <h5 class="">ORDERS</h5>
+
+                        </div>
+                        <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6 text-colr mt20">
+
+                            <table id="table-sparkline" style=" margin-top: 35px !important;">
+                                <tbody id="tbody-sparkline">
+                                    <tr class="color">
+                                        <td data-sparkline="71, 78, 39, 66 " />
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="o-graph mt5">1,325 Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-12 text-center">
+            <div class="panel panel-default panel-orders">
+                <div class="panel-body">
+                    <h5 class="t-p1">TODAY'S REVENUE</h5>
+                    <div class="row brdr-top">
+                        <div class="col-md-5 col-sm-5 col-lg-5 col-xs-6 border-right mt40">
+                            <h3>1,325</h3>
+                            <h5 class="">TOTAL REVENUE</h5>
+
+                        </div>
+                        <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6 text-colr mt20">
+
+                            <table id="table-sparkline" style=" margin-top: 35px !important;">
+                                <tbody id="tbody-sparkline">
+                                    <tr class="color">
+                                        <td data-sparkline="71, 78, 39, 66 " />
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="o-graph mt5">1,325 Revenue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="clearfix"></div>
+    <div class="row bar-line-graphs">
+
+        <div class="col-sm-6 col-md-6 col-xs-12 text-center ">
+            <div class="panel panel-default">
+                <div class="panel-body trucks-bdylst">
+                    <h5 class="t-p1">DRIVER+TRUCKS</h5>
+                    <div class="row brdr-top number-trucklist">
+
+                        <p class="">NUMBER OF WORKING TRUCKS</p>
+                        <h5 class="">1,325</h5>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /graph area -->
+        <!-- line graph -->
+
+
+
+        <div class="col-sm-6 col-md-6 col-xs-12 text-center ">
+            <div class="panel panel-default">
+                <div class="panel-body trucks-bdylst">
+                    <h5 class="t-p1">ORDER STATUS</h5>
+                    <div class="row order-staus-div brdr-top  trucks-bdylst-order ">
+
+                        <div class=" col-md-8 col-lg-8 col-sm-8 col-xs-8 ">
+                            <div class="x_panel br-n">
+                                <div class="x_title br-n">
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content2">
+                                    <div id="graph_donut" style=" height:300px;"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                            <div class="">
+
+                                <ul class="total-orderslist">
+                                    <li>
+
+                                        <h5 class="">
+                                            <i class="fa fa-circle" aria-hidden="true"></i>
+
+                                            Pending Order
+                                        </h5>
+                                        <p class="">40</p>
+
+
+                                    </li>
+
+                                    <li>
+                                        <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i> Delivery Order</h5>
+                                        <p class="">30</p>
+                                    </li>
+
+                                    <li>
+                                        <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i> Cancel Order</h5>
+                                        <p class="">30</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+        <div class="panel-heading se-payments">ORDERS</div>
+        <div class="panel-body">
+            <div class="row text-center inner-row">
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no">Pending </div>
+                        <div class=" p-bdy">
+                            <h2>182</h2>
+                            <h5> SR 2500.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no ">Delivered</div>
+                        <div class="p-bdy">
+                            <h2>23358</h2>
+                            <h5> SR 2500</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no">Canceled</div>
+                        <div class="p-bdy">
+                            <h2>1,345</h2>
+                            <h5> SR 2500</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="panel panel-default  ">
+                        <div class="panel-heading p-heading border-t-l-r-no">Total</div>
+                        <div class="p-bdy">
+                            <h2>35</h2>
+                            <h5> SR 2500.00</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+        <div class="panel-heading se-payments">SALES</div>
+        <div class="panel-body">
+            <div class="row text-center inner-row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no">Revenue</div>
+                        <div class=" p-bdy">
+                            <h2>182</h2>
+                            <h5> SR 2500.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no ">Cash on Delivery</div>
+                        <div class="p-bdy">
+                            <h2>23358</h2>
+                            <h5> SR 2500</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading p-heading border-t-l-r-no">e-Payments </div>
+                        <div class="p-bdy">
+                            <h2>1,345</h2>
+                            <h5> SR 2500</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-3 col-sm-6">
+
+                    <div class="panel panel-default border-t-l-r-no ">
+
+                        <div class="panel-heading p-heading">Canceled Orders</div>
+
+                        <div class="p-bdy">
+
+                            <h2>35</h2>
+
+                            <h5> SR 2500.00</h5> </div>
+
+                    </div>
+
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default" style="margin-left:8px; margin-right:8px;">
+        <div class="panel-body list-table-heading"> TOP SELLING PRODUCT </div>
+        <div style="height: 410px; overflow: auto;">
+            <table class="table d-table">
+                <thead class="theader">
+                    <tr>
+                        <th class="text-center pl20">No</th>
+                        <th class="">Image</th>
+                        <th class="">SKU</th>
+                        <th class="">Product Title</th>
+                        <th class="">Price</th>
+                        <th class="">Sold</th>
+                    </tr>
+                </thead>
+                <tbody class="fs14">
+                    <tr>
+                        <td class="text-center pl20">01</td>
+                        <td class=""><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua Panna</td>
+                        <td class="">$25</td>
+                        <td class="">215</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20 ">02</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Monviso</td>
+                        <td class="">$15</td>
+                        <td class="">175</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">03</td>
+                        <td class=""><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Alain</td>
+                        <td class="">$06</td>
+                        <td class="">76</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">04</td>
+                        <td class=""><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Masafi</td>
+                        <td class="">$58</td>
+                        <td class="">178</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">05</td>
+                        <td class=""><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Arwa</td>
+                        <td class="">$12</td>
+                        <td class="">512</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">06</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua fresh</td>
+                        <td class="">$16</td>
+                        <td class="">315</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">07</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua fresh</td>
+                        <td class="">$16</td>
+                        <td class="">315</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">08</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua fresh</td>
+                        <td class="">$16</td>
+                        <td class="">315</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">09</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua fresh</td>
+                        <td class="">$16</td>
+                        <td class="">315</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center pl20">10</td>
+                        <td><img src="~/Content/assets/img/6.png" class="table-img"></td>
+                        <td class="">#21365</td>
+                        <td class="">Acqua fresh</td>
+                        <td class="">$16</td>
+                        <td class="">315</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-default last-table" style="margin-left:8px; margin-right:8px;">
+        <div class="panel-body list-table-heading"> TODAY ORDERS </div>
+        <div style="height: 410px; overflow: auto;">
+            <table class="table d2-table">
+                <thead class="theader">
+                    <tr>
+                        <th class="text-center pl20">Image</th>
+                        <th class="">Product Title</th>
+                        <th class="">SKU</th>
+                        <th class="">Price</th>
+                        <th class="">Volume</th>
+                        <th class="">Purchased on</th>
+                        <th class="">Payment Status</th>
+                        <th class="">Status</th>
+                        <th class="">Tracking No#</th>
+                    </tr>
+                </thead>
+                <tbody class="fs14">
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Acqua</td>
+                        <td class="">#21365</td>
+                        <td>$25</td>
+                        <td class="">5</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-default btn-table" data-toggle="dropdown" aria-expanded="false"> cancelled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li class="active"> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> On the way <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li class="active"> <a href="#">On the way</a> </li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG6JUYT73</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">MOnviso</td>
+                        <td class="">#21365</td>
+                        <td>$15</td>
+                        <td class="">12</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Paid <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Paid</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Delivery <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li class="active"> <a href="#">Delivery</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbj</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alain</td>
+                        <td class="">#21365</td>
+                        <td>$06</td>
+                        <td class="">4</td>
+                        <td class="">01/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success  " data-toggle="dropdown" aria-expanded="false"> e-Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li class="active"> <a href="#">E-Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-default  btn-table" data-toggle="dropdown"> Cancelled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu cancel-drop-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li> <a href="#">Pending</a> </li>
+                                    <li class="active"> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kb58</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Masafi</td>
+                        <td class="">#21365</td>
+                        <td>$58</td>
+                        <td class="">8</td>
+                        <td class="">29/12/2016</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Cah on Delivery<span class="caret ml5" style="margin-left:5px !important;"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Cah on Delivery</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false">Scheduled<span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Scheduled</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-warning status-btn br2 btn-xs fs12 dropdown-toggle border-radius99" data-toggle="dropdown" aria-expanded="false">Pending Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Rescheduled</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-warning status-btn br2 btn-xs fs12 dropdown-toggle border-radius99" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-info br2 btn-xs fs12 dropdown-toggle status-btn border-radius99" data-toggle="dropdown"> Suspend <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Suspend</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-warning status-btn br2 btn-xs fs12 dropdown-toggle border-radius99" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Rescheduled</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success " data-toggle="dropdown" aria-expanded="false"> Cah on Delivery<span class="caret ml5" style="margin-left:5px !important;"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li class="active"> <a href="#">Cah on Delivery</a> </li>
+                                    <li class=""> <a href="#">Pending</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Rescheduled</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-success  " data-toggle="dropdown" aria-expanded="false"> e-Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">e-Payment </a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-success" data-toggle="dropdown"> Rescheduled <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Rescheduled</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-warning status-btn br2 btn-xs fs12 dropdown-toggle border-radius99" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-info br2 btn-xs fs12 dropdown-toggle status-btn border-radius99" data-toggle="dropdown"> Suspend <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Suspend</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <img src="~/Content/assets/img/6.png" /></td>
+                        <td class="">Alian</td>
+                        <td class="">#21365</td>
+                        <td>$100</td>
+                        <td class="">30</td>
+                        <td class="">02/01/2017</td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp">
+                                <button type="button" class="btn btn-warning status-btn br2 btn-xs fs12 dropdown-toggle border-radius99" data-toggle="dropdown" aria-expanded="false"> Pending Payment <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending Payment</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="">
+                            <div class="btn-group table-btn-grp ">
+                                <button type="button" class="btn btn-warning br2 btn-xs fs12 dropdown-toggle status-btn border-radius99" data-toggle="dropdown"> Pending <span class="caret ml5"></span> </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li> <a href="#">Edit</a> </li>
+                                    <li> <a href="#">Delete</a> </li>
+                                    <li> <a href="#">Archive</a> </li>
+                                    <li class="divider"></li>
+                                    <li> <a href="#">Complete</a> </li>
+                                    <li class="active"> <a href="#">Pending</a> </li>
+                                    <li> <a href="#">Canceled</a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>#BG56kbjgygfs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-default" style="margin-left:8px; margin-right:8px; border-bottom:none;">
+        <div class="panel-heading map-panel brdr-top-none">VEHICAL TARCKING MAP</div>
+        <div class="panel-body">
+            <iframe src="https://google-developers.appspot.com/maps/documentation/javascript/examples/full/drawing-tools" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row main-footer">
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </div>
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+
+<script>
+
+
+
+            $(document).ready(function () {
+
+
+
+                $(".datepicker").datepicker();
+
+
+
+            });
+
+
+
+</script>
+
+<script type="text/javascript">
+
+
+
+            $(document).ready(function (e) {
+
+
+
+                $('.selectpicker').selectpicker();
+
+
+
+            });
+
+
+
+</script>

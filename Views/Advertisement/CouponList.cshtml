@@ -1,0 +1,347 @@
+﻿@model IEnumerable<Final_ThibanProject.Models.Coupon>
+
+@{
+    ViewBag.Title = "CouponList";
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
+}
+
+<style>
+    .main-promotion-section .datepicker-down-arrow {
+        border-left: 1px solid #ddd;
+        height: 26px;
+        margin-top: -8px;
+        line-height: 30px;
+        padding-left: 5px;
+        margin-right: -5px;
+        position: relative;
+        top: 4px;
+        left: -4px;
+        font-size: 16px;
+    }
+
+    .main-promotion-section .fa-angle-down:before {
+        content: "\f107";
+        position: relative;
+        top: -2px;
+    }
+
+    .main-promotion-section span.inn-head-text {
+        margin-left: 19px !important;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #47525d;
+        top: 0px;
+    }
+
+    .main-promotion-section i.fa-angle-down:before {
+        content: "\f107";
+        position: relative;
+        top: -2px;
+    }
+
+    .main-promotion-section span.fa-angle-down:before {
+        content: "\f107";
+        position: relative;
+        top: 0px;
+    }
+      .modal-submit{
+           border-radius: 99em;
+    padding: 5px 15px;
+               color: #fff;
+    background-color: #57ad68 !important;
+    border-color: #4d9e5d !important;
+       }
+     .modal-submit:hover{
+         
+               color: #57ad68;
+    background-color: #fff !important;
+       }
+       .modal-header .close {
+    margin-top: -15px;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 99em;
+    left: 40px;
+    opacity: initial;
+    color: #fff;
+           font-size: 14px;
+           font-weight: 100;
+        
+    background-color: #57ad68 !important;
+    border-color: #4d9e5d !important;
+}
+    .fa-remove:before, .fa-close:before, .fa-times:before {
+    content: "\f00d";
+   left: 6px;
+    position: relative;
+    top: 4px;
+
+}
+</style>
+
+<!-- Start: Content-Wrapper -->
+
+<div class="right_col main-promotion-section" role="main">
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 top-title-bar">
+        <h1 class="main-top-header">Thiban Vendor Add Promotion Code </h1>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 inn-head mb15">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <ol class="breadcrumb dash-bred-cumb">
+                <li> <a href="#" class="fs14"><span><img src="~/Content/assets/img/bred-home.png" />></span> Home</a></li>
+                <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                <li class="ml5"><a href="~/Advertisement/AddCoupon" class="fs14">Vendor Add Add Promotion Code</a> </li>
+            </ol>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 add-promotion-pagination pr-no">
+            <form class="form-inline pull-right">
+                <div class="form-group"> <span class="inn-head-text">Showing result for</span> </div>
+                <div class="btn-group inn-head-btn-grp">
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht">Last Week</button>
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht">Last Month</button>
+                    <button type="button" class="btn btn-default inn-head-btn1 bg-wht">
+                        <div id="reportrange" style="background: #fff; cursor: pointer;right: 78.2969px;left: auto; top:200px !important;"> <span class="font promotion-datepicker">January 19, 2017 - February 17, 2017</span> <i class="fa fa-angle-down  datepicker-down-arrow ml5"></i> </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 mt5 border-round">
+                <div class="panel-body ">
+                    <div class="tab-content pn br-n admin-form">
+                        <div id="tab1_1" class="tab-pane active main-addvertis-header">
+                            <div class="heading-title">
+                                <h3 class="panel-title role_h3 addvertis-header"> Add PROMOTION CODE</h3>
+                            </div>
+                            <p class="role_p"> Add a Promotion code for Best Offers </p>
+                            <a href="~/Advertisement/AddCoupon" class="btn border-radius99    btn-md ">Add a Promotion Code </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- recent orders table -->
+
+            <div class="panel border-round">
+                <div class="panel-menu p12 admin-form pb5 theme-primary border-t-l-r-no">
+                    <div class="heading-title list-items">
+                        <h1 class="panel-title">LIST OF PROMOTION CODE</h1>
+                    </div>
+                    <div class="row pagination-block main-advertis-pagin  font-size-13 admin-agintion mn brdr-top-none">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                            <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                <div class="pagination-panel">
+                                    Page &nbsp; <a href="#" class="btn btn-sm default prev disabled"> <i class="fa fa-angle-left"></i></a>
+                                    <input class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" placeholder="1" style="text-align:center; margin: 0 5px;" type="text">
+                                    <a href="#" class="btn btn-sm default next"><i class="fa fa-angle-right"></i></a> of <span class="pagination-panel-total">18 &nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="dataTables_length">
+                                <label>
+                                    <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                </label>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> 10 <span class="fa fa-angle-down down-number-btn"></span></button>
+                                    <span class="records">records</span>
+                                    <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+                                        <li><a href="#"> 20</a></li>
+                                        <li><a href="#"> 30</a></li>
+                                        <li><a href="#"> 40 </a></li>
+                                        <li><a href="#"> 50</a></li>
+                                        <li><a href="#"> 60</a></li>
+                                        <li><a href="#"> 70</a></li>
+                                        <li><a href="#"> 80 </a></li>
+                                        <li><a href="#"> 90</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total 178 records </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                            <div class="table-group-actions pull-right">
+                                <span></span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                    <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                        <li>Edit</li>
+                                        <li>Delete</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body pn">
+                    <div class="table-responsive">
+                        <table class="table admin-form theme-warning tc-checkbox-1 ">
+                            <thead>
+                                <tr class="fs13 clr-blck">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn"></span>
+                                        </label>
+                                    </th>
+                                    <th class="">Promo Code</th>
+                                    <th class="">Discount</th>
+                                    <th class="">Valid From Date</th>
+                                    <th class="">Valid To Date</th>
+                                    <th class="">Staus</th>
+                                    <th class="">Edit</th>
+                                    <th class="">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="t-m-tr" id="@item.Couponid">
+                                        <td class="text-center" data-val-col="checkbox" data-val="false">
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+                                        <td style="display:none;" id="couponid" data-val-col="Email" data-val="@item.Couponid" class="">@item.Couponid</td>
+                                        <td id="couponcode" data-val-col="CouponCode" data-val="@item.couponcode">#@item.couponcode </td>
+                                        <td id="discount" data-val-col="Discount" data-val="@item.discount" class="">@item.discount%</td>
+                                        <td id="startdate" data-val-col="StartDate" data-val="@item.validstartdate" class="">@item.validstartdate</td>
+                                        <td id="enddate" data-val-col="EndDate" data-val="@item.validenddate" class="">@item.validenddate</td>
+                                        <td id="status" data-val-col="Status" data-val="@item.status" class="">@item.status</td>
+                                        <td><button class="btn btn-default  btn-sm   edit_btn" type="button" data-toggle="modal" data-target="#myModal">Edit</button></td>
+                                        <td><button class="btn btn-default btn-sm   delete_btn" type="button" data-toggle="modal" data-target="#myModal">Delete</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+<!--Footer Content-->
+<div class="row main-footer">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+<script src="~/Content/assets/js/raphael.min.js"></script>
+<script src="~/Content/assets/js/Chart.min.js"></script>
+<script src="~/Content/assets/js/morris.min.js"></script>
+<script src="~/Content/assets/js/custom.min.js"></script>
+<script src="~/Content/assets/js/wizard.js"></script>
+<script src="~/Content/assets/js/date.js"></script>
+<script src="~/Content/assets/js/moment.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Content/assets/js/visitor.js"></script>
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker();
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(document).delegate('.delete_btn', 'click', function (e) {
+            debugger;
+            if (confirm("Are you sure you want to delete this Record?")) {
+                var currentRow = $(this).closest("tr");
+                var col1 = currentRow.find("#couponid").text();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("DeleteCoupon","Advertisement")",
+                    ajaxasync: true,
+                    data: { id: col1 },
+                    success: function () {
+                        // Perform redirect
+                        window.location.reload(true);
+                    },
+                    error: function (data) {
+                        alert(data.x);
+                    }
+                });
+            }
+            return false;
+        });
+
+        $('.edit_btn').click(function () {
+            $('#myModal').modal('show');
+            debugger;
+            var couponid = parseInt($(this).parent().siblings('#couponid').text());
+            var couponcode = $(this).parent().siblings('#couponcode').text();
+            var discount = parseInt($(this).parent().siblings('#discount').text());
+            var startdate = $(this).parent().siblings('#startdate').text();
+            var enddate = $(this).parent().siblings('#enddate').text();
+            var status = $(this).parent().siblings('#status').text();
+            var isSucess = -1;
+            var coupondata = {
+                "Couponid": couponid,
+                "CouponCode": couponcode,
+                "discount": discount,
+                "StartDate": startdate,
+                "EndDate": enddate,
+                "Status": status
+            };
+            $.ajax({
+                url: '/Advertisement/UpdateData/',
+                data: JSON.stringify(coupondata),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                sucess: function (result) {
+                    isSuccess = result;
+                },
+                error: function (result) {
+                    isSuccess = result;
+                }
+            }).done(function () {
+                if (isSucess == 1) {
+                    alert("successfully saved");
+                } else {
+                    alert("Please check data once");
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,115 @@
+﻿@model Final_ThibanProject.Models.Coupon
+
+<style>
+           .modal-submit{
+           border-radius: 99em;
+    padding: 5px 15px;
+               color: #fff;
+    background-color: #57ad68 !important;
+    border-color: #4d9e5d !important;
+       }
+     .modal-submit:hover{
+         
+               color: #57ad68;
+    background-color: #fff !important;
+       }
+       .modal-header .close {
+    margin-top: -15px;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 99em;
+    left: 40px;
+    opacity: initial;
+    color: #fff;
+           font-size: 14px;
+           font-weight: 100;
+        
+    background-color: #57ad68 !important;
+    border-color: #4d9e5d !important;
+}
+    .fa-remove:before, .fa-close:before, .fa-times:before {
+    content: "\f00d";
+   left: 6px;
+    position: relative;
+    top: 4px;
+
+}
+</style>
+
+
+
+
+<!-- MODAL-START-HERE-->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <i class="fa fa-times close" aria-hidden="true" data-dismiss="modal"></i>
+                <h4 class="modal-title">EDIT PROMOTION CODE</h4>
+            </div>
+            <div class="modal-body">
+                <div class="popup-content-block">
+                    <div class="">
+                        <div class="">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- Form Name -->
+                                    <!-- Text input-->
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="requestName">Promo Code&nbsp;:</label>
+                                        <div class="col-md-8">
+                                            <input name="requestName" placeholder="Promo Code" class="form-control input-md" required="" type="text">
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="company_name">Discount</label>
+                                        <div class="col-md-8">
+                                            <input name="company_name" placeholder="Discount" class="form-control input-md" required="" type="text">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="requestName">From Date&nbsp;:</label>
+                                        <div class="col-md-8">
+                                            <input name="requestName" placeholder="Valid From Date" class="form-control input-md" required="" type="text">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="requestName">To Date&nbsp;:</label>
+                                        <div class="col-md-8">
+                                            <input name="requestName" placeholder="Valid to Date" class="form-control input-md" required="" type="text">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="submit"></label>
+                                        <div class="col-md-4">
+                                            <button id="submit" name="submit" class="btn btn-default modal-submit">Submit</button>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL-END-HERE-->

@@ -1,0 +1,1413 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderProductManagement
+@{
+   // ViewBag.Title = "VenderRedirectIndex";
+    Layout = null;
+}
+<!--vender header-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THIBAN-VENDOR-DASHBOARD</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font-Styles -->
+    <!--   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">-->
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/custom.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
+    <style>
+        .nav_menu {
+            border-bottom: none;
+        }
+
+        .bg {
+            background: #fff;
+        }
+
+        .menu_section {
+            margin-bottom: 0px;
+        }
+        /*ul.nav.navbar-nav.navbar-right {
+            width: 60%;
+        }*/
+        .nav_title {
+            width: 233px;
+        }
+
+        input, select, textarea {
+            border-radius: 3px !important;
+        }
+
+        ul.dropdown-menu.side-dropdown {
+            position: absolute;
+            top: 48px !important;
+            left: 0px !important;
+            border: 1px solid #eee !important;
+            border-radius: 1px;
+            background: #f2f2f2 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            background-clip: none !important;
+        }
+
+            ul.dropdown-menu.side-dropdown a {
+                color: #888 !important;
+            }
+
+        .dropdown:hover ul.dropdown-menu.side-dropdown {
+            display: block;
+            padding: 0px;
+        }
+
+        .dropdown.current-page.active .side-dropdown {
+            display: none !important;
+        }
+
+        .dropdown.current-page.active:hover .side-dropdown {
+            display: block !important;
+        }
+
+        .left_col {
+            background: #f7f7f7;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100% !important;
+            position: fixed;
+        }
+
+        .col-md-3.left_col {
+            overflow: hidden;
+        }
+
+        .nav-sm #menu_toggle {
+            margin-left: 10px;
+        }
+
+        .nav-sm .navbar-search {
+            margin-left: 0px;
+        }
+
+        .side-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2;
+        }
+
+        li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
+            display: block !important;
+        }
+
+        .side-dropdown li a {
+            background: #f7f7f7 !important;
+            color: #888 !important;
+        }
+
+            .side-dropdown li a:hover {
+                background: #f2f2f2 !important;
+                color: #222;
+            }
+
+        ul.nav.side-menu.sub-menu li a {
+            padding-left: 30px;
+        }
+
+        ul.nav.side-menu li.active a {
+            background: transparent !important;
+            color: #888;
+        }
+
+        ul.nav.side-menu.sub-menu li.current-page a {
+            color: #57ad68 !important;
+            background: #f2f2f2 !important;
+        }
+
+        a.dropdown-sub-menu {
+            padding-left: 40px !important;
+        }
+
+        a.drop-down-mainmenu {
+            cursor: default;
+        }
+
+        .dropdown-sub-menu img {
+            width: 16px !important;
+        }
+
+        a.drop-down-mainmenu {
+            color: #687888 !important;
+            font-weight: 400 !important;
+            font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+        }
+
+            a.drop-down-mainmenu:hover {
+                color: #687888 !important;
+            }
+        /*   input.form-control {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-left: 0px;
+        }
+         form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
+                border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            background: #fff;
+            border-right: 0px;
+        }
+         form.navbar-form.navbar-left input.form-control{
+             border-top-right-radius: 25px !important;
+            border-bottom-right-radius: 25px !important;
+            border-top-left-radius: 1px !important;
+            border-bottom-left-radius: 0px !important;
+            padding-left:0px;
+            border-color: #dddddd !important;
+        }*/
+    </style>
+</head>
+
+<body class="nav-md">
+@using (Html.BeginForm("VenderProductManagement", "Vender", new { @class = "text-left" }))
+                                        {
+    <div class="container body main-container-body">
+        <div class="main_container">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title">
+                                <a href="vendor-index.php" class="site_title">
+                                    <span class="main-heading">
+                                        <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!-- sidebar menu -->
+
+                            <ul class="nav side-menu">
+                                <li class="">
+                                    <a href="vendor-index.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" alt="">
+                                        <span class="sidebar-title"> Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" alt="">
+                                        <span class="sidebar-title">Management </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_product-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" alt="">
+                                        <span class="sidebar-title"> Product </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" alt="">
+                                        <span class="sidebar-title">Order</span>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" alt="">
+                                        <span class="sidebar-title">Rating and Review </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" alt="">
+                                        <span class="sidebar-title">Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" alt="">
+                                        <span class="sidebar-title">Driver</span>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor-analytics.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" alt="">
+                                        <span class="sidebar-title">Analytics </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-geo-fence.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/new-geo-fenece.png" alt="">
+                                        <span class="sidebar-title">Geo Fence</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="#" class="drop-down-mainmenu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" alt="">
+                                        <span class="sidebar-title">Team</span>
+                                    </a>
+
+                                </li>
+
+
+                                <li>
+                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Team Member</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
+                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
+                                        <span class="sidebar-title">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="vendor_add-advertisement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
+                                        <span class="sidebar-title"> advertisement </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor_add-promotioncode.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" alt="">
+                                        <span class="sidebar-title"> Promotion Code </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vendor-downloads.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" alt="">
+                                        <span class="sidebar-title">Downloads </span>
+                                    </a>
+                                </li>
+                                <li class="new-smallimgs">
+                                    <a href="user-agreement.php">
+                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" alt="">
+                                        <span class="sidebar-title"> Settings </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="navbar navbar-default bg">
+                        <div class="container-fluid">
+                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                                <div class="form-group serch-div">
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon">
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+                                </div>
+                            </form>
+                            <!--<form class="navbar-form navbar-left">
+                              <div class="input-group">
+                               <div class="input-group-btn">
+                                  <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                  </button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search">
+
+                              </div>
+                            </form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav top-nav-menu pull-right">
+
+
+                                    <li><a href="">English</a></li>
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color:#57ad68 !important">
+                                            <!--<i class="fa fa-envelope-o"></i>
+                                                  <span class="badge bg-green">6</span>-->
+                                            Seller support
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                            <div class="img-user-pic">
+                                                <div class=" col-md-5 col-sm-5 col-xs-4">
+                                                    <div class="user-profile-photo"> <span><img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round "> <span> <img src="assets/img/images/user.png" class="img-responsive user-photo"></span> </span> </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                                                    <div class=" user-txt">
+                                                        <h3> Kinely seller</h3>
+                                                        <p>aamirali@gmail.com</p>
+                                                    </div>
+                                                </div>
+                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+                                            <li class="list-group-item">
+                                                <a href="#" class="animated animated-short fadeInUp ">
+                                                    Amair Ali<br>
+                                                    aamirali@gmail.com
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item"> <a href="user-agreement.php" class="animated animated-short fadeInUp"> Profile </a> </li>
+                                        </ul>
+                                    </li>
+                                    <li class=""> <a href="login.php" aria-expanded="false"> <img src="~/Content/assets/img/side-menu-icons/logout.png" class="logout-img" style="" alt="1"> <span>Logout</span> </a> </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!--vender end -->
+            <style>
+                .md-size-list {
+                    padding: 0px;
+                    overflow-y: scroll;
+                }
+
+
+
+                .bootstrap-select.btn-group .dropdown-toggle .caret {
+                    width: 10px;
+                    height: 10px;
+                    border: none;
+                    font-family: 'Glyphicons Halflings';
+                    display: none;
+                }
+
+
+
+                    .bootstrap-select.btn-group .dropdown-toggle .caret:before {
+                        content: "";
+                    }
+
+
+
+                .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+                    width: 240px;
+                    margin-left: -6px;
+                    margin-top: -12px;
+                }
+
+                button.btn.dropdown-toggle.btn-default {
+                    border-radius: 4px;
+                    background: #fff;
+                    border-color: #ccc;
+                }
+
+                .admin-form .select {
+                    z-index: inherit !important;
+                }
+
+                .dropdown-menu.open {
+                    position: absolute;
+                    top: 40px !important;
+                }
+
+                ul.dropdown-menu.inner {
+                    max-height: 300px !important;
+                    overflow-y: auto !important;
+                    min-height: 0px !important;
+                }
+
+                    ul.dropdown-menu.inner li a:hover {
+                        background: #2196F3 !important;
+                        color: #fff !important;
+                    }
+
+                    ul.dropdown-menu.inner li a {
+                        font-size: 16px;
+                    }
+
+                .admin-form .select option {
+                    background: #fff;
+                    font-size: 14px;
+                }
+
+                .product-mangemnet-font .filter-selection-box {
+                    font-size: 14px !important;
+                    font-weight: 400 !important;
+                    color: #5c5c5c !important;
+                }
+
+
+
+                .dropdown-toggle.btn-default:hover {
+                    background-color: transparent !important;
+                }
+
+                input[type="text"]::-webkit-input-placeholder {
+                    color: #5c5c5c;
+                }
+
+                i.arrow.double.sideone {
+                    right: 0px !important;
+                }
+
+                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light::-webkit-input-placeholder {
+                    color: #fff !important;
+                }
+
+                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light {
+                    margin-left: -2px;
+                    clear: both;
+                    margin-bottom: 20px;
+                    height: 36px;
+                    line-height: 36px;
+                }
+
+                span.button.btn-system.btn-file.btn-block.border-radius99.ml5 {
+                    height: 30px;
+                    line-height: 30px;
+                    color: #fff;
+                    background-color: #57ad68 !important;
+                    border-color: #4d9e5d !important;
+                }
+
+                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light {
+                    height: 30px;
+                    line-height: 30px;
+                    border-color: #ddd !important;
+                }
+
+                input:hover, select:hover, textarea:hover {
+                    border-color: #ccc !important;
+                }
+
+                .form-control:focus {
+                    border-color: #afafaf !important;
+                }
+
+                button.btn.btn-default.sellct-button {
+                    background: #fff !important;
+                }
+
+                .pagination-block button.btn.btn-default.dropdown-toggle.select-btn-right {
+                    background: #fff !important;
+                }
+
+
+
+                .btn-group.open .dropdown-toggle {
+                    box-shadow: none !important;
+                }
+
+
+
+                .filter-selectpicker i.arrow.double {
+                    top: 1px !important;
+                    right: 0px !important;
+                }
+
+                .filter-selectpicker .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+                    width: 330px;
+                    margin-left: -6px;
+                    margin-top: 0px;
+                }
+
+                .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+                    width: 240px;
+                    margin-left: -6px;
+                    margin-top: 15px;
+                }
+
+                .main-vndrproduct-section input#email {
+                    padding-left: 10px;
+                }
+            </style>
+
+            <!-- Start: Content-Wrapper -->
+
+            <div class="right_col main-vndrproduct-section" role="main">
+                <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+                    <h1 class="main-top-header">Thiban Vendor Product Management</h1>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row mb10  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="inner-header  bred-inner-header mb20">
+                        <div class="bread-cumLeft">
+                            <ol class="breadcrumb dash-bred-cumb">
+                                <li><a href="#"> <span><img src="~/Content/assets/img/bred-home.png"></span> Home</a></li>
+                                <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                                <li class="ml5"><a href="#">Vendor Product Management</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begin: Content -->
+
+                <section id="content" class="table-layout animated fadeIn">
+
+                    <!-- begin: .tray-center -->
+
+                    <div class="tray tray-center product-mangemnet-font">
+
+                        <!-- create new order panel -->
+
+                        <div class="panel mb25 border-round ">
+                            <div class="heading-title">
+                                <h1 class="panel-title main-lft-hdr"> Product</h1>
+                            </div>
+                            <div class="panel-heading br-n pt5 lh30"> <span class="panel-title hidden-xs font-size-12 pl25 panel-sub-content "> Add New Product</span> </div>
+                            <div class="panel-body p20 pb10">
+                                <div class="tab-content pn br-n admin-form">
+                                    <div id="tab1_1" class="tab-pane active">
+                                        <div class="row">
+                                            <div class=" col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                                <div class="fileupload fileupload-new admin-form vendor_form" data-provides="fileupload">
+                                                    <div class="fileupload-preview thumbnail mb10 file-uploading width96"> <img src="~/Content/assets/img/upload.png" alt="holder"> </div>
+                                                    <div class="row pt10 mb10">
+                                                        <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-7  pr5 pad-no">
+                                                            <input type="text" name="name2" id="name2" class="text-center filter-selection-box border-radius99  event-name gui-input br-light" placeholder="Img Keywords">
+                                                            <label for="name2" class="field-icon"></label>
+                                                        </div>
+                                                        <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-5  pr-no">
+                                                            <span class="button btn-system btn-file btn-block  border-radius99 ml5">
+                                                                <span class="fileupload-new  border-radius99 ">Select</span> <span class="fileupload-exists  border-radius99">Change</span>
+                                                                <input type="file">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pn">
+                                                        <label class="field select mb5 ">
+                                                            @*<select id="filter-status" name="filter-status" class=" selectpicker form-control V_select filter-selection-box br-radius-4" placeholder="Volume">
+                                                                <option value="0">Average Composition PPM</option>
+                                                                <option>10</option>
+                                                                <option>20</option>
+                                                                <option>30</option>
+                                                                <option>40</option>
+                                                                <option>50</option>
+                                                                <option>60</option>
+                                                                <option>70</option>
+                                                                <option>80</option>
+                                                                <option>90</option>
+                                                                <option>100</option>
+                                                            </select>*@
+                                                            @Html.DropDownListFor(model => model.AverageCompositionPPM, (IEnumerable<SelectListItem>)ViewData["listAverageCompositionPPM"], new { @name = "AverageCompositionPPM", @class = "selectpicker form-control V_select filter-selection-box br-radius-4", @id = "AverageCompositionPPM" })
+
+
+
+                                                            <i class="arrow double"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            @*<input type="text" class="form-control filter-selection-box mb5" id="email" placeholder="Water Product">*@
+                                                            @Html.TextBoxFor(model => model.product_title, new { @name = "product_title", @id = "product_title", @class = "form-control filter-selection-box mb5", @placeholder = "Water Product" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    @*<select id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                        <option value="0" avtive="">Brand Name</option>
+                                                                        <option value="1">Aqua Panna</option>
+                                                                        <option value="2">Kinley</option>
+                                                                        <option value="3">Arwa</option>
+                                                                        <option value="4">Alain</option>
+                                                                        <option value="4">Monvio</option>
+                                                                    </select>*@
+                                                                    @Html.DropDownListFor(model => model.brand, (IEnumerable<SelectListItem>)ViewData["BrandName"], new { @name = "brand", @class = "selectpicker form-control V_select filter-selection-box br-radius-4", @id = "brand" })
+
+
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    @*<select id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                        <option value="0" avtive>Product Availability</option>
+                                                                        <option value="1">In Stock</option>
+                                                                        <option value="2">Out of Stock</option>
+                                                                    </select>*@
+
+                                                                    @Html.DropDownListFor(model => model.ProductAvaibility, (IEnumerable<SelectListItem>)ViewData["ProductAvailability"], new { @name = "ProductAvailability", @class = "form-control V_select filter-selection-box", @id = "ProductAvailability" })
+
+
+
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5 ">
+                                                                    @*<select id="filter-status" name="filter-status" class=" selectpicker form-control V_select filter-selection-box br-radius-4" placeholder="Volume">
+                                                                        <option value="0">Volume</option>
+                                                                        <option value="1">200 ml</option>
+                                                                        <option value="1">250 ml</option>
+                                                                        <option value="2">500 ml</option>
+                                                                        <option value="3">750 ml</option>
+                                                                        <option value="4">1 liter</option>
+                                                                        <option value="5">2 liter</option>
+                                                                        <option value="6">5 liter</option>
+                                                                        <option value="7">10 liter</option>
+                                                                        <option value="8">20 liter</option>
+                                                                        <option value="8">30 liter</option>
+                                                                    </select>*@
+                                                                    @Html.DropDownListFor(model => model.volume, (IEnumerable<SelectListItem>)ViewData["listVolume"], new { @name = "volume", @class = " selectpicker form-control V_select filter-selection-box br-radius-4", @id = "volume" })
+
+
+
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" class="form-control V_select filter-selection-box br-radius-4" placeholder="Bottle Material">
+                                                                        <option value="-1">Bottle Material</option>
+                                                                        <option value="0">Plastic Bottle </option>
+                                                                        <option value="1">Glass bottles</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Bottle Per Box">
+                                                                        <option value="">Bottle Per Box</option>
+                                                                        <option value="0">10</option>
+                                                                        <option value="1">20</option>
+                                                                        <option value="2">30</option>
+                                                                        <option value="3">40</option>
+                                                                        <option value="4">50</option>
+                                                                        <option value="5">60</option>
+                                                                        <option value="6">70</option>
+                                                                        <option value="7">80</option>
+                                                                        <option value="8">90</option>
+                                                                        <option value="9">100</option>  
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class=" selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Ph Number">
+                                                                        <option value="-1">PH Number</option>
+                                                                        <option value="0">3.0 PH</option>
+                                                                        <option value="1">3.5 PH</option>
+                                                                        <option value="2">4.0 PH</option>
+                                                                        <option value="3">4.5 PH</option>
+                                                                        <option value="4">5.0 PH</option>
+                                                                        <option value="5">5.5 PH</option>
+                                                                        <option value="6">6.0 PH</option>
+                                                                        <option value="7">6.5 PH</option>
+                                                                        <option value="8">7.0 PH</option>
+                                                                        <option value="9">7.5 PH</option>
+                                                                        <option value="10">8.0 PH</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select">
+                                                                    @*<input type="text" id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Customer price">*@
+                                                                    @Html.TextBoxFor(model => model.customer_price, new { @name = "customer_price", @id = "customer_price", @class = "form-control V_select filter-selection-box", @placeholder = "Customer price" })
+
+
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select">
+                                                                    @*<input type="text" id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Customer store price">*@
+                                                                    @Html.TextBoxFor(model => model.store_price, new { @name = "store_price", @id = "store_price", @class = "form-control V_select filter-selection-box", @placeholder = "Customer store price" })
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class=" selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                        <option value="0" avtive>Customer Minimum Order</option>
+                                                                        <option value="1">10</option>
+                                                                        <option value="2">15</option>
+                                                                        <option value="3">20</option>
+                                                                        <option value="4">25</option>
+                                                                        <option value="5">30</option>
+                                                                        <option value="6">35</option>
+                                                                        <option value="7">40</option>
+                                                                        <option value="8">45</option>
+                                                                        <option value="9">50</option>
+                                                                        <option value="10">55</option>
+                                                                        <option value="11">60</option>
+                                                                        <option value="12">65</option>
+                                                                        <option value="13">70</option>
+                                                                        <option value="13">75</option>
+                                                                        <option value="14">80</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class="selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                        <option value="0" avtive>Conventional store Minimum Order</option>
+                                                                        <option value="1">10</option>
+                                                                        <option value="2">15</option>
+                                                                        <option value="3">20</option>
+                                                                        <option value="4">25</option>
+                                                                        <option value="5">30</option>
+                                                                        <option value="6">35</option>
+                                                                        <option value="7">40</option>
+                                                                        <option value="8">45</option>
+                                                                        <option value="9">50</option>
+                                                                        <option value="10">55</option>
+                                                                        <option value="11">60</option>
+                                                                        <option value="12">65</option>
+                                                                        <option value="13">70</option>
+                                                                        <option value="13">75</option>
+                                                                        <option value="14">80</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
+                                                                        <option value="0" avtive>Customer Maximum Order Quality</option>
+                                                                        <option value="1">10</option>
+                                                                        <option value="2">15</option>
+                                                                        <option value="3">20</option>
+                                                                        <option value="4">25</option>
+                                                                        <option value="5">30</option>
+                                                                        <option value="6">35</option>
+                                                                        <option value="7">40</option>
+                                                                        <option value="8">45</option>
+                                                                        <option value="9">50</option>
+                                                                        <option value="10">55</option>
+                                                                        <option value="11">60</option>
+                                                                        <option value="12">65</option>
+                                                                        <option value="13">70</option>
+                                                                        <option value="13">75</option>
+                                                                        <option value="14">80</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <label class="field select mb5">
+                                                                    <select id="filter-status" name="filter-status" class=" selectpicker br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
+                                                                        <option value="0" avtive>Conventional store Miximum Order Quality</option>
+                                                                        <option value="1">10</option>
+                                                                        <option value="2">15</option>
+                                                                        <option value="3">20</option>
+                                                                        <option value="4">25</option>
+                                                                        <option value="5">30</option>
+                                                                        <option value="6">35</option>
+                                                                        <option value="7">40</option>
+                                                                        <option value="8">45</option>
+                                                                        <option value="9">50</option>
+                                                                        <option value="10">55</option>
+                                                                        <option value="11">60</option>
+                                                                        <option value="12">65</option>
+                                                                        <option value="13">70</option>
+                                                                        <option value="13">75</option>
+                                                                        <option value="14">80</option>
+                                                                    </select>
+                                                                    <i class="arrow double"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid #e5e5e5;padding-bottom: 20px;">
+                                            @*<textarea style="height: 160px;" class=" from-control gui-textarea br-light text-btm filter-selection-box" id="comment"
+                                                      name="comment" placeholder="Product Description"></textarea>*@
+                                            @Html.TextAreaFor(model => model.description, new { @name = "description", @id = "description", @class = "from-control gui-textarea br-light text-btm filter-selection-box", @placeholder = "Product Description" })
+
+
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <hr>
+                                        <div class="section row mbn">
+                                            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+                                                <p class="text-left vendor_save">
+
+                                                    <!-- <input type="checkbox">&nbsp;
+
+                                                    <span class="checkbox mn"></span>-->
+
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobiles" value="FR">
+                                                        <span class="checkbox mn"></span> <span class="font-size-13">&nbsp;Save Product - A Random Unique ID will be generated</span>
+                                                    </label>
+                                                    <span> </span>
+                                                </p>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                                                <p class="text-right">
+                                                    <button class="btn btn-primary  border-radius99 prduct-save-btn" type="submit">Save</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- recent orders table -->
+
+                        <div class="panel border-round">
+                            <div class="panel-menu p12 admin-form theme-primary brdr-none">
+                                <div class="heading-title list-items">
+                                    <h1 class="panel-title vndr-prduct-lst">List of products</h1>
+                                </div>
+                                <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
+                                    <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                                        <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                            <div class="pagination-panel">
+                                                Page &nbsp; <a href="#" class="btn btn-sm default prev disabled"> <i class="fa fa-angle-left"></i></a>
+                                                <input class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" placeholder="1" style="text-align:center; margin: 0 5px;" type="text">
+                                                <a href="#" class="btn btn-sm default next"><i class="fa fa-angle-right"></i></a> of <span class="pagination-panel-total">18 &nbsp;</span>
+                                            </div>
+                                        </div>
+                                        <div class="dataTables_length">
+                                            <label>
+                                                <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> 10 <span class="fa fa-angle-down down-number-btn"></span></button>
+                                                    <span class="records">records</span>
+                                                    <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+                                                        <li><a href="#">20</a></li>
+                                                        <li><a href="#"> 30</a></li>
+                                                        <li><a href="#"> 40 </a></li>
+                                                        <li><a href="#"> 50</a></li>
+                                                        <li><a href="#">60</a></li>
+                                                        <li><a href="#"> 70</a></li>
+                                                        <li><a href="#"> 80 </a></li>
+                                                        <li><a href="#"> 90</a></li>
+                                                    </ul>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total 178 records </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                                        <div class="table-group-actions pull-right">
+                                            <span></span>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                                <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                            <button class="btn btn-sm btn-default table-group-action-submit"> <i class="fa fa-check"></i> Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<div class=" row new-pagination-div">
+                                  <div class=" col-lg-8  col-md-8 col-sm-8 col-xs-8 fs13 fw600 mt5" style="color:#393939">
+                                   <div class="pagination-left-content">
+                                                 <span>Page
+                                                 <a href="#" class="side-arrows"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                                            </a>
+                                            <span class=""><input type="text" placeholder="1" class="text-center input-sm input-inline pl-no pr-no input-box" maxlength="5"></span>
+                                                 <a href="#" class="side-arrows"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </a>
+                                            <span>Of 10&nbsp;|&nbsp;View</span>
+                                            <button class="btn btn-default dropdown-toggle btn-sm numer-dropdown" type="button" data-toggle="dropdown"><span class="mr10">10</span>
+                                              <span class="fa fa-angle-down down-number-btn-new"></span></button>&nbsp;records
+                                              <span>&nbsp;|&nbsp;Found total 178 records</span>
+                                              <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn">
+                                                <li><a href="#">10</a></li>
+                                                <li><a href="#">20</a></li>
+                                                <li><a href="#">30</a></li>
+                                                <li><a href="#">40</a></li>
+                                                <li><a href="#">50</a></li>
+                                                <li><a href="#">60</a></li>
+                                                <li><a href="#">70</a></li>
+                                                <li><a href="#">80</a></li>
+                                                <li><a href="#">90</a></li>
+                                                <li><a href="#">100</a></li>
+
+                                              </ul>
+
+                                                 </span>
+                                  </div>
+                                 </div>
+
+                                 <div class=" col-lg-4 col-md-4  col-sm-4 c col-xs-4 mt5 fs13">
+                                   <div class="pagination-right-content pull-right">
+
+                                     <div class="dropdown">
+                                  <button class="btn btn-default btn-sm dropdown-toggle select-dropdown-pagi" type="button" data-toggle="dropdown"><span class="mr15 ml15">Select</span>
+                                  <span class="fa fa-angle-down down-btn-new"></span></button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">Edit</a></li>
+                                    <li><a href="#">Delete</a></li>
+
+                                  </ul>
+                                   <button class="btn btn-sm btn-default pagination-submit-btn">
+                                   <i class="fa fa-check"></i> Submit</button>
+                                </div>
+
+                                 </div>
+                                </div>
+
+                                 </div>-->
+                                <hr class="fline">
+                                <div class="row pt10 vndr-brdr-btm-1">
+                                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                                        <label class="field select mt10 first-filter-product">
+                                            <select id="filter-category" name="filter-category" class="from-control filter-selection-box">
+                                                <option value="0">Filter by Brand</option>
+                                                <option value="1">Aquaa</option>
+                                                <option value="2">Panna</option>
+                                                <option value="3">Kinley</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                        <i class="arrow"></i>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-lg-4  col-xs-12 filter-selectpicker">
+                                        <label class="field select mt10">
+                                            <select id="filter-status" name="filter-status" class=" selectpicker filter-selection-box from-control">
+                                                <option value="0">Filter by Price</option>
+                                                <option value="1">$200</option>
+                                                <option value="2">$200</option>
+                                                <option value="1">$300</option>
+                                                <option value="2">$400</option>
+                                                <option value="1">$500</option>
+                                                <option value="2">$600</option>
+                                                <option value="2">$700</option>
+                                                <option value="1">$800</option>
+                                                <option value="1">$900</option>
+                                                <option value="1">$1000</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4  col-sm-4 col-lg-4 col-xs-12">
+                                        <label class="field select mt10">
+                                            <select id="filter-status" name="filter-status" class="filter-selection-box">
+                                                <option value="0">Filter by Status</option>
+                                                <option value="1">Active</option>
+                                                <option value="2">Inactive</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body pn">
+                                <div class="table-responsive">
+                                    <table class="table admin-form theme-warning tc-checkbox-1  main-vndr-table main-downloads-table ">
+                                        <thead>
+                                            <tr class="bg-light  brdr-top t-m-tr fs13 clr-blck">
+                                                <th class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="">Image</th>
+                                                <th class="">Product Title</th>
+                                                <th class=""> Brand</th>
+                                                <th class="">SKU</th>
+                                                <th class="">Price</th>
+                                                <th class=" text-center">Volume</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-left ml20">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="">
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w100"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/6.png"></td>
+                                                <td class="">Panna</td>
+                                                <td class="">Kinley</td>
+                                                <td class="">#21362</td>
+                                                <td class="">$215</td>
+                                                <td class="text-center">1 liter</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-warning bg-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li class="active"> <a href="">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li> <a href="#">soldout</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/7.png"></td>
+                                                <td class="">Monvio</td>
+                                                <td class="">Panna</td>
+                                                <td class="">#21362</td>
+                                                <td class="">$215</td>
+                                                <td class="text-center">1 liter</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-warning bg-dark   btn-xs fs12 dropdown-toggle br-radius-4  pending-btn" data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li class="active"> <a href="">Pending</a> </li>
+                                                            <li class=""> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li> <a href="#">soldout</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Alain</td>
+                                                <td class="">Kinely</td>
+                                                <td class="">#2875</td>
+                                                <td class="">$16</td>
+                                                <td class="text-center">500ml</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group text-right">
+                                                        <button type="button" class="btn btn-warning btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li class="active"> <a href="#">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li> <a href="#">soldout</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Kinley</td>
+                                                <td class="">Kinely</td>
+                                                <td class="">#2875</td>
+                                                <td class="">$16</td>
+                                                <td class="text-center">500ml</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group text-right">
+                                                        <button type="button" class="btn btn-info   btn-xs fs12 dropdown-toggle br-radius-4  soldout-btn" data-toggle="dropdown" aria-expanded="false"> Soldout <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li> <a href="#">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li class="active"> <a href="#">soldout</a>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Arwa</td>
+                                                <td class="">Arwa</td>
+                                                <td class="">#21362</td>
+                                                <td class="">$215</td>
+                                                <td class="text-center">1 liter</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-info bg-dark   btn-xs fs12 dropdown-toggle br-radius-4   soldout-btn" data-toggle="dropdown" aria-expanded="false"> soldout <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li> <a href="#">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li class=" active"> <a href="#">soldout</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Alian</td>
+                                                <td class="">Alian</td>
+                                                <td class="">#2875</td>
+                                                <td class="">$16</td>
+                                                <td class="text-center">500ml</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group text-right">
+                                                        <button type="button" class="btn btn-warning btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li class="active"> <a href="#">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li> <a href="#">soldout</a>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Arwa</td>
+                                                <td class="">Arwa</td>
+                                                <td class="">#21362</td>
+                                                <td class="">$215</td>
+                                                <td class="text-center">1 liter</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger bg-dark   btn-xs fs12 dropdown-toggle br-radius-4  disabled-btn" data-toggle="dropdown" aria-expanded="false"> Disabled <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li> <a href="#">Pending</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li class="active"> <a href="#">Disabled</a> </li>
+                                                            <li> <a href="#">soldout</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                            <tr class="t-m-tr">
+                                                <td class="text-center">
+                                                    <label class="option block mn">
+                                                        <input type="checkbox" name="mobileos" value="FR">
+                                                        <span class="checkbox mn"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
+                                                <td class="">Alian</td>
+                                                <td class="">Alian</td>
+                                                <td class="">#2875</td>
+                                                <td class="">$16</td>
+                                                <td class="text-center">500ml</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group text-right">
+                                                        <button type="button" class="btn btn-info btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 soldout-btn " data-toggle="dropdown" aria-expanded="false"> Sold Out <span class="caret ml5"></span> </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li class=""> <a href="#">Sold Out</a> </li>
+                                                            <li> <a href="#">Pending Approval</a> </li>
+                                                            <li> <a href="#">Disabled</a> </li>
+                                                            <li class="active"> <a href="">soldout</a>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end: .tray-center -->
+                    <!-- begin: .tray-right -->
+                    <!-- end: .tray-right -->
+
+                </section>
+
+                <!-- End: Content -->
+
+            </div>
+
+            <!-- End: Content-Wrapper -->
+            <!-- Start: Right Sidebar -->
+            <!--footer-->
+            <div class="row main-footer">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+                    </div>
+
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+}
+
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/assets/js/raphael.min.js"></script>
+
+    <script src="~/Content/assets/js/Chart.min.js"></script>
+
+    <script src="~/Content/assets/js/morris.min.js"></script>
+
+    <script src="~/Content/assets/js/custom.min.js"></script>
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <script src="~/Content/assets/js/date.js"></script>
+
+    <script src="~/Content/assets/js/moment.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="~/Content/assets/js/visitor.js"></script>
+
+    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".datepicker").datepicker();
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function (e) {
+
+            $('.selectpicker').selectpicker();
+
+        });
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+<!--footer end-->
+<script type="text/javascript">
+
+    $(document).ready(function (e) {
+
+        $('.selectpicker').selectpicker();
+
+    });
+
+</script>

@@ -1,0 +1,172 @@
+﻿@model Final_ThibanProject.Models.Coupon
+
+@{
+    ViewBag.Title = "AddCoupon";
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
+}
+
+<!-- Start: Content-Wrapper -->
+
+<div class="right_col" role="main">
+
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+
+        <h1 class="main-top-header">Thiban Vendor Add Advertisement </h1>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="inner-header  bred-inner-header mb20">
+
+            <div class="bread-cumLeft">
+
+                <ol class="breadcrumb dash-bred-cumb">
+
+                    <li><a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+
+                    <li class="ml5"><a href="#">Vendor Add Advertisement</a></li>
+
+                </ol>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 mt5 border-round">
+
+                <div class="panel-body">
+
+                    <div class="tab-content pn br-n admin-form">
+
+                        <div id="tab1_1" class="tab-pane active main-addvertis-header">
+
+                            <div class="heading-title">
+
+                                <h3 class="panel-title role_h3"> ADD PROMOTION CODE</h3>
+
+                            </div>
+
+                            <p class="role_p mb25">Add a Promotion code for Best Offers </p>
+
+                            <div class="row">
+                                @using (Html.BeginForm("Addcoupon", "Advertisement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                                {
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2 col-md-2 col-sm-6 col-xs-12 ldl-lft lbl-p-left clr-blck pl30" for="email"><span class="clr-blck"> Promo Code<span class="star-symbol">*</span></span></label>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pn ml30">
+                                            <input type="text" name="couponcode" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label  col-lg-2 col-md-2 col-sm-6 col-xs-12 ldl-lft lbl-p-left clr-blck  pl30" for="email"><span class="clr-blck"> Discounts<span class="star-symbol">*</span></span></label>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pn ml30">
+                                            <input type="text" name="discount" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label  col-lg-2 col-md-2 col-sm-6 col-xs-12 ldl-lft lbl-p-left clr-blck pl30" for="email"><span class="clr-blck"> Valid From Date<span class="star-symbol">*</span></span></label>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pn ml30">
+                                            <input type="text" name="validstartdate" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label  col-lg-2 col-md-2 col-sm-6 col-xs-12 ldl-lft lbl-p-left clr-blck pl30" for="email"><span class="clr-blck"> Valid To Date<span class="star-symbol">*</span></span></label>
+                                        <div class="col-sm-5 pn ml30">
+                                            <input type="text" name="validenddate" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class=" col-sm-7 ">
+                                            <div class="buttonsss mt20">
+                                                <input type="submit" class="btn  btn-sm pull-right border-radius99"
+                                                       style="background:#ffffff !important; border-color:#888 !important; color:#888 !important;" value="Cancel" />
+                                                <input type="submit" class="btn  btn-sm pull-right border-radius99  mr20"
+                                                       style="background:#ffffff !important; color:#fff; border-color:#888 !important; background-color:#57ad68 !important;" value="Save" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- recent orders table -->
+        </div>
+        <!-- end: .tray-center -->
+        <!-- end: .tray-right -->
+    </section>
+    <!-- End: Content -->
+</div>
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+<!--Footer Content-->
+<div class="row main-footer">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+<script src="~/Content/assets/js/raphael.min.js"></script>
+<script src="~/Content/assets/js/Chart.min.js"></script>
+<script src="~/Content/assets/js/morris.min.js"></script>
+<script src="~/Content/assets/js/custom.min.js"></script>
+<script src="~/Content/assets/js/wizard.js"></script>
+<script src="~/Content/assets/js/date.js"></script>
+<script src="~/Content/assets/js/moment.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Content/assets/js/visitor.js"></script>
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $('.selectpicker').selectpicker();
+    });
+
+</script>
+<script type="text/javascript">
+
+    $('#text-edit').inputFileText({
+
+        text: 'Select File'
+
+    });
+
+</script>

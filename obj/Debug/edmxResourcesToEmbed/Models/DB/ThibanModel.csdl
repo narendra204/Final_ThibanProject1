@@ -1,0 +1,2347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThibanWaterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ThibanWaterDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="ThibanWaterDBModel.admin" />
+    <EntitySet Name="advertisements" EntityType="ThibanWaterDBModel.advertisement" />
+    <EntitySet Name="agreements" EntityType="ThibanWaterDBModel.agreement" />
+    <EntitySet Name="AverageCompositionPPMs" EntityType="ThibanWaterDBModel.AverageCompositionPPM" />
+    <EntitySet Name="banks" EntityType="ThibanWaterDBModel.bank" />
+    <EntitySet Name="BottleMaterials" EntityType="ThibanWaterDBModel.BottleMaterial" />
+    <EntitySet Name="BottlePerBoxes" EntityType="ThibanWaterDBModel.BottlePerBox" />
+    <EntitySet Name="BrandNames" EntityType="ThibanWaterDBModel.BrandName" />
+    <EntitySet Name="bussinessofficehours" EntityType="ThibanWaterDBModel.bussinessofficehour" />
+    <EntitySet Name="bussinesstypes" EntityType="ThibanWaterDBModel.bussinesstype" />
+    <EntitySet Name="categories" EntityType="ThibanWaterDBModel.category" />
+    <EntitySet Name="CompanyTypes" EntityType="ThibanWaterDBModel.CompanyType" />
+    <EntitySet Name="ConventionalstoreMinimumOrders" EntityType="ThibanWaterDBModel.ConventionalstoreMinimumOrder" />
+    <EntitySet Name="ConventionalstoreMiximumOrderQualities" EntityType="ThibanWaterDBModel.ConventionalstoreMiximumOrderQuality" />
+    <EntitySet Name="coupons" EntityType="ThibanWaterDBModel.coupon" />
+    <EntitySet Name="CREATETABLEBottlePerBoxes" EntityType="ThibanWaterDBModel.CREATETABLEBottlePerBox" />
+    <EntitySet Name="customers" EntityType="ThibanWaterDBModel.customer" />
+    <EntitySet Name="customeraddressproofs" EntityType="ThibanWaterDBModel.customeraddressproof" />
+    <EntitySet Name="customerappartmentaddresses" EntityType="ThibanWaterDBModel.customerappartmentaddress" />
+    <EntitySet Name="customerbankdetails" EntityType="ThibanWaterDBModel.customerbankdetail" />
+    <EntitySet Name="customerchaletaddresses" EntityType="ThibanWaterDBModel.customerchaletaddress" />
+    <EntitySet Name="customerdefaultaddresses" EntityType="ThibanWaterDBModel.customerdefaultaddress" />
+    <EntitySet Name="customerfavoriteproducts" EntityType="ThibanWaterDBModel.customerfavoriteproduct" />
+    <EntitySet Name="CustomerMaximumOrderQualities" EntityType="ThibanWaterDBModel.CustomerMaximumOrderQuality" />
+    <EntitySet Name="CustomerMinimumOrders" EntityType="ThibanWaterDBModel.CustomerMinimumOrder" />
+    <EntitySet Name="customerofficeaddresses" EntityType="ThibanWaterDBModel.customerofficeaddress" />
+    <EntitySet Name="customerotheraddresses" EntityType="ThibanWaterDBModel.customerotheraddress" />
+    <EntitySet Name="customerpaymentcards" EntityType="ThibanWaterDBModel.customerpaymentcard" />
+    <EntitySet Name="customervillaaddresses" EntityType="ThibanWaterDBModel.customervillaaddress" />
+    <EntitySet Name="dgeofences" EntityType="ThibanWaterDBModel.dgeofence" />
+    <EntitySet Name="drivers" EntityType="ThibanWaterDBModel.driver" />
+    <EntitySet Name="driveraddressproffs" EntityType="ThibanWaterDBModel.driveraddressproff" />
+    <EntitySet Name="driverbankdetails" EntityType="ThibanWaterDBModel.driverbankdetail" />
+    <EntitySet Name="driverdefaultaddresses" EntityType="ThibanWaterDBModel.driverdefaultaddress" />
+    <EntitySet Name="driverlogs" EntityType="ThibanWaterDBModel.driverlog" />
+    <EntitySet Name="driverpayoutrequesteds" EntityType="ThibanWaterDBModel.driverpayoutrequested" />
+    <EntitySet Name="driverratings" EntityType="ThibanWaterDBModel.driverrating" />
+    <EntitySet Name="driverworkinghours" EntityType="ThibanWaterDBModel.driverworkinghour" />
+    <EntitySet Name="filestores" EntityType="ThibanWaterDBModel.filestore" />
+    <EntitySet Name="geofences" EntityType="ThibanWaterDBModel.geofence" />
+    <EntitySet Name="ImageFiles" EntityType="ThibanWaterDBModel.ImageFile" />
+    <EntitySet Name="Languages" EntityType="ThibanWaterDBModel.Language" />
+    <EntitySet Name="menuitems" EntityType="ThibanWaterDBModel.menuitem" />
+    <EntitySet Name="minimumorderstatus" EntityType="ThibanWaterDBModel.minimumorderstatu" />
+    <EntitySet Name="orders" EntityType="ThibanWaterDBModel.order" />
+    <EntitySet Name="oredercanclefeedbacks" EntityType="ThibanWaterDBModel.oredercanclefeedback" />
+    <EntitySet Name="pandetails" EntityType="ThibanWaterDBModel.pandetail" />
+    <EntitySet Name="payoutalls" EntityType="ThibanWaterDBModel.payoutall" />
+    <EntitySet Name="PHNumbers" EntityType="ThibanWaterDBModel.PHNumber" />
+    <EntitySet Name="products" EntityType="ThibanWaterDBModel.product" />
+    <EntitySet Name="ProductAvailabilities" EntityType="ThibanWaterDBModel.ProductAvailability" />
+    <EntitySet Name="productrattings" EntityType="ThibanWaterDBModel.productratting" />
+    <EntitySet Name="Provinces" EntityType="ThibanWaterDBModel.Province" />
+    <EntitySet Name="roles" EntityType="ThibanWaterDBModel.role" />
+    <EntitySet Name="rolemanagements" EntityType="ThibanWaterDBModel.rolemanagement" />
+    <EntitySet Name="shippingaddresses" EntityType="ThibanWaterDBModel.shippingaddress" />
+    <EntitySet Name="shippinghistories" EntityType="ThibanWaterDBModel.shippinghistory" />
+    <EntitySet Name="storedetails" EntityType="ThibanWaterDBModel.storedetail" />
+    <EntitySet Name="teammanagements" EntityType="ThibanWaterDBModel.teammanagement" />
+    <EntitySet Name="vattandetails" EntityType="ThibanWaterDBModel.vattandetail" />
+    <EntitySet Name="vechicles" EntityType="ThibanWaterDBModel.vechicle" />
+    <EntitySet Name="venders" EntityType="ThibanWaterDBModel.vender" />
+    <EntitySet Name="venderaddressproofs" EntityType="ThibanWaterDBModel.venderaddressproof" />
+    <EntitySet Name="venderbankdetails" EntityType="ThibanWaterDBModel.venderbankdetail" />
+    <EntitySet Name="venderdefaultaddresses" EntityType="ThibanWaterDBModel.venderdefaultaddress" />
+    <EntitySet Name="venderlogs" EntityType="ThibanWaterDBModel.venderlog" />
+    <EntitySet Name="venderpayoutalls" EntityType="ThibanWaterDBModel.venderpayoutall" />
+    <EntitySet Name="venderpayoutrequesteds" EntityType="ThibanWaterDBModel.venderpayoutrequested" />
+    <EntitySet Name="Volumes" EntityType="ThibanWaterDBModel.Volume" />
+    <AssociationSet Name="FK__admin__Image__5E8A0973" Association="ThibanWaterDBModel.FK__admin__Image__5E8A0973">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="admin" EntitySet="admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__vende__6A30C649" Association="ThibanWaterDBModel.FK__advertise__vende__6A30C649">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="advertisement" EntitySet="advertisements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__agreement__FileI__37703C52" Association="ThibanWaterDBModel.FK__agreement__FileI__37703C52">
+      <End Role="filestore" EntitySet="filestores" />
+      <End Role="agreement" EntitySet="agreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__agreement__Vende__367C1819" Association="ThibanWaterDBModel.FK__agreement__Vende__367C1819">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="agreement" EntitySet="agreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__category__Image__5F7E2DAC" Association="ThibanWaterDBModel.FK__category__Image__5F7E2DAC">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="category" EntitySet="categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__categor__09A971A2" Association="ThibanWaterDBModel.FK__product__categor__09A971A2">
+      <End Role="category" EntitySet="categories" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__coupon__vender_i__6B24EA82" Association="ThibanWaterDBModel.FK__coupon__vender_i__6B24EA82">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="coupon" EntitySet="coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customer__Image__5D95E53A" Association="ThibanWaterDBModel.FK__customer__Image__5D95E53A">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__custo__6C190EBB" Association="ThibanWaterDBModel.FK__customera__custo__6C190EBB">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customeraddressproof" EntitySet="customeraddressproofs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__custo__6D0D32F4" Association="ThibanWaterDBModel.FK__customera__custo__6D0D32F4">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerappartmentaddress" EntitySet="customerappartmentaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerb__custo__6E01572D" Association="ThibanWaterDBModel.FK__customerb__custo__6E01572D">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerbankdetail" EntitySet="customerbankdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerc__custo__6EF57B66" Association="ThibanWaterDBModel.FK__customerc__custo__6EF57B66">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerchaletaddress" EntitySet="customerchaletaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerd__custi__6FE99F9F" Association="ThibanWaterDBModel.FK__customerd__custi__6FE99F9F">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerdefaultaddress" EntitySet="customerdefaultaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerf__custo__70DDC3D8" Association="ThibanWaterDBModel.FK__customerf__custo__70DDC3D8">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerfavoriteproduct" EntitySet="customerfavoriteproducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customero__custo__72C60C4A" Association="ThibanWaterDBModel.FK__customero__custo__72C60C4A">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerofficeaddress" EntitySet="customerofficeaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customero__custo__73BA3083" Association="ThibanWaterDBModel.FK__customero__custo__73BA3083">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerotheraddress" EntitySet="customerotheraddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerp__custo__74AE54BC" Association="ThibanWaterDBModel.FK__customerp__custo__74AE54BC">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customerpaymentcard" EntitySet="customerpaymentcards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerv__custo__75A278F5" Association="ThibanWaterDBModel.FK__customerv__custo__75A278F5">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="customervillaaddress" EntitySet="customervillaaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__custo__7C4F7684" Association="ThibanWaterDBModel.FK__driverrat__custo__7C4F7684">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="driverrating" EntitySet="driverratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__customer__03F0984C" Association="ThibanWaterDBModel.FK__orders__customer__03F0984C">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__oredercan__custo__05D8E0BE" Association="ThibanWaterDBModel.FK__oredercan__custo__05D8E0BE">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="oredercanclefeedback" EntitySet="oredercanclefeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippinga__custo__0E6E26BF" Association="ThibanWaterDBModel.FK__shippinga__custo__0E6E26BF">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="shippingaddress" EntitySet="shippingaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customera__Image__607251E5" Association="ThibanWaterDBModel.FK__customera__Image__607251E5">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="customeraddressproof" EntitySet="customeraddressproofs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customerf__produ__71D1E811" Association="ThibanWaterDBModel.FK__customerf__produ__71D1E811">
+      <End Role="product" EntitySet="products" />
+      <End Role="customerfavoriteproduct" EntitySet="customerfavoriteproducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__geofen__01142BA1" Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1">
+      <End Role="dgeofence" EntitySet="dgeofences" />
+      <End Role="geofence" EntitySet="geofences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driver__image__662B2B3B" Association="ThibanWaterDBModel.FK__driver__image__662B2B3B">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="driver" EntitySet="drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driver__vender_i__76969D2E" Association="ThibanWaterDBModel.FK__driver__vender_i__76969D2E">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="driver" EntitySet="drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driveradd__drive__778AC167" Association="ThibanWaterDBModel.FK__driveradd__drive__778AC167">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driveraddressproff" EntitySet="driveraddressproffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverban__drive__787EE5A0" Association="ThibanWaterDBModel.FK__driverban__drive__787EE5A0">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverbankdetail" EntitySet="driverbankdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverdef__drive__797309D9" Association="ThibanWaterDBModel.FK__driverdef__drive__797309D9">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverdefaultaddress" EntitySet="driverdefaultaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverlog__drive__7A672E12" Association="ThibanWaterDBModel.FK__driverlog__drive__7A672E12">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverlog" EntitySet="driverlogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverpay__drive__7B5B524B" Association="ThibanWaterDBModel.FK__driverpay__drive__7B5B524B">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverpayoutrequested" EntitySet="driverpayoutrequesteds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__drive__7D439ABD" Association="ThibanWaterDBModel.FK__driverrat__drive__7D439ABD">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverrating" EntitySet="driverratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverwor__drive__7F2BE32F" Association="ThibanWaterDBModel.FK__driverwor__drive__7F2BE32F">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverworkinghour" EntitySet="driverworkinghours" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__driver__00200768" Association="ThibanWaterDBModel.FK__geofence__driver__00200768">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="geofence" EntitySet="geofences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payoutall__drive__08B54D69" Association="ThibanWaterDBModel.FK__payoutall__drive__08B54D69">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="payoutall" EntitySet="payoutalls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippingh__drive__10566F31" Association="ThibanWaterDBModel.FK__shippingh__drive__10566F31">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="shippinghistory" EntitySet="shippinghistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vechicle__driver__160F4887" Association="ThibanWaterDBModel.FK__vechicle__driver__160F4887">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="vechicle" EntitySet="vechicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driveradd__Image__6166761E" Association="ThibanWaterDBModel.FK__driveradd__Image__6166761E">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="driveraddressproff" EntitySet="driveraddressproffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__driverrat__order__7E37BEF6" Association="ThibanWaterDBModel.FK__driverrat__order__7E37BEF6">
+      <End Role="order" EntitySet="orders" />
+      <End Role="driverrating" EntitySet="driverratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__geofence__vender__02084FDA" Association="ThibanWaterDBModel.FK__geofence__vender__02084FDA">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="geofence" EntitySet="geofences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pandetail__Image__625A9A57" Association="ThibanWaterDBModel.FK__pandetail__Image__625A9A57">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="pandetail" EntitySet="pandetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__image__671F4F74" Association="ThibanWaterDBModel.FK__product__image__671F4F74">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vattandet__Image__634EBE90" Association="ThibanWaterDBModel.FK__vattandet__Image__634EBE90">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="vattandetail" EntitySet="vattandetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vender__image__65370702" Association="ThibanWaterDBModel.FK__vender__image__65370702">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="vender" EntitySet="venders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderadd__Image__6442E2C9" Association="ThibanWaterDBModel.FK__venderadd__Image__6442E2C9">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="venderaddressproof" EntitySet="venderaddressproofs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__minimumor__vende__02FC7413" Association="ThibanWaterDBModel.FK__minimumor__vende__02FC7413">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="minimumorderstatu" EntitySet="minimumorderstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__product___04E4BC85" Association="ThibanWaterDBModel.FK__orders__product___04E4BC85">
+      <End Role="product" EntitySet="products" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__oredercan__order__06CD04F7" Association="ThibanWaterDBModel.FK__oredercan__order__06CD04F7">
+      <End Role="order" EntitySet="orders" />
+      <End Role="oredercanclefeedback" EntitySet="oredercanclefeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productra__order__0B91BA14" Association="ThibanWaterDBModel.FK__productra__order__0B91BA14">
+      <End Role="order" EntitySet="orders" />
+      <End Role="productratting" EntitySet="productrattings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippinga__order__0F624AF8" Association="ThibanWaterDBModel.FK__shippinga__order__0F624AF8">
+      <End Role="order" EntitySet="orders" />
+      <End Role="shippingaddress" EntitySet="shippingaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shippingh__order__114A936A" Association="ThibanWaterDBModel.FK__shippingh__order__114A936A">
+      <End Role="order" EntitySet="orders" />
+      <End Role="shippinghistory" EntitySet="shippinghistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pandetail__vende__07C12930" Association="ThibanWaterDBModel.FK__pandetail__vende__07C12930">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="pandetail" EntitySet="pandetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__vender___0A9D95DB" Association="ThibanWaterDBModel.FK__product__vender___0A9D95DB">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productra__produ__0C85DE4D" Association="ThibanWaterDBModel.FK__productra__produ__0C85DE4D">
+      <End Role="product" EntitySet="products" />
+      <End Role="productratting" EntitySet="productrattings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolemanag__rolei__5AB9788F" Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F">
+      <End Role="role" EntitySet="roles" />
+      <End Role="rolemanagement" EntitySet="rolemanagements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teammanag__rolei__57DD0BE4" Association="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4">
+      <End Role="role" EntitySet="roles" />
+      <End Role="teammanagement" EntitySet="teammanagements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__storedeta__vende__123EB7A3" Association="ThibanWaterDBModel.FK__storedeta__vende__123EB7A3">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="storedetail" EntitySet="storedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teammanag__vende__14270015" Association="ThibanWaterDBModel.FK__teammanag__vende__14270015">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="teammanagement" EntitySet="teammanagements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vattandet__vende__151B244E" Association="ThibanWaterDBModel.FK__vattandet__vende__151B244E">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="vattandetail" EntitySet="vattandetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderadd__vende__17036CC0" Association="ThibanWaterDBModel.FK__venderadd__vende__17036CC0">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderaddressproof" EntitySet="venderaddressproofs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderban__vende__17F790F9" Association="ThibanWaterDBModel.FK__venderban__vende__17F790F9">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderbankdetail" EntitySet="venderbankdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderdef__vende__18EBB532" Association="ThibanWaterDBModel.FK__venderdef__vende__18EBB532">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderdefaultaddress" EntitySet="venderdefaultaddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderlog__vende__19DFD96B" Association="ThibanWaterDBModel.FK__venderlog__vende__19DFD96B">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderlog" EntitySet="venderlogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderpay__vende__1AD3FDA4" Association="ThibanWaterDBModel.FK__venderpay__vende__1AD3FDA4">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderpayoutall" EntitySet="venderpayoutalls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__venderpay__vende__1BC821DD" Association="ThibanWaterDBModel.FK__venderpay__vende__1BC821DD">
+      <End Role="vender" EntitySet="venders" />
+      <End Role="venderpayoutrequested" EntitySet="venderpayoutrequesteds" />
+    </AssociationSet>
+    <EntitySet Name="CmsPages" EntityType="ThibanWaterDBModel.CmsPage" />
+    <EntitySet Name="mobile_otp" EntityType="ThibanWaterDBModel.mobile_otp" />
+    <EntitySet Name="countries" EntityType="ThibanWaterDBModel.country" />
+    <EntitySet Name="deliveries" EntityType="ThibanWaterDBModel.delivery" />
+    <EntitySet Name="national_address" EntityType="ThibanWaterDBModel.national_address" />
+    <EntitySet Name="odometerreadings" EntityType="ThibanWaterDBModel.odometerreading" />
+    <EntitySet Name="onspotsales" EntityType="ThibanWaterDBModel.onspotsale" />
+    <EntitySet Name="orderdeliveryweathers" EntityType="ThibanWaterDBModel.orderdeliveryweather" />
+    <EntitySet Name="warehouseaddresses" EntityType="ThibanWaterDBModel.warehouseaddress" />
+    <AssociationSet Name="FK__national___custo__4F12BBB9" Association="ThibanWaterDBModel.FK__national___custo__4F12BBB9">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="national_address" EntitySet="national_address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__delivery__driver__4B422AD5" Association="ThibanWaterDBModel.FK__delivery__driver__4B422AD5">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="delivery" EntitySet="deliveries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__odometerr__drive__5006DFF2" Association="ThibanWaterDBModel.FK__odometerr__drive__5006DFF2">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="odometerreading" EntitySet="odometerreadings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__onspotsal__drive__51EF2864" Association="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="onspotsale" EntitySet="onspotsales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderdeli__drive__55BFB948" Association="ThibanWaterDBModel.FK__orderdeli__drive__55BFB948">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="orderdeliveryweather" EntitySet="orderdeliveryweathers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__onspotsal__order__54CB950F" Association="ThibanWaterDBModel.FK__onspotsal__order__54CB950F">
+      <End Role="order" EntitySet="orders" />
+      <End Role="onspotsale" EntitySet="onspotsales" />
+    </AssociationSet>
+    <EntitySet Name="cust_notification" EntityType="ThibanWaterDBModel.cust_notification" />
+    <EntitySet Name="General_feeback" EntityType="ThibanWaterDBModel.General_feeback" />
+    <EntitySet Name="product_feedback" EntityType="ThibanWaterDBModel.product_feedback" />
+  </EntityContainer>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="regdate" Type="DateTime" Precision="3" />
+    <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__admin__Image__5E8A0973" FromRole="admin" ToRole="ImageFile" />
+  </EntityType>
+  <EntityType Name="advertisement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="video_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__advertise__vende__6A30C649" FromRole="advertisement" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="agreement">
+    <Key>
+      <PropertyRef Name="AgreementId" />
+    </Key>
+    <Property Name="AgreementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VenderId" Type="Int32" />
+    <Property Name="AgreementVersion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AcceptedDate" Type="DateTime" Precision="3" />
+    <Property Name="FileId" Type="Int32" />
+    <NavigationProperty Name="filestore" Relationship="ThibanWaterDBModel.FK__agreement__FileI__37703C52" FromRole="agreement" ToRole="filestore" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__agreement__Vende__367C1819" FromRole="agreement" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="AverageCompositionPPM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BottleMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BottlePerBox">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BrandName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bussinessofficehour">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bussinessoffice" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bussinesstype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bussinesstypetext" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="categoryid" />
+    </Key>
+    <Property Name="categoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__category__Image__5F7E2DAC" FromRole="category" ToRole="ImageFile" />
+    <NavigationProperty Name="products" Relationship="ThibanWaterDBModel.FK__product__categor__09A971A2" FromRole="category" ToRole="product" />
+  </EntityType>
+  <EntityType Name="CompanyType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyTypeText" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ConventionalstoreMinimumOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ConventionalstoreMiximumOrderQuality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="coupon">
+    <Key>
+      <PropertyRef Name="couponid" />
+    </Key>
+    <Property Name="couponid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="coupon_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="coupon_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="coupon_type" Type="Int32" />
+    <Property Name="coupon_valid_start_date" Type="DateTime" Precision="3" />
+    <Property Name="coupon_valid_end_date" Type="DateTime" Precision="3" />
+    <Property Name="coupon_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="coupon_status" Type="Boolean" />
+    <Property Name="discount" Type="Double" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__coupon__vender_i__6B24EA82" FromRole="coupon" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="CREATETABLEBottlePerBox">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="mobileno" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="verifyotp" Type="Int32" />
+    <Property Name="verifyemail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="regdate" Type="DateTime" Precision="3" />
+    <Property Name="customer_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_phonetype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telicon_carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="custstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__customer__Image__5D95E53A" FromRole="customer" ToRole="ImageFile" />
+    <NavigationProperty Name="customeraddressproofs" Relationship="ThibanWaterDBModel.FK__customera__custo__6C190EBB" FromRole="customer" ToRole="customeraddressproof" />
+    <NavigationProperty Name="customerappartmentaddresses" Relationship="ThibanWaterDBModel.FK__customera__custo__6D0D32F4" FromRole="customer" ToRole="customerappartmentaddress" />
+    <NavigationProperty Name="customerbankdetails" Relationship="ThibanWaterDBModel.FK__customerb__custo__6E01572D" FromRole="customer" ToRole="customerbankdetail" />
+    <NavigationProperty Name="customerchaletaddresses" Relationship="ThibanWaterDBModel.FK__customerc__custo__6EF57B66" FromRole="customer" ToRole="customerchaletaddress" />
+    <NavigationProperty Name="customerdefaultaddresses" Relationship="ThibanWaterDBModel.FK__customerd__custi__6FE99F9F" FromRole="customer" ToRole="customerdefaultaddress" />
+    <NavigationProperty Name="customerfavoriteproducts" Relationship="ThibanWaterDBModel.FK__customerf__custo__70DDC3D8" FromRole="customer" ToRole="customerfavoriteproduct" />
+    <NavigationProperty Name="customerofficeaddresses" Relationship="ThibanWaterDBModel.FK__customero__custo__72C60C4A" FromRole="customer" ToRole="customerofficeaddress" />
+    <NavigationProperty Name="customerotheraddresses" Relationship="ThibanWaterDBModel.FK__customero__custo__73BA3083" FromRole="customer" ToRole="customerotheraddress" />
+    <NavigationProperty Name="customerpaymentcards" Relationship="ThibanWaterDBModel.FK__customerp__custo__74AE54BC" FromRole="customer" ToRole="customerpaymentcard" />
+    <NavigationProperty Name="customervillaaddresses" Relationship="ThibanWaterDBModel.FK__customerv__custo__75A278F5" FromRole="customer" ToRole="customervillaaddress" />
+    <NavigationProperty Name="driverratings" Relationship="ThibanWaterDBModel.FK__driverrat__custo__7C4F7684" FromRole="customer" ToRole="driverrating" />
+    <NavigationProperty Name="orders" Relationship="ThibanWaterDBModel.FK__orders__customer__03F0984C" FromRole="customer" ToRole="order" />
+    <NavigationProperty Name="oredercanclefeedbacks" Relationship="ThibanWaterDBModel.FK__oredercan__custo__05D8E0BE" FromRole="customer" ToRole="oredercanclefeedback" />
+    <NavigationProperty Name="shippingaddresses" Relationship="ThibanWaterDBModel.FK__shippinga__custo__0E6E26BF" FromRole="customer" ToRole="shippingaddress" />
+    <Property Name="DOB" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="national_address" Relationship="ThibanWaterDBModel.FK__national___custo__4F12BBB9" FromRole="customer" ToRole="national_address" />
+    <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="customeraddressproof">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="addressproof" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="addressimage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customera__custo__6C190EBB" FromRole="customeraddressproof" ToRole="customer" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__customera__Image__607251E5" FromRole="customeraddressproof" ToRole="ImageFile" />
+  </EntityType>
+  <EntityType Name="customerappartmentaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="appartment_street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="appartment_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="floor_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="building_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="building_address_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customera__custo__6D0D32F4" FromRole="customerappartmentaddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerbankdetail">
+    <Key>
+      <PropertyRef Name="customer_bank_id" />
+    </Key>
+    <Property Name="customer_bank_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_no" Type="Int32" Nullable="false" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="benificary_name_in_bank" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="branch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ifsc_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="benificary_name_in_bank_image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerb__custo__6E01572D" FromRole="customerbankdetail" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerchaletaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="chalet_street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="chalet_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="chalet_address_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerc__custo__6EF57B66" FromRole="customerchaletaddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custid" Type="Int32" />
+    <Property Name="custnote1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="customernote2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="streetaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerd__custi__6FE99F9F" FromRole="customerdefaultaddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerfavoriteproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="product_id" Type="Int32" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerf__custo__70DDC3D8" FromRole="customerfavoriteproduct" ToRole="customer" />
+    <NavigationProperty Name="product" Relationship="ThibanWaterDBModel.FK__customerf__produ__71D1E811" FromRole="customerfavoriteproduct" ToRole="product" />
+  </EntityType>
+  <EntityType Name="CustomerMaximumOrderQuality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomerMinimumOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="customerofficeaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="office_street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="office_building_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="offie_floor_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="office_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="office_address_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customero__custo__72C60C4A" FromRole="customerofficeaddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerotheraddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="other_street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="other_specificaqtion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="other_address_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customero__custo__73BA3083" FromRole="customerotheraddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customerpaymentcard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="card_number" Type="Int32" />
+    <Property Name="card_expiry" Type="DateTime" Precision="0" />
+    <Property Name="card_cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="card_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="card_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerp__custo__74AE54BC" FromRole="customerpaymentcard" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customervillaaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="villa_street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="villa_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="villa_address_status" Type="Boolean" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerv__custo__75A278F5" FromRole="customervillaaddress" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="dgeofence">
+    <Key>
+      <PropertyRef Name="geofenceid" />
+    </Key>
+    <Property Name="geofenceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location" Type="Geography" />
+    <Property Name="zone_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="direction_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="geofences" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="dgeofence" ToRole="geofence" />
+  </EntityType>
+  <EntityType Name="driver">
+    <Key>
+      <PropertyRef Name="driverid" />
+    </Key>
+    <Property Name="driverid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="dusername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mobile_no" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="registration_date" Type="DateTime" Precision="3" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="driver_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="driver_phone_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="driver_divice_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="driver_telicom_carrer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="creation_date" Type="DateTime" Precision="3" />
+    <Property Name="verify_otp" Type="Int32" />
+    <Property Name="verify_email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__driver__image__662B2B3B" FromRole="driver" ToRole="ImageFile" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__driver__vender_i__76969D2E" FromRole="driver" ToRole="vender" />
+    <NavigationProperty Name="driveraddressproffs" Relationship="ThibanWaterDBModel.FK__driveradd__drive__778AC167" FromRole="driver" ToRole="driveraddressproff" />
+    <NavigationProperty Name="driverbankdetails" Relationship="ThibanWaterDBModel.FK__driverban__drive__787EE5A0" FromRole="driver" ToRole="driverbankdetail" />
+    <NavigationProperty Name="driverdefaultaddresses" Relationship="ThibanWaterDBModel.FK__driverdef__drive__797309D9" FromRole="driver" ToRole="driverdefaultaddress" />
+    <NavigationProperty Name="driverlogs" Relationship="ThibanWaterDBModel.FK__driverlog__drive__7A672E12" FromRole="driver" ToRole="driverlog" />
+    <NavigationProperty Name="driverpayoutrequesteds" Relationship="ThibanWaterDBModel.FK__driverpay__drive__7B5B524B" FromRole="driver" ToRole="driverpayoutrequested" />
+    <NavigationProperty Name="driverratings" Relationship="ThibanWaterDBModel.FK__driverrat__drive__7D439ABD" FromRole="driver" ToRole="driverrating" />
+    <NavigationProperty Name="driverworkinghours" Relationship="ThibanWaterDBModel.FK__driverwor__drive__7F2BE32F" FromRole="driver" ToRole="driverworkinghour" />
+    <NavigationProperty Name="geofences" Relationship="ThibanWaterDBModel.FK__geofence__driver__00200768" FromRole="driver" ToRole="geofence" />
+    <NavigationProperty Name="payoutalls" Relationship="ThibanWaterDBModel.FK__payoutall__drive__08B54D69" FromRole="driver" ToRole="payoutall" />
+    <NavigationProperty Name="shippinghistories" Relationship="ThibanWaterDBModel.FK__shippingh__drive__10566F31" FromRole="driver" ToRole="shippinghistory" />
+    <NavigationProperty Name="vechicles" Relationship="ThibanWaterDBModel.FK__vechicle__driver__160F4887" FromRole="driver" ToRole="vechicle" />
+    <NavigationProperty Name="deliveries" Relationship="ThibanWaterDBModel.FK__delivery__driver__4B422AD5" FromRole="driver" ToRole="delivery" />
+    <NavigationProperty Name="odometerreadings" Relationship="ThibanWaterDBModel.FK__odometerr__drive__5006DFF2" FromRole="driver" ToRole="odometerreading" />
+    <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864" FromRole="driver" ToRole="onspotsale" />
+    <NavigationProperty Name="orderdeliveryweathers" Relationship="ThibanWaterDBModel.FK__orderdeli__drive__55BFB948" FromRole="driver" ToRole="orderdeliveryweather" />
+    <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="driveraddressproff">
+    <Key>
+      <PropertyRef Name="daddressid" />
+    </Key>
+    <Property Name="daddressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="address_proff" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="address_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driveradd__drive__778AC167" FromRole="driveraddressproff" ToRole="driver" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__driveradd__Image__6166761E" FromRole="driveraddressproff" ToRole="ImageFile" />
+  </EntityType>
+  <EntityType Name="driverbankdetail">
+    <Key>
+      <PropertyRef Name="driver_bank_id" />
+    </Key>
+    <Property Name="driver_bank_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="accountno" Type="Int32" Nullable="false" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="benificary_name_in_bank" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="branch_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ifsc_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="benificary_name_in_bank_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverban__drive__787EE5A0" FromRole="driverbankdetail" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="driverdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="drivernote1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="drivernote2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="streetaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverdef__drive__797309D9" FromRole="driverdefaultaddress" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="driverlog">
+    <Key>
+      <PropertyRef Name="dlogid" />
+    </Key>
+    <Property Name="dlogid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="login_date" Type="DateTime" Precision="3" />
+    <Property Name="logout" Type="DateTime" Precision="3" />
+    <Property Name="online_time" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverlog__drive__7A672E12" FromRole="driverlog" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="driverpayoutrequested">
+    <Key>
+      <PropertyRef Name="dpayoutid" />
+    </Key>
+    <Property Name="dpayoutid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="request_date" Type="DateTime" Precision="3" />
+    <Property Name="tran_id" Type="Int32" />
+    <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverpay__drive__7B5B524B" FromRole="driverpayoutrequested" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="driverrating">
+    <Key>
+      <PropertyRef Name="drateid" />
+    </Key>
+    <Property Name="drateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="orderid" Type="Int32" />
+    <Property Name="rating_date" Type="DateTime" Precision="3" />
+    <Property Name="comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__driverrat__custo__7C4F7684" FromRole="driverrating" ToRole="customer" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverrat__drive__7D439ABD" FromRole="driverrating" ToRole="driver" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__driverrat__order__7E37BEF6" FromRole="driverrating" ToRole="order" />
+  </EntityType>
+  <EntityType Name="driverworkinghour">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="working_hours_mondey" Type="Int32" />
+    <Property Name="working_hours_tuesday" Type="Int32" />
+    <Property Name="working_hours_wednesday" Type="Int32" />
+    <Property Name="working_hours_thursday" Type="Int32" />
+    <Property Name="working_hour_friday" Type="Int32" />
+    <Property Name="working_hour_saturday" Type="Int32" />
+    <Property Name="working_hour_sunday" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverwor__drive__7F2BE32F" FromRole="driverworkinghour" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="filestore">
+    <Key>
+      <PropertyRef Name="FileId" />
+    </Key>
+    <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="fileSize" Type="Int32" />
+    <Property Name="attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileExtension" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="agreements" Relationship="ThibanWaterDBModel.FK__agreement__FileI__37703C52" FromRole="filestore" ToRole="agreement" />
+  </EntityType>
+  <EntityType Name="geofence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="geofence_id" Type="Int32" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="dgeofence" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="geofence" ToRole="dgeofence" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__geofence__driver__00200768" FromRole="geofence" ToRole="driver" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__geofence__vender__02084FDA" FromRole="geofence" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="ImageFile">
+    <Key>
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ImageSize" Type="Int32" />
+    <Property Name="Imageattachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="admins" Relationship="ThibanWaterDBModel.FK__admin__Image__5E8A0973" FromRole="ImageFile" ToRole="admin" />
+    <NavigationProperty Name="categories" Relationship="ThibanWaterDBModel.FK__category__Image__5F7E2DAC" FromRole="ImageFile" ToRole="category" />
+    <NavigationProperty Name="customers" Relationship="ThibanWaterDBModel.FK__customer__Image__5D95E53A" FromRole="ImageFile" ToRole="customer" />
+    <NavigationProperty Name="customeraddressproofs" Relationship="ThibanWaterDBModel.FK__customera__Image__607251E5" FromRole="ImageFile" ToRole="customeraddressproof" />
+    <NavigationProperty Name="drivers" Relationship="ThibanWaterDBModel.FK__driver__image__662B2B3B" FromRole="ImageFile" ToRole="driver" />
+    <NavigationProperty Name="driveraddressproffs" Relationship="ThibanWaterDBModel.FK__driveradd__Image__6166761E" FromRole="ImageFile" ToRole="driveraddressproff" />
+    <NavigationProperty Name="pandetails" Relationship="ThibanWaterDBModel.FK__pandetail__Image__625A9A57" FromRole="ImageFile" ToRole="pandetail" />
+    <NavigationProperty Name="products" Relationship="ThibanWaterDBModel.FK__product__image__671F4F74" FromRole="ImageFile" ToRole="product" />
+    <NavigationProperty Name="vattandetails" Relationship="ThibanWaterDBModel.FK__vattandet__Image__634EBE90" FromRole="ImageFile" ToRole="vattandetail" />
+    <NavigationProperty Name="venders" Relationship="ThibanWaterDBModel.FK__vender__image__65370702" FromRole="ImageFile" ToRole="vender" />
+    <NavigationProperty Name="venderaddressproofs" Relationship="ThibanWaterDBModel.FK__venderadd__Image__6442E2C9" FromRole="ImageFile" ToRole="venderaddressproof" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LanguageText" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="menuitem">
+    <Key>
+      <PropertyRef Name="menuid" />
+    </Key>
+    <Property Name="menuid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menuname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="minimumorderstatu">
+    <Key>
+      <PropertyRef Name="min_order_id" />
+    </Key>
+    <Property Name="min_order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="order_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_quantity" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__minimumor__vende__02FC7413" FromRole="minimumorderstatu" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="ship_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="ship_date" Type="DateTime" Precision="3" />
+    <Property Name="order_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="expected_delivery_time" Type="DateTime" Precision="3" />
+    <Property Name="couponid" Type="Int32" />
+    <Property Name="discount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="bill_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="paid" Type="Boolean" />
+    <Property Name="orderdate" Type="DateTime" Precision="3" />
+    <Property Name="payment_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="payment_date" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__orders__customer__03F0984C" FromRole="order" ToRole="customer" />
+    <NavigationProperty Name="driverratings" Relationship="ThibanWaterDBModel.FK__driverrat__order__7E37BEF6" FromRole="order" ToRole="driverrating" />
+    <NavigationProperty Name="product" Relationship="ThibanWaterDBModel.FK__orders__product___04E4BC85" FromRole="order" ToRole="product" />
+    <NavigationProperty Name="oredercanclefeedbacks" Relationship="ThibanWaterDBModel.FK__oredercan__order__06CD04F7" FromRole="order" ToRole="oredercanclefeedback" />
+    <NavigationProperty Name="productrattings" Relationship="ThibanWaterDBModel.FK__productra__order__0B91BA14" FromRole="order" ToRole="productratting" />
+    <NavigationProperty Name="shippingaddresses" Relationship="ThibanWaterDBModel.FK__shippinga__order__0F624AF8" FromRole="order" ToRole="shippingaddress" />
+    <NavigationProperty Name="shippinghistories" Relationship="ThibanWaterDBModel.FK__shippingh__order__114A936A" FromRole="order" ToRole="shippinghistory" />
+    <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="order" ToRole="onspotsale" />
+    <Property Name="address_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="oredercanclefeedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="feedback" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__oredercan__custo__05D8E0BE" FromRole="oredercanclefeedback" ToRole="customer" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__oredercan__order__06CD04F7" FromRole="oredercanclefeedback" ToRole="order" />
+  </EntityType>
+  <EntityType Name="pandetail">
+    <Key>
+      <PropertyRef Name="panid" />
+    </Key>
+    <Property Name="panid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pancardno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="pan_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__pandetail__Image__625A9A57" FromRole="pandetail" ToRole="ImageFile" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__pandetail__vende__07C12930" FromRole="pandetail" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="payoutall">
+    <Key>
+      <PropertyRef Name="dpayallid" />
+    </Key>
+    <Property Name="dpayallid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="transaction_date" Type="DateTime" Precision="3" />
+    <Property Name="transaction_id" Type="Int32" />
+    <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="adjustment_amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="net_amount" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__payoutall__drive__08B54D69" FromRole="payoutall" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="PHNumber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="product_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="customer_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="customer_min_order_quantity" Type="Int32" />
+    <Property Name="customer_max_order_quantity" Type="Int32" />
+    <Property Name="store_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="store_min_order_quantity" Type="Int32" />
+    <Property Name="store_max_order_quantity" Type="Int32" />
+    <Property Name="phno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bottle_per_box" Type="Int32" />
+    <Property Name="stock" Type="Int32" />
+    <Property Name="sku" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProductAvaibility" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="volume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="Int32" />
+    <NavigationProperty Name="category" Relationship="ThibanWaterDBModel.FK__product__categor__09A971A2" FromRole="product" ToRole="category" />
+    <NavigationProperty Name="customerfavoriteproducts" Relationship="ThibanWaterDBModel.FK__customerf__produ__71D1E811" FromRole="product" ToRole="customerfavoriteproduct" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__product__image__671F4F74" FromRole="product" ToRole="ImageFile" />
+    <NavigationProperty Name="orders" Relationship="ThibanWaterDBModel.FK__orders__product___04E4BC85" FromRole="product" ToRole="order" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__product__vender___0A9D95DB" FromRole="product" ToRole="vender" />
+    <NavigationProperty Name="productrattings" Relationship="ThibanWaterDBModel.FK__productra__produ__0C85DE4D" FromRole="product" ToRole="productratting" />
+    <Property Name="bottle_material" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="av_composition_ppm" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProductAvailability">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="productratting">
+    <Key>
+      <PropertyRef Name="rateid" />
+    </Key>
+    <Property Name="rateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="ratting" Type="Int32" />
+    <Property Name="comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="orderid" Type="Int32" />
+    <Property Name="ratting_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__productra__order__0B91BA14" FromRole="productratting" ToRole="order" />
+    <NavigationProperty Name="product" Relationship="ThibanWaterDBModel.FK__productra__produ__0C85DE4D" FromRole="productratting" ToRole="product" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProvinceText" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="roleid" />
+    </Key>
+    <Property Name="roleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="rolemanagements" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="role" ToRole="rolemanagement" />
+    <NavigationProperty Name="teammanagements" Relationship="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" FromRole="role" ToRole="teammanagement" />
+  </EntityType>
+  <EntityType Name="rolemanagement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="menuitem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="role" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="rolemanagement" ToRole="role" />
+  </EntityType>
+  <EntityType Name="shippingaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="streetaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="orderid" Type="Int32" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__shippinga__custo__0E6E26BF" FromRole="shippingaddress" ToRole="customer" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__shippinga__order__0F624AF8" FromRole="shippingaddress" ToRole="order" />
+  </EntityType>
+  <EntityType Name="shippinghistory">
+    <Key>
+      <PropertyRef Name="shiphistoryid" />
+    </Key>
+    <Property Name="shiphistoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="reached_time" Type="DateTime" Precision="3" />
+    <Property Name="delivery_time" Type="DateTime" Precision="3" />
+    <Property Name="wating_time" Type="Int32" />
+    <Property Name="delay_time" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__shippingh__drive__10566F31" FromRole="shippinghistory" ToRole="driver" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__shippingh__order__114A936A" FromRole="shippinghistory" ToRole="order" />
+  </EntityType>
+  <EntityType Name="storedetail">
+    <Key>
+      <PropertyRef Name="storeid" />
+    </Key>
+    <Property Name="storeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="business_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="display_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="reg_business_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="business_address1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="business_address2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="warehouse_address1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="warehouse_address2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WarehouseCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Bussinessofficehours" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WarehouseProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__storedeta__vende__123EB7A3" FromRole="storedetail" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="teammanagement">
+    <Key>
+      <PropertyRef Name="memberid" />
+    </Key>
+    <Property Name="memberid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="membername" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="creadteby" Type="Int32" />
+    <NavigationProperty Name="role" Relationship="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" FromRole="teammanagement" ToRole="role" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__teammanag__vende__14270015" FromRole="teammanagement" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="vattandetail">
+    <Key>
+      <PropertyRef Name="vatid" />
+    </Key>
+    <Property Name="vatid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="vat_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__vattandet__Image__634EBE90" FromRole="vattandetail" ToRole="ImageFile" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__vattandet__vende__151B244E" FromRole="vattandetail" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="vechicle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driver_id" Type="Int32" />
+    <Property Name="vechicle_model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vechicle_company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vechicle_year" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vechicle_energy_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vechicle_cylender_type" Type="Int32" />
+    <Property Name="vechicle_fule_consumption_short" Type="Int32" />
+    <Property Name="vechicle_fule_consumption_long" Type="Int32" />
+    <Property Name="vechicle_assistant" Type="Int32" />
+    <Property Name="vechicle_max_capacity" Type="Int32" />
+    <Property Name="vechicle_status" Type="Boolean" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__vechicle__driver__160F4887" FromRole="vechicle" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="vender">
+    <Key>
+      <PropertyRef Name="venderid" />
+    </Key>
+    <Property Name="venderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="registration_date" Type="DateTime" Precision="3" />
+    <Property Name="mobile_no" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="verifyotp" Type="Int32" />
+    <Property Name="verifyemail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Activationid" Type="Guid" />
+    <Property Name="Accepted" Type="Boolean" />
+    <Property Name="MerchantId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AdditionalInfor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ForgotActivationId" Type="Guid" />
+    <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="Int32" />
+    <NavigationProperty Name="advertisements" Relationship="ThibanWaterDBModel.FK__advertise__vende__6A30C649" FromRole="vender" ToRole="advertisement" />
+    <NavigationProperty Name="agreements" Relationship="ThibanWaterDBModel.FK__agreement__Vende__367C1819" FromRole="vender" ToRole="agreement" />
+    <NavigationProperty Name="coupons" Relationship="ThibanWaterDBModel.FK__coupon__vender_i__6B24EA82" FromRole="vender" ToRole="coupon" />
+    <NavigationProperty Name="drivers" Relationship="ThibanWaterDBModel.FK__driver__vender_i__76969D2E" FromRole="vender" ToRole="driver" />
+    <NavigationProperty Name="geofences" Relationship="ThibanWaterDBModel.FK__geofence__vender__02084FDA" FromRole="vender" ToRole="geofence" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__vender__image__65370702" FromRole="vender" ToRole="ImageFile" />
+    <NavigationProperty Name="minimumorderstatus" Relationship="ThibanWaterDBModel.FK__minimumor__vende__02FC7413" FromRole="vender" ToRole="minimumorderstatu" />
+    <NavigationProperty Name="pandetails" Relationship="ThibanWaterDBModel.FK__pandetail__vende__07C12930" FromRole="vender" ToRole="pandetail" />
+    <NavigationProperty Name="products" Relationship="ThibanWaterDBModel.FK__product__vender___0A9D95DB" FromRole="vender" ToRole="product" />
+    <NavigationProperty Name="storedetails" Relationship="ThibanWaterDBModel.FK__storedeta__vende__123EB7A3" FromRole="vender" ToRole="storedetail" />
+    <NavigationProperty Name="teammanagements" Relationship="ThibanWaterDBModel.FK__teammanag__vende__14270015" FromRole="vender" ToRole="teammanagement" />
+    <NavigationProperty Name="vattandetails" Relationship="ThibanWaterDBModel.FK__vattandet__vende__151B244E" FromRole="vender" ToRole="vattandetail" />
+    <NavigationProperty Name="venderaddressproofs" Relationship="ThibanWaterDBModel.FK__venderadd__vende__17036CC0" FromRole="vender" ToRole="venderaddressproof" />
+    <NavigationProperty Name="venderbankdetails" Relationship="ThibanWaterDBModel.FK__venderban__vende__17F790F9" FromRole="vender" ToRole="venderbankdetail" />
+    <NavigationProperty Name="venderdefaultaddresses" Relationship="ThibanWaterDBModel.FK__venderdef__vende__18EBB532" FromRole="vender" ToRole="venderdefaultaddress" />
+    <NavigationProperty Name="venderlogs" Relationship="ThibanWaterDBModel.FK__venderlog__vende__19DFD96B" FromRole="vender" ToRole="venderlog" />
+    <NavigationProperty Name="venderpayoutalls" Relationship="ThibanWaterDBModel.FK__venderpay__vende__1AD3FDA4" FromRole="vender" ToRole="venderpayoutall" />
+    <NavigationProperty Name="venderpayoutrequesteds" Relationship="ThibanWaterDBModel.FK__venderpay__vende__1BC821DD" FromRole="vender" ToRole="venderpayoutrequested" />
+    <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="venderaddressproof">
+    <Key>
+      <PropertyRef Name="vender_address_id" />
+    </Key>
+    <Property Name="vender_address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="address_proof" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="address_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyTradeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MainOffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TlelphoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationDate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="POBox" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyType2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PanNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" />
+    <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__venderadd__Image__6442E2C9" FromRole="venderaddressproof" ToRole="ImageFile" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderadd__vende__17036CC0" FromRole="venderaddressproof" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="venderbankdetail">
+    <Key>
+      <PropertyRef Name="vender_bank_id" />
+    </Key>
+    <Property Name="vender_bank_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="account_no" Type="Int32" Nullable="false" />
+    <Property Name="benificary_name_in_bank" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="branch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ifsc_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="benificary_name_in_bank_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="HolderName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IBANCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="VatIdentityFicationNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BankNameCaseOther" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderban__vende__17F790F9" FromRole="venderbankdetail" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="venderdefaultaddress">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="vendernote1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="vendernote2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="streetaddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderdef__vende__18EBB532" FromRole="venderdefaultaddress" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="venderlog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vender_id" Type="Int32" />
+    <Property Name="login_date" Type="DateTime" Precision="3" />
+    <Property Name="logout" Type="DateTime" Precision="3" />
+    <Property Name="online_time" Type="Int32" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderlog__vende__19DFD96B" FromRole="venderlog" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="venderpayoutall">
+    <Key>
+      <PropertyRef Name="vpayallid" />
+    </Key>
+    <Property Name="vpayallid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="transactiondate" Type="DateTime" Precision="3" />
+    <Property Name="transactionid" Type="Int32" />
+    <Property Name="paymentmode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="adjustment_amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="net_amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderpay__vende__1AD3FDA4" FromRole="venderpayoutall" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="venderpayoutrequested">
+    <Key>
+      <PropertyRef Name="vpayoutid" />
+    </Key>
+    <Property Name="vpayoutid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="requestdate" Type="DateTime" Precision="3" />
+    <Property Name="transactionid" Type="Int32" />
+    <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__venderpay__vende__1BC821DD" FromRole="venderpayoutrequested" ToRole="vender" />
+  </EntityType>
+  <EntityType Name="Volume">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__admin__Image__5E8A0973">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.admin" Role="admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__vende__6A30C649">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.advertisement" Role="advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="advertisement">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__agreement__FileI__37703C52">
+    <End Type="ThibanWaterDBModel.filestore" Role="filestore" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.agreement" Role="agreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filestore">
+        <PropertyRef Name="FileId" />
+      </Principal>
+      <Dependent Role="agreement">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__agreement__Vende__367C1819">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.agreement" Role="agreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="agreement">
+        <PropertyRef Name="VenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__category__Image__5F7E2DAC">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.category" Role="category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="category">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__categor__09A971A2">
+    <End Type="ThibanWaterDBModel.category" Role="category" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="categoryid" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__coupon__vender_i__6B24EA82">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.coupon" Role="coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="coupon">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customer__Image__5D95E53A">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__custo__6C190EBB">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customeraddressproof" Role="customeraddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customeraddressproof">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__custo__6D0D32F4">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerappartmentaddress" Role="customerappartmentaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerappartmentaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerb__custo__6E01572D">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerbankdetail" Role="customerbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerbankdetail">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerc__custo__6EF57B66">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerchaletaddress" Role="customerchaletaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerchaletaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerd__custi__6FE99F9F">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerdefaultaddress" Role="customerdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerdefaultaddress">
+        <PropertyRef Name="custid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerf__custo__70DDC3D8">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerfavoriteproduct" Role="customerfavoriteproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerfavoriteproduct">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customero__custo__72C60C4A">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerofficeaddress" Role="customerofficeaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerofficeaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customero__custo__73BA3083">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerotheraddress" Role="customerotheraddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerotheraddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerp__custo__74AE54BC">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerpaymentcard" Role="customerpaymentcard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customerpaymentcard">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerv__custo__75A278F5">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customervillaaddress" Role="customervillaaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="customervillaaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__custo__7C4F7684">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverrating" Role="driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__customer__03F0984C">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__oredercan__custo__05D8E0BE">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.oredercanclefeedback" Role="oredercanclefeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="oredercanclefeedback">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippinga__custo__0E6E26BF">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.shippingaddress" Role="shippingaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="shippingaddress">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customera__Image__607251E5">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customeraddressproof" Role="customeraddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="customeraddressproof">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customerf__produ__71D1E811">
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.customerfavoriteproduct" Role="customerfavoriteproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="customerfavoriteproduct">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__geofen__01142BA1">
+    <End Type="ThibanWaterDBModel.dgeofence" Role="dgeofence" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.geofence" Role="geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dgeofence">
+        <PropertyRef Name="geofenceid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="geofence_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driver__image__662B2B3B">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="driver">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driver__vender_i__76969D2E">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="driver">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driveradd__drive__778AC167">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driveraddressproff" Role="driveraddressproff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driveraddressproff">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverban__drive__787EE5A0">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverbankdetail" Role="driverbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverbankdetail">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverdef__drive__797309D9">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverdefaultaddress" Role="driverdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverdefaultaddress">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverlog__drive__7A672E12">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverlog" Role="driverlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverlog">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverpay__drive__7B5B524B">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverpayoutrequested" Role="driverpayoutrequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverpayoutrequested">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__drive__7D439ABD">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverrating" Role="driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverwor__drive__7F2BE32F">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverworkinghour" Role="driverworkinghour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="driverworkinghour">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__driver__00200768">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.geofence" Role="geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payoutall__drive__08B54D69">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.payoutall" Role="payoutall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="payoutall">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippingh__drive__10566F31">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.shippinghistory" Role="shippinghistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="shippinghistory">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vechicle__driver__160F4887">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.vechicle" Role="vechicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="vechicle">
+        <PropertyRef Name="driver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driveradd__Image__6166761E">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driveraddressproff" Role="driveraddressproff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="driveraddressproff">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__driverrat__order__7E37BEF6">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.driverrating" Role="driverrating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="driverrating">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__geofence__vender__02084FDA">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.geofence" Role="geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pandetail__Image__625A9A57">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.pandetail" Role="pandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="pandetail">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__image__671F4F74">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vattandet__Image__634EBE90">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.vattandetail" Role="vattandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="vattandetail">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vender__image__65370702">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="vender">
+        <PropertyRef Name="image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderadd__Image__6442E2C9">
+    <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderaddressproof" Role="venderaddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageFile">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="venderaddressproof">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__minimumor__vende__02FC7413">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.minimumorderstatu" Role="minimumorderstatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="minimumorderstatu">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__product___04E4BC85">
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__oredercan__order__06CD04F7">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.oredercanclefeedback" Role="oredercanclefeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="oredercanclefeedback">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productra__order__0B91BA14">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.productratting" Role="productratting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="productratting">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippinga__order__0F624AF8">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.shippingaddress" Role="shippingaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="shippingaddress">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shippingh__order__114A936A">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.shippinghistory" Role="shippinghistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="shippinghistory">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pandetail__vende__07C12930">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.pandetail" Role="pandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="pandetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__vender___0A9D95DB">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productra__produ__0C85DE4D">
+    <End Type="ThibanWaterDBModel.product" Role="product" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.productratting" Role="productratting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="productratting">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolemanag__rolei__5AB9788F">
+    <End Type="ThibanWaterDBModel.role" Role="role" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.rolemanagement" Role="rolemanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="rolemanagement">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teammanag__rolei__57DD0BE4">
+    <End Type="ThibanWaterDBModel.role" Role="role" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.teammanagement" Role="teammanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="teammanagement">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__storedeta__vende__123EB7A3">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.storedetail" Role="storedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="storedetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teammanag__vende__14270015">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.teammanagement" Role="teammanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="teammanagement">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vattandet__vende__151B244E">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.vattandetail" Role="vattandetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="vattandetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderadd__vende__17036CC0">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderaddressproof" Role="venderaddressproof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderaddressproof">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderban__vende__17F790F9">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderbankdetail" Role="venderbankdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderbankdetail">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderdef__vende__18EBB532">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderdefaultaddress" Role="venderdefaultaddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderdefaultaddress">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderlog__vende__19DFD96B">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderlog" Role="venderlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderlog">
+        <PropertyRef Name="vender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderpay__vende__1AD3FDA4">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderpayoutall" Role="venderpayoutall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderpayoutall">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__venderpay__vende__1BC821DD">
+    <End Type="ThibanWaterDBModel.vender" Role="vender" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.venderpayoutrequested" Role="venderpayoutrequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vender">
+        <PropertyRef Name="venderid" />
+      </Principal>
+      <Dependent Role="venderpayoutrequested">
+        <PropertyRef Name="venderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CmsPage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="mobile_otp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="otp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="country_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="country_code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="phone_no_length" Type="Int32" />
+  </EntityType>
+  <EntityType Name="delivery">
+    <Key>
+      <PropertyRef Name="deliveryid" />
+    </Key>
+    <Property Name="deliveryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="deliverystarttime" Type="DateTime" Precision="3" />
+    <Property Name="startlongitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="startlatitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="endlongitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="endlatitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="startgeofence" Type="Int32" />
+    <Property Name="endgeofence" Type="Int32" />
+    <Property Name="orderid" Type="Int32" />
+    <Property Name="reachedtime" Type="DateTime" Precision="3" />
+    <Property Name="deliverytime" Type="DateTime" Precision="3" />
+    <Property Name="weatingtime" Type="Int32" />
+    <Property Name="delaytime" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__delivery__driver__4B422AD5" FromRole="delivery" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="national_address">
+    <Key>
+      <PropertyRef Name="addressid" />
+    </Key>
+    <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="buildingnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="streetname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="neighborhood" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="postal_zip_code" Type="Int32" />
+    <Property Name="district" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="additionalnumber" Type="Int32" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="address_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__national___custo__4F12BBB9" FromRole="national_address" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="odometerreading">
+    <Key>
+      <PropertyRef Name="odometerid" />
+    </Key>
+    <Property Name="odometerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="trukid" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="startodometter" Type="Int32" />
+    <Property Name="endodometter" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__odometerr__drive__5006DFF2" FromRole="odometerreading" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="onspotsale">
+    <Key>
+      <PropertyRef Name="onspotsaleid" />
+    </Key>
+    <Property Name="onspotsaleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="trukid" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="onspotqty" Type="Int32" />
+    <Property Name="onspotprice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="totalqty" Type="Int32" />
+    <Property Name="totalprice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="available" Type="Int32" />
+    <Property Name="onsopt_sale_latitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="onspot_sale_longitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="geofence" Type="Int32" />
+    <Property Name="total_inventory" Type="Int32" />
+    <Property Name="total_inventory_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="available_inventory" Type="Int32" />
+    <Property Name="orderid" Type="Int32" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864" FromRole="onspotsale" ToRole="driver" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="onspotsale" ToRole="order" />
+  </EntityType>
+  <EntityType Name="orderdeliveryweather">
+    <Key>
+      <PropertyRef Name="orderdeliveryweather_id" />
+    </Key>
+    <Property Name="orderdeliveryweather_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="orderid" Type="Int32" />
+    <Property Name="weathertemp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="weatherhumidity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="weatherpressure" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="weather_temp_max" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="weather_temp_min" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="weathertime" Type="DateTime" Precision="3" />
+    <Property Name="wind" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="rain" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__orderdeli__drive__55BFB948" FromRole="orderdeliveryweather" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="warehouseaddress">
+    <Key>
+      <PropertyRef Name="warehouseid" />
+    </Key>
+    <Property Name="warehouseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venderid" Type="Int32" />
+    <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="longitude" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="geofenceid" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK__national___custo__4F12BBB9">
+    <End Type="ThibanWaterDBModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.national_address" Role="national_address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="national_address">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__delivery__driver__4B422AD5">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.delivery" Role="delivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="delivery">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__odometerr__drive__5006DFF2">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.odometerreading" Role="odometerreading" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="odometerreading">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__onspotsal__drive__51EF2864">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.onspotsale" Role="onspotsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="onspotsale">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderdeli__drive__55BFB948">
+    <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.orderdeliveryweather" Role="orderdeliveryweather" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="driverid" />
+      </Principal>
+      <Dependent Role="orderdeliveryweather">
+        <PropertyRef Name="driverid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__onspotsal__order__54CB950F">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.onspotsale" Role="onspotsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="onspotsale">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="cust_notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="from_thiban" Type="Boolean" />
+    <Property Name="changes_to_acc" Type="Boolean" />
+    <Property Name="coupon_alerts" Type="Boolean" />
+    <Property Name="feature_updates" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="General_feeback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="product_feedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="producu_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+</Schema>

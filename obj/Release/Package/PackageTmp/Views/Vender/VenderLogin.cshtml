@@ -1,0 +1,222 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderLogin
+
+@{
+    ViewBag.Title = "VenderLogin";
+    Layout = null;
+}
+
+@*header start*@
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$("#errMessage").hide();
+        if ('@ViewBag.VenderLogin' == "Incorrect")
+        {
+            $("#errMessage").show();
+        }
+    });
+    //function noBack() { window.history.forward(); }
+    //noBack();
+    //window.onload = noBack;
+    //window.onpageshow = function (evt) { if (evt.persisted) noBack(); }
+    //window.onunload = function () { void (0); }
+</script>
+
+<!doctype html>
+
+<html>
+
+<head>
+
+    <!-- Meta, title, CSS, favicons, etc. -->
+
+    <meta charset="utf-8">
+
+    <title>Water Admin</title>
+
+    <meta name="keywords" content="Admin Dashboard" />
+
+    <meta name="description" content="Admin Dashboard">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Font CSS (Via CDN) -->
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+
+
+    <!-- Theme CSS -->
+
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
+
+
+    <!-- Admin Forms CSS -->
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
+
+
+   
+
+
+</head>
+
+
+<body class="external-page external-alt sb-l-c sb-r-c login-body">
+
+
+    <div id="main" class="animated fadeIn">
+
+
+
+
+
+
+
+        @*header end*@
+
+
+@using (Html.BeginForm("VenderLogin", "Vender"))
+{
+
+        <section id="content" class="login-form">
+
+            <div class="admin-form theme-info">
+
+
+
+                <!-- Login Logo -->
+
+                <div class="row table-layout"> </div>
+
+
+
+                <!-- Login Panel/Form -->
+
+                <div class="panel mt20 mb25">
+
+                    <form method="post" id="contact" class="login-form-vendor">
+
+                        <div class="panel-body bg-light p25 pb15 login-box-div">
+
+                            <span id="errMessage" style="display:none;color:red">UserName Or Password is incorrect</span>
+
+                            <!-- Username Input -->
+
+                            <div class="section">
+                                <a href="javascript:" title="THIBAN">
+
+                                    <h1 class="mt5">
+                                        THIBAN<br>
+
+                                        <small>Water Delivery</small>
+                                    </h1>
+
+                                </a>
+
+                                <label for="username" class="field prepend-icon">
+
+                                    @*<input type="text" name="username" id="username" class="gui-input" placeholder="Username">*@
+                                    @Html.TextBoxFor(model => model.username, new { @name = "username", @id = "username", @class = "gui-input", @placeholder = "Username" })
+                                    @Html.ValidationMessageFor(model => model.username)
+
+                                </label>
+
+                            </div>
+
+
+
+                            <!-- Password Input -->
+
+                            <div class="section">
+
+                                <!-- <label for="username" class="field-label text-muted fs18 mb10">Password</label>-->
+
+                                <label for="password" class="field prepend-icon">
+
+                                    @*<input type="password" name="password" id="password" class="gui-input" placeholder="Password">*@
+                                    @Html.PasswordFor(model => model.password, new { @name = "password", @id = "password", @class = "gui-input", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.password)
+
+                                </label>
+
+                            </div>
+
+                            <!--<div class="form-group remember-me">
+
+                              <div class="col-sm-12 pad-no">
+
+                                <div class="col-md-6 pad-no">
+
+                                  <div class="bs-component">
+
+                                    <div class="checkbox-custom checkbox-disabled mb10">
+
+                                      <input type="checkbox" id="checkboxDefault1">
+
+                                      <label for="checkboxDefault1">Remember Me</label>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                            </div>-->
+
+                            <div class="sign_text">
+
+                                <p class="sign-p"><span class="" style=" color:#7a7a7a;">By proceding,you agree to Person's </span><span class="sign-fade-clr">Terms </span>&nbsp;and <span class="sign-fade-clr"> Privacy Policy </span></p>
+
+                                <p class="">Having issues in login? <a href="" style="color:#888;">Contact Us</a> </p>
+
+                                <p><a href="~/VenderAccount/ForgotPassword" style="color:#888;">Forgot Password</a></p>
+
+                                <div class="col-md-12 pad-no signin-btn">
+
+                                    @*<a href="vendor-index.php" class="btn btn-primary btn-block">Sign me in</a>*@
+                                    <input type="submit" value="Sign me in" class="btn btn-primary btn-block">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+    
+}
+
+        </div>
+    </body> 
+</html> 
+
+
+
+        <style>
+            .login-form .section h1 {
+                margin-bottom: 35px;
+            }
+
+            span.field-validation-error {
+        color: red;
+    }
+        </style>
+
+
+

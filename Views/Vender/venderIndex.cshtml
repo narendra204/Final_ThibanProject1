@@ -1,0 +1,1289 @@
+﻿@model Final_ThibanProject.Models.viewmodel.VenderDetails
+@{
+    ViewBag.Title = "venderIndex";
+    Layout = null;
+    var verifyotp = ViewBag.verifyotp;
+}
+
+@*header*@
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        @*var Session = '<%= Session["venderUserName"].ToString() %>';
+        if(Session==null || Session=="" )
+        {
+            var url = '@Url.Action("VenderLogin", "Vender")';
+            window.location.href = url;
+        }*@
+       // alert(someSession)
+        $("#btnClickHere").click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            $.ajax({
+
+                url: '/Vender/GetOTP',
+                type: "Get",
+                async:false,
+                data: { "user": id },
+                dataType: "json",
+                success: function (Data)
+                {
+                    debugger;
+                    if(Data!=0 && Data!="")
+                    {
+                        $("#Otp").val(Data);
+                       
+                        // $(".tab-content:eq(0)").hide();
+                        //$("ul.nav-tabs li").eq(1).addClass("active").show();
+                        // $(".tab_content:eq(1)").show();
+                        //  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+                     //   $('.nav-tabs a[href="#step1"]').tab('show')
+                        $("#step1").show();
+                        $("#step2").hide();
+                        $("#step3").hide();
+                        $('.nav-tabs a[href="#step1"]').tab('show')
+                       // $("ul.nav-tabs li").eq(0).addClass("active").show();
+                        $("ul.nav-tabs li").eq(2).removeClass("active").show();
+                        $("ul.nav-tabs li").eq(1).removeClass("active").show();
+                        return false;
+
+                    }
+                    else
+                    {
+                        alert("does not verify");
+                        return false;
+
+                    }
+                },
+                error: function(){
+                    alert("please try again")
+                    return false;
+                }
+            });
+            
+         });
+        $("#btnVerify").click(function () {
+            debugger;
+            
+            if($("#Otp").val()!=null && $("#Otp").val()!="" && $("#Otp").val()!=0)
+            {
+
+                var a = $("#Otp").val();
+                var m = { "Value":a }
+
+                $.ajax({
+
+                    url: '/Vender/StepVerify',
+                    type: "Get",
+                    async:false,
+                    data: m ,
+                    dataType: "json",
+                    success: function (Data)
+                    {
+                        debugger;
+                        if(Data=="true")
+                        {
+                            $("#step1").hide();
+                            $("#step2").show();
+                            $("#step3").hide();
+                            $("#ok1").show();
+                           // $("#ok2").show();
+                            //  $("#step2List").addClass('active').siblings().removeClass('active');
+                            var location2="#step2";
+                            var location1="#step1";
+                            var location3="#step3";
+                            $('ul.nav.nav-tabs.custom_nav').find('a[href="' + location2 + '"]')
+               .closest('li').addClass('active');
+                            $('ul.nav.nav-tabs.custom_nav').find('a[href="' + location1 + '"]')
+              .closest('li').removeClass('active');
+
+
+                            return true;
+
+                        }
+                        else
+                        {
+                            alert("does not verify");
+                            return false;
+
+                        }
+                    },
+                    error: function(){
+                        alert("please try again")
+                        return false;
+                    }
+                });
+            }
+            else
+            {
+                $("#spanOtp").show();
+                return false;
+            }
+
+        });
+
+        $("#chkWarehouse").change(function ()
+        {
+            debugger;
+            if ($(this).is(":checked"))
+            {
+                var Register_Bussiness_Adress = $("#business_address1").val();
+                var Register_Bussiness_Adress2 = $("#business_address2").val();            
+                var Province = $('#StoreProvince').val();
+                var City = $("#city").val();
+                
+                if (Register_Bussiness_Adress != null && Register_Bussiness_Adress != "") {
+                    $("#warehouse_address1").val(Register_Bussiness_Adress);
+                }
+                //else
+                //{
+                //    $("#warehouse_address1").val("");
+                //}
+                if (Register_Bussiness_Adress2 != null && Register_Bussiness_Adress2 != "") {
+                    $("#warehouse_address2").val(Register_Bussiness_Adress2);
+                }
+                //else {
+                //    $("#warehouse_address1").val("");
+                //}
+                if (City != null && City != "") {
+                    $("#WarehouseCity").val(City);
+                }
+
+                if (Province != null && Province != "") {
+                    $("#WarehouseProvince").val(Province);
+                }
+               
+             
+            }
+            else
+            {
+                $("#warehouse_address1").val("");
+                $("#warehouse_address2").val("");
+                $("#WarehouseCity").val("");
+                $("#WarehouseProvince").val("");
+            }
+
+        });
+
+
+        
+
+        $("#btnContinue").click(function () {
+            //
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            $("#spanBussinesstype").hide();
+            $("#spanreg_business_name").hide();
+            $("#spanbusiness_address1").hide();
+            $("#spanbusiness_address2").hide();
+            $("#spanStoreProvince").hide();
+            $("#spancity").hide();
+            $("#spanwarehouse_address1").hide();
+            $("#spanwarehouse_address2").hide();
+            $("#spanWarehouseCity").hide();
+            //
+            debugger;
+            var Bussiness_type =$("#Bussinesstype").val();
+            var Language = $('#Language').val();
+            var Display_Name=$("#display_name").val();
+            var Register_Bussiness_Name=$("#reg_business_name").val();
+            var Register_Bussiness_Adress=$("#business_address1").val();
+            var Register_Bussiness_Adress2 =$("#business_address2").val();
+            var Registration_Name=$("#Registration_Name").val();
+            var Province = $('#StoreProvince').val();
+            var City =$("#city").val();
+            var Bussiness_office_hours = $("#Bussinessoffhour").val();
+            var Warehouse_adress_1=$("#warehouse_address1").val();
+            var Warehouse_adress_2=$("#warehouse_address2").val();
+            var WarehouseCity=$("#WarehouseCity").val();
+            var WarehouseProvince = $("#WarehouseProvince").val();
+
+            if (Bussiness_type == null || Bussiness_type == "" || Bussiness_type =="0")
+            {
+                $("#spanBussinesstype").show();
+                //return false;
+               
+            }
+            if(Register_Bussiness_Name==null || Register_Bussiness_Name=="")
+            {
+                $("#spanreg_business_name").show();
+               // return false;
+            }
+            if(Register_Bussiness_Adress==null || Register_Bussiness_Adress=="")
+            {
+                $("#spanbusiness_address1").show();
+              //  return false;
+            }
+            if(Register_Bussiness_Adress2==null || Register_Bussiness_Adress2=="")
+            {
+                $("#spanbusiness_address2").show();
+               // return false;
+            }
+            if (Province == null || Province == "" || Province == "0")
+            {
+                $("#spanStoreProvince").show();
+                //return false;
+            }
+            if(City==null || City=="")
+            {
+                $("#spancity").show();
+               // return false;
+            }
+            if(Warehouse_adress_1==null || Warehouse_adress_1=="")
+            {
+                $("#spanwarehouse_address1").show();
+                //return false;
+            }
+            if(Warehouse_adress_2==null || Warehouse_adress_2=="")
+            {
+                $("#spanwarehouse_address2").show();
+               // return false;
+            }
+            if(WarehouseCity==null || WarehouseCity=="")
+            {
+                $("#spanWarehouseCity").show();
+               // return false;
+            }
+            
+            
+            if ((Bussiness_type != null && Bussiness_type != "" && Bussiness_type != "0") && (Register_Bussiness_Name != null && Register_Bussiness_Name != "") && (Register_Bussiness_Adress != null && Register_Bussiness_Adress != "") && (Register_Bussiness_Adress2 != null && Register_Bussiness_Adress2 != "") && (Province != "" && Province != null && Province != "0") && (City != null && City != "") && (Warehouse_adress_1 != null && Warehouse_adress_1 != "") && (Warehouse_adress_2 != null && Warehouse_adress_2 != "") && (WarehouseCity != null && WarehouseCity != ""))
+            {
+
+            
+
+                $.ajax({
+
+                    url: '/Vender/StepContinue',
+                    type: "Get",
+                    async:false,
+                    data: {"id":id,"Busnesstype": Bussiness_type,"Lang": Language,"Disp_Name": Display_Name,"RegiBusnName": Register_Bussiness_Name,"RegisBusnAd": Register_Bussiness_Adress,"RegisBusnAd2": Register_Bussiness_Adress2,"RegisName": Registration_Name,"Prov": Province,"City": City,"Busnoffhours": Bussiness_office_hours,"Warehousead1": Warehouse_adress_1,"Warehousead2": Warehouse_adress_2,"WarehouseCity": WarehouseCity,"WarehouseProvince": WarehouseProvince},
+                    dataType: "json",
+                    success: function (Data)
+                    {
+                        debugger;
+                        if(Data=="true")
+                        {
+                            $("#step1").hide();
+                            $("#step2").hide();
+                            $("#step3").show();
+                            var location2="#step2";
+                            var location1="#step1";
+                            var location3="#step3";
+                            $('ul.nav.nav-tabs.custom_nav').find('a[href="' + location3 + '"]')
+               .closest('li').addClass('active');
+                            $('ul.nav.nav-tabs.custom_nav').find('a[href="' + location2 + '"]')
+              .closest('li').removeClass('active');
+                            $("#ok1").show();
+                            $("#ok2").show();
+                            return true;
+
+                        }
+                        else
+                        {
+                            alert("some error occured on creation of store details");
+                            return false;
+
+                        }
+                    },
+                    error: function(){
+                        alert("please try again")
+                        return false;
+                    }
+                });
+            }
+
+        });
+
+      
+        $("#btnAccept").click(function () {
+            debugger;
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            
+            debugger;
+                $.ajax({
+
+                    url: '/Vender/Accept',
+                    type: "Get",
+                    async: false,
+                    data: { "user": id },
+                    dataType: "json",
+                    success: function (Data) {
+                        debugger;
+                        if (Data == "true") {
+                            $("#step1").hide();
+                            $("#step2").hide();
+                            $("#step3").hide();
+                            window.location.href = '/Vender/UserAgreement?User=' + @Model.venderid;
+                            return true;
+
+                        }
+                        else {
+                            alert("please try again");
+                            return false;
+
+                        }
+                    },
+                    error: function () {
+                        alert("please try again")
+                        return false;
+                    }
+                });
+          
+
+        });
+
+
+
+
+    });
+
+</script>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- Meta, title, CSS, favicons, etc. -->
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title> </title>
+
+
+    <!-- Bootstrap -->
+
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+   
+    <!-- Font Awesome -->
+
+    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Font-Styles -->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">
+
+
+
+
+
+
+    <!-- Custom Theme Style -->
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/custom.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/responsive.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css">
+
+    <!-- Admin Forms CSS -->
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
+
+    <style>
+        .nav_menu {
+            border-bottom: none;
+        }
+
+        .bg {
+            background: #fff;
+        }
+
+        span.field-validation-error {
+        color: red;
+    }
+    </style>
+
+
+
+</head>
+
+
+
+
+
+<body class="nav-md">
+
+    <div class="container body main-container-body">
+
+        <div class="main_container">
+
+            <div class="col-md-3 left_col">
+
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title">
+
+                        <a href="vendor-index.php" class="site_title"> <span class="main-heading"><p class="test">THIBAN <span class="side-heading">VENDOR</span></p></span></a>
+
+                    </div>
+
+
+                    <div class="clearfix"></div>
+
+
+
+
+
+                    <!-- sidebar menu -->
+
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                        <div class="menu_section">
+
+
+
+                            <ul class="nav side-menu">
+
+                                <li class="active">
+                                    <a href="vendor-index.php">
+
+                                        <img src="~/Content/assets/img/home-new.png" alt=""> <span class="sidebar-title">
+
+                                            Dashboard
+                                        </span>
+                                        <!--<span class="fa fa-chevron-down"></span></a>
+
+                                                            <ul class="nav child_menu">
+
+                                                              <li><a href="index.html">Dashboard</a></li>
+
+                                                              <li><a href="index2.html">Dashboard2</a></li>
+
+                                                              <li><a href="index3.html">Dashboard3</a></li>
+
+                                        </ul>-->
+                                    </a>
+
+                                </li>
+
+
+
+                            </ul>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+
+                </div>
+
+            </div>
+
+
+            <!-- top navigation -->
+
+            <div class="top_nav">
+
+                <div class="nav_menu">
+
+
+
+
+
+
+
+                    <nav class="navbar navbar-default bg">
+
+                        <div class="container-fluid">
+
+
+
+                            <div class="nav toggle">
+
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+                            </div>
+
+
+
+                            <form class="  navbar-form navbar-left navbar-search" role="search">
+
+
+
+
+
+
+
+                                <div class="form-group serch-div">
+
+
+
+                                    <!-- <i class="fa fa-search"></i>-->
+
+                                    <img src="~/Content/assets/img/images/search.png" class="search-icon">
+
+                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+
+                                </div>
+
+                            </form>
+
+
+
+
+                            <ul class="nav navbar-nav navbar-right">
+
+
+
+
+
+                                <ul class="nav navbar-nav  pull-right">
+
+
+
+
+
+
+
+
+
+
+                                    <li><a href="">English</a></li>
+
+                                    <li role="presentation" class="dropdown">
+
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+
+
+
+                                            Seller Support
+
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+
+                                            <div class="img-user-pic">
+
+
+
+                                                <div class=" col-md-5 col-sm-5 col-xs-5">
+
+
+
+                                                    <div class="user-profile-photo"> <span><img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round "> <span> <img src="@Model.image" class="img-responsive user-photo"></span> </span> </div>
+
+                                                </div>
+
+                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+
+                                                    <div class=" user-txt">
+
+                                                        <h3> Kinely seller</h3>
+                                                        <p> @Model.emailid</p>              
+                                                    </div>
+
+                                                </div>
+
+                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                            </div>
+
+                                        </a>
+
+                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+
+                                            <li class="list-group-item">
+                                                <a href="#" class="animated animated-short fadeInUp ">
+
+                                                    @Model.name<br>
+
+                                                    @Model.emailid
+                                                </a>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                @Html.ActionLink("Profile", "UserAgreement", "Vender", new { User = Model.venderid }, new { @class = "animated animated-short fadeInUp" }) @*<a href="user-agreement.php" class="animated animated-short fadeInUp">*@
+
+                                                    @*Profile
+                                                </a>*@
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+
+
+
+
+
+                                    <li class=""> <a href="/Vender/VenderLogout" aria-expanded="false"> <img src="~/Content/assets/img/images/logout.jpg" class="logout-img" style="" alt="1"> <span>Logout</span> </a> </li>
+
+                                </ul>
+
+                            </ul>
+
+                        </div>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            @*end*@
+
+            <style>
+                .form-control {
+                    border-radius: 3px !important;
+                }
+            </style>
+
+            <!-- Start: Content-Wrapper -->
+@using (Html.BeginForm("venderIndex", "Vender"))
+{
+            <div class="right_col" role="main">
+
+
+
+                <!-- Begin: Content -->
+
+                <div class="container form_wizard_container pr20">
+
+                    <div class="row">
+
+                        <section>
+
+                            <div class="wizard">
+
+                                <div class="wizard-inner">
+
+                                    <div class="connecting-line"></div>
+
+                                    <ul class="nav nav-tabs custom_nav" role="tablist">
+
+                                        <li role="presentation" id="step1list" class="active">
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+
+                                                <h4 class="wzrd_h4"><span>Step 1:Mobile Verification </span> <span style="display:none" id="ok1" class="glyphicon glyphicon-ok nav-ok"></span> </h4>
+
+                                            </a>
+
+                                        </li>
+
+                                        <li id="step2list" role="presentation">
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+
+                                                <h4>Step 2:Store and Warehouse Details <span style="display:none" id="ok2" class="glyphicon glyphicon-ok nav-ok"></span></h4>
+
+                                            </a>
+                                        </li>
+
+                                        <li id="step3list" role="presentation">
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+
+                                                <h4>Step 3:Terms and Conditions <span style="display:none" id="ok3"  class="glyphicon glyphicon-ok nav-ok"></span></h4>
+
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <form role="form" class="wizard_form">
+
+                                    <div class="tab-content text-center">
+
+                                        @*<span>@Model.Otp</span>*@
+
+                                        <div class="tab-pane active" role="tabpanel"  id="step1">
+
+                                            <h1 class="">Mobile Verification </h1>
+
+                                            <p class="sign-p"> <span class="sign-fade-clr">@Html.ActionLink("Click here", "GetOTP", "Vender", routeValues: new { user = Model.venderid }, htmlAttributes: null)</span> &nbsp;<span class="font-size-13">to generate OTP to your number @Model.mobile_no </span> <span class="sign-fade-clr"> <a href="" class="color-hash">(Change number)</a> </span> </p>
+
+                                            <input type="button" id="btnClickHere" name="btnClickHere" class="btn btn-primary btn-lg next-step wizard-btn border-radius99" data-id="@Model.venderid" value="Click here" />
+
+                                            <div class="row">
+
+                                                <div class="enter-otp-pwd">
+
+                                                    <div class="col-sm-3"> <span class="glyphicon glyphicon-earphone"> </span> </div>
+
+                                                    <div class="col-sm-2 mobile_text color-hash font-size-13">Enter OTP Received </div>
+
+                                                    <div class="col-sm-4 pad-no">
+                                                        <span id="spanOtp" style="display:none">Please Enter OTP Received </span>
+                                                        @Html.TextBoxFor(model => model.Otp, new { @class = "form-control", @id = "Otp" })
+                                                        @*<input type="text" class="form-control">*@
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <hr>
+
+                                            <ul class="list-inline ">
+
+                                                <li>
+
+                                                    <input type="button" id="btnVerify" name="submit" class="btn btn-primary btn-lg next-step wizard-btn border-radius99" value="Verify" />
+
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                        <div class="tab-pane" role="tabpanel" id="step2">
+
+                                            <h1>Store Details</h1>
+
+                                            <div class="">
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="email">Bussiness type<span class="star-symbol">*</span></label>
+
+                                                    <div class="col-sm-5">
+
+                                                        @*<select name="Bussinesstype" id="Bussinesstype" class="form-control wizard_inner_frm">
+
+                                                            <option value="0">--Select bussiness type--</option>
+
+                                                            <option value="1">Sell Propreitorship</option>
+
+                                                            <option value="2">Private Limited</option>
+
+                                                            <option value="3">Partnership</option>
+
+                                                            <option value="4">Public Limited</option>
+
+                                                            <option value="5">Others</option>
+
+                                                        </select>*@
+                                                        @Html.DropDownListFor(model => model.business_type, (IEnumerable<SelectListItem>)ViewData["listItemsBussiness"], new { @name = "Bussinesstype", @class = "form-control wizard_inner_frm", @id = "Bussinesstype" })
+
+                                                        <span style="display:none;color:red" id="spanBussinesstype">*Please enter A Bussiness type</span>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="email">Language </label>
+
+                                                    <div class="col-sm-5">
+
+                                                        @*<select name="Language" id="Language" class="form-control wizard_inner_frm">
+
+                                                            <option value="0">--Select language--</option>
+
+                                                            <option value="1">English</option>
+
+                                                        </select>*@
+                                                        @Html.DropDownListFor(model => model.language, (IEnumerable<SelectListItem>)ViewData["listItemsLanguages"], new { @name = "Language", @class = "form-control wizard_inner_frm", @id = "Language" })
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">Display Name </label>
+
+                                                    <div class="col-sm-5">
+
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder=" Display Name">*@
+                                                        @Html.TextBoxFor(model => model.display_name, new { @name = "display_name", @id = "display_name", @class = "form-control wizard_inner_frm", @placeholder = " Display Name" })
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">Register Bussiness Name <span class="star-symbol">*</span> </label>
+
+                                                    <div class="col-sm-5">
+                                                       
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder="Register Bussiness Name ">*@
+                                                        @Html.TextBoxFor(model => model.reg_business_name, new { @name = "reg_business_name", @id = "reg_business_name", @class = "form-control wizard_inner_frm", @placeholder = "Register Bussiness Name " })
+                                                        <span style="display:none;color:red" id="spanreg_business_name">*Please enter A reg_business_name</span>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">Register Bussiness Adress <span class="star-symbol">*</span></label>
+
+                                                    <div class="col-sm-5">
+                                                       
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder=" Adress 1">*@
+                                                        @Html.TextBoxFor(model => model.business_address1, new { @name = "business_address1", @id = "business_address1", @class = "form-control wizard_inner_frm", @placeholder = " Adress 1" })
+                                                        <span style="display:none;color:red" id="spanbusiness_address1">*Please enter A business_address1</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">Register Bussiness Adress2 <span class="star-symbol">*</span></label>
+
+                                                    <div class="col-sm-5">
+                                                      
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder="Adress 2 ">*@
+                                                        @Html.TextBoxFor(model => model.business_address2, new { @name = "business_address2", @id = "business_address2", @class = "form-control wizard_inner_frm", @placeholder = "Adress 2 " })
+                                                        <span style="display:none;color:red" id="spanbusiness_address2">*Please enter A business_address2</span>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">Registration Name </label>
+
+                                                    <div class="col-sm-5">
+                                                      
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder=" ">*@
+                                                        @Html.TextBoxFor(model => model.Registration_Name, new { @name = "Registration_Name", @id = "Registration_Name", @class = "form-control wizard_inner_frm", @placeholder = "" })
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="email">Province <span class="star-symbol">*</span></label>
+                                                   
+                                                    <div class="col-sm-5">
+
+                                                        @*<select name="Province" id="StoreProvince" class="form-control wizard_inner_frm">
+
+                                                            <option value="0">--Select Province--</option>
+
+                                                            <option value="1">Riyadh</option>
+
+                                                            <option value="2">Jeddah</option>
+
+                                                            <option value="3">Mecca</option>
+
+                                                            <option value="4">Medina</option>
+
+                                                            <option value="5">Hofuf</option>
+
+                                                            <option value="6">Ta'if</option>
+
+                                                            <option value="7">Dammam</option>
+
+                                                            <option value="8">Kamis Mushaith</option>
+
+                                                            <option value="9">Buraidan</option>
+
+                                                            <option value="10">Khobar</option>
+
+                                                        </select>*@
+                                                        @Html.DropDownListFor(model => model.StoreProvince, (IEnumerable<SelectListItem>)ViewData["listProvince"], new { @name = "Province", @class = "form-control wizard_inner_frm", @id = "StoreProvince" })
+
+
+
+
+                                                        <span style="display:none;color:red" id="spanStoreProvince">* Enter a provience</span>
+
+                                                    </div>
+                                                   
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="pwd">City <span class="star-symbol">*</span> </label>
+
+                                                    <div class="col-sm-5">
+
+                                                        @Html.TextBoxFor(model => model.city, new { @name = "city", @id = "city", @class="form-control wizard_inner_frm", @placeholder="City" })
+                                                        @*<input type="password" class="form-control wizard_inner_frm" placeholder="City">*@
+                                                        <span style="display:none;color:red" id="spancity">*Please enter A city</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-4" for="email">Bussiness office hours </label>
+
+                                                    <div class="col-sm-5">
+
+                                                        @Html.DropDownListFor(model => model.Bussiness_office_hours, (IEnumerable<SelectListItem>)ViewData["listBussiness"], new { @name = "Bussinessofficehours", @class = "form-control wizard_inner_frm", @id = "Bussinessoffhour" })
+
+
+
+
+                                                        @*<select name="Bussinessofficehours" id="Bussinessoffhour" class="form-control wizard_inner_frm">
+
+                                                            <option value="0">--Select time--</option>
+
+                                                            <option value="1">30 min</option>
+
+                                                            <option value="2">45 min</option>
+
+                                                            <option value="3">1 hour</option>
+
+                                                            <option value="4">2 hour</option>
+
+                                                            <option value="5">3 hour</option>
+
+                                                            <option value="6">4  hour</option>
+
+                                                            <option value="7">5  hour</option>
+
+                                                            <option value="8">6  hour</option>
+
+                                                        </select>*@
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="container">
+
+                                                    <div class="row">
+
+                                                        <div class="col-sm-4">
+
+                                                            <div class="checkbox my-warehouse">
+
+                                                                <label>
+
+                                                                    <input type="checkbox" id="chkWarehouse" value="FR">
+
+                                                                    &nbsp; &nbsp;My warehouse adress is same as above
+                                                                </label>
+
+                                                                <!-- <label class="field option ml15 pull-right mt10 font-size-13">
+
+                              <input type="checkbox" name="info">
+
+                              <span class="checkbox save-serach-box"></span>
+
+                              <span class="text-muted">Save Search</span>
+
+                            </label>-->
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+
+                                                            <h1>Warehouse Details</h1>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label col-sm-4" for="pwd">Warehouse adress 1<span class="star-symbol">*</span> </label>
+
+                                                        <div class="col-sm-5">
+
+                                                            @*<input type="password" class="form-control wizard_inner_frm" placeholder="Address 1 ">*@
+                                                            @Html.TextBoxFor(model => model.warehouse_address1, new { @name = "warehouse_address1", @id = "warehouse_address1", @class="form-control wizard_inner_frm", @placeholder="Address 1 " })
+                                                            <span style="display:none;color:red" id="spanwarehouse_address1">*Please enter A warehouse_address1</span>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label col-sm-4" for="pwd">Warehouse adress 2<span class="star-symbol">*</span> </label>
+
+                                                        <div class="col-sm-5">
+
+                                                            @*<input type="password" class="form-control wizard_inner_frm" placeholder="Address 2 ">*@
+                                                            @Html.TextBoxFor(model => model.warehouse_address2, new { @name = "warehouse_address2", @id = "warehouse_address2", @class = "form-control wizard_inner_frm", @placeholder = "Address 1 " })
+                                                            <span style="display:none;color:red" id="spanwarehouse_address2">*Please enter A warehouse_address2</span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label col-sm-4" for="pwd">City<span class="star-symbol">*</span> </label>
+
+                                                        <div class="col-sm-5">
+
+                                                            @*<input type="password" class="form-control wizard_inner_frm" placeholder="city ">*@
+                                                            @Html.TextBoxFor(model => model.WarehouseCity, new { @name = "WarehouseCity", @id = "WarehouseCity", @class="form-control wizard_inner_frm", @placeholder="city " })
+                                                            <span style="display:none;color:red" id="spanWarehouseCity">*Please enter A WarehouseCity</span>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label col-sm-4" for="email">Province </label>
+
+                                                        <div class="col-sm-5">
+
+                                                            @*<select name="Province" id="WarehouseProvince" class="form-control wizard_inner_frm">
+
+                                                                <option value="0">--Select Province--</option>
+
+                                                                <option value="1">Riyadh</option>
+
+                                                                <option value="2">Jeddah</option>
+
+                                                                <option value="3">Mecca</option>
+
+                                                                <option value="4">Medina</option>
+
+                                                                <option value="5">Hofuf</option>
+
+                                                                <option value="6">Ta'if</option>
+
+                                                                <option value="7">Dammam</option>
+
+                                                                <option value="8">Kamis Mushaith</option>
+
+                                                                <option value="9">Buraidan</option>
+
+                                                                <option value="10">Khobar</option>
+
+                                                            </select>*@
+
+                                                            @Html.DropDownListFor(model => model.WarehouseProvince, (IEnumerable<SelectListItem>)ViewData["listProvince"], new { @name = "Province", @class = "form-control wizard_inner_frm", @id = "WarehouseProvince" })
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class="col-md-12">
+
+                                                <div class="form-group">
+
+                                                    <input type="button" name="submit" id="btnContinue" class="btn btn-primary btn-lg next-step wizard-btn wizard-continue  border-radius99" data-id="@Model.venderid" value="Continue" />
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="tab-pane terms col-sm-offset-1" role="tabpanel"  id="step3">
+
+                                            <p>Date:--Wednesday 7th September 2016</p>
+
+                                            <p class="to">To</p>
+
+                                            <p class="w_brnd">@Model.name</p>
+
+                                            <p>Dear Sir/Ma'am,</p>
+
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus eaque nemo nihil earum facilis quod qui delectus nostrum deleniti autem.
+
+                                                Doloribus deleniti magni quod cum atque in magnam quisquam porro quasi accusamus nostrum consectetur iure vero soluta minus, excepturi incidunt aliquam. Natus, atque ratione est maiores cumque architecto quae dolorum, possimus itaque eaque nemo magni tenetur! Laudantium sit consequatur maxime earum temporibus dolore provident, voluptas odio accusamus. Maiores odio maxime dicta illum aut nostrum debitis. Esse eius molestiae perferendis nesciunt, eum non deleniti aut fugit beatae ad temporibus ab expedita illum explicabo ratione ipsa provident, iure possimus, porro aliquid dignissimos eaque. Consequatur id quam, suscipit veritatis, inventore autem dolorem recusandae enim temporibus libero aut, obcaecati doloribus. Ea autem, consequatur temporibus reiciendis, aspernatur illo voluptas sunt inventore nobis. Fuga, cum tempore excepturi placeat atque doloremque reiciendis deleniti culpa consequatur corporis velit iusto minima non odit voluptates adipisci recusandae, numquam illum quibusdam nemo ipsum, debitis. Quis assumenda delectus cum reiciendis, cumque quas temporibus voluptatum. Perspiciatis soluta molestias id illo fugiat laboriosam possimus dignissimos atque adipisci quidem aliquam, doloremque quod deserunt magni numquam. Dignissimos sunt, fugiat earum enim consectetur, explicabo quasi doloremque nemo, provident voluptate quam aperiam itaque illum laboriosam dolore, quia mollitia at! Quos praesentium, consequatur, dolorem consequuntur necessitatibus repellendus. Et voluptatibus earum quos blanditiis inventore optio dolor saepe assumenda sit quae numquam praesentium vel doloremque, aliquam reiciendis at quo, impedit enim commodi. Nostrum molestiae repellat expedita ducimus quos eum fuga modi non velit vel qui voluptatem, repellendus sint laborum accusantium architecto quaerat, quisquam. Architecto libero beatae autem nostrum illo, non quia commodi mollitia consectetur ipsam, dolorem. Temporibus harum assumenda laboriosam, suscipit error eaque quasi, fuga ut illo hic vero, reiciendis unde aliquam quo autem atque possimus ipsum ipsa deserunt alias! Provident cum neque voluptate temporibus qui id quos necessitatibus praesentium repellendus perspiciatis quaerat vitae, laboriosam in illo voluptatem a, reprehenderit dolorum sapiente eius sed. Iusto provident recusandae atque itaque dolor soluta nulla mollitia facere ex optio distinctio laboriosam eveniet unde, hic quibusdam et, repellat eos modi necessitatibus dignissimos, sit rerum ducimus! Magni velit accusantium, similique cum sunt repudiandae atque asperiores illum, dolorem facilis sed explicabo, nulla tempore, tenetur! Eveniet accusantium officiis, molestiae autem nulla non perferendis iusto dolorem eos pariatur eaque, tempora deleniti! Doloribus reprehenderit iusto iure laudantium eius laboriosam dignissimos vitae, debitis illo rem voluptas incidunt facilis voluptatum ducimus quas cum dolor possimus esse maxime quisquam. Modi ipsa unde consequatur necessitatibus accusantium, error eius architecto expedita autem est ratione repellat cumque ipsam tempora impedit dicta, tempore dignissimos molestiae corporis ducimus praesentium consequuntur dolorum delectus asperiores. Accusantium, ex expedita rerum! Itaque ut beatae harum fuga obcaecati, dolore porro nam ipsa, impedit quam reiciendis ipsum provident dignissimos repellendus sit officiis placeat dolorum, sed, assumenda eius vel. Totam reprehenderit praesentium unde beatae deserunt accusantium aliquam modi tenetur, aspernatur odit animi est vero, eius ullam ex necessitatibus provident omnis nesciunt asperiores voluptatum facere! Ullam in neque, quibusdam ratione eos eligendi pariatur repellendus accusantium dolorum culpa error unde laboriosam, ipsa repellat quaerat, enim impedit, omnis.
+                                            </p>
+
+                                            <div class="text-center last_btn">
+
+                                                <ul class="list-inline ">
+
+                                                    <li>
+
+                                                        @*href="user-agreement.php"*@ <input type="button" id="btnAccept" name="submit" data-id="@Model.venderid" class="btn btn-primary btn-info-full next-step wizard-btn border-radius99 clr-wht" value="I accept" />
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+    
+}
+
+        </div>
+
+        <!-- End: Content -->
+    </div>
+
+    <!--
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <!-- End: Content-Wrapper -->
+    <!-- Start: Right Sidebar -->
+    @*footer*@
+    <div class="row main-footer">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    @*</div>
+
+    </div>*@
+
+
+
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/assets/js/raphael.min.js"></script>
+
+    <script src="~/Content/assets/js/Chart.min.js"></script>
+
+    <script src="~/Content/assets/js/morris.min.js"></script>
+
+    <script src="~/Content/assets/js/custom.min.js"></script>
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <script src="~/Content/assets/js/date.js"></script>
+
+    <script src="~/Content/assets/js/moment.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="~/Content/assets/js/visitor.js"></script>
+
+    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".datepicker").datepicker();
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function (e) {
+
+            $('.selectpicker').selectpicker();
+
+        });
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+@*end*@
+
+
+

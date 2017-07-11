@@ -1,0 +1,257 @@
+﻿@model Final_ThibanProject.Models.viewmodel.Login
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <head>
+
+        <!-- Meta, title, CSS, favicons, etc. -->
+
+        <meta charset="utf-8">
+
+        <title>Water Admin</title>
+
+        <meta name="keywords" content="Admin Dashboard" />
+
+        <meta name="description" content="Admin Dashboard">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- Font CSS (Via CDN) -->
+
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+
+
+        <!-- Theme CSS -->
+
+
+        <link href="~/Content/assets/skin/css/theme.css" rel="stylesheet" />
+        <link href="~/Content/assets/skin/css/theme2.css" rel="stylesheet" />
+        <link href="~/Content/assets/skin/css/theme3.css" rel="stylesheet" />
+        <link href="~/Content/assets/skin/css/custom.css" rel="stylesheet" />
+
+
+
+        <!-- Admin Forms CSS -->
+
+        <link href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css" rel="stylesheet" />
+
+
+
+
+
+    </head>
+
+
+    <body class="external-page external-alt sb-l-c sb-r-c login-body">
+
+
+        <div id="main" class="animated fadeIn">
+
+            <section id="content" class="login-form">
+
+                <div class="admin-form theme-info">
+
+
+
+                    <!-- Login Logo -->
+
+                    <div class="row table-layout"> </div>
+
+
+
+                    <!-- Login Panel/Form -->
+
+                    <div class="panel mt20 mb25">
+
+                        <form method="post" id="contact" class="login-form-vendor">
+
+                            <div class="panel-body bg-light p25 pb15 login-box-div">
+
+
+
+                                <!-- Username Input -->
+
+                                <div class="section">
+                                    <a href="javascript:" title="THIBAN">
+
+                                        <h1 class="mt5">
+                                            THIBAN<br>
+
+                                            <small>Water Delivery</small>
+                                        </h1>
+                                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                    </a>
+                                    @Html.LabelFor(model => model.Username, new { @class = "field prepend-icon" })
+                                    @Html.TextBoxFor(model => model.Username, new { @name = "username", @id = "username", @class = "gui-input", @placeholder = "Username" })
+                                    @Html.ValidationMessageFor(model => model.Username)
+
+                                </div>
+
+
+
+                                <!-- Password Input -->
+
+                                <div class="section">
+
+                                    <!-- <label for="username" class="field-label text-muted fs18 mb10">Password</label>-->
+                                    @Html.LabelFor(model => model.Password, new { @class = "field prepend-icon" })
+                                    @Html.PasswordFor(model => model.Password, new { @name = "password", @id = "password", @class = "gui-input", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password)
+
+                                </div>
+
+                                <!--<div class="form-group remember-me">
+
+                                  <div class="col-sm-12 pad-no">
+
+                                    <div class="col-md-6 pad-no">
+
+                                      <div class="bs-component">
+
+                                        <div class="checkbox-custom checkbox-disabled mb10">
+
+                                          <input type="checkbox" id="checkboxDefault1">
+
+                                          <label for="checkboxDefault1">Remember Me</label>
+
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>-->
+
+                                <div class="sign_text">
+
+                                    <p class="sign-p"><span class="" style=" color:#7a7a7a;">By proceding,you agree to Person's </span><span class="sign-fade-clr">Terms </span>&nbsp;and <span class="sign-fade-clr"> Privacy Policy </span></p>
+
+                                    <p class="">Having issues in login? <a href="" style="color:#888;">Contact Us</a> </p>
+
+                                    <p><a href="javascript:" style="color:#888;">Forgot Password</a></p>
+
+                                    <div class="col-md-12 pad-no signin-btn">
+                                        <input type="submit" id="btnSubmit" value="Sign me in" class="btn btn-primary btn-block">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <style>
+                .login-form .section h1 {
+                    margin-bottom: 35px;
+                }
+            </style>
+
+            <div class="clearfix"></div>
+
+            <div class="row main-footer">
+
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+                    <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <script src="~/Content/assets/js/jquery.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+        <!-- Bootstrap -->
+
+
+
+        <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+        <script src="~/Content/assets/js/raphael.min.js"></script>
+
+        <script src="~/Content/assets/js/Chart.min.js"></script>
+
+        <script src="~/Content/assets/js/morris.min.js"></script>
+
+        <script src="~/Content/assets/js/custom.min.js"></script>
+
+        <script src="~/Content/assets/js/date.js"></script>
+
+        <script src="~/Content/assets/js/moment.min.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+
+        <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+        <script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+
+        <script>
+            $(document).ready(function () {
+                $('#btnSubmit').click(function () {
+                    if ($('#username').val() == "") {
+                        $('#username').css({
+                            "border": "2px solid red",
+                            "background": "#FFCECE"
+                        });
+                        return false;
+                    }
+                    if ($('#password').val() == "") {
+                        $('#password').css({
+                            "border": "2px solid red",
+                            "background": "#FFCECE"
+                        });
+                        return false;
+                    }
+                });
+            });
+
+          
+
+        </script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function (e) {
+                $('.selectpicker').selectpicker();
+            });
+        </script>
+    </body>
+}
