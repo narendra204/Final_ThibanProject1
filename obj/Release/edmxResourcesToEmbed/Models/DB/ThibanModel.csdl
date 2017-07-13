@@ -370,6 +370,8 @@
     <EntitySet Name="cust_notification" EntityType="ThibanWaterDBModel.cust_notification" />
     <EntitySet Name="General_feeback" EntityType="ThibanWaterDBModel.General_feeback" />
     <EntitySet Name="product_feedback" EntityType="ThibanWaterDBModel.product_feedback" />
+    <EntitySet Name="customermosqueaddresses" EntityType="ThibanWaterDBModel.customermosqueaddress" />
+    <EntitySet Name="customerrestaurantaddresses" EntityType="ThibanWaterDBModel.customerrestaurantaddress" />
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -1174,6 +1176,8 @@
     <Property Name="vechicle_max_capacity" Type="Int32" />
     <Property Name="vechicle_status" Type="Boolean" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__vechicle__driver__160F4887" FromRole="vechicle" ToRole="driver" />
+    <Property Name="vehicle_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="plat_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="vender">
     <Key>
@@ -2343,5 +2347,27 @@
     <Property Name="user_id" Type="Int32" />
     <Property Name="feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="customermosqueaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="mosque_name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="customerrestaurantaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int32" />
+    <Property Name="rest_street" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="floor_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rest_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rest_name_building_no" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
   </EntityType>
 </Schema>

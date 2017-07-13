@@ -613,7 +613,7 @@ namespace Final_ThibanProject_api.Controllers
                                         prod.status,
                                         ca.category_name,
                                         ve.name,
-                                       prod.Image_path,
+                                        prod.Image_path,
                                         prod.brand,
                                         prod.volume,
                                         prod.bottle_material
@@ -1061,10 +1061,10 @@ namespace Final_ThibanProject_api.Controllers
                                     join vadd in DB.warehouseaddresses on ve.venderid equals vadd.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
-                                    //join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
-                                    //from img in imgd.DefaultIfEmpty()
-                                    //join img_v in DB.ImageFiles on ve.image equals img_v.ImageId into imgd_v
-                                    //from img_v in imgd_v.DefaultIfEmpty()
+                                        //join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
+                                        //from img in imgd.DefaultIfEmpty()
+                                        //join img_v in DB.ImageFiles on ve.image equals img_v.ImageId into imgd_v
+                                        //from img_v in imgd_v.DefaultIfEmpty()
                                     join fav in DB.customerfavoriteproducts on prod.productid equals fav.product_id into favd
                                     from fav in favd.DefaultIfEmpty()
                                     where vadd.city == city && vadd.state == state && prod.status != "Delete"
@@ -1106,7 +1106,7 @@ namespace Final_ThibanProject_api.Controllers
                                         discount = rc.Key.discount,
                                         Favourite = rc.Key.customer_id
                                     }).ToList();
-                productQuery = productQuery.Where(x=>x.Favourite == custid || x.Favourite==null).ToList();// || x=>x.Favourite == null);
+                productQuery = productQuery.Where(x => x.Favourite == custid || x.Favourite == null).ToList();// || x=>x.Favourite == null);
                 foreach (var item in productQuery)
                 {
                     objProduct.Add(new Product_view()
@@ -1122,7 +1122,7 @@ namespace Final_ThibanProject_api.Controllers
                         categoryname = item.categoryname,
                         Vender_id = item.Vender_id,
                         Vendername = item.Vendername,
-                       vender_Image  = item.Vender_Image,
+                        vender_Image = item.Vender_Image,
                         discount = item.discount,
                         Favourite = item.Favourite == custid ? 1 : 0,
                         Availability = item.Stock
@@ -1147,6 +1147,99 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetAllProucts()
+        {
+            try
+            {
+                ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
+                //customerfavoriteproduct _objFav = db.customerfavoriteproducts.Where(x => x.customer_id == userid).Select();
+                List<Product_view> objProduct = new List<Product_view>();
+                var productQuery = (from prod in DB.products
+                                    join ve in DB.venders on prod.vender_id equals ve.venderid
+                                    // join vadd in DB.warehouseaddresses on ve.venderid equals vadd.venderid
+                                    join ca in DB.categories on prod.category_id equals ca.categoryid into cad
+                                    from ca in cad.DefaultIfEmpty()
+                                        //     join fav in DB.customerfavoriteproducts on prod.productid equals fav.product_id into favd
+                                        //   from fav in favd.DefaultIfEmpty()
+                                    where prod.status != "Delete"
+                                    group prod by new
+                                    {
+                                        prod.productid,
+                                        prod.product_title,
+                                        prod.description,
+                                        prod.Image_path,
+                                        prod.customer_price,
+                                        prod.sku,
+                                        prod.stock,
+                                        prod.status,
+                                        prod.category_id,
+                                        ca.category_name,
+                                        prod.vender_id,
+                                        ve.name,
+                                        vender_img = ve.Image_path,
+                                        prod.discount
+                                        //,fav.customer_id
+                                    }
+                                        into rc
+                                    select new
+                                    {
+                                        ProdId = rc.Key.productid,
+                                        ProductTitle = rc.Key.product_title,
+                                        Description = rc.Key.description,
+                                        Image = rc.Key.Image_path,
+                                        ProdPrice = rc.Key.customer_price,
+                                        SKU = rc.Key.sku,
+                                        Stock = rc.Key.stock,
+                                        Status = rc.Key.status,
+                                        cat_id = rc.Key.category_id,
+                                        categoryname = rc.Key.category_name,
+                                        Vender_id = rc.Key.vender_id,
+                                        Vendername = rc.Key.name,
+                                        Vender_Image = rc.Key.vender_img,
+                                        discount = rc.Key.discount//, Favourite = rc.Key.customer_id
+                                    }).ToList();
+                //  productQuery = productQuery.Where(x => x.Favourite == custid || x.Favourite == null).ToList();// || x=>x.Favourite == null);
+                foreach (var item in productQuery)
+                {
+                    objProduct.Add(new Product_view()
+                    {
+                        ProductId = item.ProdId,
+                        Title = item.ProductTitle,
+                        Description = item.Description,
+                        Image_path = item.Image,
+                        productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
+                        ProductSKU = item.SKU,
+                        Status = item.Status,
+                        cat_id = item.cat_id,
+                        categoryname = item.categoryname,
+                        Vender_id = item.Vender_id,
+                        Vendername = item.Vendername,
+                        vender_Image = item.Vender_Image,
+                        discount = item.discount,
+                        //  Favourite = item.Favourite,// == custid ? 1 : 0,
+                        Availability = item.Stock
+
+                    });
+                }
+                if (objProduct.Count > 0)
+                {
+                    return Ok(objProduct);
+                }
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Product Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
         [HttpPost]
         [Route]
         public IHttpActionResult GetRecentOrderLocation(int custid)
@@ -1472,6 +1565,7 @@ namespace Final_ThibanProject_api.Controllers
             }
             return Ok(objR);
         }
+
         [HttpPost]
         [Route]
         public IHttpActionResult AddCustomerchaletaddress(int custid, string chalet_street, string chalet_number)
@@ -1595,6 +1689,60 @@ namespace Final_ThibanProject_api.Controllers
                 objAdd.villa_name = villa_name;
                 objAdd.villa_address_status = true;
                 db.customervillaaddresses.Add(objAdd);
+                db.SaveChanges();
+                objR.status = 1;
+                objR.message = "Address added Successfully";
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult AddCustomermosqueaddress(int custid, string street, string mosque_name)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                customermosqueaddress objAdd = new customermosqueaddress();
+                objAdd.customerid = custid;
+                objAdd.street = street;
+                objAdd.mosque_name = mosque_name;
+                objAdd.status = true;
+                db.customermosqueaddresses.Add(objAdd);
+                db.SaveChanges();
+                objR.status = 1;
+                objR.message = "Address added Successfully";
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult AddCustomerrestaurantaddress(int custid, string rest_street, string floor_no, string rest_no, string rest_name_building_no)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                customerrestaurantaddress objAdd = new customerrestaurantaddress();
+                objAdd.customerid = custid;
+                objAdd.rest_street = rest_street;
+                objAdd.floor_no = floor_no;
+                objAdd.rest_no = rest_no;
+                objAdd.rest_name_building_no = rest_name_building_no;
+                objAdd.status = true;
+                db.customerrestaurantaddresses.Add(objAdd);
                 db.SaveChanges();
                 objR.status = 1;
                 objR.message = "Address added Successfully";
@@ -1763,6 +1911,7 @@ namespace Final_ThibanProject_api.Controllers
             }
             return Ok(objR);
         }
+
         [HttpPost]
         [Route]
         public IHttpActionResult GetCustomervillaaddress(int custid)
@@ -1795,6 +1944,54 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
+        public IHttpActionResult GetCustomermosqueaddress(int custid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                List<customermosqueaddress> list = db.customermosqueaddresses.Where(x => x.customerid == custid).ToList();
+                if (list.Count > 0)
+                    return Ok(list);
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Address found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetCustomerrestaurantaddress(int custid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                List<customerrestaurantaddress> list = db.customerrestaurantaddresses.Where(x => x.customerid == custid).ToList();
+                if (list.Count > 0)
+                    return Ok(list);
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Address found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetCustomerDetails(int custid)
         {
             try
@@ -1812,7 +2009,8 @@ namespace Final_ThibanProject_api.Controllers
         }
         #endregion
         #region Notification
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult AddCustomer_Notification(int custid, bool from_thiban, bool changes_to_acc, bool coupon_alerts, bool feature_updates)
         {
             try
@@ -1853,7 +2051,8 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetCustNotificationSetting(int custid)
         {
             try
@@ -1870,7 +2069,8 @@ namespace Final_ThibanProject_api.Controllers
         }
         #endregion
 
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetProductFeedback(int productid)
         {
             try
@@ -1905,7 +2105,8 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult InsertProductFeedback(int productid, int userid, string feedback)
         {
             try
@@ -1931,7 +2132,8 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult InsertGeneralFeedback(int userid, string feedback)
         {
             try
@@ -1954,7 +2156,8 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
-        [HttpPost][Route]
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetOrderDetails(int orderid)
         {
             try
@@ -2035,7 +2238,7 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult UPdateOrderDelivey(int orderid, decimal grandtotal, decimal total, string deliverydate,string address_type, string payment_mode)
+        public IHttpActionResult UPdateOrderDelivey(int orderid, decimal grandtotal, decimal total, string deliverydate, string address_type, string payment_mode)
         {
             try
             {
@@ -2046,7 +2249,7 @@ namespace Final_ThibanProject_api.Controllers
                     objOrder.orderid = orderid;
                     objOrder.total = total;
                     objOrder.price = grandtotal;
-                    objOrder.ship_date =Convert.ToDateTime(deliverydate);
+                    objOrder.ship_date = Convert.ToDateTime(deliverydate);
                     objOrder.address_type = address_type;
                     objOrder.payment_type = payment_mode;
                     db.SaveChanges();

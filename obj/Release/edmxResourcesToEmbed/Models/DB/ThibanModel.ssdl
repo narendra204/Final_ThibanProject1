@@ -276,6 +276,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Value" Type="nvarchar" MaxLength="250" />
   </EntityType>
+  <EntityType Name="customermosqueaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="street" Type="nvarchar" MaxLength="200" />
+    <Property Name="mosque_name" Type="nvarchar" MaxLength="300" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
   <EntityType Name="customerofficeaddress">
     <Key>
       <PropertyRef Name="id" />
@@ -309,6 +319,18 @@
     <Property Name="card_cvv" Type="nvarchar" MaxLength="50" />
     <Property Name="card_type" Type="nvarchar" MaxLength="100" />
     <Property Name="card_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="customerrestaurantaddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="int" />
+    <Property Name="rest_street" Type="nvarchar" MaxLength="300" />
+    <Property Name="floor_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="rest_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="rest_name_building_no" Type="nvarchar" MaxLength="300" />
+    <Property Name="status" Type="bit" />
   </EntityType>
   <EntityType Name="customervillaaddress">
     <Key>
@@ -830,6 +852,8 @@
     <Property Name="vechicle_assistant" Type="int" />
     <Property Name="vechicle_max_capacity" Type="int" />
     <Property Name="vechicle_status" Type="bit" />
+    <Property Name="vehicle_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="plat_no" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="vender">
     <Key>
@@ -1858,9 +1882,11 @@
     <EntitySet Name="customerfavoriteproduct" EntityType="Self.customerfavoriteproduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerMaximumOrderQuality" EntityType="Self.CustomerMaximumOrderQuality" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerMinimumOrder" EntityType="Self.CustomerMinimumOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customermosqueaddress" EntityType="Self.customermosqueaddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customerofficeaddress" EntityType="Self.customerofficeaddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customerotheraddress" EntityType="Self.customerotheraddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customerpaymentcard" EntityType="Self.customerpaymentcard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customerrestaurantaddress" EntityType="Self.customerrestaurantaddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customervillaaddress" EntityType="Self.customervillaaddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />

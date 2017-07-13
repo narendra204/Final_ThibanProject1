@@ -1049,5 +1049,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="customermosqueaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customermosqueaddress">
+        <MappingFragment StoreEntitySet="customermosqueaddress">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="mosque_name" ColumnName="mosque_name" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerrestaurantaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerrestaurantaddress">
+        <MappingFragment StoreEntitySet="customerrestaurantaddress">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="rest_name_building_no" ColumnName="rest_name_building_no" />
+          <ScalarProperty Name="rest_no" ColumnName="rest_no" />
+          <ScalarProperty Name="floor_no" ColumnName="floor_no" />
+          <ScalarProperty Name="rest_street" ColumnName="rest_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shift_type">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.shift_type">
+        <MappingFragment StoreEntitySet="shift_type">
+          <ScalarProperty Name="shift_type1" ColumnName="shift_type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverinventories">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverinventory">
+        <MappingFragment StoreEntitySet="driverinventory">
+          <ScalarProperty Name="returnstock" ColumnName="returnstock" />
+          <ScalarProperty Name="date1" ColumnName="date1" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

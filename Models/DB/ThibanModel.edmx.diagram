@@ -158,6 +158,10 @@
         <EntityTypeShape EntityType="ThibanWaterDBModel.cust_notification" Width="1.5" PointX="11.375" PointY="3.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.General_feeback" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.product_feedback" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customermosqueaddress" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.customerrestaurantaddress" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.shift_type" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driverinventory" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

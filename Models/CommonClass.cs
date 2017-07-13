@@ -118,7 +118,8 @@ namespace Final_ThibanProject.Models
         public string Material { get; set; }
         public string Image_path { get; set; }
         public string vender_Image { get; set; }
-        public int Stock { get; set; }
+        public int? Stock { get; set; }
+        
     }
     public partial class order_view
     {
@@ -165,5 +166,17 @@ namespace Final_ThibanProject.Models
         public string status { get; set; }
         public string Image_path { get; set; }
         public double rating { get; set; }
+        public int totalorder { get; set; }
+        public int deliverorder { get; set; }
+        public int pendingorder { get; set; }
+    }
+    public class Driver_product_view
+    {
+        public int ProductId { get; set; }
+        public string Title { get; set; }
+        public string Image_path { get; set; }
+        public int? Stock { get; set; }
+        public int? OrderQty { get; set; }
+        public int? ExtraStock { get; set; }
     }
 }

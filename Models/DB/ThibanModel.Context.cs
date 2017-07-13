@@ -106,5 +106,9 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<cust_notification> cust_notification { get; set; }
         public virtual DbSet<General_feeback> General_feeback { get; set; }
         public virtual DbSet<product_feedback> product_feedback { get; set; }
+        public virtual DbSet<customermosqueaddress> customermosqueaddresses { get; set; }
+        public virtual DbSet<customerrestaurantaddress> customerrestaurantaddresses { get; set; }
+        public virtual DbSet<shift_type> shift_type { get; set; }
+        public virtual DbSet<driverinventory> driverinventories { get; set; }
     }
 }

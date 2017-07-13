@@ -738,6 +738,8 @@
     <EntitySetMapping Name="vechicles">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.vechicle">
         <MappingFragment StoreEntitySet="vechicle">
+          <ScalarProperty Name="plat_no" ColumnName="plat_no" />
+          <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
           <ScalarProperty Name="vechicle_status" ColumnName="vechicle_status" />
           <ScalarProperty Name="vechicle_max_capacity" ColumnName="vechicle_max_capacity" />
           <ScalarProperty Name="vechicle_assistant" ColumnName="vechicle_assistant" />
@@ -1043,6 +1045,30 @@
           <ScalarProperty Name="feedback" ColumnName="feedback" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="producu_id" ColumnName="producu_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customermosqueaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customermosqueaddress">
+        <MappingFragment StoreEntitySet="customermosqueaddress">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="mosque_name" ColumnName="mosque_name" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerrestaurantaddresses">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.customerrestaurantaddress">
+        <MappingFragment StoreEntitySet="customerrestaurantaddress">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="rest_name_building_no" ColumnName="rest_name_building_no" />
+          <ScalarProperty Name="rest_no" ColumnName="rest_no" />
+          <ScalarProperty Name="floor_no" ColumnName="floor_no" />
+          <ScalarProperty Name="rest_street" ColumnName="rest_street" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

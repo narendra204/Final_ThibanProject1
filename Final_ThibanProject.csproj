@@ -982,6 +982,9 @@
     <Compile Include="Models\DB\CustomerMinimumOrder.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\customermosqueaddress.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\customerofficeaddress.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
@@ -989,6 +992,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\customerpaymentcard.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\customerrestaurantaddress.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\customervillaaddress.cs">
@@ -1013,6 +1019,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\driverdefaultaddress.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\driverinventory.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\driverlog.cs">
@@ -1097,6 +1106,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\rolemanagement.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\shift_type.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\shippingaddress.cs">

@@ -281,6 +281,16 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Value" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="customermosqueaddress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="int" />
+          <Property Name="street" Type="nvarchar" MaxLength="200" />
+          <Property Name="mosque_name" Type="nvarchar" MaxLength="300" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
         <EntityType Name="customerofficeaddress">
           <Key>
             <PropertyRef Name="id" />
@@ -314,6 +324,18 @@
           <Property Name="card_cvv" Type="nvarchar" MaxLength="50" />
           <Property Name="card_type" Type="nvarchar" MaxLength="100" />
           <Property Name="card_status" Type="bit" />
+        </EntityType>
+        <EntityType Name="customerrestaurantaddress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="int" />
+          <Property Name="rest_street" Type="nvarchar" MaxLength="300" />
+          <Property Name="floor_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="rest_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="rest_name_building_no" Type="nvarchar" MaxLength="300" />
+          <Property Name="status" Type="bit" />
         </EntityType>
         <EntityType Name="customervillaaddress">
           <Key>
@@ -416,6 +438,17 @@
           <Property Name="zip" Type="int" />
           <Property Name="state" Type="nvarchar" MaxLength="100" />
           <Property Name="country" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="driverinventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="driverid" Type="int" />
+          <Property Name="productid" Type="int" />
+          <Property Name="stock" Type="int" />
+          <Property Name="date1" Type="datetime" />
+          <Property Name="returnstock" Type="int" />
         </EntityType>
         <EntityType Name="driverlog">
           <Key>
@@ -747,6 +780,13 @@
           <Property Name="menuitem" Type="nvarchar" MaxLength="100" />
           <Property Name="createdby" Type="int" />
           <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="shift_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shift_type" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="shippingaddress">
           <Key>
@@ -1865,9 +1905,11 @@
           <EntitySet Name="customerfavoriteproduct" EntityType="Self.customerfavoriteproduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerMaximumOrderQuality" EntityType="Self.CustomerMaximumOrderQuality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerMinimumOrder" EntityType="Self.CustomerMinimumOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customermosqueaddress" EntityType="Self.customermosqueaddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customerofficeaddress" EntityType="Self.customerofficeaddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customerotheraddress" EntityType="Self.customerotheraddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customerpaymentcard" EntityType="Self.customerpaymentcard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customerrestaurantaddress" EntityType="Self.customerrestaurantaddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customervillaaddress" EntityType="Self.customervillaaddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
@@ -1875,6 +1917,7 @@
           <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="driverinventory" EntityType="Self.driverinventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverlog" EntityType="Self.driverlog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverpayoutrequested" EntityType="Self.driverpayoutrequested" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverrating" EntityType="Self.driverrating" Schema="dbo" store:Type="Tables" />
@@ -1903,6 +1946,7 @@
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rolemanagement" EntityType="Self.rolemanagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shift_type" EntityType="Self.shift_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="shippingaddress" EntityType="Self.shippingaddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="shippinghistory" EntityType="Self.shippinghistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="storedetail" EntityType="Self.storedetail" Schema="dbo" store:Type="Tables" />
@@ -2581,6 +2625,10 @@
           <EntitySet Name="cust_notification" EntityType="ThibanWaterDBModel.cust_notification" />
           <EntitySet Name="General_feeback" EntityType="ThibanWaterDBModel.General_feeback" />
           <EntitySet Name="product_feedback" EntityType="ThibanWaterDBModel.product_feedback" />
+          <EntitySet Name="customermosqueaddresses" EntityType="ThibanWaterDBModel.customermosqueaddress" />
+          <EntitySet Name="customerrestaurantaddresses" EntityType="ThibanWaterDBModel.customerrestaurantaddress" />
+          <EntitySet Name="shift_type" EntityType="ThibanWaterDBModel.shift_type" />
+          <EntitySet Name="driverinventories" EntityType="ThibanWaterDBModel.driverinventory" />
         </EntityContainer>
         <EntityType Name="admin">
           <Key>
@@ -4557,6 +4605,46 @@
           <Property Name="feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="customermosqueaddress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="Int32" />
+          <Property Name="street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mosque_name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="customerrestaurantaddress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="Int32" />
+          <Property Name="rest_street" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="floor_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rest_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rest_name_building_no" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="shift_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shift_type1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="driverinventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="driverid" Type="Int32" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="date1" Type="DateTime" Precision="3" />
+          <Property Name="returnstock" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5607,6 +5695,50 @@
                 <ScalarProperty Name="feedback" ColumnName="feedback" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="producu_id" ColumnName="producu_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customermosqueaddresses">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.customermosqueaddress">
+              <MappingFragment StoreEntitySet="customermosqueaddress">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="mosque_name" ColumnName="mosque_name" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerrestaurantaddresses">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.customerrestaurantaddress">
+              <MappingFragment StoreEntitySet="customerrestaurantaddress">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="rest_name_building_no" ColumnName="rest_name_building_no" />
+                <ScalarProperty Name="rest_no" ColumnName="rest_no" />
+                <ScalarProperty Name="floor_no" ColumnName="floor_no" />
+                <ScalarProperty Name="rest_street" ColumnName="rest_street" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shift_type">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.shift_type">
+              <MappingFragment StoreEntitySet="shift_type">
+                <ScalarProperty Name="shift_type1" ColumnName="shift_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="driverinventories">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.driverinventory">
+              <MappingFragment StoreEntitySet="driverinventory">
+                <ScalarProperty Name="returnstock" ColumnName="returnstock" />
+                <ScalarProperty Name="date1" ColumnName="date1" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="driverid" ColumnName="driverid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
