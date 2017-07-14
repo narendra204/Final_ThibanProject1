@@ -93,6 +93,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="bussinesstypetext" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
+        <EntityType Name="cart_items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="productid" Type="int" />
+          <Property Name="qty" Type="int" />
+        </EntityType>
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="categoryid" />
@@ -157,6 +166,7 @@
           <Property Name="coupon_description" Type="nvarchar" MaxLength="1000" />
           <Property Name="coupon_status" Type="bit" />
           <Property Name="discount" Type="float" />
+          <Property Name="condition" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="CREATETABLEBottlePerBox">
           <Key>
@@ -401,6 +411,19 @@
           <Property Name="status" Type="nvarchar" MaxLength="100" />
           <Property Name="image" Type="int" />
           <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="DOB" Type="date" />
+        </EntityType>
+        <EntityType Name="driver_odometer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="driverid" Type="int" />
+          <Property Name="shift_id" Type="int" />
+          <Property Name="date1" Type="date" />
+          <Property Name="odometer_start" Type="int" />
+          <Property Name="odometer_end" Type="int" />
+          <Property Name="vehicleid" Type="int" />
         </EntityType>
         <EntityType Name="driveraddressproff">
           <Key>
@@ -449,6 +472,7 @@
           <Property Name="stock" Type="int" />
           <Property Name="date1" Type="datetime" />
           <Property Name="returnstock" Type="int" />
+          <Property Name="shift_id" Type="int" />
         </EntityType>
         <EntityType Name="driverlog">
           <Key>
@@ -1887,6 +1911,7 @@
           <EntitySet Name="BrandName" EntityType="Self.BrandName" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bussinessofficehours" EntityType="Self.bussinessofficehours" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bussinesstype" EntityType="Self.bussinesstype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cart_items" EntityType="Self.cart_items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CmsPage" EntityType="Self.CmsPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyType" EntityType="Self.CompanyType" Schema="dbo" store:Type="Tables" />
@@ -1914,6 +1939,7 @@
           <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="driver_odometer" EntityType="Self.driver_odometer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
@@ -2629,6 +2655,8 @@
           <EntitySet Name="customerrestaurantaddresses" EntityType="ThibanWaterDBModel.customerrestaurantaddress" />
           <EntitySet Name="shift_type" EntityType="ThibanWaterDBModel.shift_type" />
           <EntitySet Name="driverinventories" EntityType="ThibanWaterDBModel.driverinventory" />
+          <EntitySet Name="cart_items" EntityType="ThibanWaterDBModel.cart_items" />
+          <EntitySet Name="driver_odometer" EntityType="ThibanWaterDBModel.driver_odometer" />
         </EntityContainer>
         <EntityType Name="admin">
           <Key>
@@ -2771,6 +2799,7 @@
           <Property Name="coupon_status" Type="Boolean" />
           <Property Name="discount" Type="Double" />
           <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__coupon__vender_i__6B24EA82" FromRole="coupon" ToRole="vender" />
+          <Property Name="condition" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CREATETABLEBottlePerBox">
           <Key>
@@ -3009,6 +3038,7 @@
           <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864" FromRole="driver" ToRole="onspotsale" />
           <NavigationProperty Name="orderdeliveryweathers" Relationship="ThibanWaterDBModel.FK__orderdeli__drive__55BFB948" FromRole="driver" ToRole="orderdeliveryweather" />
           <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="driveraddressproff">
           <Key>
@@ -4644,6 +4674,28 @@
           <Property Name="stock" Type="Int32" />
           <Property Name="date1" Type="DateTime" Precision="3" />
           <Property Name="returnstock" Type="Int32" />
+          <Property Name="shift_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="cart_items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="qty" Type="Int32" />
+        </EntityType>
+        <EntityType Name="driver_odometer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="driverid" Type="Int32" />
+          <Property Name="shift_id" Type="Int32" />
+          <Property Name="date1" Type="DateTime" Precision="0" />
+          <Property Name="odometer_start" Type="Int32" />
+          <Property Name="odometer_end" Type="Int32" />
+          <Property Name="vehicleid" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -4788,6 +4840,7 @@
           <EntitySetMapping Name="coupons">
             <EntityTypeMapping TypeName="ThibanWaterDBModel.coupon">
               <MappingFragment StoreEntitySet="coupon">
+                <ScalarProperty Name="condition" ColumnName="condition" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="coupon_status" ColumnName="coupon_status" />
                 <ScalarProperty Name="coupon_description" ColumnName="coupon_description" />
@@ -4986,6 +5039,7 @@
           <EntitySetMapping Name="drivers">
             <EntityTypeMapping TypeName="ThibanWaterDBModel.driver">
               <MappingFragment StoreEntitySet="driver">
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="Image_path" ColumnName="Image_path" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -5734,10 +5788,34 @@
           <EntitySetMapping Name="driverinventories">
             <EntityTypeMapping TypeName="ThibanWaterDBModel.driverinventory">
               <MappingFragment StoreEntitySet="driverinventory">
+                <ScalarProperty Name="shift_id" ColumnName="shift_id" />
                 <ScalarProperty Name="returnstock" ColumnName="returnstock" />
                 <ScalarProperty Name="date1" ColumnName="date1" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="driverid" ColumnName="driverid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cart_items">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.cart_items">
+              <MappingFragment StoreEntitySet="cart_items">
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="driver_odometer">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.driver_odometer">
+              <MappingFragment StoreEntitySet="driver_odometer">
+                <ScalarProperty Name="vehicleid" ColumnName="vehicleid" />
+                <ScalarProperty Name="odometer_end" ColumnName="odometer_end" />
+                <ScalarProperty Name="odometer_start" ColumnName="odometer_start" />
+                <ScalarProperty Name="date1" ColumnName="date1" />
+                <ScalarProperty Name="shift_id" ColumnName="shift_id" />
                 <ScalarProperty Name="driverid" ColumnName="driverid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

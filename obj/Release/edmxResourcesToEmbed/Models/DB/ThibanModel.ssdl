@@ -88,6 +88,15 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="bussinesstypetext" Type="nvarchar" MaxLength="150" Nullable="false" />
   </EntityType>
+  <EntityType Name="cart_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="productid" Type="int" />
+    <Property Name="qty" Type="int" />
+  </EntityType>
   <EntityType Name="category">
     <Key>
       <PropertyRef Name="categoryid" />
@@ -152,6 +161,7 @@
     <Property Name="coupon_description" Type="nvarchar" MaxLength="1000" />
     <Property Name="coupon_status" Type="bit" />
     <Property Name="discount" Type="float" />
+    <Property Name="condition" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="CREATETABLEBottlePerBox">
     <Key>
@@ -396,6 +406,19 @@
     <Property Name="status" Type="nvarchar" MaxLength="100" />
     <Property Name="image" Type="int" />
     <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+    <Property Name="DOB" Type="date" />
+  </EntityType>
+  <EntityType Name="driver_odometer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="shift_id" Type="int" />
+    <Property Name="date1" Type="date" />
+    <Property Name="odometer_start" Type="int" />
+    <Property Name="odometer_end" Type="int" />
+    <Property Name="vehicleid" Type="int" />
   </EntityType>
   <EntityType Name="driveraddressproff">
     <Key>
@@ -433,6 +456,18 @@
     <Property Name="zip" Type="int" />
     <Property Name="state" Type="nvarchar" MaxLength="100" />
     <Property Name="country" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="driverinventory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="productid" Type="int" />
+    <Property Name="stock" Type="int" />
+    <Property Name="date1" Type="datetime" />
+    <Property Name="returnstock" Type="int" />
+    <Property Name="shift_id" Type="int" />
   </EntityType>
   <EntityType Name="driverlog">
     <Key>
@@ -764,6 +799,13 @@
     <Property Name="menuitem" Type="nvarchar" MaxLength="100" />
     <Property Name="createdby" Type="int" />
     <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="shift_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shift_type" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="shippingaddress">
     <Key>
@@ -1864,6 +1906,7 @@
     <EntitySet Name="BrandName" EntityType="Self.BrandName" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bussinessofficehours" EntityType="Self.bussinessofficehours" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bussinesstype" EntityType="Self.bussinesstype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart_items" EntityType="Self.cart_items" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CmsPage" EntityType="Self.CmsPage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyType" EntityType="Self.CompanyType" Schema="dbo" store:Type="Tables" />
@@ -1891,9 +1934,11 @@
     <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driver_odometer" EntityType="Self.driver_odometer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driverinventory" EntityType="Self.driverinventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverlog" EntityType="Self.driverlog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverpayoutrequested" EntityType="Self.driverpayoutrequested" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverrating" EntityType="Self.driverrating" Schema="dbo" store:Type="Tables" />
@@ -1922,6 +1967,7 @@
     <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rolemanagement" EntityType="Self.rolemanagement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shift_type" EntityType="Self.shift_type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shippingaddress" EntityType="Self.shippingaddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shippinghistory" EntityType="Self.shippinghistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="storedetail" EntityType="Self.storedetail" Schema="dbo" store:Type="Tables" />

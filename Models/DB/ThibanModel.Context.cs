@@ -110,5 +110,7 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<customerrestaurantaddress> customerrestaurantaddresses { get; set; }
         public virtual DbSet<shift_type> shift_type { get; set; }
         public virtual DbSet<driverinventory> driverinventories { get; set; }
+        public virtual DbSet<cart_items> cart_items { get; set; }
+        public virtual DbSet<driver_odometer> driver_odometer { get; set; }
     }
 }

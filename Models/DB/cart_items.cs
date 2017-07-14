@@ -12,14 +12,11 @@ namespace Final_ThibanProject.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class driverinventory
+    public partial class cart_items
     {
         public int id { get; set; }
-        public Nullable<int> driverid { get; set; }
+        public Nullable<int> user_id { get; set; }
         public Nullable<int> productid { get; set; }
-        public Nullable<int> stock { get; set; }
-        public Nullable<System.DateTime> date1 { get; set; }
-        public Nullable<int> returnstock { get; set; }
-        public Nullable<int> shift_id { get; set; }
+        public Nullable<int> qty { get; set; }
     }
 }

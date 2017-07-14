@@ -24,6 +24,7 @@ namespace Final_ThibanProject.Models.DB
         public string coupon_description { get; set; }
         public Nullable<bool> coupon_status { get; set; }
         public Nullable<double> discount { get; set; }
+        public string condition { get; set; }
     
         public virtual vender vender { get; set; }
     }

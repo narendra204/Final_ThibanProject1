@@ -138,6 +138,7 @@
     <EntitySetMapping Name="coupons">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.coupon">
         <MappingFragment StoreEntitySet="coupon">
+          <ScalarProperty Name="condition" ColumnName="condition" />
           <ScalarProperty Name="discount" ColumnName="discount" />
           <ScalarProperty Name="coupon_status" ColumnName="coupon_status" />
           <ScalarProperty Name="coupon_description" ColumnName="coupon_description" />
@@ -336,6 +337,7 @@
     <EntitySetMapping Name="drivers">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.driver">
         <MappingFragment StoreEntitySet="driver">
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="Image_path" ColumnName="Image_path" />
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="status" ColumnName="status" />
@@ -1069,6 +1071,50 @@
           <ScalarProperty Name="floor_no" ColumnName="floor_no" />
           <ScalarProperty Name="rest_street" ColumnName="rest_street" />
           <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shift_type">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.shift_type">
+        <MappingFragment StoreEntitySet="shift_type">
+          <ScalarProperty Name="shift_type1" ColumnName="shift_type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverinventories">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driverinventory">
+        <MappingFragment StoreEntitySet="driverinventory">
+          <ScalarProperty Name="shift_id" ColumnName="shift_id" />
+          <ScalarProperty Name="returnstock" ColumnName="returnstock" />
+          <ScalarProperty Name="date1" ColumnName="date1" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cart_items">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.cart_items">
+        <MappingFragment StoreEntitySet="cart_items">
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driver_odometer">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.driver_odometer">
+        <MappingFragment StoreEntitySet="driver_odometer">
+          <ScalarProperty Name="vehicleid" ColumnName="vehicleid" />
+          <ScalarProperty Name="odometer_end" ColumnName="odometer_end" />
+          <ScalarProperty Name="odometer_start" ColumnName="odometer_start" />
+          <ScalarProperty Name="date1" ColumnName="date1" />
+          <ScalarProperty Name="shift_id" ColumnName="shift_id" />
+          <ScalarProperty Name="driverid" ColumnName="driverid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

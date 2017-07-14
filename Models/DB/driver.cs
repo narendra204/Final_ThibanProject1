@@ -54,6 +54,7 @@ namespace Final_ThibanProject.Models.DB
         public string status { get; set; }
         public Nullable<int> image { get; set; }
         public string Image_path { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
     
         public virtual ImageFile ImageFile { get; set; }
         public virtual vender vender { get; set; }

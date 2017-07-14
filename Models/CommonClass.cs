@@ -119,7 +119,13 @@ namespace Final_ThibanProject.Models
         public string Image_path { get; set; }
         public string vender_Image { get; set; }
         public int? Stock { get; set; }
-        
+        public string ProductAvaibility { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string av_composition_ppm { get; set; }
+        public string phno { get; set; }
+        public Nullable<int> bottle_per_box { get; set; }
+
     }
     public partial class order_view
     {
@@ -178,5 +184,22 @@ namespace Final_ThibanProject.Models
         public int? Stock { get; set; }
         public int? OrderQty { get; set; }
         public int? ExtraStock { get; set; }
+    }
+
+    public partial class coupon_view
+    {
+        public int couponid { get; set; }
+        public Nullable<int> venderid { get; set; }
+        public string coupon_name { get; set; }
+        public string coupon_code { get; set; }
+        public Nullable<int> coupon_type { get; set; }
+        public Nullable<System.DateTime> coupon_valid_start_date { get; set; }
+        public Nullable<System.DateTime> coupon_valid_end_date { get; set; }
+        public string coupon_description { get; set; }
+        public Nullable<bool> coupon_status { get; set; }
+        public Nullable<double> discount { get; set; }
+        public string condition { get; set; }
+        public string vender_name { get; set; }
+        public string vender_image { get; set; }
     }
 }

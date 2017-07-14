@@ -931,6 +931,9 @@
     <Compile Include="Models\DB\bussinesstype.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\cart_items.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\category.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
@@ -1034,6 +1037,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\driverworkinghour.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\driver_odometer.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\filestore.cs">
