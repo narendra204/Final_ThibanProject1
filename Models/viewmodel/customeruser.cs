@@ -45,8 +45,11 @@ namespace Final_ThibanProject.Models
         public string customer_type { get; set; }
         public string language { get; set; }
         public DateTime regdate { get; set; }
+        [Required(ErrorMessage = "Address is required")]
         public string address { get; set; }
+        [Required(ErrorMessage = "City is required")]
         public string city { get; set; }
+        [Required(ErrorMessage = "Zip code is required")]
         public int zip { get; set; }
         public string state { get; set; }
         public string Status { get; set; }
@@ -55,44 +58,6 @@ namespace Final_ThibanProject.Models
         public string customernote2 { get; set; }
         public int? totalpurchase { get; set; }
         public decimal? totalspent { get; set; }
-    }
-
-    public class CustomerDetail
-    {
-        public int customerid { get; set; }
-        public string name { get; set; }
-        public string emailid { get; set; }
-        public string password { get; set; }
-        public byte[] image { get; set; }
-        public string mobileno { get; set; }
-        public string customer_type { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public int zip { get; set; }
-        public string state { get; set; }
-        public string Status { get; set; }
-        public string country { get; set; }
-        public string gender { get; set; }
-        public string DOB {get;set;}
-    }
-
-    public class CountryFlagDetail
-    {
-        public int countryid { get; set; }
-        public string name { get; set; }
-        public string flag { get; set; }
-        public string code { get; set; }
-    }
-    public class CustomResponse
-    {
-        public int status { get; set; }
-        public string message { get; set; }
-        public string errorcode { get; set; }
-    }
-
-    public class BrandList
-    {
-        public int venderid { get; set; }
-        public string name { get;set;}
+        public string image_path { get; set; }
     }
 }

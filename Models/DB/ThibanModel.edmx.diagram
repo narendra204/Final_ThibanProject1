@@ -164,6 +164,11 @@
         <EntityTypeShape EntityType="ThibanWaterDBModel.driverinventory" Width="1.5" PointX="13.375" PointY="6.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.cart_items" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.driver_odometer" Width="1.5" PointX="9.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.currencymaster" Width="1.5" PointX="11.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.order_details" Width="1.5" PointX="13.375" PointY="10.75" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK_order_details_order_details" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driver_track" Width="1.5" PointX="13.375" PointY="14.75" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK_order_details_order_details1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

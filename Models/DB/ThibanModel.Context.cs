@@ -112,5 +112,8 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<driverinventory> driverinventories { get; set; }
         public virtual DbSet<cart_items> cart_items { get; set; }
         public virtual DbSet<driver_odometer> driver_odometer { get; set; }
+        public virtual DbSet<currencymaster> currencymasters { get; set; }
+        public virtual DbSet<order_details> order_details { get; set; }
+        public virtual DbSet<driver_track> driver_track { get; set; }
     }
 }

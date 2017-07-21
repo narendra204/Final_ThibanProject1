@@ -170,6 +170,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Value" Type="nvarchar" MaxLength="250" />
   </EntityType>
+  <EntityType Name="currencymaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="currency" Type="nvarchar" MaxLength="50" />
+    <Property Name="currency_code" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="cust_notification">
     <Key>
       <PropertyRef Name="id" />
@@ -204,6 +212,11 @@
     <Property Name="Image" Type="int" />
     <Property Name="DOB" Type="varchar" MaxLength="10" />
     <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+    <Property Name="currencyid" Type="int" />
+    <Property Name="isFb" Type="bit" />
+    <Property Name="isGplus" Type="bit" />
+    <Property Name="isTwitter" Type="bit" />
+    <Property Name="isLinkedin" Type="bit" />
   </EntityType>
   <EntityType Name="customeraddressproof">
     <Key>
@@ -420,6 +433,16 @@
     <Property Name="odometer_end" Type="int" />
     <Property Name="vehicleid" Type="int" />
   </EntityType>
+  <EntityType Name="driver_track">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="driverid" Type="int" />
+    <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="longitued" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_date" Type="datetime" />
+  </EntityType>
   <EntityType Name="driveraddressproff">
     <Key>
       <PropertyRef Name="daddressid" />
@@ -635,6 +658,17 @@
     <Property Name="total_inventory_price" Type="money" />
     <Property Name="available_inventory" Type="int" />
     <Property Name="orderid" Type="int" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="productid" Type="int" />
+    <Property Name="qty" Type="int" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="created_date" Type="datetime" />
   </EntityType>
   <EntityType Name="orderdeliveryweather">
     <Key>
@@ -1535,18 +1569,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__orders__product___04E4BC85">
-    <End Role="product" Type="Self.product" Multiplicity="0..1" />
-    <End Role="orders" Type="Self.orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="product">
-        <PropertyRef Name="productid" />
-      </Principal>
-      <Dependent Role="orders">
-        <PropertyRef Name="product_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__oredercan__custo__05D8E0BE">
     <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
     <End Role="oredercanclefeedback" Type="Self.oredercanclefeedback" Multiplicity="*" />
@@ -1895,6 +1917,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_order_details_order_details">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ThibanWaterDBModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="advertisement" EntityType="Self.advertisement" Schema="dbo" store:Type="Tables" />
@@ -1915,6 +1949,7 @@
     <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="coupon" EntityType="Self.coupon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CREATETABLEBottlePerBox" EntityType="Self.CREATETABLEBottlePerBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="currencymaster" EntityType="Self.currencymaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cust_notification" EntityType="Self.cust_notification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customeraddressproof" EntityType="Self.customeraddressproof" Schema="dbo" store:Type="Tables" />
@@ -1935,6 +1970,7 @@
     <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driver_odometer" EntityType="Self.driver_odometer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="driver_track" EntityType="Self.driver_track" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
@@ -1954,6 +1990,7 @@
     <EntitySet Name="national_address" EntityType="Self.national_address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="odometerreading" EntityType="Self.odometerreading" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="onspotsale" EntityType="Self.onspotsale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orderdeliveryweather" EntityType="Self.orderdeliveryweather" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="oredercanclefeedback" EntityType="Self.oredercanclefeedback" Schema="dbo" store:Type="Tables" />
@@ -2151,10 +2188,6 @@
       <End Role="customer" EntitySet="customer" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__orders__product___04E4BC85" Association="Self.FK__orders__product___04E4BC85">
-      <End Role="product" EntitySet="product" />
-      <End Role="orders" EntitySet="orders" />
-    </AssociationSet>
     <AssociationSet Name="FK__oredercan__custo__05D8E0BE" Association="Self.FK__oredercan__custo__05D8E0BE">
       <End Role="customer" EntitySet="customer" />
       <End Role="oredercanclefeedback" EntitySet="oredercanclefeedback" />
@@ -2270,6 +2303,10 @@
     <AssociationSet Name="FK__venderpay__vende__1BC821DD" Association="Self.FK__venderpay__vende__1BC821DD">
       <End Role="vender" EntitySet="vender" />
       <End Role="venderpayoutrequested" EntitySet="venderpayoutrequested" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_details_order_details" Association="Self.FK_order_details_order_details">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_details" EntitySet="order_details" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

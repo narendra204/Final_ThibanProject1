@@ -25,6 +25,7 @@ namespace Final_ThibanProject.Models
         public byte[] image { get; set; }
         [Required(ErrorMessage="Mobile no is required")]
         public string mobileno { get; set; }
+        public string companyName { get; set; }
         public string customer_type { get; set; }
         public DateTime? regdate { get; set; }
         public string address { get; set; }
@@ -35,7 +36,17 @@ namespace Final_ThibanProject.Models
         public decimal? totalsale { get; set; }
         public string vendernote1 { get; set; }
         public string vendernote2 { get; set; }
-
+        public Int32 accountno { get; set; }
+        public string benificary_name { get; set; }
+        public string bankName { get; set; }
+        public string branchName { get; set; }
+        public string bankNameCaseOther { get; set; }
+        public string ifscCode { get; set; }
+        public string HolderName { get; set; }
+        public string ibanCode { get; set; }
+        public string GSTNo { get; set; }
+        public string CSTNo { get; set; }
         public string Status { get; set; }
+        public string image_path { get; set; }
     }
 }

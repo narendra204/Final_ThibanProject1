@@ -1093,7 +1093,7 @@ input.text-center.event-name.gui-input.br-light.border-radius99.img-keyword-btn2
 }
 .filter-selection-box {
 	font-size: 12px !important;
-	font-weight: 600 !important;
+	/*font-weight: 600 !important;*/
 	color: #696969 !important;
 	letter-spacing: 0.5px;
 }
@@ -2137,4 +2137,7 @@ label.field.option.mtop.mbn {
 }
 .row.pagination-block.font-size-13.admin-agintion.mn.bordr {
 	border-bottom: none;
+}
+.section.mb10 {
+    margin: 0 11px;
 }

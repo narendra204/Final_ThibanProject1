@@ -303,6 +303,36 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
+        public IHttpActionResult RemoveProductfromFavourite(int custid, int productid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                customerfavoriteproduct cart = db.customerfavoriteproducts.Where(x => x.customer_id == custid && x.product_id == productid).FirstOrDefault();
+                if (cart != null)
+                {
+                    db.customerfavoriteproducts.Remove(cart);
+                    db.SaveChanges();
+                    objR.status = 1;
+                    objR.message = "Item Removed Successfully";
+                }
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "Item Not Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetFavouriteList(int custid)
         {
             try
@@ -315,28 +345,29 @@ namespace Final_ThibanProject_api.Controllers
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
-                                    join wa in DB.warehouseaddresses on ve.venderid equals wa.venderid into wad from wa in wad.DefaultIfEmpty()
-                                //    join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
-                                 //   from img in imgd.DefaultIfEmpty()
+                                    join wa in DB.warehouseaddresses on ve.venderid equals wa.venderid into wad
+                                    from wa in wad.DefaultIfEmpty()
+                                        //    join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
+                                        //   from img in imgd.DefaultIfEmpty()
                                     where fav.customer_id == custid
                                     select new
                                     {
-                                        ProdId =prod.productid,// rc.Key.productid,
-                                        ProductTitle =prod.product_title,// rc.Key.product_title,
-                                        Description =prod.description,// rc.Key.description,
+                                        ProdId = prod.productid,// rc.Key.productid,
+                                        ProductTitle = prod.product_title,// rc.Key.product_title,
+                                        Description = prod.description,// rc.Key.description,
                                         Image = prod.Image_path,//rc.Key.Image_path,
-                                        ProdPrice =prod.customer_price,// rc.Key.customer_price,
-                                        SKU =prod.sku,// rc.Key.sku,
-                                        Stock =prod.stock,// rc.Key.stock,
-                                        Status =prod.status,// rc.Key.status,
-                                        categoryname =ca.category_name,// rc.Key.category_name,
-                                        Vendername =ve.name,// rc.Key.name,
-                                        Vender_image=ve.Image_path,
-                                        Vender_id=ve.venderid,
-                                        Pro_discount=prod.discount,
-                                        Availability=prod.ProductAvaibility,
-                                        City=wa.city,
-                                        State=wa.state
+                                        ProdPrice = prod.customer_price,// rc.Key.customer_price,
+                                        SKU = prod.sku,// rc.Key.sku,
+                                        Stock = prod.stock,// rc.Key.stock,
+                                        Status = prod.status,// rc.Key.status,
+                                        categoryname = ca.category_name,// rc.Key.category_name,
+                                        Vendername = ve.name,// rc.Key.name,
+                                        Vender_image = ve.Image_path,
+                                        Vender_id = ve.venderid,
+                                        Pro_discount = prod.discount,
+                                        Availability = prod.ProductAvaibility,
+                                        City = wa.city,
+                                        State = wa.state
                                     }).ToList();
                 foreach (var item in productQuery)
                 {
@@ -351,13 +382,13 @@ namespace Final_ThibanProject_api.Controllers
                         productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
                         Availability = item.Stock,
                         Status = item.Status,
-                        Vendername=item.Vendername,
-                        vender_Image=item.Vender_image,
-                        Vender_id=item.Vender_id,
-                        ProductAvaibility=item.Availability,
-                        discount=item.Pro_discount,
-                        city=item.City,
-                        state=item.State
+                        Vendername = item.Vendername,
+                        vender_Image = item.Vender_image,
+                        Vender_id = item.Vender_id,
+                        ProductAvaibility = item.Availability,
+                        discount = item.Pro_discount,
+                        city = item.City,
+                        state = item.State
                     });
                 }
                 return Ok(objProduct);
@@ -372,19 +403,26 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult GetProductDetail(int productid)
+        public IHttpActionResult GetProductDetail(int productid, int? custid = 0)
         {
             try
             {
                 ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
                 //customerfavoriteproduct _objFav = db.customerfavoriteproducts.Where(x => x.customer_id == userid).Select();
                 List<Product_view> objProduct = new List<Product_view>();
+                var Favlist = (from fav in DB.customerfavoriteproducts
+                               where fav.customer_id == custid
+                               select new { fav.customer_id, fav.product_id }
+                             ).AsEnumerable();
+
                 var productQuery = (from prod in DB.products
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
                                     join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
                                     from img in imgd.DefaultIfEmpty()
+                                    join fav in Favlist on prod.productid equals fav.product_id into favd
+                                    from fav in favd.DefaultIfEmpty() //Added
                                     where prod.productid == productid
                                     group prod by new
                                     {
@@ -399,10 +437,12 @@ namespace Final_ThibanProject_api.Controllers
                                         ca.category_name,
                                         ve.name,
                                         vender_image = ve.Image_path,
-                                       prod.Image_path,
-                                       prod.phno,
-                                       prod.av_composition_ppm,
-                                       prod.bottle_per_box
+                                        prod.Image_path,
+                                        prod.phno,
+                                        prod.av_composition_ppm,
+                                        prod.bottle_per_box
+                                        ,
+                                        fav.customer_id
                                     }
                                         into rc
                                     select new
@@ -416,12 +456,14 @@ namespace Final_ThibanProject_api.Controllers
                                         Stock = rc.Key.stock,
                                         Status = rc.Key.status,
                                         categoryname = rc.Key.category_name,
-                                        venderid=rc.Key.vender_id,
+                                        venderid = rc.Key.vender_id,
                                         Vendername = rc.Key.name,
-                                        vender_image=rc.Key.vender_image,
-                                        phono=rc.Key.phno,
-                                        av_composition=rc.Key.av_composition_ppm,
-                                        bott_per_box=rc.Key.bottle_per_box
+                                        vender_image = rc.Key.vender_image,
+                                        phono = rc.Key.phno,
+                                        av_composition = rc.Key.av_composition_ppm,
+                                        bott_per_box = rc.Key.bottle_per_box
+                                        ,
+                                        isFavourite = rc.Key.customer_id
                                     }).ToList();
                 foreach (var item in productQuery)
                 {
@@ -430,18 +472,20 @@ namespace Final_ThibanProject_api.Controllers
                         categoryname = item.categoryname,
                         ProductId = item.ProdId,
                         Description = item.Description,
-                        Image_path =item.Image ,
+                        Image_path = item.Image,
                         Title = item.ProductTitle,
                         ProductSKU = item.SKU,
                         productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
                         Availability = item.Stock,
                         Status = item.Status,
-                        Vender_id=item.venderid,
-                        Vendername=item.Vendername,
-                        vender_Image=item.vender_image,
-                        phno=item.phono,
-                        av_composition_ppm=item.av_composition,
-                        bottle_per_box=item.bott_per_box
+                        Vender_id = item.venderid,
+                        Vendername = item.Vendername,
+                        vender_Image = item.vender_image,
+                        phno = item.phono,
+                        av_composition_ppm = item.av_composition,
+                        bottle_per_box = item.bott_per_box
+                        ,
+                        Favourite = item.isFavourite.HasValue ? 1 : 0
                     });
                 }
                 return Ok(objProduct);
@@ -456,19 +500,26 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult GetBrandwiseProducts(string brand)
+        public IHttpActionResult GetBrandwiseProducts(string brand, int? custid)
         {
             try
             {
                 ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
                 //customerfavoriteproduct _objFav = db.customerfavoriteproducts.Where(x => x.customer_id == userid).Select();
-                List<Product> objProduct = new List<Product>();
+                List<Product_view> objProduct = new List<Product_view>();
+                var Favlist = (from fav in DB.customerfavoriteproducts
+                               where fav.customer_id == custid
+                               select new { fav.customer_id, fav.product_id }
+                            ).AsEnumerable();
+
                 var productQuery = (from prod in DB.products
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
-                                    join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
-                                    from img in imgd.DefaultIfEmpty()
+                                        //   join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
+                                        // from img in imgd.DefaultIfEmpty()
+                                    join fav in Favlist on prod.productid equals fav.product_id into favd
+                                    from fav in favd.DefaultIfEmpty() //Added
                                     where ve.name == brand
                                     group prod by new
                                     {
@@ -482,7 +533,8 @@ namespace Final_ThibanProject_api.Controllers
                                         prod.status,
                                         ca.category_name,
                                         ve.name,
-                                        img.Imageattachment
+                                        prod.Image_path,
+                                        fav.customer_id
                                     }
                                         into rc
                                     select new
@@ -490,27 +542,29 @@ namespace Final_ThibanProject_api.Controllers
                                         ProdId = rc.Key.productid,
                                         ProductTitle = rc.Key.product_title,
                                         Description = rc.Key.description,
-                                        Image = rc.Key.Imageattachment,
+                                        Image = rc.Key.Image_path,
                                         ProdPrice = rc.Key.customer_price,
                                         SKU = rc.Key.sku,
                                         Stock = rc.Key.stock,
                                         Status = rc.Key.status,
                                         categoryname = rc.Key.category_name,
-                                        Vendername = rc.Key.name
+                                        Vendername = rc.Key.name,
+                                        isFavourite = rc.Key.customer_id
                                     }).ToList();
                 foreach (var item in productQuery)
                 {
-                    objProduct.Add(new Product()
+                    objProduct.Add(new Product_view()
                     {
                         categoryname = item.categoryname,
                         ProductId = item.ProdId,
                         Description = item.Description,
-                        Image = item.Image,
+                        Image_path = item.Image,
                         Title = item.ProductTitle,
                         ProductSKU = item.SKU,
                         productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
                         Availability = item.Stock,
-                        Status = item.Status
+                        Status = item.Status,
+                        Favourite = item.isFavourite.HasValue ? 1 : 0
                     });
                 }
                 return Ok(objProduct);
@@ -910,6 +964,37 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
+        public IHttpActionResult UpdateCurrencyCode(int userid, int currencyid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                customer customer = db.customers.Where(x => x.customerid == userid).FirstOrDefault();
+                if (customer != null)
+                {
+                    customer.currencyid = currencyid;
+                    db.SaveChanges();
+
+                    objR.status = 1;
+                    objR.message = "Currency changed Successfully.";
+                }
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No User Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+
+        [HttpPost]
+        [Route]
         public IHttpActionResult GetBrandList()
         {
             try
@@ -1013,8 +1098,8 @@ namespace Final_ThibanProject_api.Controllers
                                          coupon_valid_start_date = o.coupon_valid_start_date,
                                          discount = o.discount,
                                          venderid = o.venderid,
-                                         vender_name=o.name,
-                                         vender_image=o.Image_path
+                                         vender_name = o.name,
+                                         vender_image = o.Image_path
 
                                      }).ToList();
                 if (list.Count > 0)
@@ -1196,20 +1281,25 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult GetAllProucts()
+        public IHttpActionResult GetAllProucts(int? custid)
         {
             try
             {
                 ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
                 //customerfavoriteproduct _objFav = db.customerfavoriteproducts.Where(x => x.customer_id == userid).Select();
                 List<Product_view> objProduct = new List<Product_view>();
+                var Favlist = (from fav in DB.customerfavoriteproducts
+                               where fav.customer_id == custid
+                               select new { fav.customer_id, fav.product_id }
+                                        ).AsEnumerable();
+
                 var productQuery = (from prod in DB.products
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     // join vadd in DB.warehouseaddresses on ve.venderid equals vadd.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid into cad
                                     from ca in cad.DefaultIfEmpty()
-                                        //     join fav in DB.customerfavoriteproducts on prod.productid equals fav.product_id into favd
-                                        //   from fav in favd.DefaultIfEmpty()
+                                    join fav in Favlist on prod.productid equals fav.product_id into favd
+                                    from fav in favd.DefaultIfEmpty() //Added
                                     where prod.status != "Delete"
                                     group prod by new
                                     {
@@ -1227,7 +1317,8 @@ namespace Final_ThibanProject_api.Controllers
                                         ve.name,
                                         vender_img = ve.Image_path,
                                         prod.discount
-                                        //,fav.customer_id
+                                        ,
+                                        fav.customer_id
                                     }
                                         into rc
                                     select new
@@ -1245,6 +1336,7 @@ namespace Final_ThibanProject_api.Controllers
                                         Vender_id = rc.Key.vender_id,
                                         Vendername = rc.Key.name,
                                         Vender_Image = rc.Key.vender_img,
+                                        isFavourite = rc.Key.customer_id,
                                         discount = rc.Key.discount//, Favourite = rc.Key.customer_id
                                     }).ToList();
                 //  productQuery = productQuery.Where(x => x.Favourite == custid || x.Favourite == null).ToList();// || x=>x.Favourite == null);
@@ -1265,7 +1357,7 @@ namespace Final_ThibanProject_api.Controllers
                         Vendername = item.Vendername,
                         vender_Image = item.Vender_Image,
                         discount = item.discount,
-                        //  Favourite = item.Favourite,// == custid ? 1 : 0,
+                        Favourite = item.isFavourite.HasValue ? 1 : 0,
                         Availability = item.Stock
 
                     });
@@ -2039,13 +2131,101 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult GetCustomerDetails(int custid)
+        public IHttpActionResult GetCustomerAddresses(int custid)
         {
             try
             {
                 ThibanWaterDBEntities db = new ThibanWaterDBEntities();
                 CustAllAddresses objCust = new CustAllAddresses();
-                return Ok(db.customerappartmentaddresses.Where(x => x.customerid == custid).ToList());
+                //   var cust_det = db.customers.Where(t => t.customerid == custid)
+                var cust_det = (from t in db.customers
+                                join mos in db.customermosqueaddresses on t.customerid equals mos.customerid
+                                where t.customerid == custid
+                                select new CustAllAddresses
+                                {
+                                    customerid = t.customerid,
+                                    Mosqueaddress = db.customermosqueaddresses.Where(x => x.customerid == custid).Select(p => new customermosqueaddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        mosque_name = p.mosque_name,
+                                        status = p.status,
+                                        street = p.street
+                                    }),
+                                    Restaurantaddress = db.customerrestaurantaddresses.Where(x => x.customerid == custid).Select(p => new customerrestaurantaddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        floor_no = p.floor_no,
+                                        rest_name_building_no = p.rest_name_building_no,
+                                        rest_no = p.rest_no,
+                                        rest_street = p.rest_street,
+                                        status = p.status
+                                    }),
+                                    ApparmentAddress = t.customerappartmentaddresses.Where(x => x.customerid == custid).Select(p => new customerappartmentaddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        floor_number = p.floor_number,
+                                        building_name = p.building_name,
+                                        appartment_street = p.appartment_street,
+                                        appartment_number = p.appartment_number
+                                    }),
+                                    Chaletaddress = t.customerchaletaddresses.Where(x => x.customerid == custid).Select(p => new customerchaletaddress_view
+                                    {
+                                        id = p.id,
+                                        chalet_address_status = p.chalet_address_status,
+                                        chalet_number = p.chalet_number,
+                                        chalet_street = p.chalet_street,
+                                        customerid = p.customerid
+                                    }),
+                                    Defaultaddress = t.customerdefaultaddresses.Where(x => x.custid == custid).Select(p => new customerdefaultaddress_view
+                                    {
+                                        addressid = p.addressid,
+                                        custid = p.custid,
+                                        city = p.city,
+                                        country = p.country,
+                                        custnote1 = p.custnote1,
+                                        customernote2 = p.customernote2,
+                                        state = p.state,
+                                        streetaddress = p.streetaddress,
+                                        zip = p.zip
+                                    }),
+                                    Officeaddress = t.customerofficeaddresses.Where(x => x.customerid == custid).Select(p => new customerofficeaddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        office_address_status = p.office_address_status,
+                                        office_building_name = p.office_building_name,
+                                        office_number = p.office_number,
+                                        office_street = p.office_street,
+                                        offie_floor_number = p.offie_floor_number
+                                    }),
+                                    Otheraddress = t.customerotheraddresses.Where(x => x.customerid == custid).Select(p => new customerotheraddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        other_address_status = p.other_address_status,
+                                        other_specificaqtion = p.other_specificaqtion,
+                                        other_street = p.other_street
+                                    }),
+                                    Villaaddress = t.customervillaaddresses.Where(x => x.customerid == custid).Select(p => new customervillaaddress_view
+                                    {
+                                        id = p.id,
+                                        customerid = p.customerid,
+                                        villa_address_status = p.villa_address_status,
+                                        villa_name = p.villa_name,
+                                        villa_street = p.villa_street
+                                    })
+                                }).ToList();
+                if (cust_det.Count > 0)
+                    return Ok(cust_det);
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Customer Data Found";
+                }
+
             }
             catch (Exception ex)
             {
@@ -2054,6 +2234,54 @@ namespace Final_ThibanProject_api.Controllers
             }
             return Ok(objR);
         }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetCustomerDetails(int custid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                CustAllAddresses objCust = new CustAllAddresses();
+                //   var cust_det = db.customers.Where(t => t.customerid == custid)
+                var cust_det = (from t in db.customers.Where(t => t.customerid == custid)
+                                select new
+                                {
+                                    t.customerid,
+                                    t.name,
+                                    t.Image_path,
+                                    t.DOB,
+                                    t.emailid,
+                                    t.currencyid,
+                                    t.customer_type,
+                                    t.customer_nationality,
+                                    t.username,
+                                    t.mobileno,
+                                    Year = t.regdate != null ? t.regdate.Value.Year : 0,
+                                    t.customer_gender,
+                                    t.isFb,
+                                    t.isGplus,
+                                    t.isLinkedin,
+                                    t.isTwitter
+                                }
+                                ).ToList();
+                if (cust_det.Count > 0)
+                    return Ok(cust_det);
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Customer Data Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
         #endregion
         #region Notification
         [HttpPost]
@@ -2235,7 +2463,7 @@ namespace Final_ThibanProject_api.Controllers
                                      ord.payment_type
                                  }).ToList();
                 /*
-      
+
         //Driver
         public string driver_name { get; set; }
         public string driver_image { get; set; }
@@ -2261,6 +2489,8 @@ namespace Final_ThibanProject_api.Controllers
                         status = item.status,
                         prod_image = item.Image_path,
                         deliverydate = item.expected_delivery_time,
+                        deliverydate_only = Convert.ToDateTime(item.expected_delivery_time).ToShortDateString(),
+                        deliverytime = Convert.ToDateTime(item.expected_delivery_time).ToShortTimeString(),
                         paid_via = item.payment_type
                     });
                 }
@@ -2320,12 +2550,12 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult AddProducttoCart(int custid,int productid, int qty)
+        public IHttpActionResult AddProducttoCart(int custid, int productid, int qty)
         {
             try
             {
                 ThibanWaterDBEntities db = new ThibanWaterDBEntities();
-                cart_items  cart = db.cart_items.Where(x => x.user_id == custid && x.productid==productid).FirstOrDefault();
+                cart_items cart = db.cart_items.Where(x => x.user_id == custid && x.productid == productid).FirstOrDefault();
                 if (cart != null)
                 {
                     cart.user_id = custid;
@@ -2386,6 +2616,7 @@ namespace Final_ThibanProject_api.Controllers
             return Ok(objR);
         }
 
+
         [HttpPost]
         [Route]
         public IHttpActionResult CartItemList(int custid)
@@ -2400,15 +2631,24 @@ namespace Final_ThibanProject_api.Controllers
                                  from ca in cad.DefaultIfEmpty()
                                  select new
                                  {
-                                     cr.productid,cr.qty,ve.name,Ve_Image=ve.Image_path,ca.category_name,pro.category_id,pro.vender_id,
-                                     pro.product_title,Pro_image=pro.Image_path,
-                                     pro.description,pro.customer_price,Total=(cr.qty*pro.customer_price)
+                                     cr.productid,
+                                     cr.qty,
+                                     ve.name,
+                                     Ve_Image = ve.Image_path,
+                                     ca.category_name,
+                                     pro.category_id,
+                                     pro.vender_id,
+                                     pro.product_title,
+                                     Pro_image = pro.Image_path,
+                                     pro.description,
+                                     pro.customer_price,
+                                     Total = (cr.qty * pro.customer_price)
                                  }
                                  //where ord.orderid == orderid
                                  ).ToList();
-                if (cartitems.Count>0)
+                if (cartitems.Count > 0)
                 {
-                  return  Ok(cartitems);
+                    return Ok(cartitems);
                 }
                 else
                 {
@@ -2424,5 +2664,93 @@ namespace Final_ThibanProject_api.Controllers
             }
             return Ok(objR);
         }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetCurrencyList()
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                var res = from v in db.currencymasters
+                          select v;
+                List<currencymaster> list = res.AsEnumerable()
+                              .Select(o => new currencymaster
+                              {
+                                  id = o.id,
+                                  currency = o.currency,
+                                  currency_code = o.currency_code
+                              }).ToList();
+                if (list.Count > 0)
+                    return Ok(list);
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Currency Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult TrackOrderStatus(int driverid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                driver_track loc = db.driver_track.Where(x => x.driverid == driverid).OrderByDescending(x => x.id).FirstOrDefault();
+                if (loc != null)
+                    return Ok(loc);
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Location Found for driver";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetCustidfromEmail(string email)
+        {
+            try
+            {
+                ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
+
+                List<Product> objProduct = new List<Product>();
+                int? custid = DB.customers.Where(x => x.emailid == email).Select(x => x.customerid).FirstOrDefault();
+                if (custid > 0)
+                {
+                    // return Ok(productStock);
+                    objR.status = 1;
+                    objR.message = custid.ToString();
+                }
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Data Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+
+            }
+            return Ok(objR);
+        }
+
     }
 }

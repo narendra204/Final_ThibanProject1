@@ -24,7 +24,7 @@ namespace Final_ThibanProject.Controllers
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
-                List<ProductRating> objProductRating = new List<ProductRating>();
+                //List<ProductRating> objProductRating = new List<ProductRating>();
                 int pageSize = (pageSizeValue ?? 10);
                 int pageNumber = (page ?? 1);
 
@@ -55,13 +55,13 @@ namespace Final_ThibanProject.Controllers
                 //var strItem = item.Key.ToString();
 
 
-                returnList = DB.venders.Select(x =>
-                        new SelectListItem
-                        {
-                            Value = x.venderid.ToString(),
-                            Text = x.name,
-                            Selected = false
-                        }).ToList();
+                returnList = DB.venders.Where(x => string.IsNullOrEmpty(x.name) == false).Select(x =>
+                            new SelectListItem
+                            {
+                                Value = x.venderid.ToString(),
+                                Text = x.name,
+                                Selected = false
+                            }).ToList();
 
                 ViewBag.VenderList = returnList;
                 return returnList;
@@ -76,48 +76,65 @@ namespace Final_ThibanProject.Controllers
                 var productQuery = (from prod in DB.products
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid
-                                    join img in DB.ImageFiles on prod.image equals img.ImageId
-                                    group prod by new
+                                    select new
                                     {
                                         prod.productid,
                                         prod.vender_id,
+                                        ve.name,
                                         prod.description,
-                                        prod.customer_price,
-                                        prod.stock,
                                         prod.product_title,
+                                        prod.customer_price,
+                                        prod.customer_min_order_quantity,
+                                        prod.customer_max_order_quantity,
+                                        prod.store_price,
+                                        prod.store_min_order_quantity,
+                                        prod.store_max_order_quantity,
+                                        prod.phno,
+                                        prod.bottle_per_box,
+                                        prod.stock,
                                         prod.sku,
                                         prod.status,
                                         ca.category_name,
-                                        ve.name,
-                                        img.Imageattachment
-                                    }
-                                        into rc
-                                        select new
-                                        {
-                                            ProdId = rc.Key.productid,
-                                            ProductTitle = rc.Key.product_title,
-                                            Description = rc.Key.description,
-                                            Image = rc.Key.Imageattachment,
-                                            ProdPrice = rc.Key.customer_price,
-                                            SKU = rc.Key.sku,
-                                            Stock = rc.Key.stock,
-                                            Status = rc.Key.status,
-                                            categoryname = rc.Key.category_name,
-                                            Vendername = rc.Key.name
-                                        }).ToList();
+                                        prod.category_id,
+                                        prod.ProductAvaibility,
+                                        prod.volume,
+                                        prod.bottle_material,
+                                        prod.brand,
+                                        prod.av_composition_ppm,
+                                        prod.discount,
+                                        prod.Image_path
+                                    }).ToList();
                 foreach (var item in productQuery)
                 {
                     objProduct.Add(new Product()
                     {
-                        categoryname = item.categoryname,
-                        ProductId = item.ProdId,
-                        Description = item.Description,
-                        Image = item.Image,
-                        Title = item.ProductTitle,
-                        ProductSKU = item.SKU,
-                        productprice = item.ProdPrice.HasValue ? Math.Round(item.ProdPrice.Value, 2) : item.ProdPrice,
-                        Availability = item.Stock,
-                        Status = item.Status
+
+                        availabilityName = item.ProductAvaibility,
+                        av_composition_ppm = item.av_composition_ppm,
+                        bottle_per_box = item.bottle_per_box,
+                        brand = item.brand,
+                        categoryname = item.category_name,
+                        category_id = item.category_id,
+                        customer_max_order = item.customer_max_order_quantity,
+                        customer_min_order = item.customer_min_order_quantity,
+                        customer_price = item.customer_price,
+                        Description = item.description,
+                        discount = item.discount,
+                        Image_path = item.Image_path,
+                        phno = item.phno,
+                        ProductId = item.productid,
+                        ProductSKU = item.sku,
+                        Status = item.status,
+                        stock = item.stock,
+                        store_max_order = item.store_max_order_quantity,
+                        store_min_order = item.store_min_order_quantity,
+                        store_price = item.store_price,
+                        Title = item.product_title,
+                        Vendername = item.name,
+                        VenderSource = item.vender_id,
+                        volume = item.volume,
+                        bottle_material = item.bottle_material
+
                     });
                 }
                 setDropDownVender();
@@ -142,36 +159,110 @@ namespace Final_ThibanProject.Controllers
                         if (Request.Files.Count > 0)
                         {
                             int id = 0;
+                            int flagimg = 0;
                             if (file != null && file.ContentLength > 0)
                             {
-                                using (BinaryReader b = new BinaryReader(file.InputStream))
-                                {
-                                    byte[] binData = b.ReadBytes(file.ContentLength);
-                                    obj.Imageattachment = binData;
-                                    obj.ImageName = file.FileName;
-                                    obj.ImageSize = file.ContentLength;
-                                    db.ImageFiles.Add(obj);
-                                    db.SaveChanges();
-                                    id = obj.ImageId;
-                                    prod.image = id;
-                                }
+                                //using (BinaryReader b = new BinaryReader(file.InputStream))
+                                //{
+                                //    byte[] binData = b.ReadBytes(file.ContentLength);
+                                //    obj.Imageattachment = binData;
+                                //    obj.ImageName = file.FileName;
+                                //    obj.ImageSize = file.ContentLength;
+                                //    db.ImageFiles.Add(obj);
+                                //    db.SaveChanges();
+                                //    id = obj.ImageId;
+                                //    prod.image = id;
+                                //}
+                                string targetFolder = Server.MapPath("~/content/images_product/");
+                                bool exists = System.IO.Directory.Exists(targetFolder);
+                                if (!exists)
+                                    System.IO.Directory.CreateDirectory(targetFolder);
+                                string targetPath = Path.Combine(targetFolder, "prod_" + p.ProductId  + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                                flagimg = 1;
+                                file.SaveAs(targetPath);
+                                prod.Image_path = "~/content/images_product/prod_" + p.ProductId + file.FileName.Substring(file.FileName.LastIndexOf("."));
                             }
-                            prod.product_title = p.Title;
-                            prod.description = p.Description;
-                            prod.category_id = p.Category;
-                            prod.stock = p.Availability;
-                            prod.customer_price = p.productprice;
-                            prod.vender_id = p.VenderSource;
-                            prod.sku = p.ProductSKU;
+                            if (p.ProductId == 0)
+                            {
 
-                            DB.products.Add(prod);
-                            DB.SaveChanges();
-                            ViewBag.message = "Product Added Sucessfully.";
+                                prod.vender_id = p.VenderSource;
+                                prod.description = p.Description;
+                                prod.product_title = p.Title;
+                                prod.customer_price = p.customer_price;
+                                prod.customer_min_order_quantity = p.customer_min_order;
+                                prod.customer_max_order_quantity = p.customer_max_order;
+                                prod.store_price = p.store_price;
+                                prod.store_min_order_quantity = p.store_min_order;
+                                prod.store_max_order_quantity = p.store_max_order;
+                                prod.phno = p.phno;
+                                prod.bottle_per_box = p.bottle_per_box;
+                                prod.stock = p.stock;
+                                prod.sku = p.ProductSKU;
+                                prod.status = p.Status;
+                                prod.category_id = p.category_id;
+                                prod.ProductAvaibility = p.availabilityName;
+                                prod.volume = p.volume;
+                                prod.bottle_material = p.bottle_material;
+                                prod.brand = p.brand;
+                                prod.av_composition_ppm = p.av_composition_ppm;
+                                prod.discount = p.discount;
+                                prod.bottle_per_box = p.bottle_per_box;
+                                prod.createdby = Convert.ToInt32(Session["Adminid"]);
+                                DB.products.Add(prod);
+                                DB.SaveChanges();
+
+                                ViewBag.status = 1;
+                                ViewBag.message = "Product Added Successfully.";
+                            }
+                            else if (p.ProductId > 0)
+                            {
+                                product pd = db.products.First(x => x.productid == p.ProductId);
+                                pd.vender_id = p.VenderSource;
+                                pd.description = p.Description;
+                                pd.product_title = p.Title;
+                                pd.product_title = p.Title;
+                                pd.customer_price = p.customer_price;
+                                pd.customer_min_order_quantity = p.customer_min_order;
+                                pd.customer_max_order_quantity = p.customer_max_order;
+                                pd.store_price = p.store_price;
+                                pd.store_min_order_quantity = p.store_min_order;
+                                pd.store_max_order_quantity = p.store_max_order;
+                                pd.phno = p.phno;
+                                pd.bottle_per_box = p.bottle_per_box;
+                                pd.stock = p.stock;
+                                pd.sku = p.ProductSKU;
+                                pd.status = p.Status;
+                                pd.category_id = p.category_id;
+                                pd.ProductAvaibility = p.availabilityName;
+                                pd.volume = p.volume;
+                                pd.bottle_material = p.bottle_material;
+                                pd.brand = p.brand;
+                                pd.av_composition_ppm = p.av_composition_ppm;
+                                pd.discount = p.discount;
+                                prod.bottle_per_box = p.bottle_per_box;
+                                prod.createdby = Convert.ToInt32(Session["Adminid"]);
+
+                                if (!string.IsNullOrEmpty(prod.Image_path) && flagimg == 1)
+                                {
+                                    pd.Image_path = prod.Image_path;
+                                }
+                                db.SaveChanges();
+                                ViewBag.status = 1;
+                                ViewBag.message = "Product Edited Successfully";
+                            }
+
                         }
                         else
                         {
+                            ViewBag.productretrun = p;
+                            ViewBag.status = 0;
                             ModelState.AddModelError("", "Product Already Added.");
                         }
+                    }
+                    else
+                    {
+                        ViewBag.productretrun = p;
+                        ViewBag.status = 0;
                     }
                 }
             }
@@ -304,7 +395,7 @@ namespace Final_ThibanProject.Controllers
 
 
 
-//********************************************************************************************
+        //********************************************************************************************
         /// <summary>
         /// This is a vender module and we are adding the product from the vender.
         /// </summary>
@@ -346,27 +437,27 @@ namespace Final_ThibanProject.Controllers
                                      } into rc
                                      select new
                                      {
-                                         Productid=rc.Key.productid,
-                                         Image=rc.Key.Imageattachment,
-                                         Producttitle=rc.Key.product_title,
-                                         Brand=rc.Key.brand,
-                                         SKU=rc.Key.sku,
-                                         Price=rc.Key.customer_price,
-                                         Volumn=rc.Key.volume,
-                                         Status=rc.Key.status
+                                         Productid = rc.Key.productid,
+                                         Image = rc.Key.Imageattachment,
+                                         Producttitle = rc.Key.product_title,
+                                         Brand = rc.Key.brand,
+                                         SKU = rc.Key.sku,
+                                         Price = rc.Key.customer_price,
+                                         Volumn = rc.Key.volume,
+                                         Status = rc.Key.status
                                      }).ToList();
                 foreach (var item in getAllproduct)
                 {
                     objvenderproduct.Add(new VenderProduct()
                     {
-                        productid=item.Productid,
-                        productname=item.Producttitle,
-                        brandname=item.Brand,
-                        sku=item.SKU.ToString(),
-                        custprice=item.Price.HasValue?Math.Round(item.Price.Value,2):item.Price,
-                        volumn=item.Volumn,
-                        status=item.Status,
-                        image=item.Image
+                        productid = item.Productid,
+                        productname = item.Producttitle,
+                        brandname = item.Brand,
+                        sku = item.SKU.ToString(),
+                        custprice = item.Price.HasValue ? Math.Round(item.Price.Value, 2) : item.Price,
+                        volumn = item.Volumn,
+                        status = item.Status,
+                        image = item.Image
                     });
                 }
             }
@@ -439,7 +530,7 @@ namespace Final_ThibanProject.Controllers
             int pageNumber = (page ?? 1);
             var objvenderproduct = new List<VenderProduct>();
             objvenderproduct = Callvenderproductlist();
-            return View(objvenderproduct.ToPagedList(pageNumber,pageSize));
+            return View(objvenderproduct.ToPagedList(pageNumber, pageSize));
         }
     }
 }

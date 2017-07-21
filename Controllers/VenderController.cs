@@ -42,10 +42,16 @@ namespace Final_ThibanProject.Controllers
             {
                 List<Vender> objVender = new List<Vender>();
                 var VenderQuery = (from v in db.venders
-                                   join p in db.products on v.venderid equals p.vender_id
-                                   join o in db.orders on p.productid equals o.product_id
-                                   join a in db.venderdefaultaddresses on v.venderid equals a.venderid
-                                   join img in db.ImageFiles on v.image equals img.ImageId
+                                   join a in db.venderdefaultaddresses on v.venderid equals a.venderid into vad
+                                   from a in vad.DefaultIfEmpty()
+                                   join b in db.venderbankdetails on v.venderid equals b.venderid into vvb
+                                   from b in vvb.DefaultIfEmpty()
+                                   join p in db.products on v.venderid equals p.vender_id into pV
+                                   from p in pV.DefaultIfEmpty()
+                                   join o in db.orders on p.productid equals o.product_id into oV
+                                   from o in oV.DefaultIfEmpty()
+                                   join img in db.ImageFiles on v.image equals img.ImageId into oI
+                                   from img in oI.DefaultIfEmpty()
                                    group o by new
                                    {
                                        v.venderid,
@@ -53,12 +59,26 @@ namespace Final_ThibanProject.Controllers
                                        v.emailid,
                                        v.registration_date,
                                        v.mobile_no,
+                                       v.CompanyName,
+                                       v.password,
                                        v.status,
+                                       v.Image_path,
                                        a.vendernote1,
                                        a.vendernote2,
                                        a.streetaddress,
                                        a.city,
                                        a.zip,
+                                       a.country,
+                                       a.state,
+                                       b.account_no,
+                                       b.bank_name,
+                                       b.benificary_name_in_bank,
+                                       b.BankNameCaseOther,
+                                       b.branch_name,
+                                       b.HolderName,
+                                       b.IBANCode,
+                                       b.ifsc_code,
+                                       b.VatIdentityFicationNumber,
                                        img.Imageattachment
                                    } into rc
                                    select new
@@ -67,13 +87,33 @@ namespace Final_ThibanProject.Controllers
                                        Email = rc.Key.emailid,
                                        Avatar = rc.Key.Imageattachment,
                                        Name = rc.Key.name,
+                                       password = rc.Key.password,
+                                       CompanyName = rc.Key.CompanyName,
+                                       confirmPassword = rc.Key.password,
                                        MobileNo = rc.Key.mobile_no,
                                        Register = rc.Key.registration_date,
                                        TotalSale = rc.Sum(r => r.total),
                                        Address = rc.Key.streetaddress,
                                        City = rc.Key.city,
                                        Zip = rc.Key.zip,
-                                       Status = rc.Key.status
+                                       Status = rc.Key.status,
+                                       venderNote1 = rc.Key.vendernote1,
+                                       venderNote2 = rc.Key.vendernote2,
+                                       streetaddress = rc.Key.streetaddress,
+                                       city = rc.Key.city,
+                                       zip = rc.Key.zip,
+                                       country = rc.Key.country,
+                                       state = rc.Key.state,
+                                       accountno = (rc.Key.account_no == null) ? 0 : rc.Key.account_no,
+                                       benificary_name = rc.Key.benificary_name_in_bank,
+                                       bankName = rc.Key.bank_name,
+                                       branchName = rc.Key.branch_name,
+                                       bankNameCaseOther = rc.Key.BankNameCaseOther,
+                                       ifscCode = rc.Key.ifsc_code,
+                                       HolderName = rc.Key.HolderName,
+                                       ibanCode = rc.Key.IBANCode,
+                                       GSTNo = rc.Key.VatIdentityFicationNumber,
+                                       image_path = rc.Key.Image_path
                                    }).ToList();
 
                 //Binding data to a report which is shown on vender view
@@ -86,12 +126,28 @@ namespace Final_ThibanProject.Controllers
                         name = item.Name,
                         emailid = item.Email,
                         regdate = Convert.ToDateTime(item.Register),
+                        password = item.password,
+                        companyName = item.CompanyName,
                         totalsale = item.TotalSale.HasValue ? Math.Round(item.TotalSale.Value, 2) : item.TotalSale,
                         mobileno = item.MobileNo,
                         address = item.Address,
                         city = item.City,
                         zip = Convert.ToInt32(item.Zip),
-                        Status = item.Status
+                        Status = item.Status,
+                        country = item.country,
+                        state = item.state,
+                        vendernote1 = item.venderNote1,
+                        vendernote2 = item.venderNote2,
+                        accountno = item.accountno,
+                        benificary_name = item.benificary_name,
+                        bankName = item.bankName,
+                        branchName = item.branchName,
+                        bankNameCaseOther = item.bankNameCaseOther,
+                        ifscCode = item.ifscCode,
+                        HolderName = item.HolderName,
+                        ibanCode = item.ibanCode,
+                        GSTNo = item.GSTNo,
+                        image_path = item.image_path
                     });
                 }
                 return objVender;
@@ -108,54 +164,172 @@ namespace Final_ThibanProject.Controllers
                 vender ven = new vender();
                 using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
                 {
-                    if (!ve.IsVenderExist(ve.emailid))
+                    if (ModelState.IsValid)
                     {
+
                         ImageFile obj = new ImageFile();
                         int id = 0;
                         if (file != null && file.ContentLength > 0)
                         {
-                            using (BinaryReader b = new BinaryReader(file.InputStream))
+                            //using (BinaryReader b = new BinaryReader(file.InputStream))
+                            //{
+                            //    byte[] binData = b.ReadBytes(file.ContentLength);
+                            //    obj.Imageattachment = binData;
+                            //    obj.ImageName = file.FileName;
+                            //    obj.ImageSize = file.ContentLength;
+                            //    db.ImageFiles.Add(obj);
+                            //    db.SaveChanges();
+                            //    id = obj.ImageId;
+                            //    ven.image = id;
+                            //}
+                            string fileName = "~/content/images_vender/";
+                            string targetFolder = Server.MapPath(fileName);
+                            bool exists = System.IO.Directory.Exists(targetFolder);
+                            if (!exists)
                             {
-                                byte[] binData = b.ReadBytes(file.ContentLength);
-                                obj.Imageattachment = binData;
-                                obj.ImageName = file.FileName;
-                                obj.ImageSize = file.ContentLength;
-                                db.ImageFiles.Add(obj);
+                                System.IO.Directory.CreateDirectory(targetFolder);
+                            }
+                            string targetPath = Path.Combine(fileName, "prod_" + ve.Venderid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                            string savePath = Path.Combine(targetFolder, "prod_" + ve.Venderid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                            file.SaveAs(savePath);
+                            ve.image_path = targetPath;
+                        }
+
+                        if (ve.Venderid == 0)
+                        {
+                            if (!ve.IsVenderExist(ve.emailid))
+                            {
+                                ven.name = ve.name;
+                                ven.emailid = ve.emailid;
+                                ven.username = ve.emailid;
+                                ven.registration_date = DateTime.Now;
+                                ven.password = ve.password;
+                                ven.mobile_no = ve.mobileno;
+                                ven.Image_path = ve.image_path;
+                                ven.CompanyName = ve.companyName;
+                                ven.MerchantId = Convert.ToString(32000 + id);
+                                ven.status = ve.Status == "on" ? "Active" : "Pending";
+                                ven.createdby = Convert.ToInt32(Session["Adminid"]);
+                                db.venders.Add(ven);
                                 db.SaveChanges();
-                                id = obj.ImageId;
-                                ven.image = id;
+                                var vid = ven.venderid;
+                                venderdefaultaddress vda = new venderdefaultaddress();
+                                vda.venderid = vid;
+                                vda.vendernote1 = ve.vendernote1;
+                                vda.vendernote2 = ve.vendernote2;
+                                vda.streetaddress = ve.address;
+                                vda.city = ve.city;
+                                vda.zip = ve.zip;
+                                vda.state = ve.state;
+                                vda.country = ve.country;
+                                db.venderdefaultaddresses.Add(vda);
+                                db.SaveChanges();
+                                venderbankdetail vbd = new venderbankdetail();
+                                vbd.venderid = vid;
+                                vbd.account_no = Convert.ToInt32(ve.accountno);
+                                vbd.bank_name = ve.bankName;
+                                vbd.benificary_name_in_bank = ve.benificary_name;
+                                vbd.branch_name = ve.branchName;
+                                vbd.BankNameCaseOther = ve.bankNameCaseOther;
+                                vbd.ifsc_code = ve.ifscCode;
+                                vbd.HolderName = ve.HolderName;
+                                vbd.IBANCode = ve.ibanCode;
+                                vbd.VatIdentityFicationNumber = ve.GSTNo;
+                                db.venderbankdetails.Add(vbd);
+                                db.SaveChanges();
+                                ViewBag.message = "Vender Added Sucessfully";
+                            }
+                            else
+                            {
+                                ViewBag.clientreturn = ve;
+                                ViewBag.status = 0;
+                                ModelState.AddModelError("", "Vender Already Exist");
                             }
                         }
-                        ven.name = ve.name;
-                        ven.emailid = ve.emailid;
-                        ven.username = ve.emailid;
-                        ven.registration_date = DateTime.Now;
-                        ven.password = ve.password;
-                        ven.mobile_no = ve.mobileno;
-                        ven.createdby = Convert.ToInt32(Session["Adminid"]);
-                        db.venders.Add(ven);
-                        db.SaveChanges();
-                        var vid = ven.venderid;
-                        venderdefaultaddress vda = new venderdefaultaddress();
-                        vda.venderid = vid;
-                        vda.vendernote1 = ve.vendernote1;
-                        vda.vendernote2 = ve.vendernote2;
-                        vda.streetaddress = ve.address;
-                        vda.city = ve.city;
-                        vda.zip = ve.zip;
-                        vda.state = ve.state;
-                        vda.country = ve.country;
-                        db.venderdefaultaddresses.Add(vda);
-                        db.SaveChanges();
-                        ViewBag.message = "Vender Added Sucessfully";
+                        else if (ve.Venderid > 0)
+                        {
+                            vender eve = db.venders.First(i => i.venderid == ve.Venderid);
+                            eve.name = ve.name;
+                            eve.emailid = ve.emailid;
+                            eve.username = ve.emailid;
+                            eve.registration_date = DateTime.Now;
+                            eve.password = ve.password;
+                            eve.mobile_no = ve.mobileno;
+                            eve.Image_path = ve.image_path;
+                            eve.CompanyName = ve.companyName;
+                            eve.status = ve.Status == "on" ? "Active" : "Pending";
+                            eve.createdby = Convert.ToInt32(Session["Adminid"]);
+                            db.SaveChanges();
+                            var venderDefaultAdd = db.venderdefaultaddresses.Where(x => x.venderid == ve.Venderid).Count();
+                            if (venderDefaultAdd > 0)
+                            {
+                                venderdefaultaddress evda = db.venderdefaultaddresses.First(v => v.venderid == ve.Venderid);
+                                evda.vendernote1 = ve.vendernote1;
+                                evda.vendernote2 = ve.vendernote2;
+                                evda.streetaddress = ve.address;
+                                evda.city = ve.city;
+                                evda.zip = ve.zip;
+                                evda.state = ve.state;
+                                evda.country = ve.country;
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                venderdefaultaddress vda = new venderdefaultaddress();
+                                vda.venderid = ve.Venderid;
+                                vda.vendernote1 = ve.vendernote1;
+                                vda.vendernote2 = ve.vendernote2;
+                                vda.streetaddress = ve.address;
+                                vda.city = ve.city;
+                                vda.zip = ve.zip;
+                                vda.state = ve.state;
+                                vda.country = ve.country;
+                                db.venderdefaultaddresses.Add(vda);
+                                db.SaveChanges();
+                            }
+
+                            var venderDefaultBank = db.venderbankdetails.Where(x => x.venderid == ve.Venderid).Count();
+                            if (venderDefaultBank > 0)
+                            {
+                                venderbankdetail evbd = db.venderbankdetails.First(e => e.venderid == ve.Venderid);
+                                evbd.account_no = Convert.ToInt32(ve.accountno);
+                                evbd.bank_name = ve.bankName;
+                                evbd.benificary_name_in_bank = ve.benificary_name;
+                                evbd.branch_name = ve.branchName;
+                                evbd.BankNameCaseOther = ve.bankNameCaseOther;
+                                evbd.ifsc_code = ve.ifscCode;
+                                evbd.HolderName = ve.HolderName;
+                                evbd.IBANCode = ve.ibanCode;
+                                evbd.VatIdentityFicationNumber = ve.GSTNo;
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                venderbankdetail vbd = new venderbankdetail();
+                                vbd.venderid = ve.Venderid;
+                                vbd.account_no = Convert.ToInt32(ve.accountno);
+                                vbd.bank_name = ve.bankName;
+                                vbd.benificary_name_in_bank = ve.benificary_name;
+                                vbd.branch_name = ve.branchName;
+                                vbd.BankNameCaseOther = ve.bankNameCaseOther;
+                                vbd.ifsc_code = ve.ifscCode;
+                                vbd.HolderName = ve.HolderName;
+                                vbd.IBANCode = ve.ibanCode;
+                                vbd.VatIdentityFicationNumber = ve.GSTNo;
+                                db.venderbankdetails.Add(vbd);
+                                db.SaveChanges();
+                            }
+                            ViewBag.message = "Vender Updated Sucessfully";
+                        }
+
                     }
+
+
                     else
                     {
-                        ModelState.AddModelError("", "Vender Already Exist");
+                        ViewBag.clientreturn = ve;
+                        ViewBag.status = 0;
                     }
-
-                    //////////
-
                 }
             }
             catch (DbEntityValidationException ex)
@@ -1614,7 +1788,7 @@ namespace Final_ThibanProject.Controllers
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
-                var resu=(from ver in db.venders.Where(a=>a.venderid.Equals(ve.Venderid))select ver.venderid).FirstOrDefault();
+                var resu = (from ver in db.venders.Where(a => a.venderid.Equals(ve.Venderid)) select ver.venderid).FirstOrDefault();
 
                 var orders = ((from ord in db.orders
                                join prod in db.products on ord.product_id equals prod.productid

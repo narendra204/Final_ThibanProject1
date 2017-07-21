@@ -376,6 +376,17 @@
     <EntitySet Name="driverinventories" EntityType="ThibanWaterDBModel.driverinventory" />
     <EntitySet Name="cart_items" EntityType="ThibanWaterDBModel.cart_items" />
     <EntitySet Name="driver_odometer" EntityType="ThibanWaterDBModel.driver_odometer" />
+    <EntitySet Name="currencymasters" EntityType="ThibanWaterDBModel.currencymaster" />
+    <EntitySet Name="order_details" EntityType="ThibanWaterDBModel.order_details" />
+    <AssociationSet Name="FK_order_details_order_details" Association="ThibanWaterDBModel.FK_order_details_order_details">
+      <End Role="order_details" EntitySet="order_details" />
+      <End Role="order_details1" EntitySet="order_details" />
+    </AssociationSet>
+    <EntitySet Name="driver_track" EntityType="ThibanWaterDBModel.driver_track" />
+    <AssociationSet Name="FK_order_details_order_details1" Association="ThibanWaterDBModel.FK_order_details_order_details1">
+      <End Role="order" EntitySet="orders" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -566,6 +577,11 @@
     <Property Name="DOB" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="national_address" Relationship="ThibanWaterDBModel.FK__national___custo__4F12BBB9" FromRole="customer" ToRole="national_address" />
     <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="currencyid" Type="Int32" />
+    <Property Name="isFb" Type="Boolean" />
+    <Property Name="isGplus" Type="Boolean" />
+    <Property Name="isTwitter" Type="Boolean" />
+    <Property Name="isLinkedin" Type="Boolean" />
   </EntityType>
   <EntityType Name="customeraddressproof">
     <Key>
@@ -955,6 +971,7 @@
     <NavigationProperty Name="shippinghistories" Relationship="ThibanWaterDBModel.FK__shippingh__order__114A936A" FromRole="order" ToRole="shippinghistory" />
     <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="order" ToRole="onspotsale" />
     <Property Name="address_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order_details" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order" ToRole="order_details" />
   </EntityType>
   <EntityType Name="oredercanclefeedback">
     <Key>
@@ -2416,4 +2433,60 @@
     <Property Name="odometer_end" Type="Int32" />
     <Property Name="vehicleid" Type="Int32" />
   </EntityType>
+  <EntityType Name="currencymaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="currency_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderid" Type="Int32" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="order_details1" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details" ToRole="order_details1" />
+    <NavigationProperty Name="order_details2" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details1" ToRole="order_details" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order_details" ToRole="order" />
+  </EntityType>
+  <Association Name="FK_order_details_order_details">
+    <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="1" />
+    <End Type="ThibanWaterDBModel.order_details" Role="order_details1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="order_details">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="driver_track">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="longitued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_order_details_order_details1">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

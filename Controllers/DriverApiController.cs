@@ -281,7 +281,7 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult AddProdcttoDriverInventory(int driverid, int productid, int qty)
+        public IHttpActionResult AddProdcttoDriverInventory(int driverid, int productid, int qty, int? shift_id=1)
         {
             try
             {
@@ -293,6 +293,7 @@ namespace Final_ThibanProject_api.Controllers
                     driIn.productid = productid;
                     driIn.stock = qty;
                     driIn.date1 = DateTime.Now;
+                    driIn.shift_id = shift_id;
                     db.SaveChanges();
                     objR.status = 1;
                     objR.message = "Stock Updated Successfully";
@@ -442,7 +443,8 @@ namespace Final_ThibanProject_api.Controllers
                                      dr.driver_divice_id,
                                      dr.driver_telicom_carrer,
                                      dr.status,
-                                     dr.Image_path
+                                     dr.Image_path,
+                                     dr.DOB
                                  }).ToList();
                 foreach (var item in driverqry)
                 {
@@ -465,7 +467,8 @@ namespace Final_ThibanProject_api.Controllers
                         rating = totalrating,
                         totalorder = totalorder,
                         deliverorder = deliveroder,
-                        pendingorder = remainorder
+                        pendingorder = remainorder,
+                        DOB=item.DOB
                     });
                 }
                 if (objProduct.Count > 0)

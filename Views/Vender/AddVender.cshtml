@@ -12,13 +12,14 @@
     .caret.ml5 {
         margin-left: 5px !important;
     }
-     .myvalidation {
-    color: green;
-}
+
+    .myvalidation {
+        color: green;
+    }
 </style>
 
 <!-- Start: Content-Wrapper -->
-@Html.ValidationSummary(true,"")
+@Html.ValidationSummary(true, "")
 <div class="right_col main-adminvendormngmnt-section" role="main">
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
         <h1 class="main-top-header">Thiban Vendor Management</h1>
@@ -62,6 +63,7 @@
                 </div>
                 @using (Html.BeginForm("AddVender", "Vender", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+                    @Html.Hidden("Venderid", 0)
                     <div class="panel-body p20 pb10 pl5">
                         <div class="tab-content pn br-n admin-form">
                             <div id="tab1_1" class="tab-pane active">
@@ -81,25 +83,38 @@
                                         </div>
                                         <div class="section row ">
                                             <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="password" class="field prepend-icon">
+                                                <label for="password1" class="field prepend-icon">
                                                     <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Password">
                                                 </label>
                                             </div>
                                             <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <label for="password2" class="field prepend-icon">
-                                                    <input type="password" name="confirm_password" id="confirm_password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
+                                                    <input type="password" name="password" id="confirm_password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="section row ">
+                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="companyName" class="field prepend-icon">
+                                                    <input type="text" name="companyName" id="companyName" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="company Name">
+                                                </label>
+                                            </div>
+                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="mobileno" class="field prepend-icon">
+                                                    <input type="text" name="mobileno" id="mobileno" class="event-name gui-input br-light light brdr-color outline brdr-none no" maxlength="10" placeholder="mobile no">
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                            <label for="email" class="field prepend-icon">
-                                                <textarea cols="5" rows="5" name="vendernote1" class="form-control brdr-color  resize-no outline br-light" placeholder="Driver Note"></textarea>
+                                            <label for="vender" class="field prepend-icon">
+                                                <textarea cols="5" rows="5" name="vendernote1" id="vendernote1" class="form-control brdr-color  resize-no outline br-light" placeholder="Driver Note"></textarea>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pd-no">
                                         <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
-                                            <div class="fileupload-preview thumbnail mb15 bg-wht"> <img id="output" src="~/Content/assets/img/upload.png" alt="holder"> </div>
+                                            <div class="fileupload-preview thumbnail mb15 bg-wht"> <img id="output" src="~/Content/assets/img/upload.png"> </div>
                                             <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99 mt10">
                                                 <span class="fileupload-new border-radius99  mt10"></span> <span class="fileupload-exists border-radius99 mt10">Change</span>
                                                 <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
@@ -119,12 +134,27 @@
                                         </div>
                                     </div>
                                     <hr class="short">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
                                         <p class="text-left myvalidation">@ViewBag.message</p>
                                         <p class="text-right next-btn-admin">
-                                            <button class="btn btn-primary border-radius99 prduct-save-btn " type="button">Next</button>
+                                            <button class="btn btn-primary border-radius99 prduct-save-btn " id="btnNext" type="button">Next</button>
                                         </p>
+                                    </div>*@
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                </div>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary border-radius99 prduct-save-btn " id="btnNext" type="button">Next</button>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -133,76 +163,67 @@
                             </div>
                             <div id="tab1_2" class="tab-pane">
                                 <div class="section row mbn">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr15">
-                                        <div class="section ">
-                                            <label for="cust-phone" class="field prepend-icon">
-                                                <input type="text" name="mobileno" id="mobileno" class="event-name gui-input br-light " placeholder="Vendor Phone Number...">
-                                            </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pr15">
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="accountno" id="accountno" class="event-name gui-input br-light " placeholder="Bank Account No">
+                                                </label>
+                                                </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="benificary_name" id="benificary_name" class="event-name gui-input br-light " placeholder="Benificary Name In Bank">
+                                                </label>
+                                            </div>
+                                            </div>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="bankName" id="bankName" class="event-name gui-input br-light " placeholder="Bank Name">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="branchName" id="branchName" class="event-name gui-input br-light " placeholder="Branch Name">
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="section ">
-                                            <label for="customer-group" class="field select">
-                                                <select id="customer-group" name="customer-group" class="outline br-light">
-                                                    <option value="0" selected="selected">Vendor Group...</option>
-                                                    <option value="1">Vendor</option>
-                                                    <option value="2">Supplier</option>
-                                                    <option value="3">Distributor</option>
-                                                </select>
-                                                <i class="arrow double"></i>
-                                            </label>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="bankNameCaseOther" id="bankNameCaseOther" class="event-name gui-input br-light " placeholder="Bank Other Name Case">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="ifscCode" id="ifscCode" class="event-name gui-input br-light " placeholder="IFSC Code">
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="section">
-                                            <label for="customer-language" class="field select">
-                                                <select id="customer-language" name="customer-language " class="outline br-light">
-                                                    <option value="0" selected="selected">Vendor Language...</option>
-                                                    <option value="1">English</option>
-                                                    <option value="2">Spanish</option>
-                                                    <option value="3">German</option>
-                                                </select>
-                                                <i class="arrow double"></i>
-                                            </label>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="HolderName" id="HolderName" class="event-name gui-input br-light " placeholder="Bank Account Holder Name">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="ibanCode" id="ibanCode" class="event-name gui-input br-light " placeholder="IBAN Code">
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label class="field option mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10 vendor-mngmnt-chckbox" style="	height: 0px !important;
-
-
-
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Vendor is Tax Exempt
-                                        </label>
-                                        <div class="clearfix"></div>
-                                        <label class="field option mtop mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10" style="	height: 0px !important;
-
-
-
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Vendor Accepts Marketing
-                                        </label>
-                                        <div class="clearfix"></div>
-                                        <label class="field option mtop mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10" style="	height: 0px !important;
-
-
-
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Activate/Enable Account?
-                                        </label>
-                                        <hr class="alt short mv15">
-                                        <p class="text-muted "> <span class="fa fa-exclamation-circle text-warning fs15 pr5"></span> Grants the Vendor limited store access.</p>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="GSTNo" id="GSTNo" class="event-name gui-input br-light " placeholder="GST No">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="vender" class="field prepend-icon">
+                                                    <input type="text" name="CSTNo" id="CSTNo" class="event-name gui-input br-light " placeholder="CST No">
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <hr class="short alt mtn">
@@ -215,15 +236,27 @@
                                     </label>
                                 </div>
                                 <hr class="short">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <p class="text-right next-btn-admin">
-                                        <button class="btn btn-primary border-radius99 prduct-save-btn" type="button">Next</button>
+                                        <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext2" type="button">Next</button>
                                     </p>
+                                </div>*@
+                                <div class="section row mbn">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                            </div>
+                                        </p>
+                                        <p class="text-right">
+                                            <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext2" type="button">Next</button>
+                                        </p>
+                                    </div>
+                                    </div>
+
+                                    <!-- end section -->
+
                                 </div>
-
-                                <!-- end section -->
-
-                            </div>
                             <div id="tab1_3" class="tab-pane">
                                 <div class="section row mt10">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -236,7 +269,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label for="city" class="field prepend-icon">
-                                            <input type="text" name="city" id="city" class="gui-input outline br-light  brdr-none" placeholder="City">
+                                            <input type="text" name="city" id="city" class="gui-input outline br-light  brdr-none" maxlength="10" placeholder="City">
                                         </label>
                                     </div>
 
@@ -247,7 +280,7 @@
                                 <div class="section row mt10">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label for="states" class="field select">
-                                            <select id="states" name="state" class=" selectpicker outline br-light  brdr-none">
+                                            <select id="states" name="state" class="outline br-light  brdr-none">
                                                 <option value="">Choose state</option>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
@@ -267,14 +300,14 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label for="zip" class="field prepend-icon">
-                                            <input type="text" name="zip" id="zip" class="gui-input outline  br-light brdr-none" placeholder="Zip">
+                                            <input type="text" name="zip" id="zip" class="gui-input outline  br-light brdr-none no" placeholder="Zip">
                                         </label>
                                     </div>
                                     <!-- end .col8 section -->
                                 </div>
                                 <div class="section p10">
                                     <label class="field select">
-                                        <select id="location" name="country" class=" selectpicker outline  br-light brdr-none">
+                                        <select id="location" name="country" class="outline  br-light brdr-none">
                                             <option value="">Select country...</option>
                                             <option value="AL">Albania</option>
                                             <option value="DZ">Algeria</option>
@@ -293,24 +326,32 @@
 
                                 <!-- end section -->
                                 <!-- end section row section -->
-
                                 <div class="section row mbn">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                        <label class="field option mt10">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox"></span>Save User <span class="small-text">- A Random Unique ID will be generated</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <p class="text-right next-btn-admin">
-                                            <input type="submit" id="btnSave" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
+                                    <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation3">
+
+                                            </div>
                                         </p>
                                     </div>
                                 </div>
+                                    <div class="section row mbn">
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label class="field option mt10">
+                                                <input type="checkbox" name="status" checked>
+                                                <span class="checkbox"></span>Activate <span class="small-text">- Vender activate.</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <p class="text-right next-btn-admin">
+                                                <input type="submit" id="btnSave" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
+                                            </p>
+                                        </div>
+                                    </div>
 
-                                <!-- end section -->
+                                    <!-- end section -->
 
-                            </div>
+                                </div>
                         </div>
                     </div>
 
@@ -447,23 +488,45 @@
                                             </label>
                                         </td>
                                         @{
-                                    var base64 = Convert.ToBase64String(item.image);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            var imgSrc = string.Empty;
+                                            if (item.image != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(item.image);
+                                                imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            }
+                                            else if(item.image_path != null)
+                                            {
+                                                imgSrc = item.image_path;
+                                            }
                                         }
-                                        <td data-val-col="Avatar" data-val="@imgSrc" class="w50">
+                                        <td data-val-col="Avatar" data-val="@imgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50">
 
-                                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                                            <img src='@imgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )' style="max-width:100px; max-height:100px;" />
                                         </td>
-                                        <td data-val-col="Name" data-val="@item.name" class="">@item.name</td>
-                                        <td data-val-col="Email" data-val="@item.emailid" class="">@item.emailid</td>
-                                        <td data-val-col="RegDate" data-val="@item.regdate" class="">@item.regdate</td>
-                                        <td data-val-col="TotalSal" data-val="@item.totalsale" class="">@item.totalsale</td>
-                                        <td style="display:none;" data-val-col="VenderNote1" data-val="@item.vendernote1" class="">$@item.vendernote1</td>
-                                        <td style="display:none;" data-val-col="VenderNote2" data-val="@item.vendernote2" class="">$@item.vendernote2</td>
+                                        <td class="text-center" data-val-col="Name" data-val="@item.name" >@item.name</td>
+                                        <td class="text-center" data-val-col="Email" data-val="@item.emailid" >@item.emailid</td>
+                                        <td class="text-center" data-val-col="RegDate" data-val="@item.regdate" >@item.regdate</td>
+                                        <td class="text-center" data-val-col="TotalSal" data-val="@item.totalsale" >@item.totalsale</td>
+                                        <td class="text-center" data-val-col="Status" data-val="@item.Status">@item.Status</td>
+                                        <td style="display:none;" data-val-col="vendernote1" data-val="@item.vendernote1" class="">$@item.vendernote1</td>
+                                        <td style="display:none;" data-val-col="vendernote2" data-val="@item.vendernote2" class="">$@item.vendernote2</td>
                                         <td style="display:none;" data-val-col="Address" data-val="@item.address" class="">$@item.address</td>
                                         <td style="display:none;" data-val-col="City" data-val="@item.city" class="">$@item.city</td>
                                         <td style="display:none;" data-val-col="Zip" data-val="@item.zip" class="">$@item.zip</td>
                                         <td style="display:none;" data-val-col="Phone" data-val="@item.mobileno" class="">$@item.mobileno</td>
+                                        <td style="display:none;" data-val-col="Password" data-val="@item.password" class="">$@item.password</td>
+                                        <td style="display:none;" data-val-col="accountno" data-val="@item.accountno" class="">$@item.accountno</td>
+                                        <td style="display:none;" data-val-col="benificary_name" data-val="@item.benificary_name" class="">$@item.benificary_name</td>
+                                        <td style="display:none;" data-val-col="bankName" data-val="@item.bankName" class="">$@item.bankName</td>
+                                        <td style="display:none;" data-val-col="branchName" data-val="@item.branchName" class="">$@item.branchName</td>
+                                        <td style="display:none;" data-val-col="bankNameCaseOther" data-val="@item.bankNameCaseOther" class="">$@item.bankNameCaseOther</td>
+                                        <td style="display:none;" data-val-col="ifscCode" data-val="@item.ifscCode" class="">$@item.ifscCode</td>
+                                        <td style="display:none;" data-val-col="HolderName" data-val="@item.HolderName" class="">$@item.HolderName</td>
+                                        <td style="display:none;" data-val-col="ibanCode" data-val="@item.ibanCode" class="">$@item.ibanCode</td>
+                                        <td style="display:none;" data-val-col="GSTNo" data-val="@item.GSTNo" class="">$@item.GSTNo</td>
+                                        <td style="display:none;" data-val-col="State" data-val="@item.state" class="">$@item.state</td>
+                                        <td style="display:none;" data-val-col="Country" data-val="@item.country" class="">$@item.country</td>
+                                        <td style="display:none;" data-val-col="VenderId" data-val="@item.Venderid" class="">$@item.Venderid</td>
                                         <td class=" ">
 
                                             <div class="btn-group text-right">
@@ -485,7 +548,7 @@
                                         </td>
                                         <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><a href="vendor-view-all.php"><i class="fa fa-search fs12"></i>View</a></button></td>
                                     </tr>
-                                }
+                                            }
 
 
                             </tbody>
@@ -577,20 +640,162 @@
 <script src="~/Content/assets/js/visitor.js"></script>
 
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-    });
-
-</script>
-
 
 <script>
-    $(document).ready(function () {
-        $(".datepicker").datepicker();
+    function validatetabdata(intTab) {
+        var strErrMsg = "";
+        var returnval = true;
+        $("#divValidation3").html("");
+        $("#divValidation2").html("");
+        $("#divValidation1").html("");
+        if (intTab == 1) {
+            
+            if ($.trim($("#name1").val()) == "") {
+                strErrMsg += "<li>First Name is required</li>";
+            }
+            if ($.trim($("#name2").val()) == "") {
+                strErrMsg += "<li>Email ID is required</li>";
+            }
+            if ($.trim($("#password").val()) == "") {
+                strErrMsg += "<li>Password is required</li>";
+            }
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                strErrMsg += "<li>Passwords do not match.</li>";
+            }
+            if ($.trim($("#mobileno").val()) == "") {
+                strErrMsg += "<li>Mobile No is required</li>";
+            }
+
+            if (strErrMsg != "") {
+                $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 2) {
+            if ($("#accountno").val() == "" || $("#accountno").val() == "0" ) {
+                strErrMsg += "<li>Account No is required</li>";
+            }
+            if ($.trim($("#bankName").val()) == "") {
+                    strErrMsg += "<li>Bank name is required.</li>";
+            }
+            
+            if ($.trim($("#branchName").val()) == "") {
+                    strErrMsg += "<li>Branch Name is required.</li>";
+            }
+            if ($.trim($("#ifscCode").val()) == "") {
+                strErrMsg += "<li>IFSC Code is required.</li>";
+            }
+            if ($.trim($("#HolderName").val()) == "") {
+                strErrMsg += "<li>Bank Account Holder Name is required.</li>";
+            }
+            if (strErrMsg != "") {
+                $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
+               // returnval = false;
+            }
+
+        }
+        else if (intTab == 3) {
+            if ($.trim($("#address").val()) == "") {
+                strErrMsg += "<li>Address is required</li>";
+            }
+            if ($.trim($("#city").val()) == "") {
+                strErrMsg += "<li>City is required</li>";
+            }
+            if ($.trim($("#states").val()) == "") {
+                strErrMsg += "<li>States is required</li>";
+            }
+            if ($.trim($("#zip").val()) == "") {
+                strErrMsg += "<li>Zip is required</li>";
+            }
+            if ($.trim($("#location").val()) == "") {
+                strErrMsg += "<li>Country is required</li>";
+            }
+            if (strErrMsg != "") {
+                $("#divValidation3").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+        }
+        return returnval;
+    }
+
+    $(document).ready(function (e) {
+
+        $("#btnNext").click(function () {
+
+            if (validatetabdata(1))
+                activeTab('2');
+        });
+
+
+
+         @if (@ViewBag.status != null && @ViewBag.status == 0)
+        {
+            var ve = (Final_ThibanProject.Models.Vender)ViewBag.clientreturn;
+            <text>
+        $("#name1").val("@ve.name");
+        $("#Venderid").val("@ve.Venderid");
+        $("#name2").val("@ve.emailid");
+        $("#password").val("@ve.password");
+        $("#confirm_password").val("@ve.password");
+        $("#mobileno").val("@ve.mobileno");
+        $("#address").val("@ve.address");
+        $("#city").val("@ve.city");
+        $("#zip").val("@ve.zip");
+        $("#state").val("@ve.state").attr("selected");
+        $("#country").val("@ve.country").attr("selected");
+        $("#vendernote1").val("@ve.vendernote1");
+        $("#vendernote2").val("@ve.vendernote2");
+        $("#accountno").val("@ve.accountno");
+        $("#benificary_name").val("@ve.benificary_name");
+        $("#bankName").val("@ve.bankName");
+        $("#branchName").val("@ve.branchName");
+        $("#bankNameCaseOther").val("@ve.bankNameCaseOther");
+        $("#ifscCode").val("@ve.ifscCode");
+        $("#HolderName").val("@ve.HolderName");
+        $("#ibanCode").val("@ve.ibanCode");
+        $("#GSTNo").val("@ve.GSTNo");
+        </Text>
+    }
+
+        $("#btnNext").click(function () {
+            if (validatetabdata(1))
+                activeTab('2');
+        });
+        $("#btnNext2").click(function () {
+            //if (validatetabdata(2))
+            activeTab('3')
+        });
+
+        $("#btnSave").click(function () {
+            if (!validatetabdata(3)) {
+                return false;
+            }
+            return true;
+        });
+
+        $(".no").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
     });
 
-
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
     var venderDtl = {
         getId: function (val) {
             var spltVal = val.split("_");
@@ -652,40 +857,34 @@
         } else {
             var rowData = venderDtl.getSelectdRowData(venId);
             $("#output").attr("src", rowData.Avatar);
+
             $("#name1").val(rowData.Name);
-            $("#venderid").val(venId);
+            $("#Venderid").val(venId);
             $("#name2").val(rowData.Email);
-            $("#password").val(rowData.password);
+            $("#password").val(rowData.Password);
+            $("#confirm_password").val(rowData.Password);
             $("#mobileno").val(rowData.Phone);
             $("#address").val(rowData.Address);
             $("#city").val(rowData.City);
             $("#zip").val(rowData.Zip);
-            $("#state").val(rowData.State);
-            $("#country").val(rowData.Country);
-            $("#vendernote1").val(rowData.VenderNote1);
-            $("#vendernote2").val(rowData.VenderNote2);
-            debugger;
+            $("#states").val(rowData.State).attr("selected");
+            $('#states').val(rowData.State).trigger('change.select2');
+            $("#states option[value='" + rowData.State + "']").attr('selected', true);
+            $("#location option[value='" + rowData.Country + "']").attr('selected', true);
+            $("#location").val(rowData.Country).attr("selected");
+            $("#vendernote1").val(rowData.vendernote1);
+            $("#vendernote2").val(rowData.vendernote2);
+            $("#accountno").val(rowData.accountno);
+            $("#benificary_name").val(rowData.benificary_name);
+            $("#bankName").val(rowData.bankName);
+            $("#branchName").val(rowData.branchName);
+            $("#bankNameCaseOther").val(rowData.bankNameCaseOther);
+            $("#ifscCode").val(rowData.ifscCode);
+            $("#HolderName").val(rowData.HolderName);
+            $("#ibanCode").val(rowData.ibanCode);
+            $("#GSTNo").val(rowData.GSTNo);
         }
     }
-
-</script>
-
-
-<script type="text/javascript">
-
-
-
-    $(document).ready(function (e) {
-
-
-
-        $('.selectpicker').selectpicker();
-
-
-
-    });
-
-
 
 </script>
 
@@ -705,7 +904,7 @@
                 var fileSize = objFile.size; //size in kb
                 fileSize = fileSize / 1048576; //size in mb
             }
-                //for FF, Safari, Opeara and Others
+            //for FF, Safari, Opeara and Others
             else {
                 fileSize = $("#" + fileid)[0].files[0].size //size in kb
                 fileSize = fileSize / 1048576; //size in mb
@@ -730,7 +929,7 @@
         }
     }
 
-    $("#btnSubmit").live("click", function () {
+    $("#btnSubmit").on("click", function () {
         if ($('#fileToUpload').val() == "") {
             $("#spanfile").html("Please upload file");
             return false;

@@ -28,7 +28,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="~/Content/assets/img/bred-home.png" />>
+                                <img src="~/Content/assets/img/bred-home.png" />
                             </span> Home
                         </a>
                     </li>
@@ -66,7 +66,7 @@
                                 <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
                                     <div class="fileupload-preview thumbnail mb20 btn-file" style="outline:none;">
                                         <img src="@Session["Image"]" id="output" alt="holder" class="fileupload-new"> <span class="fileupload-exists">Change</span>
-                                        <input type="file" name="file" onchange="loadFile(event)" value="@Model.image">
+                                        <input type="file" name="file" onchange="loadFile(event)" value="@Model.Image">
                                         <script>
                                             var loadFile = function (event) {
                                                 var reader = new FileReader();

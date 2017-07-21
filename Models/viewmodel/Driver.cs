@@ -10,11 +10,11 @@ namespace Final_ThibanProject.Models
     public class Driver
     {
         ThibanWaterDBEntities db = new ThibanWaterDBEntities();
-        public bool IsDriverMailExist(string Email)
+        public bool IsDriverMailExist(string Email,int? driverid)
         {
-            return db.drivers.Where(a => a.emailid.Equals(Email)).Any();
+            return db.drivers.Where(a => a.emailid.Equals(Email) && a.driverid!=driverid).Any();
         }
-        public int? Id { get; set; }
+        public int? driverid { get; set; }
         [Required(ErrorMessage="Name is required")]
         public string Name { get; set; }
         [Required(ErrorMessage="Email is required")]
@@ -25,26 +25,34 @@ namespace Final_ThibanProject.Models
         public DateTime? Regdate { get; set; }
         [Required(ErrorMessage="Mobile No is required")]
         public string Mobile { get; set; }
+        public string Nationality { get; set; }
         public int TotalDelivery { get; set; }
+
         public decimal? Amount { get; set; }
-        public string drivernote1 { get; set; }
-        public string drivernote2 { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public int zip { get; set; }
-        public string country { get; set; }
-        public string state { get; set; }
-
+        public string DriverNote1 { get; set; }
+        public string DriverNote2 { get; set; }
+        [Required(ErrorMessage = "Address is required")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "City is required")]
+        public string City { get; set; }
+        [Required(ErrorMessage = "Zip is required")]
+        public int Zip { get; set; }
+        [Required(ErrorMessage = "Country is required")]
+        public string Country { get; set; }
+        [Required(ErrorMessage = "State is required")]
+        public string State { get; set; }
+        public string Gender { get; set; }
         public string Status { get; set; }
-    }
+        public string deviceID { get; set; }
+        public string telecomCarrier { get; set; }
+        public string phoneType { get; set; }
+        public string image_path { get; set; }
 
-    public class DriverDetails
-    {
-        public int driverid { get; set; }
-        public string emailid { get; set; }
-        public string name { get; set; }
-        public string username { get; set; }
-        public string mobile_no { get; set; }
-        public string status { get; set; }
+        public int accountNo { get; set; }
+        public string benificary_name { get; set; }
+        public string bankName { get; set; }
+        public string branchName { get; set; }
+        public string ifscCode { get; set; }
+        public string addressProfImage { get; set; }
     }
 }

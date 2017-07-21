@@ -175,6 +175,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Value" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="currencymaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="currency_code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="cust_notification">
           <Key>
             <PropertyRef Name="id" />
@@ -209,6 +217,11 @@
           <Property Name="Image" Type="int" />
           <Property Name="DOB" Type="varchar" MaxLength="10" />
           <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="currencyid" Type="int" />
+          <Property Name="isFb" Type="bit" />
+          <Property Name="isGplus" Type="bit" />
+          <Property Name="isTwitter" Type="bit" />
+          <Property Name="isLinkedin" Type="bit" />
         </EntityType>
         <EntityType Name="customeraddressproof">
           <Key>
@@ -425,6 +438,16 @@
           <Property Name="odometer_end" Type="int" />
           <Property Name="vehicleid" Type="int" />
         </EntityType>
+        <EntityType Name="driver_track">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="driverid" Type="int" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="longitued" Type="nvarchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
         <EntityType Name="driveraddressproff">
           <Key>
             <PropertyRef Name="daddressid" />
@@ -640,6 +663,17 @@
           <Property Name="total_inventory_price" Type="money" />
           <Property Name="available_inventory" Type="int" />
           <Property Name="orderid" Type="int" />
+        </EntityType>
+        <EntityType Name="order_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderid" Type="int" />
+          <Property Name="productid" Type="int" />
+          <Property Name="qty" Type="int" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="created_date" Type="datetime" />
         </EntityType>
         <EntityType Name="orderdeliveryweather">
           <Key>
@@ -1540,18 +1574,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__product___04E4BC85">
-          <End Role="product" Type="Self.product" Multiplicity="0..1" />
-          <End Role="orders" Type="Self.orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="productid" />
-            </Principal>
-            <Dependent Role="orders">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__oredercan__custo__05D8E0BE">
           <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
           <End Role="oredercanclefeedback" Type="Self.oredercanclefeedback" Multiplicity="*" />
@@ -1900,6 +1922,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_order_details_order_details">
+          <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+          <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ThibanWaterDBModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="advertisement" EntityType="Self.advertisement" Schema="dbo" store:Type="Tables" />
@@ -1920,6 +1954,7 @@
           <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="coupon" EntityType="Self.coupon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CREATETABLEBottlePerBox" EntityType="Self.CREATETABLEBottlePerBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="currencymaster" EntityType="Self.currencymaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cust_notification" EntityType="Self.cust_notification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customeraddressproof" EntityType="Self.customeraddressproof" Schema="dbo" store:Type="Tables" />
@@ -1940,6 +1975,7 @@
           <EntitySet Name="dgeofence" EntityType="Self.dgeofence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driver_odometer" EntityType="Self.driver_odometer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="driver_track" EntityType="Self.driver_track" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driveraddressproff" EntityType="Self.driveraddressproff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverbankdetail" EntityType="Self.driverbankdetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="driverdefaultaddress" EntityType="Self.driverdefaultaddress" Schema="dbo" store:Type="Tables" />
@@ -1959,6 +1995,7 @@
           <EntitySet Name="national_address" EntityType="Self.national_address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="odometerreading" EntityType="Self.odometerreading" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="onspotsale" EntityType="Self.onspotsale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orderdeliveryweather" EntityType="Self.orderdeliveryweather" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="oredercanclefeedback" EntityType="Self.oredercanclefeedback" Schema="dbo" store:Type="Tables" />
@@ -2156,10 +2193,6 @@
             <End Role="customer" EntitySet="customer" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__product___04E4BC85" Association="Self.FK__orders__product___04E4BC85">
-            <End Role="product" EntitySet="product" />
-            <End Role="orders" EntitySet="orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__oredercan__custo__05D8E0BE" Association="Self.FK__oredercan__custo__05D8E0BE">
             <End Role="customer" EntitySet="customer" />
             <End Role="oredercanclefeedback" EntitySet="oredercanclefeedback" />
@@ -2275,6 +2308,10 @@
           <AssociationSet Name="FK__venderpay__vende__1BC821DD" Association="Self.FK__venderpay__vende__1BC821DD">
             <End Role="vender" EntitySet="vender" />
             <End Role="venderpayoutrequested" EntitySet="venderpayoutrequested" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_details_order_details" Association="Self.FK_order_details_order_details">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -2657,6 +2694,17 @@
           <EntitySet Name="driverinventories" EntityType="ThibanWaterDBModel.driverinventory" />
           <EntitySet Name="cart_items" EntityType="ThibanWaterDBModel.cart_items" />
           <EntitySet Name="driver_odometer" EntityType="ThibanWaterDBModel.driver_odometer" />
+          <EntitySet Name="currencymasters" EntityType="ThibanWaterDBModel.currencymaster" />
+          <EntitySet Name="order_details" EntityType="ThibanWaterDBModel.order_details" />
+          <AssociationSet Name="FK_order_details_order_details" Association="ThibanWaterDBModel.FK_order_details_order_details">
+            <End Role="order_details" EntitySet="order_details" />
+            <End Role="order_details1" EntitySet="order_details" />
+          </AssociationSet>
+          <EntitySet Name="driver_track" EntityType="ThibanWaterDBModel.driver_track" />
+          <AssociationSet Name="FK_order_details_order_details1" Association="ThibanWaterDBModel.FK_order_details_order_details1">
+            <End Role="order" EntitySet="orders" />
+            <End Role="order_details" EntitySet="order_details" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="admin">
           <Key>
@@ -2847,6 +2895,11 @@
           <Property Name="DOB" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="national_address" Relationship="ThibanWaterDBModel.FK__national___custo__4F12BBB9" FromRole="customer" ToRole="national_address" />
           <Property Name="Image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="currencyid" Type="Int32" />
+          <Property Name="isFb" Type="Boolean" />
+          <Property Name="isGplus" Type="Boolean" />
+          <Property Name="isTwitter" Type="Boolean" />
+          <Property Name="isLinkedin" Type="Boolean" />
         </EntityType>
         <EntityType Name="customeraddressproof">
           <Key>
@@ -3236,6 +3289,7 @@
           <NavigationProperty Name="shippinghistories" Relationship="ThibanWaterDBModel.FK__shippingh__order__114A936A" FromRole="order" ToRole="shippinghistory" />
           <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="order" ToRole="onspotsale" />
           <Property Name="address_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order_details" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order" ToRole="order_details" />
         </EntityType>
         <EntityType Name="oredercanclefeedback">
           <Key>
@@ -4697,6 +4751,62 @@
           <Property Name="odometer_end" Type="Int32" />
           <Property Name="vehicleid" Type="Int32" />
         </EntityType>
+        <EntityType Name="currencymaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="currency_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="order_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderid" Type="Int32" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="order_details1" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details" ToRole="order_details1" />
+          <NavigationProperty Name="order_details2" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details1" ToRole="order_details" />
+          <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order_details" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_order_details_order_details">
+          <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="1" />
+          <End Type="ThibanWaterDBModel.order_details" Role="order_details1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="order_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_details1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="driver_track">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="driverid" Type="Int32" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="longitued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_order_details_order_details1">
+          <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+          <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4865,6 +4975,11 @@
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="ThibanWaterDBModel.customer">
               <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="isLinkedin" ColumnName="isLinkedin" />
+                <ScalarProperty Name="isTwitter" ColumnName="isTwitter" />
+                <ScalarProperty Name="isGplus" ColumnName="isGplus" />
+                <ScalarProperty Name="isFb" ColumnName="isFb" />
+                <ScalarProperty Name="currencyid" ColumnName="currencyid" />
                 <ScalarProperty Name="Image_path" ColumnName="Image_path" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -5816,6 +5931,38 @@
                 <ScalarProperty Name="odometer_start" ColumnName="odometer_start" />
                 <ScalarProperty Name="date1" ColumnName="date1" />
                 <ScalarProperty Name="shift_id" ColumnName="shift_id" />
+                <ScalarProperty Name="driverid" ColumnName="driverid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="currencymasters">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.currencymaster">
+              <MappingFragment StoreEntitySet="currencymaster">
+                <ScalarProperty Name="currency_code" ColumnName="currency_code" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_details">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.order_details">
+              <MappingFragment StoreEntitySet="order_details">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="driver_track">
+            <EntityTypeMapping TypeName="ThibanWaterDBModel.driver_track">
+              <MappingFragment StoreEntitySet="driver_track">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="longitued" ColumnName="longitued" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="driverid" ColumnName="driverid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

@@ -163,6 +163,11 @@
     <EntitySetMapping Name="customers">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.customer">
         <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="isLinkedin" ColumnName="isLinkedin" />
+          <ScalarProperty Name="isTwitter" ColumnName="isTwitter" />
+          <ScalarProperty Name="isGplus" ColumnName="isGplus" />
+          <ScalarProperty Name="isFb" ColumnName="isFb" />
+          <ScalarProperty Name="currencyid" ColumnName="currencyid" />
           <ScalarProperty Name="Image_path" ColumnName="Image_path" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="Image" ColumnName="Image" />
@@ -1115,6 +1120,27 @@
           <ScalarProperty Name="date1" ColumnName="date1" />
           <ScalarProperty Name="shift_id" ColumnName="shift_id" />
           <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="currencymasters">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.currencymaster">
+        <MappingFragment StoreEntitySet="currencymaster">
+          <ScalarProperty Name="currency_code" ColumnName="currency_code" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

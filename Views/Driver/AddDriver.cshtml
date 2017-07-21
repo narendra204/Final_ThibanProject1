@@ -8,30 +8,11 @@
     var a = Model.TotalItemCount / Model.PageSize;
     var b = Model.TotalItemCount / 10;
 }
-<style>
-    .table tbody > tr:last-child > td {
-        border-bottom: none;
-    }
 
-    .right_col.main-admindriver-section .caret.ml5 {
-        margin-left: 5px !important;
-    }
-
-    .right_col.main-admindriver-section .admin-form .prepend-icon > input, .admin-form .prepend-icon > textarea {
-        padding-left: 10px !important;
-    }
-
-    .right_col.main-admindriver-section .admin-form .select > select {
-        padding-left: 10px !important;
-    }
-    .myvalidation {
-    color: green;
-}
-</style>
 
 <!--Pagination,Filetaration-->
 <!-- Start: Content-Wrapper -->
-@Html.ValidationSummary(true,"")
+@Html.ValidationSummary(true, "")
 <div class="right_col main-admindriver-section" role="main">
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
         <h1 class="main-top-header">Thiban Driver Management</h1>
@@ -75,12 +56,13 @@
                     <span class="panel-title hidden-xs "> Add New Driver</span>
                     <ul class="nav panel-tabs-border panel-tabs">
                         <li class="active"> <a href="#tab1_1" data-toggle="tab" id="tab" class="">General</a> </li>
-                        <li> <a href="#tab1_2" data-toggle="tab">Settings</a> </li>
-                        <li> <a href="#tab1_3" data-toggle="tab">Billing</a> </li>
+                        <li> <a href="#tab1_2" data-toggle="tab">Address</a> </li>
+                        <li> <a href="#tab1_3" data-toggle="tab">Bank Details</a> </li>
                     </ul>
                 </div>
                 @using (Html.BeginForm("AddDriver", "Driver", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+                    @Html.Hidden("driverid", 0)
                     <div class="panel-body p20 pb10 pl5">
                         <div class="tab-content pn br-n admin-form">
                             <div id="tab1_1" class="tab-pane active">
@@ -88,12 +70,12 @@
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl5">
                                         <div class="section row ">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name1" class="field prepend-icon">
+                                                <label for="Name" class="field prepend-icon">
                                                     <input type="text" name="Name" id="Name" class="event-name gui-input br-light" placeholder="First Name">
                                                 </label>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name2" class="field prepend-icon">
+                                                <label for="Email" class="field prepend-icon">
                                                     <input type="text" name="Email" id="Email" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="aamir.ali@gmail.com">
                                                 </label>
                                             </div>
@@ -105,15 +87,68 @@
                                                 </label>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="password2" class="field prepend-icon">
+                                                <label for="Confirm_Password" class="field prepend-icon">
                                                     <input type="password" name="Confirm_Password" id="Confirm_Password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="section  p10">
-                                            <label for="email" class="field prepend-icon">
-                                                <textarea class=" form-control  outline br-light resize-no" rows="6" id="drivernote1" name="drivernote1" placeholder="Driver Note"></textarea>
-                                            </label>
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="gender" class="field select">
+                                                    <select id="Gender" name="Gender" class="br-light">
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="cust-phone" class="field prepend-icon">
+                                                    <input type="text" name="Mobile" id="Mobile" class="event-name gui-input  br-light no" placeholder="Driver Phone Number...">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="nationality" class="field select">
+                                                    <select id="Nationality" name="Nationality" class="  br-light">
+                                                        <option value="0" selected="selected">Driver Nationality...</option>
+                                                        <option value="1">English</option>
+                                                        <option value="2">Spanish</option>
+                                                        <option value="3">German</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="phoneType" class="field select">
+                                                    <select id="phoneType" name="phoneType" class="  br-light">
+                                                        <option value="0" selected="selected">Driver PhoneType...</option>
+                                                        <option value="IOS">IOS</option>
+                                                        <option value="Android">Android</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="deviceID" class="field prepend-icon">
+                                                    <input type="text" name="deviceID" id="deviceID" class="event-name gui-input  br-light " placeholder="Driver Device ID...">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="telecomCarrier" class="field prepend-icon">
+                                                    <input type="text" name="telecomCarrier" id="telecomCarrier" class="event-name gui-input  br-light " placeholder="Driver Telecom Carrier...">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="email" class="field prepend-icon">
+                                                    <textarea class=" form-control  outline br-light resize-no" rows="6" id="DriverNote1" name="DriverNote1" placeholder="Driver Note"></textarea>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -121,7 +156,7 @@
                                             <div class="fileupload-preview thumbnail mb35"> <img id="output" src="~/Content/assets/img/upload.png" alt="holder"> </div>
                                             <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99">
                                                 <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
-                                                <input type="file" class="br-radius-4" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                <input type="file" class="br-radius-4" id="drivInfo" name="drivInfo" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
                                                 <script>
                                                     var loadFile = function (event) {
                                                         var reader = new FileReader();
@@ -137,13 +172,28 @@
                                         </div>
                                     </div>
                                     <hr class="short">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
-                                        <p class="text-left myvalidation">@ViewBag.message</p>
-                                        <p class="text-right">
-                                            <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="next">Next</button>
-                                        </p>
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                </div>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext" type="button">Next</button>
+                                            </p>
+                                        </div>
                                     </div>
+                                    @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext">Next</button>
+                                            </p>
+                                        </div>*@
                                 </div>
 
                                 <!-- end section row -->
@@ -151,90 +201,110 @@
                             </div>
                             <div id="tab1_2" class="tab-pane">
                                 <div class="section row mbn">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr15">
-                                        <div class="section ">
-                                            <label for="cust-phone" class="field prepend-icon">
-                                                <input type="text" name="Mobile" id="Mobile" class="event-name gui-input  br-light " placeholder="Driver Phone Number...">
-                                            </label>
-                                        </div>
-                                        <div class="section">
-                                            <label for="customer-group" class="field select">
-                                                <select id="customer-group" name="customer-group" class="  br-light">
-                                                    <option value="0" selected="selected">Driver Group...</option>
-                                                    <option value="1">Vendor</option>
-                                                    <option value="2">Supplier</option>
-                                                    <option value="3">Distributor</option>
-                                                </select>
-                                                <i class="arrow double"></i>
-                                            </label>
-                                        </div>
-                                        <div class="section">
-                                            <label for="customer-language" class="field select">
-                                                <select id="customer-language" name="customer-language" class="  br-light">
-                                                    <option value="0" selected="selected">Driver Language...</option>
-                                                    <option value="1">English</option>
-                                                    <option value="2">Spanish</option>
-                                                    <option value="3">German</option>
-                                                </select>
-                                                <i class="arrow double"></i>
-                                            </label>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb35"> <img id="addressProfoutput" src="~/Content/assets/img/upload.png"> </div>
+                                            <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99">
+                                                <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                <input type="file" class="br-radius-4" id="addressProf" name="addressProf" accept="image/*" alt="holder" onchange="loadFile1(event)" />Change
+                                                <script>
+                                                    var loadFile1 = function (event) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            var output = document.getElementById('addressProfoutput');
+                                                            output.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(event.target.files[0]);
+                                                    };
+                                                </script>
+
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label class="field option mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10 vendor-mngmnt-chckbox" style="	height: 0px !important;
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="zip" class="field prepend-icon">
+                                                    <input type="text" name="Address" id="Address" class="gui-input outline br-light" placeholder="Street Address">
+                                                </label>
+                                            </div>
 
+                                            <!-- end section -->
 
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="city" class="field prepend-icon">
+                                                    <input type="text" name="City" id="City" class="gui-input outline br-light" placeholder="City">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="state" class="field select">
+                                                    <select id="State" name="State" class="br-light">
+                                                        <option value="">Choose state</option>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="zip" class="field prepend-icon">
+                                                    <input type="text" name="Zip" id="Zip" class="gui-input outline br-light no" placeholder="Zip">
+                                                </label>
+                                            </div>
 
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Vendor is Tax Exempt
-                                        </label>
-                                        <div class="clearfix"></div>
-                                        <label class="field option mtop mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10" style="	height: 0px !important;
-
-
-
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Vendor Accepts Marketing
-                                        </label>
-                                        <div class="clearfix"></div>
-                                        <label class="field option mtop mbn">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox mr10" style="	height: 0px !important;
-
-
-
-    width: 17px !important;
-
-
-
-	color:#333 !important;"></span> Activate/Enable Account?
-                                        </label>
-                                        <hr class="alt short mv15">
-                                        <p class="text-muted "> <span class="fa fa-exclamation-circle text-warning fs15 pr5"></span> Grants the Vendor limited store access.</p>
+                                        </div>
+                                        <div class="section-row">
+                                            <div class=" section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label class="field select ">
+                                                    <select id="Country" name="Country" class="br-light">
+                                                        <option value="">Select country...</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr class="short alt mtn">
-                                <div class="section mb15 ml10">
-                                    <label class="field prepend-icon">
-                                        <textarea class=" form-control br-light resize-no" rows="5" id="drivernote2" name="drivernote2" placeholder="Driver Notes"></textarea>
-                                    </label>
                                 </div>
                                 <hr class="short">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <p class="text-right">
-                                        <button class="btn btn-primary border-radius99 add-geo-btn" type="button">Save</button>
-                                    </p>
+                                <div class="section row mbn">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                            </div>
+                                        </p>
+                                        <p class="text-right">
+                                            <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext1">Next</button>
+                                        </p>
+                                    </div>
                                 </div>
+                                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-right">
+                                            <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext1">Next</button>
+                                        </p>
+                                    </div>*@
 
                                 <!-- end section -->
 
@@ -242,73 +312,52 @@
                             <div id="tab1_3" class="tab-pane ">
                                 <div class="section row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="zip" class="field prepend-icon">
-                                            <input type="text" name="address" id="address" class="gui-input outline br-light" placeholder="Street Address">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="accountNo" id="accountNo" class="event-name gui-input br-light " placeholder="Bank Account No">
                                         </label>
                                     </div>
-
                                     <!-- end section -->
-
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="city" class="field prepend-icon">
-                                            <input type="text" name="city" id="city" class="gui-input outline br-light" placeholder="City">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="benificary_name" id="benificary_name" class="event-name gui-input br-light " placeholder="Benificary Name In Bank">
                                         </label>
                                     </div>
-
                                 </div>
 
                                 <div class="section row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="states" class="field select">
-                                            <select id="states" name="state" class="selectpicker br-light">
-                                                <option value="">Choose state</option>
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="AZ">Arizona</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="CA">California</option>
-                                                <option value="CO">Colorado</option>
-                                                <option value="CT">Connecticut</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AO">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                            </select>
-                                            <i class="arrow double"></i>
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="bankName" id="bankName" class="event-name gui-input br-light " placeholder="Bank Name">
                                         </label>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="zip" class="field prepend-icon">
-                                            <input type="text" name="zip" id="zip" class="gui-input outline br-light" placeholder="Zip">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="branchName" id="branchName" class="event-name gui-input br-light " placeholder="Branch Name">
                                         </label>
                                     </div>
 
                                 </div>
                                 <!-- end section -->
-
-                                <div class=" section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <label class="field select ">
-                                        <select id="location" name="country" class="selectpicker outline br-light">
-                                            <option value="">Select country...</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AD">Andorra</option>
-                                            <option value="AO">Angola</option>
-                                            <option value="AI">Anguilla</option>
-                                            <option value="AL">Albania</option>
-                                            <option value="DZ">Algeria</option>
-                                            <option value="AD">Andorra</option>
-                                            <option value="AO">Angola</option>
-                                            <option value="AI">Anguilla</option>
-                                        </select>
-                                        <i class="arrow double"></i>
-                                    </label>
+                                <div class="section-row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="ifscCode" id="ifscCode" class="event-name gui-input br-light " placeholder="IFSC Code">
+                                        </label>
+                                    </div>
                                 </div>
+
 
                                 <!-- end section -->
                                 <!-- end section row section -->
+                                <div class="section row mbn">
+                                    <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation3">
 
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="section row mbn">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                         <label class="field option mt10   ">
@@ -336,7 +385,7 @@
             <div class="panel">
                 <div class="panel-menu admin-form theme-primary">
                     <div class="heading-title list-items">
-                        <h1 class="panel-title">List of products</h1>
+                        <h1 class="panel-title">List of Drivers</h1>
                     </div>
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
                         <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
@@ -372,8 +421,6 @@
 
                             <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
                         </div>
-
-
                         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
                             <div class="table-group-actions pull-right">
                                 <span></span>
@@ -391,30 +438,30 @@
 
 
                     <div class="row mt10 mb5 ">
-                        <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <label class="field select mt5">
-                                <select id="filter-purchases" name="filter-purchases">
-                                    <option value="0">Filter by Products</option>
-                                    <option value="1">Panna</option>
-                                    <option value="2">Monvio</option>
-                                    <option value="1">Kinley</option>
-                                    <option value="2">Alian</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
-                        <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <label class="field select mt5">
-                                <select id="filter-group" name="filter-group">
-                                    <option value="0">Filter by Sales</option>
-                                    <option value="1">Users</option>
-                                    <option value="2">Vendors</option>
-                                    <option value="3">Distributors</option>
-                                    <option value="4">Employees</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
+                        @*<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <label class="field select mt5">
+                                    <select id="filter-purchases" name="filter-purchases">
+                                        <option value="0">Filter by Products</option>
+                                        <option value="1">Panna</option>
+                                        <option value="2">Monvio</option>
+                                        <option value="1">Kinley</option>
+                                        <option value="2">Alian</option>
+                                    </select>
+                                    <i class="arrow double"></i>
+                                </label>
+                            </div>
+                            <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <label class="field select mt5">
+                                    <select id="filter-group" name="filter-group">
+                                        <option value="0">Filter by Sales</option>
+                                        <option value="1">Users</option>
+                                        <option value="2">Vendors</option>
+                                        <option value="3">Distributors</option>
+                                        <option value="4">Employees</option>
+                                    </select>
+                                    <i class="arrow double"></i>
+                                </label>
+                            </div>*@
                     </div>
                 </div>
                 <div class="panel-body pn">
@@ -444,7 +491,7 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="t-m-tr" id="@item.Id">
+                                    <tr class="t-m-tr" id="@item.driverid">
                                         <td class="text-center" data-val-col="checkbox" data-val="false">
                                             <label class="option block mn">
                                                 <input type="checkbox" name="mobileos" value="FR">
@@ -453,31 +500,64 @@
                                         </td>
 
                                         @{
-                                    var base64 = Convert.ToBase64String(item.Image);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            var imgSrc = string.Empty;
+                                            if (item.Image != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Image);
+                                                imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            }
+                                            else if (item.image_path != null)
+                                            {
+                                                imgSrc = item.image_path;
+                                            }
                                         }
-                                        <td data-val-col="Avatar" data-val="@imgSrc" class="w50">
+                                        <td data-val-col="Avatar" data-val="@imgSrc.Replace("~/", Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, "/"))" class="w50">
 
-                                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                                            <img src='@imgSrc.Replace("~/", Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, "/"))' style="max-width:100px; max-height:100px;" />
                                         </td>
+
+                                        @{
+                                            var aImgSrc = string.Empty;
+                                            if (item.addressProfImage != null)
+                                            {
+                                                aImgSrc = item.addressProfImage;
+                                            }
+                                        }
+                                        <td style="display:none" data-val-col="addressProf" data-val="@aImgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50"></td>
                                         <td data-val-col="Name" data-val="@item.Name">@item.Name</td>
                                         <td data-val-col="Email" data-val="@item.Email">@item.Email</td>
+                                        <td data-val-col="Gender" data-val="@item.Gender">@item.Gender</td>
+                                        <td data-val-col="Nationality" data-val="@item.Nationality">@item.Nationality</td>
                                         <td data-val-col="RegDate" data-val="@item.Regdate">@item.Regdate</td>
                                         <td data-val-col="TotalDelivery" data-val="@item.TotalDelivery">@item.TotalDelivery</td>
                                         <td data-val-col="Amount" data-val="@item.Amount">$@item.Amount</td>
-                                        <td style="display:none;" data-val-col="DriverNote1" data-val="@item.drivernote1" class="">$@item.drivernote1</td>
-                                        <td style="display:none;" data-val-col="DriverNote2" data-val="@item.drivernote2" class="">$@item.drivernote2</td>
-                                        <td style="display:none;" data-val-col="Address" data-val="@item.address" class="">$@item.address</td>
-                                        <td style="display:none;" data-val-col="City" data-val="@item.city" class="">$@item.city</td>
-                                        <td style="display:none;" data-val-col="Zip" data-val="@item.zip" class="">$@item.zip</td>
+                                        <td data-val-col="Status" data-val="@item.Status">$@item.Status</td>
+                                        <td style="display:none;" data-val-col="Driverid" data-val="@item.driverid" class="">$@item.driverid</td>
+                                        <td style="display:none;" data-val-col="accountNo" data-val="@item.accountNo" class="">$@item.accountNo</td>
+                                        <td style="display:none;" data-val-col="bankName" data-val="@item.bankName" class="">$@item.bankName</td>
+                                        <td style="display:none;" data-val-col="benificary_name" data-val="@item.benificary_name" class="">$@item.benificary_name</td>
+                                        <td style="display:none;" data-val-col="branchName" data-val="@item.branchName" class="">$@item.branchName</td>
+                                        <td style="display:none;" data-val-col="deviceID" data-val="@item.deviceID" class="">$@item.deviceID</td>
+                                        <td style="display:none;" data-val-col="ifscCode" data-val="@item.ifscCode" class="">$@item.ifscCode</td>
+                                        <td style="display:none;" data-val-col="telecomCarrier" data-val="@item.telecomCarrier" class="">$@item.telecomCarrier</td>
+                                        <td style="display:none;" data-val-col="phoneType" data-val="@item.phoneType" class="">$@item.phoneType</td>
+                                        <td style="display:none;" data-val-col="Password" data-val="@item.Password" class="">$@item.Password</td>
+                                        <td style="display:none;" data-val-col="DriverNote1" data-val="@item.DriverNote1" class="">$@item.DriverNote1</td>
+                                        <td style="display:none;" data-val-col="DriverNote2" data-val="@item.DriverNote2" class="">$@item.DriverNote2</td>
+                                        <td style="display:none;" data-val-col="Address" data-val="@item.Address" class="">$@item.Address</td>
+                                        <td style="display:none;" data-val-col="City" data-val="@item.City" class="">$@item.City</td>
+                                        <td style="display:none;" data-val-col="State" data-val="@item.State" class="">$@item.State</td>
+                                        <td style="display:none;" data-val-col="Zip" data-val="@item.Zip" class="">$@item.Zip</td>
                                         <td style="display:none;" data-val-col="Phone" data-val="@item.Mobile" class="">$@item.Mobile</td>
+                                        <td style="display:none;" data-val-col="Country" data-val="@item.Country" class="">$@item.Country</td>
+
                                         <td>
                                             <div class="btn-group text-right">
                                                 <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
                                                         data-toggle="dropdown" aria-expanded="false">
                                                     <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu" id="action_@item.Id">
+                                                <ul class="dropdown-menu" role="menu" id="action_@item.driverid">
                                                     <li onclick="makeSelected(this)">Edit</li>
                                                     <li onclick="makeSelected(this)">Contact</li>
                                                     <li class="divider"></li>
@@ -488,9 +568,9 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>View</button></td>
+                                        @*                                  <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>View</button></td>*@
                                     </tr>
-                                }
+                                            }
 
                             </tbody>
                         </table>
@@ -514,33 +594,176 @@
 <!-- Start: Right Sidebar -->
 <div class="clearfix"></div>
 
-<div class="row main-footer">
-
-    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
-
-        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
-
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
-
-        </div>
-
-    </div>
-
-</div>
 
 
-
+<!-- Script Section-->
+<!-- Section can be move to common place-->
 <script src="~/Content/assets/js/jquery.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="~/Content/assets/js/jquery-ui.min.js"></script>
 
-<script type="text/javascript">
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+
+
+<!-- End of Move to common Place section-->
+<script>
+
+    function validatetabdata(intTab) {
+        var strErrMsg = "";
+        var returnval = true;
+        $("#divValidation3").html("");
+        $("#divValidation2").html("");
+        $("#divValidation1").html("");
+        if (intTab == 1) {
+            if ($.trim($("#Name").val()) == "") {
+                strErrMsg += "<li>First Name is required</li>";
+            }
+            if ($.trim($("#Email").val()) == "") {
+                strErrMsg += "<li>Email ID is required</li>";
+            }
+            if ($.trim($("#password").val()) == "") {
+                strErrMsg += "<li>Password is required</li>";
+            }
+            var password = $("#password").val();
+            var confirmPassword = $("#Confirm_Password").val();
+            if (password != confirmPassword) {
+                strErrMsg += "<li>Passwords do not match.</li>";
+            }
+            if ($.trim($("#Gender").val()) == "") {
+                strErrMsg += "<li>Gender is required</li>";
+            }
+            if ($.trim($("#Mobile").val()) == "") {
+                strErrMsg += "<li>Mobile No is required</li>";
+            }
+            if ($.trim($("#Nationality").val()) == "" || $("#Nationality").val() == "0") {
+                strErrMsg += "<li>Nationality is required</li>";
+            }
+            if ($.trim($("#phoneType").val()) == "") {
+                strErrMsg += "<li>Driver Phone type is required</li>";
+            }
+
+            if (strErrMsg != "") {
+                $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 2) {
+            if ($.trim($("#Address").val()) == "") {
+                strErrMsg += "<li>Address is required</li>";
+            }
+            if ($.trim($("#City").val()) == "") {
+                strErrMsg += "<li>City is required</li>";
+            }
+            if ($.trim($("#State").val()) == "") {
+                strErrMsg += "<li>States is required</li>";
+            }
+            if ($.trim($("#Zip").val()) == "") {
+                strErrMsg += "<li>Zip is required</li>";
+            }
+            if ($.trim($("#Country").val()) == "") {
+                strErrMsg += "<li>Country is required</li>";
+            }
+
+
+            if (strErrMsg != "") {
+                $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 3) {
+            if ($("#accountno").val() == "" || $("#accountno").val() == "0") {
+                strErrMsg += "<li>Account No is required</li>";
+            }
+            if ($.trim($("#bankName").val()) == "") {
+                strErrMsg += "<li>Bank name is required.</li>";
+            }
+
+            if ($.trim($("#branchName").val()) == "") {
+                strErrMsg += "<li>Branch Name is required.</li>";
+            }
+            if ($.trim($("#ifscCode").val()) == "") {
+                strErrMsg += "<li>IFSC Code is required.</li>";
+            }
+            if ($.trim($("#HolderName").val()) == "") {
+                strErrMsg += "<li>Bank Account Holder Name is required.</li>";
+            }
+            if (strErrMsg != "") {
+                $("#divValidation3").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+        }
+        return returnval;
+    }
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
+    $(document).ready(function () {
+
+        $("#btnNext").click(function () {
+            if (validatetabdata(1))
+            activeTab('2');
+        });
+        $("#btnnext1").click(function () {
+            if (validatetabdata(2))
+                activeTab('3')
+        });
+
+        $(".no").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+         @if (ViewBag.status != null && ViewBag.status == 0)
+        {
+            var d = (Final_ThibanProject.Models.Driver)ViewBag.driverReturn;
+            <text>
+            $("#name").val("@d.Name");
+            $("#driverid").val("@d.driverid");
+            $("#email").val("@d.Email");
+            $("#password").val("@d.Password");
+            $("#conform_password").val("@d.Password");
+            $("#gender").val("@d.Gender").attr("selected");
+            $("#mobile").val("@d.Mobile");
+            $("#address").val("@d.Address");
+            $("#drivernote1").val("@d.DriverNote1");
+            $("#drivernote2").val("@d.DriverNote2");
+
+            //$("#customer-group").val(rowData.Customer_type);
+            //$("#customer-group option[value='" + rowData.Customer_type + "']").attr('selected', true);
+            $("#nationality").val("@d.Nationality").attr("selected");
+            $("#city").val("@d.City");
+            $("#zip").val("@d.Zip");
+            $("#state").val("@d.State").attr("selected");
+            $("#country").val("@d.Country").attr("selected");
+            $("#output").attr("src", "@d.image_path");
+            $("#addressProfoutput").attr("src", "@d.addressProfImage");
+            $("#accountNo").val("@d.accountNo");
+            $("#bankName").val("@d.bankName");
+            $("#benificary_name").val("@d.benificary_name");
+            $("#branchName").val("@d.branchName");
+            $("#deviceID").val("@d.deviceID");
+            $("#ifscCode").val("@d.ifscCode");
+            $("#telecomCarrier").val("@d.telecomCarrier");
+            $("#phoneType").val("@d.phoneType").attr("selected");
+        </Text>
+    }
+       // $(".datepicker").datepicker();
+    });
+
+  
     $(function () {
         $("#btnSave").click(function () {
             var password = $("#password").val();
@@ -552,112 +775,21 @@
             return true;
         });
     });
-</script>
 
 
-
-
-<!-- Bootstrap -->
-
-<script src="~/Content/assets/js/jquery.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-
-
-<script src="~/Content/assets/js/bootstrap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
-
-<script src="~/Content/assets/js/raphael.min.js"></script>
-
-<script src="~/Content/assets/js/Chart.min.js"></script>
-
-<script src="~/Content/assets/js/morris.min.js"></script>
-
-<script src="~/Content/assets/js/custom.min.js"></script>
-
-<script src="~/Content/assets/js/date.js"></script>
-
-<script src="~/Content/assets/js/moment.min.js"></script>
-
-<script src="https://code.highcharts.com/highcharts.js"></script>
-
-<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<script src="~/Content/assets/js/visitor.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-    });
-
-</script>
-<script>
-    $(document).ready(function () {
-        $('#next').click(function () {
-            debugger;
-            if ($('#Name').val() == "") {
-                $('#Name').css({
-                    "border": "2px solid red",
-                    "background": "#FFCECE"
-                });
-                return false;
-            }
-            if ($('#password').val() == "") {
-                $('#password').css({
-                    "border": "2px solid red",
-                    "background": "#FFCECE"
-                });
-                return false;
-            }
-            if ($('#Email').val() == "") {
-                $('#Email').css({
-                    "border": "2px solid red",
-                    "background": "#FFCECE"
-                });
-                return false;
-            }
-            if ($('#Mobile').val() == "") {
-                $('#Mobile').css({
-                    "border": "2px solid red",
-                    "background": "#FFCECE"
-                });
-                return false;
-            }
-        });
-    });
-
-
-
-</script>
-
-
-
-
-
-
-
-<script>
-    $(document).ready(function () {
-        $(".datepicker").datepicker();
-    });
-
-
-    var driverDtl = {
+    var DriverDtl = {
         getId: function (val) {
             var spltVal = val.split("_");
             return parseInt(spltVal[1]);
         },
-        getdriverjObj: function () {
+        getDriverjObj: function () {
             return jData = {
-                Venderid: "",
+                id: "",
                 image: "",
                 name: "",
                 emailid: "",
                 regdate: "",
-                totalsale: "",
+                totaldilivery: ""
             };
         },
         getSelectdRowData: function (id) {
@@ -666,7 +798,7 @@
 
             $columns.addClass('row-highlight');
             var values = "";
-            var jData = this.getdriverjObj();
+            var jData = this.getDriverjObj();
             var objArr = [];
 
             var obj = {};
@@ -674,7 +806,7 @@
                 var $th = $(item).attr("data-val-col");
                 var $td = $(item).attr("data-val");
 
-                debugger;
+
                 obj[$th] = $td;
 
             });
@@ -682,19 +814,14 @@
         }
     };
     function makeSelected(el) {
-        //$(el).parent().children().removeClass("selected");
-        //$(el).parent().children().removeClass("active");
-
-        //$(el).addClass("selected");
-        //$(el).addClass("active");
         $(el).parent().parent().children().first().children().first().text(el.innerText);
 
-        var drivId = driverDtl.getId($(el).parent()[0].id);
+        var driverId = DriverDtl.getId($(el).parent()[0].id);
 
         if (el.innerText != "Edit") {
             $.ajax({
-                url: '@Url.Action("UpdateStatus", "Vender")',
-                data: { drivId: drivId, sts: el.innerText },
+                url: '@Url.Action("UpdateStatus", "Driver")',
+                data: { drvid: driverId, sts: el.innerText },
                 type: 'POST',
                 success: function (res) {
                     debugger;
@@ -704,133 +831,42 @@
                 }
             });
         } else {
-            var rowData = driverDtl.getSelectdRowData(drivId);
-            $("#output").attr("src", rowData.Avatar);
-            $("#name").val(rowData.Name);
-            $("#id").val(drivId);
-            $("#email").val(rowData.Email);
-            $("#password").val(rowData.password);
+            var rowData = DriverDtl.getSelectdRowData(driverId);
+            console.log(rowData);
+            $("#Name").val(rowData.Name);
+            $("#driverid").val(rowData.Driverid);
+            $("#Email").val(rowData.Email);
+            $("#password").val(rowData.Password);
+            $("#Confirm_Password").val(rowData.Password);
+            $("#gender").val(rowData.Gender).attr("selected");
             $("#Mobile").val(rowData.Phone);
-            $("#address").val(rowData.Address);
-            $("#city").val(rowData.City);
-            $("#zip").val(rowData.Zip);
-            $("#state").val(rowData.State);
-            $("#country").val(rowData.Country);
-            debugger;
+            $("#Address").val(rowData.Address);
+            $("#drivernote1").val(rowData.DriverNote1);
+            $("#drivernote2").val(rowData.DriverNote2);
+
+            //$("#customer-group").val(rowData.Customer_type);
+            //$("#customer-group option[value='" + rowData.Customer_type + "']").attr('selected', true);
+            $("#Nationality").val(rowData.Nationality).attr("selected");
+            $("#City").val(rowData.City);
+            $("#Zip").val(rowData.Zip);
+            $("#State").val(rowData.State).attr("selected");
+            $("#Country").val(rowData.Country).attr("selected");
+            $("#output").attr("src", rowData.Avatar);
+            $("#addressProfoutput").attr("src", rowData.addressProf);
+            $("#accountNo").val(rowData.accountNo);
+            $("#bankName").val(rowData.bankName);
+            $("#benificary_name").val(rowData.benificary_name);
+            $("#branchName").val(rowData.branchName);
+            $("#deviceID").val(rowData.deviceID);
+            $("#ifscCode").val(rowData.ifscCode);
+            $("#telecomCarrier").val(rowData.telecomCarrier);
+            $("#phoneType").val(rowData.phoneType).attr("selected");
+
         }
+
     }
 
 
 </script>
 
-
-<script type="text/javascript">
-
-
-
-    $(document).ready(function (e) {
-
-
-
-        $('.selectpicker').selectpicker();
-
-
-
-    });
-
-
-
-</script>
-
-
-
-<script type="text/jscript">
-    //get file size
-    function GetFileSize(fileid) {
-        try {
-            var fileSize = 0;
-            //for IE
-            if ($.browser.msie) {
-                //before making an object of ActiveXObject,
-                //please make sure ActiveX is enabled in your IE browser
-                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
-                var objFile = objFSO.getFile(filePath);
-                var fileSize = objFile.size; //size in kb
-                fileSize = fileSize / 1048576; //size in mb
-            }
-                //for FF, Safari, Opeara and Others
-            else {
-                fileSize = $("#" + fileid)[0].files[0].size //size in kb
-                fileSize = fileSize / 1048576; //size in mb
-            }
-            return fileSize;
-        }
-        catch (e) {
-            alert("Error is :" + e);
-        }
-    }
-
-    //get file path from client system
-    function getNameFromPath(strFilepath) {
-        var objRE = new RegExp(/([^\/\\]+)$/);
-        var strName = objRE.exec(strFilepath);
-
-        if (strName == null) {
-            return null;
-        }
-        else {
-            return strName[0];
-        }
-    }
-
-    $("#btnSubmit").on("click", function () {
-        if ($('#fileToUpload').val() == "") {
-            $("#spanfile").html("Please upload file");
-            return false;
-        }
-        else {
-            return checkfile();
-        }
-    });
-
-    function checkfile() {
-        var file = getNameFromPath($("#fileToUpload").val());
-        if (file != null) {
-            var extension = file.substr((file.lastIndexOf('.') + 1));
-            // alert(extension);
-            switch (extension) {
-                case 'jpg':
-                case 'png':
-                case 'gif':
-                case 'pdf':
-                    flag = true;
-                    break;
-                default:
-                    flag = false;
-            }
-        }
-        if (flag == false) {
-            $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
-            return false;
-        }
-        else {
-            var size = GetFileSize('fileToUpload');
-            if (size > 3) {
-                $("#spanfile").text("You can upload file up to 3 MB");
-                return false;
-            }
-            else {
-                $("#spanfile").text("");
-            }
-        }
-    }
-
-    $(function () {
-        $("#fileToUpload").change(function () {
-            checkfile();
-        });
-    });
-
-</script>
-
-
+<!--End Script Section -->

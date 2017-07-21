@@ -958,6 +958,9 @@
     <Compile Include="Models\DB\CREATETABLEBottlePerBox.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\currencymaster.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\customer.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
@@ -1042,6 +1045,9 @@
     <Compile Include="Models\DB\driver_odometer.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\driver_track.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\filestore.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
@@ -1079,6 +1085,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\orderdeliveryweather.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\order_details.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\oredercanclefeedback.cs">

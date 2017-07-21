@@ -41,9 +41,10 @@
 
 <!-- Start: Content-Wrapper -->
 @Html.ValidationSummary(true, "")
+
 <div class="right_col main-adminproductmngmnt-section" role="main">
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
-        <h1 class=" main-top-header">Thiban Product Management</h1>
+        <h1 class="main-top-header">Thiban Product Management</h1>
     </div>
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr10">
         <div class="inner-header  bred-inner-header mb20">
@@ -76,24 +77,42 @@
                     <span class="panel-title hidden-xs"> Add New Product</span>
                     <ul class="nav panel-tabs-border panel-tabs p-m-tabs">
                         <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
-                        <li> <a href="#tab1_2" data-toggle="tab">Description</a> </li>
+                        <li> <a href="#tab1_2" data-toggle="tab">Prices and Stock Detail</a> </li>
                     </ul>
                 </div>
                 @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+                    @Html.Hidden("ProductId", 0)
                     <div class="panel-body p20 pb10">
                         <div class="tab-content pn br-n admin-form">
                             <div id="tab1_1" class="tab-pane active">
+                                <div class="section row mbn">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left" id="sku"></p>
+                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger clssummeryval" })</p>
+                                        <p class="text-left myvalidation">@ViewBag.message</p>
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                            </div>
+                                        </p>
+                                        <p class="text-right">
+                                            <button class="btn btn-primary btn-md btn_next  border-radius99" id="btnNext" type="button">Next</button>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="section row mbn">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
                                             <div class="fileupload-preview thumbnail mb20">
                                                 <img id="output" src="~/Content/assets/img/upload.png" />
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-6 inpt-btn">
+                                            <div class="row ">
+                                                @*<div class="col-lg-6 col-md-6 col-sm-7 col-xs-6 inpt-btn">
                                                     <input type="text" name="name2" id="name2" class="text-center event-name gui-input br-light border-radius99   img-keyword-btn2  " placeholder="Img Keywords">
                                                     <label for="name2" class="field-icon"></label>
+                                                </div>*@
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6 btn-P">
                                                     <span class="button btn-system btn-file btn-block border-radius99">
@@ -111,108 +130,297 @@
                                                         </script>
                                                     </span>
                                                 </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl15">
-                                        <div class="section mb22">
-                                            <label for="name2" class="field prepend-icon">
-                                                <input type="text" name="Title" id="Title" class="event-name gui-input br-light" placeholder="Product Title">
-                                            </label>
+                                        <div class="row section">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <label for="name2" class="field prepend-icon">
+                                                    <input type="text" name="Title" id="Title" class="event-name gui-input br-light" placeholder="Product Title">
+                                                </label>
+                                            </div>
+
                                         </div>
-                                        <div class="section mb10">
-                                            <label class="field prepend-icon">
-                                                <textarea style="height: 145px;" class="textarea br-light" rows="4" id="comment" name="Description" placeholder="Product Description"></textarea>
-                                                <span class="input-footer hidden"> <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
-                                            </label>
+                                        <div class="row section">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label for="product-vendor" class="field prepend-icon">
+                                                    @*//Igex DropDown Bind for the Vender *@
+                                                    @Html.DropDownList("VenderSource", (List<SelectListItem>)ViewBag.VenderList, new { @class = "br-light" })
+                                                    @*//Igex End*@
+
+                                                    @*<input type="text" name="VenderSource" id="VenderSource" class="gui-input br-light" placeholder="Vendor Source...">*@
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label class="field select mb5">
+                                                    <select id="phno" name="phno">
+                                                        <option value="-1">PH Number</option>
+                                                        <option value="3.0 PH">3.0 PH</option>
+                                                        <option value="3.5 PH">3.5 PH</option>
+                                                        <option value="4.0 PH">4.0 PH</option>
+                                                        <option value="4.5 PH">4.5 PH</option>
+                                                        <option value="5.0 PH">5.0 PH</option>
+                                                        <option value="5.5 PH">5.5 PH</option>
+                                                        <option value="6.0 PH">6.0 PH</option>
+                                                        <option value="6.5 PH">6.5 PH</option>
+                                                        <option value="7.0 PH">7.0 PH</option>
+                                                        <option value="7.5 PH">7.5 PH</option>
+                                                        <option value="8.0 PH">8.0 PH</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row section">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label for="productcategory" class="field select">
+                                                    <select id="category_id" name="category_id" class=" br-light">
+                                                        <option value="0" selected="selected">Product Category...</option>
+                                                        <option value="1">20 Gallon Water Barrel</option>
+                                                        <option value="2">25 Gallon Water Barrel</option>
+
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label class="field select mb5">
+                                                    <select id="brand" name="brand">
+                                                        <option value="Brand Name" avtive="">Brand Name</option>
+                                                        <option value="Aqua Panna">Aqua Panna</option>
+                                                        <option value="Kinley">Kinley</option>
+                                                        <option value="Arwa">Arwa</option>
+                                                        <option value="Alain">Alain</option>
+                                                        <option value="Monvio">Monvio</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row section">
+                                            <div class="section mb10">
+                                                <label class="field prepend-icon">
+                                                    <textarea style="height: 145px;" class="textarea br-light" rows="4" id="Description" name="Description" placeholder="Product Description"></textarea>
+                                                    <span class="input-footer hidden"> <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- <hr class=" bdy-line">-->
 
-                                <div class="section row mbn">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
-                                        <p class="text-left myvalidation">@ViewBag.message</p>
-                                        <p class="text-right">
-                                            <button class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn" id="btnNext" type="button">Next</button>
-                                        </p>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div id="tab1_2" class="tab-pane">
                                 <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="productcategory" class="field select">
-                                            <select id="productcategory" name="Category" class=" br-light">
-                                                <option value="0" selected="selected">Product Category...</option>
-                                                <option value="1">20 Gallon Water Barrel</option>
-                                                <option value="2">25 Gallon Water Barrel</option>
-                                                
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field">
+                                            <input type="text" id="customer_price" name="customer_price" class="form-control V_select filter-selection-box" placeholder="Customer price">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="customer_min_order" name="customer_min_order">
+                                                <option value="0" avtive>Customer Minimum Order</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
                                             </select>
                                             <i class="arrow double"></i>
                                         </label>
                                     </div>
-
-                                    <!-- end section -->
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label class="field select">
-                                            <select id="productstatus" name="Availability" class="br-light">
-                                                <option value="0" selected="selected">Product Availability</option>
-                                                <option value="1">Available</option>
-                                                <option value="2">Unavailable</option>
-                                                <option value="3">Discontinued</option>
-                                                <option value="4">Out of Stock</option>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="customer_max_order" name="customer_max_order">
+                                                <option value="0" avtive>Customer Maximum Order Quality</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
                                             </select>
                                             <i class="arrow double"></i>
                                         </label>
                                     </div>
-
-                                    <!-- end section -->
-
+                                </div>
+                                <!-- end section -->
+                                <!-- Store Price section-->
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field">
+                                            <input type="text" id="store_price" name="store_price" class="form-control V_select filter-selection-box" placeholder="Customer store price">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="store_min_order" name="store_min_order">
+                                                <option value="0" avtive>Conventional store Minimum Order</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="store_max_order" name="store_max_order">
+                                                <option value="0" avtive>Conventional store Miximum Order Quality</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
                                 </div>
 
-                                <!-- end section row section -->
+                                <!-- Store Price Section End -->
+                                <!-- Stock Information section-->
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label for="product-sku" class="field prepend-icon">
+                                            <input type="text" name="ProductSKU" id="ProductSKU" class="gui-input br-light" placeholder="Product SKU...">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label for="product-stock" class="field prepend-icon">
+                                            <input type="text" name="stock" id="stock" class="gui-input br-light" placeholder="Product Stock...">
+                                        </label>
+
+
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="bottle_material" name="bottle_material">
+                                                <option value="-1">Bottle Material</option>
+                                                <option value="Plastic Bottle">Plastic Bottle</option>
+                                                <option value="Glass Bottle">Glass Bottle</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Store Price Section End -->
 
                                 <div class="section row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label for="product-price" class="field prepend-icon">
-                                            <input type="text" name="productprice" id="productprice" class="gui-input outline br-light" placeholder="$ Product Price...">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select">
+                                            <select id="Status" name="Status" class="br-light">
+                                                @*<option value="0" selected="selected">Product Availability</option>*@
+                                                <option value="Available">Available</option>
+                                                <option value="Unavailable">Unavailable</option>
+                                                <option value="Discontinued">Discontinued</option>
+                                                <option value="Out of Stock">Out of Stock</option>
+                                            </select>
+                                            <i class="arrow double"></i>
                                         </label>
                                     </div>
-
-                                    <!-- end section -->
-
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label for="product-vendor" class="field prepend-icon">
-                                            @*//Igex DropDown Bind for the Vender *@ 
-                                            @Html.DropDownList("VenderSource", (List<SelectListItem>)ViewBag.VenderList, new {@class= "br-light" })
-                                            @*//Igex End*@
-
-                                            @*<input type="text" name="VenderSource" id="VenderSource" class="gui-input br-light" placeholder="Vendor Source...">*@
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5 ">
+                                            <select id="volume" name="volume">
+                                                <option value="0">Volume</option>
+                                                <option value="200 ml">200 ml</option>
+                                                <option value="250 ml">250 ml</option>
+                                                <option value="500 ml">500 ml</option>
+                                                <option value="750 ml">750 ml</option>
+                                                <option value="1 liter">1 liter</option>
+                                                <option value="2 liter">2 liter</option>
+                                                <option value="5 liter">5 liter</option>
+                                                <option value="10 liter">10 liter</option>
+                                                <option value="20 liter">20 liter</option>
+                                                <option value="30 liter">30 liter</option>
+                                            </select>
+                                            <i class="arrow double"></i>
                                         </label>
                                     </div>
-
-                                    <!-- end section -->
-
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label for="product-sku" class="field prepend-icon">
-                                            <input type="text" name="ProductSKU" id="productsku" class="gui-input br-light" placeholder="Product SKU...">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="bottle_per_box" name="bottle_per_box" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="Bottle per box">
                                         </label>
                                     </div>
-
                                     <!-- end section -->
-
                                 </div>
-                                <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <label class="field prepend-icon">
-                                        <textarea class="textarea br-light" rows="5" id="custnote" name="custnote" placeholder="Description"></textarea>
-                                    </label>
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="av_composition_ppm" name="av_composition_ppm" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="AV Composition PPM">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="discount" name="discount" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="Discount">
+                                        </label>
+                                    </div>
                                 </div>
+                                <!-- end section row section -->
+                                @*<div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <textarea class="textarea br-light" rows="5" id="Description" name="Description" placeholder="Description"></textarea>
+                                        </label>
+                                    </div>*@
 
                                 <!-- end section row section -->
+                                <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text-left">
+                                        <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                        </div>
+                                    </p>
+                                </div>
 
                                 <hr class="short alt">
                                 <div class="section row mbn">
@@ -233,12 +441,12 @@
 
                             </div>
                             <div id="tab1_3" class="tab-pane">
-                                <div class="section">
-                                    <label for="lastaddr" class="field prepend-icon">
-                                        <input type="text" name="lastaddr" id="lastaddr" class="gui-input" placeholder="Street address 2">
-                                        <label for="lastaddr" class="field-icon"> <i class="fa fa-map-marker"></i> </label>
-                                    </label>
-                                </div>
+                                @*<div class="section">
+                                        <label for="lastaddr" class="field prepend-icon">
+                                            <input type="text" name="lastaddr" id="lastaddr" class="gui-input" placeholder="Street address 2">
+                                            <label for="lastaddr" class="field-icon"> <i class="fa fa-map-marker"></i> </label>
+                                        </label>
+                                    </div>*@
 
                                 <!-- end section -->
                                 <!-- end section -->
@@ -266,10 +474,10 @@
 
                                                 @for (var i = 10; i <= 90; i += 10)
                                                 {
-                                                    <li>@Html.ActionLink(Convert.ToString(i), "productrating", "Product", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddProduct", "AddProduct", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
                                                 }
                                             </ul>
-                                            @Html.PagedListPager(Model, page => Url.Action("ProductRating", new { page, pageSizeValue = Model.PageSize }))
+                                            @Html.PagedListPager(Model, page => Url.Action("AddProduct", new { page, pageSizeValue = Model.PageSize }))
                                         </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
                                         *@ <div class="of-text">of @Model.PageCount </div>
 
@@ -307,8 +515,7 @@
                     </div>
 
                     <!--<hr class="table_line">-->
-
-                    <div class="row top-margn pt20 pb10 ">
+                    <!--<div class="row top-margn pt20 pb10 ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label class="field select ">
                                 <select id="filter-purchases" name="filter-purchases">
@@ -344,7 +551,7 @@
                                 <i class="arrow double"></i>
                             </label>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="panel-body pn product-mngmnt-table">
                     <div class="table-responsive border-round brdr-top-none brdr-btm-none">
@@ -359,6 +566,7 @@
                                     </th>
                                     <th class=" text-center">Image</th>
                                     <th class="text-center">Product Title</th>
+                                    <th class=" text-center">vendor</th>
                                     <th class="">SKU</th>
                                     <th class="">Price</th>
                                     <th class=" text-center">Stock</th>
@@ -375,34 +583,63 @@
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
-                                        @{
-                                    var base64 = Convert.ToBase64String(item.Image);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                        }
-                                        <td data-val-col="Avatar" data-val="@imgSrc" class="w50">
+                                        @if (!string.IsNullOrEmpty(item.Image_path))
+                                        {
 
-                                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                                        </td>
-                                        <td class="text-center" data-val-col="Title" data-val="@item.Title"> @item.Title</td>
-                                        <td class="" data-val-col="SKU" data-val="@item.ProductSKU">#@item.ProductSKU</td>
-                                        <td class="" data-val-col="ProductPrice" data-val="@item.productprice">$@item.productprice</td>
-                                        <td class=" text-center" data-val-col="Avialability" data-val="@item.Availability">@item.Availability</td>
-                                        <td style="display:none;" data-val-col="Description" data-val="@item.Description" class="">$@item.Description</td>
-                                        <td style="display:none;" data-val-col="Vsource" data-val="@item.VenderSource" class="">$@item.VenderSource</td>
+                                            <td data-val-col="image_path" data-val="@item.Image_path.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50">
+
+                                                <img src='@item.Image_path.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )' style="max-width:100px; max-height:100px;" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td data-val-col="image_path" data-val="" class="w50">
+
+                                                <img src='' style="max-width:100px; max-height:100px;" />
+                                            </td>
+                                        }
+
+                                        <td class="text-center" data-val-col="Title" data-val="@item.Title">@item.Title</td>
+                                        <td class="text-center" data-val-col="Vendername" data-val="@item.Vendername">@item.Vendername</td>
+                                        <td class="text-center" data-val-col="ProductSKU" data-val="@item.ProductSKU">@item.ProductSKU</td>
+                                        <td class="text-center" data-val-col="customer_price" data-val="@item.customer_price">@item.customer_price</td>
+                                        <td class="text-center" data-val-col="stock" data-val="@item.stock">@item.stock</td>
+                                        <td class="text-center" data-val-col="Status" data-val="@item.Status">@item.Status</td>
+
+                                        <td style="display:none;" class="text-center" data-val-col="av_composition_ppm" data-val="@item.av_composition_ppm">@item.av_composition_ppm</td>
+                                        <td style="display:none;" class="text-center" data-val-col="availabilityName" data-val="@item.availabilityName">@item.availabilityName</td>
+                                        <td style="display:none;" class="text-center" data-val-col="bottle_per_box" data-val="@item.bottle_per_box">@item.bottle_per_box</td>
+                                        <td style="display:none;" class="text-center" data-val-col="brand" data-val="@item.brand">@item.brand</td>
+                                        <td style="display:none;" class="text-center" data-val-col="categoryname" data-val="@item.categoryname">@item.categoryname</td>
+                                        <td style="display:none;" class="text-center" data-val-col="category_id" data-val="@item.category_id">@item.category_id</td>
+                                        <td style="display:none;" class="text-center" data-val-col="customer_max_order" data-val="@item.customer_max_order">@item.customer_max_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="customer_min_order" data-val="@item.customer_min_order">@item.customer_min_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="Description" data-val="@item.Description">@item.Description</td>
+                                        <td style="display:none;" class="text-center" data-val-col="discount" data-val="@item.discount">@item.discount</td>
+                                        <td style="display:none;" class="text-center" data-val-col="Image_path" data-val="@item.Image_path">@item.Image_path</td>
+                                        <td style="display:none;" class="text-center" data-val-col="phno" data-val="@item.phno">@item.phno</td>
+                                        <td style="display:none;" class="text-center" data-val-col="ProductId" data-val="@item.ProductId">@item.ProductId</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_max_order" data-val="@item.store_max_order">@item.store_max_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_min_order" data-val="@item.store_min_order">@item.store_min_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_price" data-val="@item.store_price">@item.store_price</td>
+                                        <td style="display:none;" class="text-center" data-val-col="VenderSource" data-val="@item.VenderSource">@item.VenderSource</td>
+                                        <td style="display:none;" class="text-center" data-val-col="bottle_material" data-val="@item.bottle_material">@item.bottle_material</td>
+                                        <td style="display:none;" class="text-center" data-val-col="volume" data-val="@item.volume">@item.volume</td>
+
+
                                         <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
                                                         data-toggle="dropdown" aria-expanded="false">
-                                                    <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
+                                                    @*<span id="selctedName">*@
+                                                    Select Action
+                                                    @*</span>*@ <span class="caret ml5"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu" id="action_@item.ProductId">
-                                                    <li onclick="makeSelected(this)" title="Edit">Edit</li>
+                                                    <li onclick="makeSelected(this)" title="Edit">
+                                                       Edit
+                                                    </li>
                                                     <li onclick="makeSelected(this)">Delete</li>
-                                                    <li onclick="makeSelected(this)">Archive</li>
-                                                    <li class="divider"></li>
-                                                    <li onclick="makeSelected(this)">Complete</li>
-                                                    <li onclick="makeSelected(this)">Approval</li>
-                                                    <li onclick="makeSelected(this)">Canceled</li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -456,26 +693,118 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
-    $(function () {
-        $("#update").click(function () {
-            var password = $("#password").val();
-            var confirmPassword = $("#confirm_password").val();
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
+
+    function validatetabdata(intTab) {
+        var strErrMsg = "";
+        var returnval = true;
+        if ($(".clssummeryval").length > 0) {
+            $(".clssummeryval").html('');
+        }
+        $("#divValidation2").html("");
+        $("#divValidation1").html("");
+        if (intTab == 1) {
+
+            if ($.trim($("#Title").val()) == "") {
+                strErrMsg += "<li>Title is required</li>";
             }
-            return true;
+            if ($.trim($("#category_id").val()) == "0") {
+                strErrMsg += "<li>Category is required</li>";
+            }
+            if ($.trim($("#VenderSource").val()) == "0") {
+                strErrMsg += "<li>Vendor is required</li>";
+            }
+
+            if (strErrMsg != "") {
+                $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 2) {
+
+            if ($.trim($("#ProductSKU").val()) == "") {
+                strErrMsg += "<li>ProductSKU is required</li>";
+            }
+            if ($.trim($("#stock").val()) != "") {
+
+                var stockdata = $.trim($("#stock").val());
+                if ((!$.isNumeric(stockdata)) || (Math.floor(stockdata) != stockdata)) {
+                    strErrMsg += "<li>Stock value should be in digits only.</li>";
+                }
+            }
+            if ($.trim($("#customer_price").val()) != "") {
+                if (!$.isNumeric($.trim($("#customer_price").val()))) {
+                    strErrMsg += "<li>Customer price should be in numeric only.</li>";
+                }
+            }
+            if ($.trim($("#store_price").val()) != "") {
+                if (!$.isNumeric($.trim($("#store_price").val()))) {
+                    strErrMsg += "<li>Store price should be in numeric only.</li>";
+                }
+            }
+            if (strErrMsg != "") {
+                $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        return returnval;
+    }
+    $(document).ready(function () {
+        //$('#myTable').DataTable();
+
+        //Igex - Tab Activation
+
+        $("#btnNext").click(function () {
+
+            if (validatetabdata(1))
+                activeTab('2');
+        });
+
+        $("#ProductSKU").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.shiftKey === true || e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
         });
     });
-</script>
 
-<script type="text/javascript">
-<!--
-        var pager = new Pager('results', 3);
-        pager.init();
-        pager.showPageNav('pager', 'pageNavPosition');
-        pager.showPage(1);
-    //--></script>
+    $(".prduct-save-btn").click(function () {
+        //var productSku = $("#ProductSKU").val();
+        //if (productSku == null || productSku == undefined || productSku == NaN || productSku == 0) {
+        //    alert('Please Insert Proper SKU Number');
+        //    $("#sku").html("Please Insert Proper SKU Number");
+        //    return false;
+        //}
+        if (!validatetabdata(2)) {
+            return false;
+        }
+        return true;
+    });
+
+
+    //Igex
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
+
+</script>
+@*<script type="text/javascript">
+    <!--
+            var pager = new Pager('results', 3);
+            pager.init();
+            pager.showPageNav('pager', 'pageNavPosition');
+            pager.showPage(1);
+        //--></script>*@
 
 
 <!-- Bootstrap -->
@@ -503,37 +832,19 @@
 <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <script src="~/Content/assets/js/visitor.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-               
-    });
-    
 
-</script>
+
+
 @*<script>
-    $(document).ready(function () {
-        $(".datepicker").datepicker();
-    });
-</script>*@
+        $(document).ready(function () {
+            $(".datepicker").datepicker();
+        });
+    </script>*@
 
 
 
 <script type="text/javascript">
-    $(document).ready(function (e) {
-        $('.selectpicker').selectpicker();
-        //Igex - Tab Activation
 
-        $("#btnNext").click(function () {
-            alert(12);
-            activeTab('2');
-        });
-    });
-    //Igex
-    function activeTab(tab) {
-        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
-    }
     var productdtl = {
         getid: function (val) {
             var spltval = val.split("_");
@@ -580,20 +891,51 @@
                 data: { prodid: prodit, sts: el.innerText },
                 type: "POST",
                 success: function (res) {
-                    debugger;
+                    var $row = jQuery("#" + prodit);
+                    console.log($row);
+
+                    var elnew = $row.find('td[data-val-col="Status"]');
+                    console.log(elnew);
+
+                    elnew.attr("data-val", res.status);
+                    elnew.html(res.status);
+
                 },
                 error: function (err) {
-                    debugger;
+
                 }
             });
         } else {
             var rowdata = productdtl.getselectrowdata(prodit);
-            $("#output").attr("src", rowdata.Avatar);
+
+            $("#output").attr("src", rowdata.image_path);
+            $("#ProductSKU").val(rowdata.ProductSKU);
             $("#Title").val(rowdata.Title);
-            $("#productprice").val(rowdata.ProductPrice);
-            $("#productsku").val(rowdata.SKU);
-            $("#comment").val(rowdata.Description);
-            $("#Vendername").val(rowdata.Vsource);
+            $("#phno").val(rowdata.phno).attr("selected");
+            //  $("#productprice").val(rowdata.ProductPrice);
+            $("#availabilityName").val(rowdata.availabilityName).attr("selected");
+            $("#Description").val(rowdata.Description);
+            $("#VenderSource").val(rowdata.VenderSource).attr("selected");
+            $("#ProductId").val(rowdata.ProductId);
+            // $("#bottle_per_box").val(rowdata.bottle_per_box).attr("selected");
+            $("#bottle_material").val(rowdata.bottle_material).attr("selected");
+            $("#volume").val(rowdata.volume).attr("selected");
+
+
+            $("#brand").val(rowdata.brand).attr("selected");
+            $("#category_id").val(rowdata.category_id).attr("selected");
+            $("#customer_max_order").val(rowdata.customer_max_order).attr("selected");
+            $("#customer_min_order").val(rowdata.customer_min_order).attr("selected");
+            $("#customer_price").val(rowdata.customer_price);
+            //$("#Status").val(rowdata.Status).attr("selected");
+            $("#stock").val(rowdata.stock);
+            $("#store_max_order").val(rowdata.store_max_order).attr("selected");
+            $("#store_min_order").val(rowdata.store_min_order).attr("selected");
+            $("#store_price").val(rowdata.store_price);
+            $("#discount").val(rowdata.discount);
+            $("#av_composition_ppm").val(rowdata.av_composition_ppm);
+            $("#bottle_per_box").val(rowdata.bottle_per_box);
+
         }
     }
 
@@ -686,6 +1028,52 @@
         $("#fileToUpload").change(function () {
             checkfile();
         });
+    });
+    $(document).ready(function () {
+        $(".no").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+        @if (@ViewBag.status != null && @ViewBag.status == 0)
+        {
+            var p = (Final_ThibanProject.Models.Product)ViewBag.productretrun;
+            <text>
+        $("#ProductSKU").val("@p.ProductSKU");
+        $("#Title").val("@p.Title");
+        $("#phno").val("@p.phno").attr("selected");
+        //  $("#productprice").val(rowdata.ProductPrice");
+        $("#availabilityName").val("@p.availabilityName").attr("selected");
+        $("#Description").val("@p.Description");
+        $("#VenderSource").val("@p.VenderSource").attr("selected");
+        $("#ProductId").val("@p.ProductId");
+        // $("#bottle_per_box").val("@p.bottle_per_box").attr("selected");
+        $("#bottle_material").val("@p.bottle_material").attr("selected");
+        $("#volume").val("@p.volume").attr("selected");
+
+
+        $("#brand").val("@p.brand").attr("selected");
+        $("#category_id").val("@p.category_id").attr("selected");
+        $("#customer_max_order").val("@p.customer_max_order").attr("selected");
+        $("#customer_min_order").val("@p.customer_min_order").attr("selected");
+        $("#customer_price").val("@p.customer_price");
+        //$("#Status").val("@p.Status").attr("selected");
+        $("#stock").val("@p.stock");
+        $("#store_max_order").val("@p.store_max_order").attr("selected");
+        $("#store_min_order").val("@p.store_min_order").attr("selected");
+        $("#store_price").val("@p.store_price");
+        </text>
+        }
     });
 
 </script>

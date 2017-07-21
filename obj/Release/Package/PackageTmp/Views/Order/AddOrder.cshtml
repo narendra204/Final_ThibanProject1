@@ -84,7 +84,7 @@
                                 <div class="section row mbn">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <p class="text-right next-btn-admin">
-                                            <button class="btn btn-primary  border-radius99 prduct-save-btn mt10" type="button">Next</button>
+                                            <button id="btnNext1" class="btn btn-primary  border-radius99 prduct-save-btn mt10" type="button">Next</button>
                                         </p>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                                 <hr class="short">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <p class="text-right next-btn-admin">
-                                        <button class="btn btn-primary border-radius99 prduct-save-btn" type="button">Next</button>
+                                        <button id="btnNext2" class="btn btn-primary border-radius99 prduct-save-btn" type="button">Next</button>
                                     </p>
                                 </div>
 
@@ -503,6 +503,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#mobile").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.shiftKey === true || e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+
+        $("#btnNext1").click(function () {
+            activeTab('2');
+        });
+        $("#btnNext2").click(function () {
+            activeTab('3');
+        });
+    });
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
+
+};
+
     $(function () {
         $("#update").click(function () {
             var password = $("#password").val();
@@ -544,19 +574,12 @@
 
 <script src="~/Content/assets/js/visitor.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-    });
-
-</script>
-
 
 
 <script>
-    $(document).ready(function () {
-        $(".datepicker").datepicker();
-    });
+    //$(document).ready(function () {
+    //    $(".datepicker").datepicker();
+    //});
 
     var orderdtl = {
         getid: function (val) {
@@ -619,26 +642,6 @@
 </script>
 
 
-<script type="text/javascript">
-
-
-
-    $(document).ready(function (e) {
-
-
-
-        $('.selectpicker').selectpicker();
-
-
-
-    });
-
-
-
-</script>
-
-
-
 <script type="text/jscript">
     //get file size
     function GetFileSize(fileid) {
@@ -678,7 +681,7 @@
         }
     }
 
-    $("#btnSubmit").live("click", function () {
+    $("#btnSubmit").on("click", function () {
         if ($('#fileToUpload').val() == "") {
             $("#spanfile").html("Please upload file");
             return false;

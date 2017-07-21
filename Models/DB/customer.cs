@@ -53,6 +53,11 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<int> Image { get; set; }
         public string DOB { get; set; }
         public string Image_path { get; set; }
+        public Nullable<int> currencyid { get; set; }
+        public Nullable<bool> isFb { get; set; }
+        public Nullable<bool> isGplus { get; set; }
+        public Nullable<bool> isTwitter { get; set; }
+        public Nullable<bool> isLinkedin { get; set; }
     
         public virtual ImageFile ImageFile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
