@@ -565,6 +565,7 @@
 
                             </tbody>
                         </table>
+                        @Html.Hidden("RecentEditClickeStatus", "Naren")
                     </div>
                 </div>
             </div>
@@ -815,10 +816,14 @@
                 data: { drvid: driverId, sts: el.innerText },
                 type: 'POST',
                 success: function (res) {
-                    var $row = jQuery("#" + drvid);
+                    var $row = jQuery("#" + driverId);
                     var elnew = $row.find('td[data-val-col="Status"]');
                     elnew.attr("data-val", res.status);
                     elnew.html(res.status);
+                    var el1 = $row.find('#selectedName');
+                  //  var el1 = $row.find('td div button');
+                    // alert(el1[0].innerHTML);
+                    alert(el1.html());
                 },
                 error: function (err) {
                     debugger;
@@ -826,6 +831,7 @@
             });
         } else {
             var rowData = DriverDtl.getSelectdRowData(driverId);
+            $("#RecentEditClickeStatus").val(rowData.Status);
             console.log(rowData);
             $("#Name").val(rowData.Name);
             $("#driverid").val(rowData.Driverid);
