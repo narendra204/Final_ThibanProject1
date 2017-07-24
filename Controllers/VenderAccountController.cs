@@ -3,6 +3,7 @@ using Final_ThibanProject.Models.LogError;
 using Final_ThibanProject.Models.viewmodel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -38,9 +39,15 @@ namespace Final_ThibanProject.Controllers
                     vender.ForgotActivationId = activationForgotCode;
                     db.SaveChanges();
                     //mail message
+                    string fromemail = ConfigurationManager.AppSettings["fromemail"];
+                    string frompass = ConfigurationManager.AppSettings["frompass"];
+                    string emailhost = ConfigurationManager.AppSettings["emailhost"];
+                    int emailport = Convert.ToInt32(ConfigurationManager.AppSettings["emailport"]);
+                    string emailssl = ConfigurationManager.AppSettings["emailssl"];
+
                     MailMessage mail = new MailMessage();
                     mail.To.Add(vender.emailid);
-                    mail.From = new MailAddress("marlusybanch@gmail.com");
+                    mail.From = new MailAddress(fromemail);
                     mail.Subject = "Activation Mail";
                     //string Body = "Hello, " + vender.name + "\n Your Account is activated please click  the  link  to login \n http://localhost:56348/login ";
                     string Body = "Hello " + vender.name + ",";
@@ -50,12 +57,13 @@ namespace Final_ThibanProject.Controllers
                     mail.Body = Body;
                     mail.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
+                    smtp.Host = emailhost;// "smtp.gmail.com";
+                    smtp.Port = emailport;// 587;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new System.Net.NetworkCredential
-                    ("marlusybanch@gmail.com", "yogita@09");// Enter seders User name and password
-                    smtp.EnableSsl = true;
+                    smtp.Credentials = new System.Net.NetworkCredential(fromemail, frompass);
+                    //  ("marlusybanch@gmail.com", "yogita@09");// Enter seders User name and password
+                    if (emailssl == "1")
+                        smtp.EnableSsl = true;
                     smtp.Send(mail);
                     status = "sent";
                     //end message
@@ -150,7 +158,7 @@ namespace Final_ThibanProject.Controllers
             }
             return View();
         }
-       
+
 
 
     }

@@ -8,6 +8,8 @@ using Final_ThibanProject.Models;
 using System.IO;
 using PagedList;
 using System.Data.Entity.Validation;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Final_ThibanProject.Controllers
 {
@@ -18,12 +20,69 @@ namespace Final_ThibanProject.Controllers
 
         // GET: Customer
         [Authorize]
-        public ActionResult AddCustomer(int? page, int? pageSizeValue)
+        public ActionResult AddCustomer(int? page, int? pageSizeValue,string  filter,string filterStatus)
         {
             var objCustUser = new List<customeruser>();
+            var objFilterUser = new List<customeruser>();
             int pageSize = (pageSizeValue ?? 10);
             int pageNumber = (page ?? 1);
-            objCustUser = CallCustomerList();
+            if (filter == null || filter == "") {
+                objCustUser = CallCustomerList();
+                ViewBag.statusFilter = filterStatus;
+                ViewBag.selectOrderCount = filterStatus;
+            }
+            else if(filterStatus != null || filterStatus != "")
+            {
+                objFilterUser = CallCustomerList();
+                if(filter == "Status")
+                {
+                    
+                    if(filterStatus == "0" || (filterStatus == "" || filterStatus == ""))
+                    {
+                        objCustUser = objFilterUser.ToList();
+                    }
+                    else
+                    {
+                        objCustUser = objFilterUser.Where(x => x.Status == filterStatus).ToList();
+                    }
+                    //var objOrderCount = CallCustomerList().ToList();
+                    ViewBag.statusFilter = filterStatus;
+                    
+                }
+                else if(filter == "OrderCount")
+                {
+                    if (filterStatus != "" && filterStatus != "0")
+                    {
+
+                        int startCount = Convert.ToInt16(filterStatus.Split('-')[0]);
+                        int secondCount = Convert.ToInt16(filterStatus.Split('-')[1]);
+                        if(secondCount != 0) { 
+                        List<int?> customerID = new List<int?>();
+                        customerID = db.orders.GroupBy(x => x.customer_id).Where(grp => grp.Count() > startCount && grp.Count() < secondCount).Select(x => x.Key).ToList();
+                        var obj = from a in objFilterUser
+                                  join c in customerID on a.customerid equals (c.HasValue ? c.Value : 0)
+                                  select a;
+                        objCustUser = obj.ToList();
+                        }
+                        else
+                        {
+                            List<int?> customerID = new List<int?>();
+                            customerID = db.orders.GroupBy(x => x.customer_id).Where(grp => grp.Count() > startCount).Select(x => x.Key).ToList();
+                            var obj = from a in objFilterUser
+                                      join c in customerID on a.customerid equals (c.HasValue ? c.Value : 0)
+                                      select a;
+                            objCustUser = obj.ToList();
+                        }
+                    }
+                    else
+                    {
+                        objCustUser  = CallCustomerList().ToList();
+                    }
+                    ViewBag.selectOrderCount = filterStatus;
+                }
+            }
+           
+           
             return View(objCustUser.ToPagedList(pageNumber, pageSize));
         }
 
@@ -36,10 +95,15 @@ namespace Final_ThibanProject.Controllers
             var CustQuery = (from cust in db.customers
                              where cust.custstatus != "Remove"
                              join addr in db.customerdefaultaddresses on cust.customerid equals addr.custid
-                             join img in db.ImageFiles on cust.Image equals img.ImageId into cI
-                             from img in cI.DefaultIfEmpty()
+                             join cbd in db.customerbankdetails on cust.customerid equals cbd.customerid into ccbd
+                             from cbd in ccbd.DefaultIfEmpty()
+                             join cap in db.customeraddressproofs on cust.customerid equals cap.customerid into ccap
+                             from cap in ccap.DefaultIfEmpty()
                              join ord in db.orders on cust.customerid equals ord.customer_id into cO
                              from ord in cO.DefaultIfEmpty()
+                             join img in db.ImageFiles on cust.Image equals img.ImageId into cI
+                             from img in cI.DefaultIfEmpty()
+
                              group cust by new
                              {
                                  cust.customerid,
@@ -61,7 +125,13 @@ namespace Final_ThibanProject.Controllers
                                  img.Imageattachment,
                                  ord.total,
                                  ord.quantity,
-                                 cust.Image_path
+                                 cust.Image_path,
+                                 cbd.account_no,
+                                 cbd.bank_name,
+                                 cbd.benificary_name_in_bank,
+                                 cbd.branch_name,
+                                 cbd.ifsc_code,
+                                 cap.addressimage
                              } into rc
                              select new
                              {
@@ -84,68 +154,16 @@ namespace Final_ThibanProject.Controllers
                                  country = rc.Key.country,
                                  Totalspent = rc.Sum(r => r.orders.Sum(x => x.total)),
                                  Purchase = rc.Sum(r => r.orders.Sum(x => x.quantity)),
-                                 status = rc.Key.custstatus
+                                 status = rc.Key.custstatus,
+                                 accountNo = rc.Key.account_no == null ? 0 : rc.Key.account_no,
+                                 bankName = rc.Key.bank_name,
+                                 benificaryName = rc.Key.benificary_name_in_bank,
+                                 branchName = rc.Key.branch_name,
+                                 ifscCode = rc.Key.ifsc_code,
+                                 addressProf = rc.Key.addressimage
                              }).ToList();
 
-            //var CustQuery = (from cust in db.customers
-            //                 join ord in db.orders on cust.customerid equals ord.customer_id
-            //                 join addr in db.customerdefaultaddresses on cust.customerid equals addr.custid
-            //                 join img in db.ImageFiles on cust.Image equals img.ImageId
-            //                 group ord by new
-            //                 {
-            //                     cust.customerid,
-            //                     cust.mobileno,
-            //                     cust.name,
-            //                     cust.emailid,
-            //                     cust.regdate,
-            //                     addr.custnote1,
-            //                     addr.customernote2,
-            //                     addr.city,
-            //                     addr.streetaddress,
-            //                     addr.state,
-            //                     addr.zip,
-            //                     addr.country,
-            //                     img.Imageattachment
-            //                 } into rc
-            //                 select new
-            //                 {
-            //                     custid = rc.Key.customerid,
-            //                     Email = rc.Key.emailid,
-            //                     Avatar = rc.Key.Imageattachment,
-            //                     Name = rc.Key.name,
-            //                     Mobile = rc.Key.mobileno,
-            //                     Registered = rc.Key.regdate,
-            //                     note1 = rc.Key.custnote1,
-            //                     note2 = rc.Key.customernote2,
-            //                     address = rc.Key.streetaddress,
-            //                     city = rc.Key.city,
-            //                     zip = rc.Key.zip,
-            //                     state = rc.Key.state,
-            //                     country = rc.Key.country,
-            //                     Totalspent = rc.Sum(r => r.total),
-            //                     Purchase = rc.Sum(r => r.quantity)
-            //                 }).ToList();
-            //foreach (var item in CustQuery)
-            //{
-            //    objCustomer.Add(new customeruser()
-            //    {
-            //        customerid = item.custid,
-            //        image = item.Avatar,
-            //        name = item.Name,
-            //        mobileno = item.Mobile,
-            //        emailid = item.Email,
-            //        custnote1 = item.note1,
-            //        customernote2 = item.note2,
-            //        address = item.address,
-            //        city = item.city,
-            //        zip = Convert.ToInt32(item.zip),
-            //        state = item.state,
-            //        country = item.country,
-            //        regdate = Convert.ToDateTime(item.Registered),
-            //        totalpurchase = item.Purchase,
-            //        totalspent = item.Totalspent.HasValue ? Math.Round(item.Totalspent.Value, 2) : item.Totalspent
-            //    });
-            //}
+            
             foreach (var item in CustQuery)
             {
                 objCustomer.Add(new customeruser()
@@ -169,7 +187,13 @@ namespace Final_ThibanProject.Controllers
                     country = item.country,
                     regdate = Convert.ToDateTime(item.Registered),
                     totalpurchase = item.Purchase == null ? 0 : item.Purchase,
-                    totalspent = item.Totalspent == null ? 0 : item.Totalspent.HasValue ? Math.Round(item.Totalspent.Value, 2) : item.Totalspent
+                    totalspent = item.Totalspent == null ? 0 : item.Totalspent.HasValue ? Math.Round(item.Totalspent.Value, 2) : item.Totalspent,
+                    accountNo = item.accountNo,
+                    addressProfImage = item.addressProf,
+                    bankName = item.bankName,
+                    benificary_name = item.benificaryName,
+                    branchName = item.branchName,
+                    ifscCode = item.ifscCode
                 });
             }
             return objCustomer;
@@ -186,7 +210,7 @@ namespace Final_ThibanProject.Controllers
 
 
         [HttpPost]
-        public ActionResult AddCustomer(customeruser cu, HttpPostedFileBase file, int? page, int? pageSizeValue)
+        public ActionResult AddCustomer(customeruser cu, HttpPostedFileBase file, int? page, int? pageSizeValue, HttpPostedFileBase addressProf)
         {
 
             try
@@ -197,8 +221,6 @@ namespace Final_ThibanProject.Controllers
                 {
                     if (Request.Files.Count > 0)
                     {
-
-
                         ImageFile obj = new ImageFile();
                         if (file != null && file.ContentLength > 0)
                         {
@@ -220,10 +242,24 @@ namespace Final_ThibanProject.Controllers
                             {
                                 System.IO.Directory.CreateDirectory(targetFolder);
                             }
-                            string targetPath = Path.Combine(fileName, "prod_" + cu.customerid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
-                            string savePath = Path.Combine(targetFolder, "prod_" + cu.customerid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                            string targetPath = Path.Combine(fileName, "customer_" + cu.customerid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                            string savePath = Path.Combine(targetFolder, "customer_" + cu.customerid + file.FileName.Substring(file.FileName.LastIndexOf(".")));
                             file.SaveAs(savePath);
                             cu.image_path = targetPath;
+                        }
+                        if (addressProf != null && addressProf.ContentLength > 0)
+                        {
+                            string fileName = "~/content/images_customer/";
+                            string targetFolder = Server.MapPath(fileName);
+                            bool exists = System.IO.Directory.Exists(targetFolder);
+                            if (!exists)
+                            {
+                                System.IO.Directory.CreateDirectory(targetFolder);
+                            }
+                            string targetPath = Path.Combine(fileName, "customer_addressProf" + cu.customerid + addressProf.FileName.Substring(addressProf.FileName.LastIndexOf(".")));
+                            string savePath = Path.Combine(targetFolder, "customer_addressProf" + cu.customerid + addressProf.FileName.Substring(addressProf.FileName.LastIndexOf(".")));
+                            addressProf.SaveAs(savePath);
+                            cu.addressProfImage = targetPath;
                         }
                         if (cu.customerid == 0)
                         {
@@ -251,6 +287,23 @@ namespace Final_ThibanProject.Controllers
                             cda.country = cu.country;
                             db.customerdefaultaddresses.Add(cda);
                             db.SaveChanges();
+                            customerbankdetail cdb = new customerbankdetail();
+                            cdb.account_no = cu.accountNo;
+                            cdb.bank_name = cu.bankName;
+                            cdb.branch_name = cu.branchName;
+                            cdb.benificary_name_in_bank = cu.benificary_name;
+                            cdb.ifsc_code = cu.ifscCode;
+                            cdb.customerid = custid;
+                            db.customerbankdetails.Add(cdb);
+                            db.SaveChanges();
+                            if (cu.addressProfImage != null)
+                            {
+                                customeraddressproof cap = new customeraddressproof();
+                                cap.customerid = custid;
+                                cap.addressproof = cu.addressProfImage;
+                                db.customeraddressproofs.Add(cap);
+                                db.SaveChanges();
+                            }
                             ViewBag.message = "Customer Added Successfully.";
                         }
                         else if (cu.customerid > 0)
@@ -290,6 +343,47 @@ namespace Final_ThibanProject.Controllers
                                 cda.country = cu.country;
                                 db.customerdefaultaddresses.Add(cda);
                                 db.SaveChanges();
+                            }
+                            var customerBankDetailCount = db.customerbankdetails.Where(x => x.customerid == cu.customerid).Count();
+                            if(customerBankDetailCount > 0)
+                            {
+                                customerbankdetail ecdb = db.customerbankdetails.First(x => x.customerid == cu.customerid);
+                                ecdb.account_no = cu.accountNo;
+                                ecdb.bank_name = cu.bankName;
+                                ecdb.branch_name = cu.branchName;
+                                ecdb.benificary_name_in_bank = cu.benificary_name;
+                                ecdb.ifsc_code = cu.ifscCode;
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                customerbankdetail ecdb = new customerbankdetail();
+                                ecdb.account_no = cu.accountNo;
+                                ecdb.bank_name = cu.bankName;
+                                ecdb.branch_name = cu.branchName;
+                                ecdb.benificary_name_in_bank = cu.benificary_name;
+                                ecdb.ifsc_code = cu.ifscCode;
+                                ecdb.customerid = cu.customerid;
+                                db.customerbankdetails.Add(ecdb);
+                                db.SaveChanges();
+                            }
+                            if(cu.addressProfImage != null)
+                            {
+                                var customerAddressProf = db.customeraddressproofs.Where(x => x.customerid == cu.customerid).Count();
+                                    if(customerAddressProf > 0)
+                                {
+                                    customeraddressproof ecap = db.customeraddressproofs.First(x => x.customerid == cu.customerid);
+                                    ecap.addressproof = cu.addressProfImage;
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    customeraddressproof ecap = new customeraddressproof();
+                                    ecap.addressproof = cu.addressProfImage;
+                                    ecap.customerid = cu.customerid;
+                                    db.customeraddressproofs.Add(ecap);
+                                    db.SaveChanges();
+                                }
                             }
                             ViewBag.message = "Customer Edited Successfully.";
                         }
@@ -334,10 +428,36 @@ namespace Final_ThibanProject.Controllers
             db.customers.Find(custId).custstatus = sts;
             var id = custId;
             cust.custstatus = sts;
-
             db.SaveChanges();
             return Json(new { customerId = custId, status = sts });
         }
 
+        [HttpPost]
+        public JsonResult FilterCustomer(int purchaseCount , string status, int? page, int? pageSizeValue)
+        {
+            JsonResult res = new JsonResult();
+            var cu = new List<customeruser>();
+            cu = CallCustomerList();
+            List<customeruser> obCust = cu.Where(x => x.Status == status).ToList();
+            int pageSize = (pageSizeValue ?? 10);
+            int pageNumber = (page ?? 1);
+            //res = cu.Where(x => x.Status == status).ToList();
+            return Json(obCust, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteCoustomer(string[] customerid)
+        {
+            JsonResult res = new JsonResult();
+            //res = cu.Where(x => x.Status == status).ToList();
+            
+            foreach(string i in customerid)
+            {
+                int cutID = Convert.ToInt16(i);
+                db.customers.Find(cutID).custstatus = "Remove";
+            }
+            db.SaveChanges();
+            return Json(true);
+        }
     }
 }

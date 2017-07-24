@@ -1,11 +1,14 @@
-@media (min-width: 240px) and (max-width: 480px) {
+@media (min-width: 240px) and (max-width: 319px) {
+#content .col-md-2 + .col-md-2, #content .col-md-2 + .col-md-4, #content .col-md-2 + .col-md-6, #content .col-md-4 + .col-md-2, #content .col-md-4 + .col-md-4, #content .col-md-4 + .col-md-6, #content .col-md-6 + .col-md-2, #content .col-md-6 + .col-md-4, #content .col-md-6 + .col-md-6 {
+    padding-top: 0;
+}
 /*=====================TOP-NAV====================*/
 .main_container .top_nav {
     display: block;
     margin-left: 235px;
 }
 .top_nav .nav li a {
-    padding: 15px 0px 0px 16px;
+    padding: 15px 0px 0px 5px;
 }
 #toggle_sidemenu_l {
 	transform: rotate(180deg) !important;
@@ -26,19 +29,48 @@
     visibility: visible;
     position: absolute;
     top: -14px;
-    left: -83px;
+    left: -15px;
 	text-align:left;
+    border: 1px solid red !important;
+    padding-left: 20px;
+    border-radius: 99em !important;
 }
-.navbar-form.navbar-search {
-    padding: 18px 100px;
+.serch-div input {
+    color: #A9A9A9;
+    width: 160px !important;
+    border-color: #eeeeee !important;
+}
+.img-user-pic .col-md-5.col-sm-5.col-xs-5 {
+        padding-left: 0px;
+}
+.img-user-pic .col-md-7.col-sm-7.col-xs-7 {
+        padding-left: 0px;
+}
+
+
+/*.navbar-form.navbar-search {
+       padding: 13px 100px;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: -28px;
+    width: 95%;
+    margin-left: 30px;
+}*/
+.navbar-form.navbar-search {
+    padding: 18px 0px;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    position: relative;
+    top: 8px;
+    border: none;
 }
 .search-icon {
     position: absolute;
     top: -5px;
     color: #70c599;
-    left: -74px;
+    left: 10px;
     font-size: 21px;
     margin-left: -20px;
     width: 16px !important;
@@ -46,11 +78,427 @@
 }
 .nav-md .container.body .right_col {
     padding: 10px 10px 0;
-    margin-left: 235px;
+    margin-left: 225px;
+}
+.admin-form .select {
+    margin-bottom: 10px;
+}
+    .admin-form input{    
+    margin-bottom: 10px !important;}
+/*====================pagination-css==============*/
+.dataTables_length {
+    width: 45% !important;
+}
+.dataTables_info {
+width: 100% !important;
+}
+.table-group-actions.pull-right {
+    position: relative;
+    top: -20px;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 45% !important;
+}
+.billing-pagination .dataTables_length {
+    width: 45% !important;
+}
+/*======================customer-page=====================*/
+ .right_col.main-admincustmngmnt-section .admin-form .section {
+    margin-bottom: 0px !important;
+}
+.admin-form .section {
+    margin-bottom: 0px !important;
+}
+.right_col.main-adminordrmngmnt-section .col-lg-6.col-md-6.col-sm-6.col-xs-12.pr-no {
+    padding-right: 11px;
+    padding-left: 0px;
+}
+.right_col.main-adminvendormngmnt-section .fileupload .thumbnail {
+       width: 95%;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+.right_col.main-admindriver-section .fileupload .thumbnail {
+       width: 95%;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+.btn-md.t-btn {
+    position: relative;
+    right: 10px !important;
+    margin-left: 0px;
+    width: 100% !important;
+}
+.big-graph {
+    height: 400px !important;
 }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 359px) {
+#content .col-md-2 + .col-md-2, #content .col-md-2 + .col-md-4, #content .col-md-2 + .col-md-6, #content .col-md-4 + .col-md-2, #content .col-md-4 + .col-md-4, #content .col-md-4 + .col-md-6, #content .col-md-6 + .col-md-2, #content .col-md-6 + .col-md-4, #content .col-md-6 + .col-md-6 {
+    padding-top: 0;
+}
+/*=====================TOP-NAV====================*/
+.main_container .top_nav {
+    display: block;
+    margin-left: 235px;
+}
+.top_nav .nav li a {
+    padding: 15px 0px 0px 5px;
+}
+#toggle_sidemenu_l {
+	transform: rotate(180deg) !important;
+}
+.vendr-dashboard-menulist, .navbar-nav.navbar-right:last-child {
+	margin: 0px 0px !important;
+}
+.vendr-dashboard-menulist li {
+	margin-right: 15px !important;
+}
+.vendr-dashboard-menulist li a {
+	padding-left: 0px !important;
+	font-size: 13px !important;
+}
+.navbar-form.navbar-search input {
+    opacity: 1;
+    z-index: -1;
+    visibility: visible;
+    position: absolute;
+    top: -14px;
+    left: -15px;
+	text-align:left;
+    border: 1px solid red !important;
+    padding-left: 20px;
+    border-radius: 99em !important;
+}
+.serch-div input {
+    color: #A9A9A9;
+    width: auto !important;
+    border-color: #eeeeee !important;
+}
+.navbar {
+    z-index: 1030;
+    margin-bottom: 0;
+    height: 90px;
+    }
+.img-user-pic .col-md-5.col-sm-5.col-xs-5 {
+        padding-left: 0px;
+}
+.img-user-pic .col-md-7.col-sm-7.col-xs-7 {
+        padding-left: 0px;
+}
+
+
+/*.navbar-form.navbar-search {
+       padding: 13px 100px;
+    font-size: 14px;
+    margin-top: -28px;
+    width: 95%;
+    margin-left: 30px;
+}*/
+.navbar-form.navbar-search {
+    padding: 18px 0px;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    position: relative;
+    top: 8px;
+    border: none;
+}
+.search-icon {
+    position: absolute;
+    top: -5px;
+    color: #70c599;
+    left: 10px;
+    font-size: 21px;
+    margin-left: -20px;
+    width: 16px !important;
+    float: left;
+}
+.nav-md .container.body .right_col {
+    padding: 10px 10px 0;
+    margin-left: 225px;
+}
+.admin-form .select {
+    margin-bottom: 10px;
+}
+    .admin-form input{    
+    margin-bottom: 0px !important;}
+h1.panel-title.c-m-h1{
+    margin-bottom: -1px;
+}
+.panel-tabs > li > a {
+    padding: 5px 10px;
+    }
+.table-layout .panel-tabs.panel-tabs-border > li.active > a {
+        padding: 5px 10px;
+    }
+.admin-form .prepend-icon > input{
+    padding-left: 10px !important;
+    margin-bottom: 10px !important;
+}
+.img-width {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.nav-sm .menu_section h3, .nav-sm .profile, .nav-sm span.fa {
+    display: block;
+}
+button.btn.btn-primary.btn-md.btn_next {
+        margin-top: 5px;
+    }
+/*====================pagination-css==============*/
+.dataTables_length {
+    width: 75% !important;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.dataTables_info {
+width: 100% !important;
+}
+.table-group-actions.pull-right {
+    position: relative;
+    top: 0px;
+    float: none !important;
+    margin-left: -10px !important;
+    margin-top: 10px;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 45% !important;
+}
+.billing-pagination .dataTables_length {
+    width: 45% !important;
+}
+/*======================customer-page=====================*/
+ .right_col.main-admincustmngmnt-section .admin-form .section {
+    margin-bottom: 0px !important;
+}
+.admin-form .section {
+    margin-bottom: 0px !important;
+}
+.right_col.main-adminordrmngmnt-section .col-lg-6.col-md-6.col-sm-6.col-xs-12.pr-no {
+    padding-right: 11px;
+    padding-left: 0px;
+}
+.right_col.main-adminvendormngmnt-section .fileupload .thumbnail {
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.right_col.main-admindriver-section .fileupload .thumbnail {
+       width: 95%;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+.btn-md.t-btn {
+    position: relative;
+    right: 10px !important;
+    margin-left: 0px;
+    width: 100% !important;
+}
+.big-graph {
+    height: 400px !important;
+}
+}
+
+@media (min-width: 360px) and (max-width: 479px) {
+#content .col-md-2 + .col-md-2, #content .col-md-2 + .col-md-4, #content .col-md-2 + .col-md-6, #content .col-md-4 + .col-md-2, #content .col-md-4 + .col-md-4, #content .col-md-4 + .col-md-6, #content .col-md-6 + .col-md-2, #content .col-md-6 + .col-md-4, #content .col-md-6 + .col-md-6 {
+    padding-top: 0;
+}
+/*=====================TOP-NAV====================*/
+.main_container .top_nav {
+    display: block;
+    margin-left: 235px;
+}
+.top_nav .nav li a {
+    padding: 15px 0px 0px 5px;
+}
+#toggle_sidemenu_l {
+	transform: rotate(180deg) !important;
+}
+.vendr-dashboard-menulist, .navbar-nav.navbar-right:last-child {
+	margin: 0px 0px !important;
+}
+.vendr-dashboard-menulist li {
+	margin-right: 15px !important;
+}
+.vendr-dashboard-menulist li a {
+	padding-left: 0px !important;
+	font-size: 13px !important;
+}
+.navbar-form.navbar-search input {
+    opacity: 1;
+    z-index: -1;
+    visibility: visible;
+    position: absolute;
+    top: -14px;
+    left: -15px;
+	text-align:left;
+    border: 1px solid red !important;
+    padding-left: 20px;
+    border-radius: 99em !important;
+}
+.serch-div input {
+    color: #A9A9A9;
+    width: 300px !important;
+    border-color: #eeeeee !important;
+    margin-left: 25px;
+}
+.nav.toggle {
+        margin-top: 20px !important;
+}
+.navbar {
+    z-index: 1030;
+    margin-bottom: 0;
+    height: 100px;
+    }
+.img-user-pic .col-md-5.col-sm-5.col-xs-5 {
+        padding-left: 0px;
+}
+.img-user-pic .col-md-7.col-sm-7.col-xs-7 {
+        padding-left: 0px;
+}
+ul.nav.navbar-nav.pull-right {
+    margin-right: 0px !important;
+    margin-top: 50px!important;
+}
+.site_title {
+        line-height: 60px;
+    }
+
+/*.navbar-form.navbar-search {
+       padding: 13px 100px;
+    font-size: 14px;
+    margin-top: -28px;
+    width: 95%;
+    margin-left: 30px;
+}*/
+.navbar-form.navbar-search {
+    padding: 18px 0px;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    position: relative;
+    top: 8px;
+    border: none;
+     left: 25px;
+
+}
+.search-icon {
+    position: absolute;
+    top: -5px;
+    color: #70c599;
+    left: 10px;
+    font-size: 21px;
+    margin-left: -20px;
+    width: 16px !important;
+    float: left;
+}
+.nav-md .container.body .right_col {
+    padding: 10px 10px 0;
+    margin-left: 225px;
+}
+.admin-form .select {
+    margin-bottom: 10px;
+}
+    .admin-form input{    
+    margin-bottom: 0px !important;}
+h1.panel-title.c-m-h1{
+    margin-bottom: -1px;
+}
+.panel-tabs > li > a {
+    padding: 5px 10px;
+    }
+.table-layout .panel-tabs.panel-tabs-border > li.active > a {
+        padding: 5px 10px;
+    }
+.admin-form .prepend-icon > input{
+    padding-left: 10px !important;
+    margin-bottom: 10px !important;
+}
+.img-width {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.nav-sm .menu_section h3, .nav-sm .profile, .nav-sm span.fa {
+    display: block;
+}
+button.btn.btn-primary.btn-md.btn_next {
+        margin-top: 5px;
+    }
+/*====================pagination-css==============*/
+.dataTables_length {
+    width: 75% !important;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.dataTables_info {
+width: 100% !important;
+}
+.table-group-actions.pull-right {
+    position: relative;
+    top: 0px;
+    float: none !important;
+    margin-left: -10px !important;
+    margin-top: 10px;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 65% !important;
+}
+.billing-pagination .dataTables_length {
+    width: 65% !important;
+}
+.ldl-lft {
+        width: 84px;
+}
+.width-inp {
+    width: 70%;
+}
+/*======================customer-page=====================*/
+ .right_col.main-admincustmngmnt-section .admin-form .section {
+    margin-bottom: 0px !important;
+}
+.admin-form .section {
+    margin-bottom: 0px !important;
+}
+.right_col.main-adminordrmngmnt-section .col-lg-6.col-md-6.col-sm-6.col-xs-12.pr-no {
+    padding-right: 11px;
+    padding-left: 0px;
+}
+.right_col.main-adminvendormngmnt-section .fileupload .thumbnail {
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.right_col.main-admindriver-section .fileupload .thumbnail {
+       width: 95%;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+.btn-md.t-btn {
+    position: relative;
+    right: 10px !important;
+    margin-left: 0px;
+    width: 100% !important;
+}
+.big-graph {
+    height: 400px !important;
+}
+   .right_col.main-admin-driverall-transaction .btn-addnew a {
+          margin: 10px 21px 10px 1px !important;
+    }
+.btn-filters .pagination-filter.reset-filters {
+    margin-left: 0px !important;
+}
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
 .container>.navbar-header, .container>.navbar-collapse {
 	margin-left: 0;
 }
@@ -162,11 +610,29 @@ ul.social_icons li {
 }
 .top_nav .nav li a {
 	padding-left:5px;
+	padding: 15px 0px 0px 0px;
 	
 }
+.top_nav .toggle {
+    padding-top: 16px;
+    width: 30px;
+}
+/* ============ALL-PAGES-CSS-PAGINATION=================== */
+.btn-group.inn-head-btn-grp.pull-right {
+    position: relative;
+    left: 0;
+    float: left !important;
+}
+span.inn-head-text {
+    margin-left: 0px !important;
+    margin-right: 0px;
+    top: 7px;
+}
+
+
 /* ============ALL-PAGES-CSS-PAGINATION=================== */
 .dataTables_length {
-    width: 40% !important;
+    width: 42% !important;
     float: left;
 }
 .table-group-actions.pull-right {
@@ -178,10 +644,14 @@ ul.social_icons li {
     width: 40% !important;
 }
 .billing-pagination .dataTables_length {
-    width: 33% !important;
+    width: 42% !important;
 }
 .billing-pagination div.dataTables_info {
     padding-top: 5px !important;
+}
+.dataTables_info {
+    width: 36% !important;
+    margin-top: 5px;
 }
 /* ============CUSTOMER-MANGEMENTPAGES-CSS-=================== */
 div#tab1_1 .col-md-6.col-sm-6.col-lg-6.col-xs-12 input {
@@ -217,6 +687,10 @@ label.field.prepend-icon input {
 }
  .right_col.main-adminordrmngmnt-section .col-lg-6.col-md-6.col-sm-6.col-xs-12.pr-no {
 	padding-left:0px;
+}
+/* ============VENDOR-MANGEMENTPAGES-CSS-=================== */
+.right_col.main-adminvendormngmnt-section .fileupload .thumbnail {
+    margin-top: 10px;
 }
 /* ============ANALYTICS-CSS-=================== */
 .row.graphs.main-top-charts .col-md-6.col-sm-6.col-xs-12{
@@ -534,6 +1008,18 @@ input.text-center.event-name.gui-input.br-light.border-radius99.img-keyword-btn2
 .col-lg-2.col-md-2.col-sm-2.col-xs-12.proile-left {
 	padding:0PX;
 }
+/*================NEW-GEO-FENCE-CSS===============*/
+.zones-left-box {
+    border: 1px solid #eee;
+    padding-right: 0px;
+    height: auto !important;
+    }
+.zones-right-box {
+    border: 1px solid #eee;
+    padding-left: 0;
+    border-left: 1px solid #eee;
+    border-top: 0px;
+}
 
 }
 
@@ -750,7 +1236,7 @@ input.datepicker.width100.pl10.hasDatepicker {
 /* ============ADMIN-TOPMENU- PAGE=================== */
 .main_container .top_nav {
     display: block;
-    margin-left: 235px !important;
+    margin-left: 235px;
 }
 	.serch-div input {
     width: 225px !important;
@@ -896,9 +1382,32 @@ input.text-center.event-name.gui-input.br-light.border-radius99.img-keyword-btn2
 .col-lg-2.col-md-2.col-sm-2.col-xs-12.proile-left {
 	padding:0PX;
 }
+/*================================NEW-GEO-FENCE-CSS==========================================*/
+.right_col.new-geo-fence .dataTables_length {
+    width: 23% !important;
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: auto !important;
+    }
+.geofence-assign-box .create-zone {
+        padding: 8px 10px !important;
+    }
+.zones-right-box .heading-title .form-group.geo-search-box {
+    /*width: 150px !important;*/
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: 105px !important;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1023px) {
+	.main_container .top_nav {
+    display: block;
+    margin-left: 235px;
+}
+.nav-md .container.body .right_col {
+    margin-left: 235px;
+}
 
 .navbar-nav>li {
 	margin-left: 10px;
@@ -972,7 +1481,7 @@ button.inn-head-btn {
 }
 /*========================PAGINATION-CSS======================= */
 .dataTables_length {
-    width: 27% !important;
+    width: 32% !important;
 }
 .col-md-3.col-sm-3.col-lg-3.col-xs-12.pagination-right-divs {
 	padding:0px;
@@ -993,12 +1502,547 @@ table.table.admin-form.theme-warning ul.dropdown-menu {
 .btn-md.t-btn {
     margin-left: 20% !important;
 }
+.btn.btn-sm.btn-default.table-group-action-submit.bg-wht {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.right_col.main-admin-vndor-reqtransc .all-transaction-pagi .dataTables_length {
+    width: 32% !important;
+}
+.right_col.main-admin-vndor-reqtransc .dataTables_info {
+    width: 32% !important;
+    margin-top: 5px;
+}
+.right_col.main-admin-vndor-reqtransc .all-transaction-pagi .col-lg-3.col-md-3.col-sm-3.col-xs-12 {
+	padding:0px;
+}
+.right_col.main-admin-vndor-reqtransc .all-transaction-pagi .col-lg-3.col-md-3.col-sm-3.col-xs-12 .btn-filters > a {
+	    margin-left: 0px;
+}
+.right_col.main-vndralltrns-section .billing-pagination .dataTables_length {
+    width: 24% !important;
+}
+.right_col.admin-driver-reqtransctions .row.pagination-block .col-lg-3.col-md-3.col-sm-3.col-xs-12 {
+	padding:0px;
+}
+.right_col.admin-driver-reqtransctions  .row.pagination-block .col-lg-3.col-md-3.col-sm-3.col-xs-12 .btn-filters > a {
+	    margin-left: 0px;
+}
+.right_col.main-admin-driverall-transaction .dataTables_length {
+    width: 32% !important;
+}
+.right_col.main-admin-driverall-transaction .row.pagination-block .col-lg-3.col-md-3.col-sm-3.col-xs-12 {
+	padding:0px;
+}
+.right_col.main-admin-driverall-transaction  .row.pagination-block .col-lg-3.col-md-3.col-sm-3.col-xs-12 .btn-filters > a {
+	    margin-left: 0px;
+}
+.right_col.main-static-div .billing-pagination .dataTables_length {
+    width: 25% !important;
+}
+.right_col.main-teammember-div .billing-pagination .dataTables_length {
+    width: 24% !important;
+}
+.main-tmmngmnt-addrole .billing-pagination .dataTables_length {
+    width: 24% !important;
+}
+/*----TEAM-MANAGEMENT-CSS------*/
+.right_col.main-teammngmnt-div .btn-md.t-btn {
+    margin-left: 0% !important;
+}
+.mr-btn {
+    width: 34% !important;
+}
+.right_col.tm-mngmnt-add_addrole  .btn-md.t-btn {
+	width: 35%;
+}
+.big-graph {
+    height: 500px;
+}
+/*========================NEW-GEOFENCE-CSS======================= */
+.geofence-assign-box .create-zone {
+    padding: 8px 10px !important;
+    position: relative;
+    right: 5px;
+
+    
+}
+.row.main-create-zone .geofence-assign-box .geo-search-box input {
+    width: 100px;
+}
+.row.create-section-zone.edit-zone-table .form-group .col-md-4 input {
+    position: relative !important;
+    right: 20px !important;
+        width: 130px;
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: auto !important;
+    }
 }
 
-@media (min-width: 1200px) {
+@media (min-width:1025px) and (max-width:1200px) {
 #portfolio .row {
 	margin-left: -10px;
 	margin-right: -10px;
 }
+/*======================TOP-NAV==================================*/
+.main_container .top_nav {
+    display: block;
+    margin-left: 235px;
+}
+.nav-md .container.body .right_col {
+    padding: 10px 10px 0;
+    margin-left: 235px;
+    background: #ffffff none repeat scroll 0 0;
+}
+    ul.dropdown-menu.list-group.dropdown-persist.width150.vendor-hdr-drpdwn {
+    left: 30px;
+}
+    
+/*======================MAIN-INDEX-PAGE==================================*/
+.right_col.main-admin-div .col-lg-12.col-md-12.col-sm-12.col-xs-12.inn-head.mb15 {
+    width: 100% !important;
+}
+button.inn-head-btn {
+    width: 185px;
+}
+.right_col.main-admin-div span.inn-head-text {
+    margin-left: 15px !important;
+}
+.right_col.main-admin-div .col-lg-12.col-md-12.col-sm-12.col-xs-12.inn-head.mb15 {
+    background: #eeeeee;
+    position: relative;
+    left: 0px !important;
+}
+/*=====================OVER-ALL-PAGINATION-CSS==================================*/
+button.inn-head-btn {
+    width: 155px;
+    }
+.btn.btn-sm.btn-default.table-group-action-submit.bg-wht {
+    padding: 5px 5px !important;
+}
+.pagination-dropdwn-toogle {
+    width: 100px;
+}
+ .col-md-3.col-sm-3.col-lg-3.col-xs-12.pagination-right-divs {
+     padding: 0px;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 29% !important;
+}
+ .row.pagination-block.all-transaction-pagi .col-lg-3.col-md-3.col-sm-3.col-xs-12 {
+     padding: 0px;
+}
+.billing-pagination .dataTables_length {
+    width: 23% !important;
+} 
+.right_col.admin-driver-reqtransctions .pagination-block .col-lg-3.col-md-3.col-sm-3.col-xs-12{
+    padding: 0px;
+}
+.main-addvertis-div .dataTables_length {
+    width: 30% !important;
+    margin-top: -1px;
+}
+.main-addvertis-div .dataTables_info {
+    width: 70% !important;
+}
+/*======================Main-Dashboard====================================*/
+.right_col.main-admin-div .col-lg-3.col-md-3.col-sm-12.col-xs-12.pn {
+    width: 100%;
+}
+.right_col.main-admin-div .col-md-9.col-sm-12.col-lg-9.col-xs-12.pn {
+    width: 100%;
+    margin-left: 5px;
+    margin-top: 5px;    
+}
+.right_col.main-admin-div button.inn-head-btn {
+    width: 235px;
+}
+.right_col.main-admin-div .btn-group.inn-head-btn-grp.pull-right {
+    position: relative;
+    left: -2px;
+    top: -1px;
+}
+/*======================CUSTOMER-MANAGEMENT======================*/
+.dataTables_length {
+    width: 30% !important;
+}
+    
+ .btn-md.t-btn {
+    width: auto !important;
+}
+ .right_col.tm-mngmnt-add_addrole .btn-md.t-btn {
+    left: 10%;
+}
+ .col-lg-2.col-md-2.col-sm-2.col-xs-12.proile-left {
+     padding: 0px;
+}
+/*======================ADMIN-ALL-TRANSACTION======================*/
+.right_col.main-vndralltrns-section span.showing-result {
+    margin-left: -70px;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 30% !important;
+}
+.right_col.main-admin-vndor-reqtransc .btn-filters.pull-left a {
+    margin: 3px 0px;
+}
+.right_col.admin-driver-reqtransctions .btn-filters.pull-left a {
+    margin: 0px 0px;
+}
+/*======================ADMIN--ANALYTICS======================*/
+.right_col.main-adminanalytic-section form.form-inline.pull-right {
+    margin-left: -65px;
+}
+.big-graph {
+    height: 550px !important;
+}
+.btn-toolbar {
+    margin-left: 0;
+    margin-bottom: 5px;
+    float: left;
+}
 
+/*========================
+/*========================NEW-GEOFENCE-CSS======================= */
+.geofence-assign-box .create-zone {
+    padding: 8px 10px !important;
+    position: relative;
+    right: 5px;
+
+    
+}
+.row.main-create-zone .geofence-assign-box .geo-search-box input {
+    width: 100px;
+}
+.row.create-section-zone.edit-zone-table .form-group .col-md-4 input {
+    position: relative !important;
+    right: 20px !important;
+        width: 135px;
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: auto !important;
+    }
+.new-geo-fence button.btn.pagination-sellct-button-toogle.dropdown-toggle {
+    font-size: 14px !important;
+}
+.right_col.new-geo-fence table.dataTable thead th, .right_col.new-geo-fence table.dataTable thead td {
+    padding: 0px 18px 0px 18px !important;
+    border-bottom: 1px solid #111;
+    height: 17px !important;
+    line-height: 25px !important;
+    background: #ffffff !important;
+}
+/*========================NEW-GEOFENCE-CSS======================= */
+.geofence-assign-box .create-zone {
+    padding: 8px 10px !important;
+    position: relative;
+    right: 5px;
+
+    
+}
+.row.main-create-zone .geofence-assign-box .geo-search-box input {
+    width: 100px;
+}
+.row.create-section-zone.edit-zone-table .form-group .col-md-4 input {
+    position: relative !important;
+    right: 20px !important;
+        width: 135px;
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: auto !important;
+    }
+.new-geo-fence button.btn.pagination-sellct-button-toogle.dropdown-toggle {
+    font-size: 14px !important;
+}
+.right_col.new-geo-fence table.dataTable thead th, .right_col.new-geo-fence table.dataTable thead td {
+    padding: 0px 18px 0px 18px !important;
+    border-bottom: 1px solid #111;
+    height: 17px !important;
+    line-height: 25px !important;
+    background: #ffffff !important;
+}-CSS======================= */
+.geofence-assign-box .create-zone {
+    padding: 8px 10px !important;
+    position: relative;
+    right: 5px;
+
+    
+}
+.row.main-create-zone .geofence-assign-box .geo-search-box input {
+    width: 100px;
+}
+.row.create-section-zone.edit-zone-table .form-group .col-md-4 input {
+    position: relative !important;
+    right: 20px !important;
+        width: 135px;
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: auto !important;
+    }
+.new-geo-fence button.btn.pagination-sellct-button-toogle.dropdown-toggle {
+    font-size: 14px !important;
+}
+.right_col.new-geo-fence table.dataTable thead th, .right_col.new-geo-fence table.dataTable thead td {
+    padding: 0px 18px 0px 18px !important;
+    border-bottom: 1px solid #111;
+    height: 17px !important;
+    line-height: 25px !important;
+    background: #ffffff !important;
+}
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+   
+.right_col.main-admin-div button.inn-head-btn {
+    width: 200px;
+}
+.dataTables_length {
+    width: 24% !important;
+}
+.all-transaction-pagi .dataTables_length {
+    width: 25% !important;
+}
+
+.billing-pagination .dataTables_length {
+    width: 18% !important;
+}
+.right_col.main-adminanalytic-section .ml50 {
+    margin-left: 0px !important;
+}
+
+.row.create-section-zone.edit-zone-table .form-group .col-md-4 input {
+    position: relative !important;
+    right: 1    0px !important;
+        
+}
+.zones-right-box .pagination-sellct-button-toogle {
+    width: 135px !important;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1280px){
+    .left_col {
+        overflow-y: auto !important;
+    }
+.geofence-assign-box .create-zone {
+        padding: 8px 30px !important;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1440px){
+    .left_col {
+        overflow-y: auto !important;
+    }
+}
+
+@media (max-width: 991px){
+.nav-md .container.body .col-md-3.left_col {
+    display: none;
+}
+.nav-md .container.body .right_col {
+    margin-left: 0 ;
+}
+.main_container .top_nav {
+    display: block;
+    margin-left: 0 ;
+}
+.nav-sm .nav.side-menu li a span {
+    display: block;
+}
+.nav-sm #menu_toggle {
+    z-index: 99999;
+}
+.left_col {
+
+    width: 100px !important;
+}
+.nav-sm #menu_toggle {
+    margin-left: 25px;
+}
+.nav-sm .navbar.nav_title {
+    width: 100px !important;
+}
+.nav-sm .container.body .right_col {
+    padding: 10px 20px;
+    margin-left: 100px !important;
+    z-index: 2;
+}
+.sb-l-m .navbar > .navbar-right, .navbar .navbar-nav > li.dropdown, .navbar .navbar-nav > li.dropdown .navbar-btn {
+    position: relative !important;
+}
+.zones-left-box {
+    height: auto;
+    
+}
+
+.zones-right-box {
+    border: 1px solid #eee;
+    padding-left: 0;
+    border-left: 1px solid #eee;
+    border-top: 0px;
+}
+.right_col.new-geo-fence .table-responsive {
+
+        margin-top: 15px;
+    margin-right: 11px;
+    position: relative;
+    right: 5px;}
+
+    }
+
+@media (max-width: 767px){
+/*----MENU-CSS--*/
+.navbar-form.navbar-search input {
+  opacity: 1;
+    z-index: -1;
+    visibility: visible;
+    position: absolute;
+    top: -17px;
+    left: 0 !important;
+    border: 1px solid #ddd;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 99em !important;
+    text-align: left;
+        padding-left: 22px;
+}
+.navbar-form.navbar-search {
+    padding: 18px 10px;
+    font-size: 14px;
+    top: 10px;
+    position: relative;
+    border: 0px;
+}
+.search-icon {
+    left: 30px;
+    }
+/*==================NEW-GEO-FENCE================*/
+ .right_col.new-geo-fence  .row.main-create-zone .col-lg-6.col-md-6.col-sm-6.col-xs-12.pn form.pull-right {
+    float: none !important;
+      padding: 1px 10px !important;
+}  
+.right_col.new-geo-fence .geofence-assign-box .create-zone {
+    width: 100%;
+    }
+.new-geo-fence button.btn.pagination-sellct-button-toogle.dropdown-toggle {
+    font-size: 15px !important;
+    width: 100% !important;
+}   
+.right_col.new-geo-fence .heading-title .btn-group {
+    width: 100% !important;
+}
+.right_col.new-geo-fence .heading-title form.pull-right {
+    float: none !important;
+}
+ul.dropdown-menu.pagination-numeber-drpdwn.pagination-drpdwn {
+    width: auto;
+}
+.zones-right-box {
+    border: 1px solid #eee;
+    padding-left: 0;
+    border-left: 1px solid #eee;
+    border-top: 0px;
+}
+.right_col.new-geo-fence .table-responsive {
+
+      /*  margin-top: 15px;
+    margin-right: 11px;
+    position: relative;
+    right: 5px;*/
+    margin-top: 0px;
+    margin-right: 0px;
+    position: relative;
+    right: 0px;
+    border: 0px;
+}
+.right_col.new-geo-fence .zones-right-box #content {
+    padding: 10px 0px 0px 0px !important;
+}
+.right_col.new-geo-fence .row.assign-captin-box form.pull-right {
+    float: none !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.right_col.new-geo-fence .row.main-create-zone form.pull-right {
+       float: none !important;
+   /* padding-left: 10px;
+    padding-right: 10px;*/
+}
+
+
+}
+
+@media (min-width:240px) and (max-width: 550px){
+    .user-profile-photo .user-profile-round {
+    width: 36px;
+    margin-right: 5px;
+    margin-top: 6px;
+}
+.navbar-form.navbar-search input {
+    opacity: 1;
+    z-index: -1;
+    visibility: visible;
+    position: absolute;
+    top: -17px;
+    left: 0 !important; 
+    border: 1px solid #ddd !important;
+    height: 37px !important;
+    border-radius: 99em !important;
+        text-align: left !important;
+}
+.navbar-form.navbar-search {
+    padding: 18px 0 !important;
+    font-size: 14px;
+    top: 10px;
+    position: relative;
+    border: 0px !important;
+}
+.navbar-form.navbar-search {
+    float: none !important;
+    display: none;
+   
+    }
+ul.nav.navbar-nav.navbar-right {
+float: left !important;
+    margin-left: 30px;
+    }
+.top_nav .nav li a {
+    padding-left: 5px;
+    padding: 16px 0px 0px 0px ;
+}
+.navbar-form.navbar-search {
+    float: none !important;
+     
+}
+.nav-sm .menu_section h3, .nav-sm .profile, .nav-sm span.fa {
+    display: inline-block;
+}
+ul.dropdown-menu.list-group.dropdown-persist.width150.vendor-hdr-drpdwn {
+    margin-top: 25px;
+    left: 15px;
+    border-top: 1px solid #D9DEE4;
+    top: 54px !important;
+    padding-bottom: 10px !important;
+}
+.navbar-nav .open .dropdown-menu {
+    position: absolute;
+    background: #fff;
+    margin-top: 25px;
+    border: 1px solid #D9DEE4;
+    -webkit-box-shadow: none;
+    right: 0;
+    top: 55px !important;
+    left: 0 ;
+}
+.dropdown-header .viewall-btn {
+    background: #c2c2c2 none repeat scroll 0 0 !important;
+    border-radius: 16px;
+    padding: 0px 2px !important;
+    color: #ffffff !important;
+}
+     .navbar-nav .open .media-list .dropdown-header, 
+    .media-list .navbar-nav .open .media-list>li>a {
+    padding: 5px 13px 5px 15px !important;
+}
 }

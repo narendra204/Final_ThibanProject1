@@ -1,1413 +1,1152 @@
-﻿@model Final_ThibanProject.Models.viewmodel.VenderProductManagement
+﻿@model PagedList.IPagedList<Final_ThibanProject.Models.Product>
+@using PagedList.Mvc;
 @{
-   // ViewBag.Title = "VenderRedirectIndex";
-    Layout = null;
+    ViewBag.Title = "VenderProductManagement";
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
+    var a = Model.TotalItemCount / Model.PageSize;
+    var b = Model.TotalItemCount / 10;
 }
-<!--vender header-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>THIBAN-VENDOR-DASHBOARD</title>
 
-    <!-- Bootstrap -->
-    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="~/Content/assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Font-Styles -->
-    <!--   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" rel="stylesheet">-->
-    <!-- Custom Theme Style -->
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/custom.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme2.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/theme3.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-responsive.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/prettyPhoto.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="~/Content/assets/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
-    <!-- Admin Forms CSS -->
-    <link rel="stylesheet" type="text/css" href="~/Content/assets/admin-tools/admin-forms/css/admin-forms.css">
-    <style>
-        .nav_menu {
-            border-bottom: none;
-        }
+<style>
+    .caret.ml5 {
+        margin-left: 5px !important;
+    }
 
-        .bg {
-            background: #fff;
-        }
+    .right_col.main-adminproductmngmnt-section hr.short {
+        float: left;
+        margin: 10px 0 20px;
+        width: 100%;
+    }
+</style>
+<style type="text/css">
+    .pg-normal {
+        color: black;
+        font-weight: normal;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        .menu_section {
-            margin-bottom: 0px;
-        }
-        /*ul.nav.navbar-nav.navbar-right {
-            width: 60%;
-        }*/
-        .nav_title {
-            width: 233px;
-        }
+    .pg-selected {
+        color: black;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-        input, select, textarea {
-            border-radius: 3px !important;
-        }
+    .myvalidation {
+        color: green;
+    }
+</style>
 
-        ul.dropdown-menu.side-dropdown {
-            position: absolute;
-            top: 48px !important;
-            left: 0px !important;
-            border: 1px solid #eee !important;
-            border-radius: 1px;
-            background: #f2f2f2 !important;
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-            background-clip: none !important;
-        }
+<script src="~/Content/assets/js/paging.js"></script>
 
-            ul.dropdown-menu.side-dropdown a {
-                color: #888 !important;
-            }
+<!-- Start: Content-Wrapper -->
+@Html.ValidationSummary(true, "")
 
-        .dropdown:hover ul.dropdown-menu.side-dropdown {
-            display: block;
-            padding: 0px;
-        }
-
-        .dropdown.current-page.active .side-dropdown {
-            display: none !important;
-        }
-
-        .dropdown.current-page.active:hover .side-dropdown {
-            display: block !important;
-        }
-
-        .left_col {
-            background: #f7f7f7;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            height: 100% !important;
-            position: fixed;
-        }
-
-        .col-md-3.left_col {
-            overflow: hidden;
-        }
-
-        .nav-sm #menu_toggle {
-            margin-left: 10px;
-        }
-
-        .nav-sm .navbar-search {
-            margin-left: 0px;
-        }
-
-        .side-menu li.current-page a {
-            color: #57ad68 !important;
-            background: #f2f2f2;
-        }
-
-        li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
-            display: block !important;
-        }
-
-        .side-dropdown li a {
-            background: #f7f7f7 !important;
-            color: #888 !important;
-        }
-
-            .side-dropdown li a:hover {
-                background: #f2f2f2 !important;
-                color: #222;
-            }
-
-        ul.nav.side-menu.sub-menu li a {
-            padding-left: 30px;
-        }
-
-        ul.nav.side-menu li.active a {
-            background: transparent !important;
-            color: #888;
-        }
-
-        ul.nav.side-menu.sub-menu li.current-page a {
-            color: #57ad68 !important;
-            background: #f2f2f2 !important;
-        }
-
-        a.dropdown-sub-menu {
-            padding-left: 40px !important;
-        }
-
-        a.drop-down-mainmenu {
-            cursor: default;
-        }
-
-        .dropdown-sub-menu img {
-            width: 16px !important;
-        }
-
-        a.drop-down-mainmenu {
-            color: #687888 !important;
-            font-weight: 400 !important;
-            font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
-        }
-
-            a.drop-down-mainmenu:hover {
-                color: #687888 !important;
-            }
-        /*   input.form-control {
-            border-top-right-radius: 25px;
-            border-bottom-right-radius: 25px;
-            border-left: 0px;
-        }
-         form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
-                border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
-            background: #fff;
-            border-right: 0px;
-        }
-         form.navbar-form.navbar-left input.form-control{
-             border-top-right-radius: 25px !important;
-            border-bottom-right-radius: 25px !important;
-            border-top-left-radius: 1px !important;
-            border-bottom-left-radius: 0px !important;
-            padding-left:0px;
-            border-color: #dddddd !important;
-        }*/
-    </style>
-</head>
-
-<body class="nav-md">
-@using (Html.BeginForm("VenderProductManagement", "Vender", new { @class = "text-left" }))
-                                        {
-    <div class="container body main-container-body">
-        <div class="main_container">
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                    <div class="col-md-3 left_col">
-                        <div class="left_col scroll-view">
-                            <div class="navbar nav_title">
-                                <a href="vendor-index.php" class="site_title">
-                                    <span class="main-heading">
-                                        <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <!-- sidebar menu -->
-
-                            <ul class="nav side-menu">
-                                <li class="">
-                                    <a href="vendor-index.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" alt="">
-                                        <span class="sidebar-title"> Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" alt="">
-                                        <span class="sidebar-title">Management </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_product-management.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" alt="">
-                                        <span class="sidebar-title"> Product </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" alt="">
-                                        <span class="sidebar-title">Driver</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" alt="">
-                                        <span class="sidebar-title">Order</span>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" alt="">
-                                        <span class="sidebar-title">Rating and Review </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" alt="">
-                                        <span class="sidebar-title">Product</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" alt="">
-                                        <span class="sidebar-title">Driver</span>
-                                    </a>
-                                </li>
-
-
-                                <li>
-                                    <a href="vendor-analytics.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" alt="">
-                                        <span class="sidebar-title">Analytics </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor-geo-fence.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/new-geo-fenece.png" alt="">
-                                        <span class="sidebar-title">Geo Fence</span>
-                                    </a>
-                                </li>
-
-
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" alt="">
-                                        <span class="sidebar-title">Team</span>
-                                    </a>
-
-                                </li>
-
-
-                                <li>
-                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
-                                        <span class="sidebar-title">Team Member</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
-                                        <span class="sidebar-title">Roles</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="vendor_add-advertisement.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
-                                        <span class="sidebar-title"> advertisement </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_add-promotioncode.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" alt="">
-                                        <span class="sidebar-title"> Promotion Code </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor-downloads.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" alt="">
-                                        <span class="sidebar-title">Downloads </span>
-                                    </a>
-                                </li>
-                                <li class="new-smallimgs">
-                                    <a href="user-agreement.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" alt="">
-                                        <span class="sidebar-title"> Settings </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
-                </div>
+<div class="right_col main-adminproductmngmnt-section" role="main">
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Product Management</h1>
+    </div>
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr10">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li> <a href="#"> <span><img src="~/Content/assets/img/bred-home.png" /></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Product Management</a></li>
+                </ol>
             </div>
+        </div>
+    </div>
 
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav class="navbar navbar-default bg">
-                        <div class="container-fluid">
-                            <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
-                            <form class="  navbar-form navbar-left navbar-search" role="search">
-                                <div class="form-group serch-div">
-                                    <img src="~/Content/assets/img/images/search.png" class="search-icon">
-                                    <input type="text" class="form-control srchtext" placeholder="Search...">
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 mt5  border-round">
+                <div class="heading-title">
+                    <h1 class=" panel-title c-m-h1 pb20 "> PRODUCTS </h1>
+                </div>
+                <!--     <hr class="cm-hr">-->
+
+                <div class="panel-heading">
+                    <span class="panel-title hidden-xs"> Add New Product</span>
+                    <ul class="nav panel-tabs-border panel-tabs p-m-tabs">
+                        <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
+                        <li> <a href="#tab1_2" data-toggle="tab">Prices and Stock Detail</a> </li>
+                    </ul>
+                </div>
+                @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.Hidden("ProductId", 0)
+                    <div class="panel-body">
+                        <div class="tab-content pn br-n admin-form">
+                            <div id="tab1_1" class="tab-pane active">
+                                <div class="p10 mbn">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger clssummeryval" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                </div>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary btn-md btn_next  border-radius99" id="btnNext" type="button">Next</button>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
-                            <!--<form class="navbar-form navbar-left">
-                              <div class="input-group">
-                               <div class="input-group-btn">
-                                  <button class="btn btn-default" type="submit">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                  </button>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Search">
-
-                              </div>
-                            </form>-->
-                            <ul class="nav navbar-nav navbar-right">
-                                <ul class="nav navbar-nav top-nav-menu pull-right">
-
-
-                                    <li><a href="">English</a></li>
-                                    <li role="presentation" class="dropdown">
-                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color:#57ad68 !important">
-                                            <!--<i class="fa fa-envelope-o"></i>
-                                                  <span class="badge bg-green">6</span>-->
-                                            Seller support
-                                        </a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
-                                            <div class="img-user-pic">
-                                                <div class=" col-md-5 col-sm-5 col-xs-4">
-                                                    <div class="user-profile-photo"> <span><img src="~/Content/assets/img/images/user-bg.png" class="img-responsive user-profile-round "> <span> <img src="assets/img/images/user.png" class="img-responsive user-photo"></span> </span> </div>
+                                <div class="p10 mbn">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                                <div class="fileupload-preview thumbnail mb20">
+                                                    <img id="output" src="~/Content/assets/img/upload.png" />
                                                 </div>
-                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
-                                                    <div class=" user-txt">
-                                                        <h3> Kinely seller</h3>
-                                                        <p>aamirali@gmail.com</p>
+                                                <div class="row ">
+                                                    @*<div class="col-lg-6 col-md-6 col-sm-7 col-xs-6 inpt-btn">
+                            <input type="text" name="name2" id="name2" class="text-center event-name gui-input br-light border-radius99   img-keyword-btn2  " placeholder="Img Keywords">
+                            <label for="name2" class="field-icon"></label>
+                        </div>*@
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6 btn-P">
+                                                        <span class="button btn-system btn-file btn-block border-radius99">
+                                                            <span class="fileupload-new  border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                            <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                            <script>
+                                                            var loadFile = function (event) {
+                                                                var reader = new FileReader();
+                                                                reader.onload = function () {
+                                                                    var output = document.getElementById('output');
+                                                                    output.src = reader.result;
+                                                                };
+                                                                reader.readAsDataURL(event.target.files[0]);
+                                                            };
+                                                            </script>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
                                                     </div>
                                                 </div>
-                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
-                                            </div>
-                                        </a>
-                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
-                                            <li class="list-group-item">
-                                                <a href="#" class="animated animated-short fadeInUp ">
-                                                    Amair Ali<br>
-                                                    aamirali@gmail.com
-                                                </a>
-                                            </li>
-                                            <li class="list-group-item"> <a href="user-agreement.php" class="animated animated-short fadeInUp"> Profile </a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class=""> <a href="login.php" aria-expanded="false"> <img src="~/Content/assets/img/side-menu-icons/logout.png" class="logout-img" style="" alt="1"> <span>Logout</span> </a> </li>
-                                </ul>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-
-            <!--vender end -->
-            <style>
-                .md-size-list {
-                    padding: 0px;
-                    overflow-y: scroll;
-                }
-
-
-
-                .bootstrap-select.btn-group .dropdown-toggle .caret {
-                    width: 10px;
-                    height: 10px;
-                    border: none;
-                    font-family: 'Glyphicons Halflings';
-                    display: none;
-                }
-
-
-
-                    .bootstrap-select.btn-group .dropdown-toggle .caret:before {
-                        content: "";
-                    }
-
-
-
-                .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-                    width: 240px;
-                    margin-left: -6px;
-                    margin-top: -12px;
-                }
-
-                button.btn.dropdown-toggle.btn-default {
-                    border-radius: 4px;
-                    background: #fff;
-                    border-color: #ccc;
-                }
-
-                .admin-form .select {
-                    z-index: inherit !important;
-                }
-
-                .dropdown-menu.open {
-                    position: absolute;
-                    top: 40px !important;
-                }
-
-                ul.dropdown-menu.inner {
-                    max-height: 300px !important;
-                    overflow-y: auto !important;
-                    min-height: 0px !important;
-                }
-
-                    ul.dropdown-menu.inner li a:hover {
-                        background: #2196F3 !important;
-                        color: #fff !important;
-                    }
-
-                    ul.dropdown-menu.inner li a {
-                        font-size: 16px;
-                    }
-
-                .admin-form .select option {
-                    background: #fff;
-                    font-size: 14px;
-                }
-
-                .product-mangemnet-font .filter-selection-box {
-                    font-size: 14px !important;
-                    font-weight: 400 !important;
-                    color: #5c5c5c !important;
-                }
-
-
-
-                .dropdown-toggle.btn-default:hover {
-                    background-color: transparent !important;
-                }
-
-                input[type="text"]::-webkit-input-placeholder {
-                    color: #5c5c5c;
-                }
-
-                i.arrow.double.sideone {
-                    right: 0px !important;
-                }
-
-                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light::-webkit-input-placeholder {
-                    color: #fff !important;
-                }
-
-                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light.bg-light {
-                    margin-left: -2px;
-                    clear: both;
-                    margin-bottom: 20px;
-                    height: 36px;
-                    line-height: 36px;
-                }
-
-                span.button.btn-system.btn-file.btn-block.border-radius99.ml5 {
-                    height: 30px;
-                    line-height: 30px;
-                    color: #fff;
-                    background-color: #57ad68 !important;
-                    border-color: #4d9e5d !important;
-                }
-
-                input.text-center.filter-selection-box.border-radius99.event-name.gui-input.br-light {
-                    height: 30px;
-                    line-height: 30px;
-                    border-color: #ddd !important;
-                }
-
-                input:hover, select:hover, textarea:hover {
-                    border-color: #ccc !important;
-                }
-
-                .form-control:focus {
-                    border-color: #afafaf !important;
-                }
-
-                button.btn.btn-default.sellct-button {
-                    background: #fff !important;
-                }
-
-                .pagination-block button.btn.btn-default.dropdown-toggle.select-btn-right {
-                    background: #fff !important;
-                }
-
-
-
-                .btn-group.open .dropdown-toggle {
-                    box-shadow: none !important;
-                }
-
-
-
-                .filter-selectpicker i.arrow.double {
-                    top: 1px !important;
-                    right: 0px !important;
-                }
-
-                .filter-selectpicker .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-                    width: 330px;
-                    margin-left: -6px;
-                    margin-top: 0px;
-                }
-
-                .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-                    width: 240px;
-                    margin-left: -6px;
-                    margin-top: 15px;
-                }
-
-                .main-vndrproduct-section input#email {
-                    padding-left: 10px;
-                }
-            </style>
-
-            <!-- Start: Content-Wrapper -->
-
-            <div class="right_col main-vndrproduct-section" role="main">
-                <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
-                    <h1 class="main-top-header">Thiban Vendor Product Management</h1>
-                </div>
-                <div class="clearfix"></div>
-                <div class="row mb10  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                    <div class="inner-header  bred-inner-header mb20">
-                        <div class="bread-cumLeft">
-                            <ol class="breadcrumb dash-bred-cumb">
-                                <li><a href="#"> <span><img src="~/Content/assets/img/bred-home.png"></span> Home</a></li>
-                                <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
-                                <li class="ml5"><a href="#">Vendor Product Management</a></li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Begin: Content -->
-
-                <section id="content" class="table-layout animated fadeIn">
-
-                    <!-- begin: .tray-center -->
-
-                    <div class="tray tray-center product-mangemnet-font">
-
-                        <!-- create new order panel -->
-
-                        <div class="panel mb25 border-round ">
-                            <div class="heading-title">
-                                <h1 class="panel-title main-lft-hdr"> Product</h1>
-                            </div>
-                            <div class="panel-heading br-n pt5 lh30"> <span class="panel-title hidden-xs font-size-12 pl25 panel-sub-content "> Add New Product</span> </div>
-                            <div class="panel-body p20 pb10">
-                                <div class="tab-content pn br-n admin-form">
-                                    <div id="tab1_1" class="tab-pane active">
-                                        <div class="row">
-                                            <div class=" col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                                <div class="fileupload fileupload-new admin-form vendor_form" data-provides="fileupload">
-                                                    <div class="fileupload-preview thumbnail mb10 file-uploading width96"> <img src="~/Content/assets/img/upload.png" alt="holder"> </div>
-                                                    <div class="row pt10 mb10">
-                                                        <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-7  pr5 pad-no">
-                                                            <input type="text" name="name2" id="name2" class="text-center filter-selection-box border-radius99  event-name gui-input br-light" placeholder="Img Keywords">
-                                                            <label for="name2" class="field-icon"></label>
-                                                        </div>
-                                                        <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-5  pr-no">
-                                                            <span class="button btn-system btn-file btn-block  border-radius99 ml5">
-                                                                <span class="fileupload-new  border-radius99 ">Select</span> <span class="fileupload-exists  border-radius99">Change</span>
-                                                                <input type="file">
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pn">
-                                                        <label class="field select mb5 ">
-                                                            @*<select id="filter-status" name="filter-status" class=" selectpicker form-control V_select filter-selection-box br-radius-4" placeholder="Volume">
-                                                                <option value="0">Average Composition PPM</option>
-                                                                <option>10</option>
-                                                                <option>20</option>
-                                                                <option>30</option>
-                                                                <option>40</option>
-                                                                <option>50</option>
-                                                                <option>60</option>
-                                                                <option>70</option>
-                                                                <option>80</option>
-                                                                <option>90</option>
-                                                                <option>100</option>
-                                                            </select>*@
-                                                            @Html.DropDownListFor(model => model.AverageCompositionPPM, (IEnumerable<SelectListItem>)ViewData["listAverageCompositionPPM"], new { @name = "AverageCompositionPPM", @class = "selectpicker form-control V_select filter-selection-box br-radius-4", @id = "AverageCompositionPPM" })
-
-
-
-                                                            <i class="arrow double"></i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                                                <form class="form-horizontal">
-                                                    <div class="form-group">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            @*<input type="text" class="form-control filter-selection-box mb5" id="email" placeholder="Water Product">*@
-                                                            @Html.TextBoxFor(model => model.product_title, new { @name = "product_title", @id = "product_title", @class = "form-control filter-selection-box mb5", @placeholder = "Water Product" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    @*<select id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Brand Name">
-                                                                        <option value="0" avtive="">Brand Name</option>
-                                                                        <option value="1">Aqua Panna</option>
-                                                                        <option value="2">Kinley</option>
-                                                                        <option value="3">Arwa</option>
-                                                                        <option value="4">Alain</option>
-                                                                        <option value="4">Monvio</option>
-                                                                    </select>*@
-                                                                    @Html.DropDownListFor(model => model.brand, (IEnumerable<SelectListItem>)ViewData["BrandName"], new { @name = "brand", @class = "selectpicker form-control V_select filter-selection-box br-radius-4", @id = "brand" })
-
-
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    @*<select id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Product Availability">
-                                                                        <option value="0" avtive>Product Availability</option>
-                                                                        <option value="1">In Stock</option>
-                                                                        <option value="2">Out of Stock</option>
-                                                                    </select>*@
-
-                                                                    @Html.DropDownListFor(model => model.ProductAvaibility, (IEnumerable<SelectListItem>)ViewData["ProductAvailability"], new { @name = "ProductAvailability", @class = "form-control V_select filter-selection-box", @id = "ProductAvailability" })
-
-
-
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5 ">
-                                                                    @*<select id="filter-status" name="filter-status" class=" selectpicker form-control V_select filter-selection-box br-radius-4" placeholder="Volume">
-                                                                        <option value="0">Volume</option>
-                                                                        <option value="1">200 ml</option>
-                                                                        <option value="1">250 ml</option>
-                                                                        <option value="2">500 ml</option>
-                                                                        <option value="3">750 ml</option>
-                                                                        <option value="4">1 liter</option>
-                                                                        <option value="5">2 liter</option>
-                                                                        <option value="6">5 liter</option>
-                                                                        <option value="7">10 liter</option>
-                                                                        <option value="8">20 liter</option>
-                                                                        <option value="8">30 liter</option>
-                                                                    </select>*@
-                                                                    @Html.DropDownListFor(model => model.volume, (IEnumerable<SelectListItem>)ViewData["listVolume"], new { @name = "volume", @class = " selectpicker form-control V_select filter-selection-box br-radius-4", @id = "volume" })
-
-
-
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" class="form-control V_select filter-selection-box br-radius-4" placeholder="Bottle Material">
-                                                                        <option value="-1">Bottle Material</option>
-                                                                        <option value="0">Plastic Bottle </option>
-                                                                        <option value="1">Glass bottles</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Bottle Per Box">
-                                                                        <option value="">Bottle Per Box</option>
-                                                                        <option value="0">10</option>
-                                                                        <option value="1">20</option>
-                                                                        <option value="2">30</option>
-                                                                        <option value="3">40</option>
-                                                                        <option value="4">50</option>
-                                                                        <option value="5">60</option>
-                                                                        <option value="6">70</option>
-                                                                        <option value="7">80</option>
-                                                                        <option value="8">90</option>
-                                                                        <option value="9">100</option>  
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class=" selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Ph Number">
-                                                                        <option value="-1">PH Number</option>
-                                                                        <option value="0">3.0 PH</option>
-                                                                        <option value="1">3.5 PH</option>
-                                                                        <option value="2">4.0 PH</option>
-                                                                        <option value="3">4.5 PH</option>
-                                                                        <option value="4">5.0 PH</option>
-                                                                        <option value="5">5.5 PH</option>
-                                                                        <option value="6">6.0 PH</option>
-                                                                        <option value="7">6.5 PH</option>
-                                                                        <option value="8">7.0 PH</option>
-                                                                        <option value="9">7.5 PH</option>
-                                                                        <option value="10">8.0 PH</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select">
-                                                                    @*<input type="text" id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Customer price">*@
-                                                                    @Html.TextBoxFor(model => model.customer_price, new { @name = "customer_price", @id = "customer_price", @class = "form-control V_select filter-selection-box", @placeholder = "Customer price" })
-
-
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select">
-                                                                    @*<input type="text" id="filter-status" name="filter-status" class="form-control V_select filter-selection-box" placeholder="Customer store price">*@
-                                                                    @Html.TextBoxFor(model => model.store_price, new { @name = "store_price", @id = "store_price", @class = "form-control V_select filter-selection-box", @placeholder = "Customer store price" })
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class=" selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
-                                                                        <option value="0" avtive>Customer Minimum Order</option>
-                                                                        <option value="1">10</option>
-                                                                        <option value="2">15</option>
-                                                                        <option value="3">20</option>
-                                                                        <option value="4">25</option>
-                                                                        <option value="5">30</option>
-                                                                        <option value="6">35</option>
-                                                                        <option value="7">40</option>
-                                                                        <option value="8">45</option>
-                                                                        <option value="9">50</option>
-                                                                        <option value="10">55</option>
-                                                                        <option value="11">60</option>
-                                                                        <option value="12">65</option>
-                                                                        <option value="13">70</option>
-                                                                        <option value="13">75</option>
-                                                                        <option value="14">80</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class="selectpicker  br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
-                                                                        <option value="0" avtive>Conventional store Minimum Order</option>
-                                                                        <option value="1">10</option>
-                                                                        <option value="2">15</option>
-                                                                        <option value="3">20</option>
-                                                                        <option value="4">25</option>
-                                                                        <option value="5">30</option>
-                                                                        <option value="6">35</option>
-                                                                        <option value="7">40</option>
-                                                                        <option value="8">45</option>
-                                                                        <option value="9">50</option>
-                                                                        <option value="10">55</option>
-                                                                        <option value="11">60</option>
-                                                                        <option value="12">65</option>
-                                                                        <option value="13">70</option>
-                                                                        <option value="13">75</option>
-                                                                        <option value="14">80</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class="selectpicker br-radius-4  form-control V_select filter-selection-box" placeholder="Brand Name">
-                                                                        <option value="0" avtive>Customer Maximum Order Quality</option>
-                                                                        <option value="1">10</option>
-                                                                        <option value="2">15</option>
-                                                                        <option value="3">20</option>
-                                                                        <option value="4">25</option>
-                                                                        <option value="5">30</option>
-                                                                        <option value="6">35</option>
-                                                                        <option value="7">40</option>
-                                                                        <option value="8">45</option>
-                                                                        <option value="9">50</option>
-                                                                        <option value="10">55</option>
-                                                                        <option value="11">60</option>
-                                                                        <option value="12">65</option>
-                                                                        <option value="13">70</option>
-                                                                        <option value="13">75</option>
-                                                                        <option value="14">80</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <label class="field select mb5">
-                                                                    <select id="filter-status" name="filter-status" class=" selectpicker br-radius-4 form-control V_select filter-selection-box" placeholder="Product Availability">
-                                                                        <option value="0" avtive>Conventional store Miximum Order Quality</option>
-                                                                        <option value="1">10</option>
-                                                                        <option value="2">15</option>
-                                                                        <option value="3">20</option>
-                                                                        <option value="4">25</option>
-                                                                        <option value="5">30</option>
-                                                                        <option value="6">35</option>
-                                                                        <option value="7">40</option>
-                                                                        <option value="8">45</option>
-                                                                        <option value="9">50</option>
-                                                                        <option value="10">55</option>
-                                                                        <option value="11">60</option>
-                                                                        <option value="12">65</option>
-                                                                        <option value="13">70</option>
-                                                                        <option value="13">75</option>
-                                                                        <option value="14">80</option>
-                                                                    </select>
-                                                                    <i class="arrow double"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid #e5e5e5;padding-bottom: 20px;">
-                                            @*<textarea style="height: 160px;" class=" from-control gui-textarea br-light text-btm filter-selection-box" id="comment"
-                                                      name="comment" placeholder="Product Description"></textarea>*@
-                                            @Html.TextAreaFor(model => model.description, new { @name = "description", @id = "description", @class = "from-control gui-textarea br-light text-btm filter-selection-box", @placeholder = "Product Description" })
-
-
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <hr>
-                                        <div class="section row mbn">
-                                            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
-                                                <p class="text-left vendor_save">
-
-                                                    <!-- <input type="checkbox">&nbsp;
-
-                                                    <span class="checkbox mn"></span>-->
-
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobiles" value="FR">
-                                                        <span class="checkbox mn"></span> <span class="font-size-13">&nbsp;Save Product - A Random Unique ID will be generated</span>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <div class="row section">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <label for="name2" class="field prepend-icon">
+                                                        <input type="text" name="Title" id="Title" class="event-name gui-input br-light" placeholder="Product Title">
                                                     </label>
-                                                    <span> </span>
-                                                </p>
+                                                </div>
+
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
-                                                <p class="text-right">
-                                                    <button class="btn btn-primary  border-radius99 prduct-save-btn" type="submit">Save</button>
-                                                </p>
+                                            <div class="row section">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="product-vendor" class="field prepend-icon">
+                                                        @*//Igex DropDown Bind for the Vender *@
+                                                        @*//Igex End*@
+
+                                                        @*<input type="text" name="VenderSource" id="VenderSource" class="gui-input br-light" placeholder="Vendor Source...">*@
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="field select mb5">
+                                                        <select id="phno" name="phno">
+                                                            <option value="-1">PH Number</option>
+                                                            <option value="3.0 PH">3.0 PH</option>
+                                                            <option value="3.5 PH">3.5 PH</option>
+                                                            <option value="4.0 PH">4.0 PH</option>
+                                                            <option value="4.5 PH">4.5 PH</option>
+                                                            <option value="5.0 PH">5.0 PH</option>
+                                                            <option value="5.5 PH">5.5 PH</option>
+                                                            <option value="6.0 PH">6.0 PH</option>
+                                                            <option value="6.5 PH">6.5 PH</option>
+                                                            <option value="7.0 PH">7.0 PH</option>
+                                                            <option value="7.5 PH">7.5 PH</option>
+                                                            <option value="8.0 PH">8.0 PH</option>
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row section">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="productcategory" class="field select">
+                                                        <select id="category_id" name="category_id" class=" br-light">
+                                                            <option value="0" selected="selected">Product Category...</option>
+                                                            <option value="1">20 Gallon Water Barrel</option>
+                                                            <option value="2">25 Gallon Water Barrel</option>
+
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="field select mb5">
+                                                        <select id="brand" name="brand">
+                                                            <option value="Brand Name" avtive="">Brand Name</option>
+                                                            <option value="Aqua Panna">Aqua Panna</option>
+                                                            <option value="Kinley">Kinley</option>
+                                                            <option value="Arwa">Arwa</option>
+                                                            <option value="Alain">Alain</option>
+                                                            <option value="Monvio">Monvio</option>
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row section">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <label class="field prepend-icon">
+                                                        <textarea style="height: 145px;" class="textarea br-light" rows="4" id="Description" name="Description" placeholder="Product Description"></textarea>
+                                                        <span class="input-footer hidden"> <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- <hr class=" bdy-line">-->
+
+
+                            </div>
+                            <div id="tab1_2" class="tab-pane">
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field">
+                                            <input type="text" id="customer_price" name="customer_price" class="form-control V_select filter-selection-box" placeholder="Customer price">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="customer_min_order" name="customer_min_order">
+                                                <option value="0" avtive>Customer Minimum Order</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="customer_max_order" name="customer_max_order">
+                                                <option value="0" avtive>Customer Maximum Order Quality</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- end section -->
+                                <!-- Store Price section-->
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field">
+                                            <input type="text" id="store_price" name="store_price" class="form-control V_select filter-selection-box" placeholder="Customer store price">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="store_min_order" name="store_min_order">
+                                                <option value="0" avtive>Conventional store Minimum Order</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="store_max_order" name="store_max_order">
+                                                <option value="0" avtive>Conventional store Miximum Order Quality</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                                <option value="60">60</option>
+                                                <option value="65">65</option>
+                                                <option value="70">70</option>
+                                                <option value="75">75</option>
+                                                <option value="80">80</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Store Price Section End -->
+                                <!-- Stock Information section-->
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label for="product-sku" class="field prepend-icon">
+                                            <input type="text" name="ProductSKU" id="ProductSKU" class="gui-input br-light" placeholder="Product SKU...">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label for="product-stock" class="field prepend-icon">
+                                            <input type="text" name="stock" id="stock" class="gui-input br-light" placeholder="Product Stock...">
+                                        </label>
+
+
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5">
+                                            <select id="bottle_material" name="bottle_material">
+                                                <option value="-1">Bottle Material</option>
+                                                <option value="Plastic Bottle">Plastic Bottle</option>
+                                                <option value="Glass Bottle">Glass Bottle</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Store Price Section End -->
+
+                                <div class="section row">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select">
+                                            <select id="Status" name="Status" class="br-light">
+                                                @*<option value="0" selected="selected">Product Availability</option>*@
+                                                <option value="Available">Available</option>
+                                                <option value="Unavailable">Unavailable</option>
+                                                <option value="Discontinued">Discontinued</option>
+                                                <option value="Out of Stock">Out of Stock</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field select mb5 ">
+                                            <select id="volume" name="volume">
+                                                <option value="0">Volume</option>
+                                                <option value="200 ml">200 ml</option>
+                                                <option value="250 ml">250 ml</option>
+                                                <option value="500 ml">500 ml</option>
+                                                <option value="750 ml">750 ml</option>
+                                                <option value="1 liter">1 liter</option>
+                                                <option value="2 liter">2 liter</option>
+                                                <option value="5 liter">5 liter</option>
+                                                <option value="10 liter">10 liter</option>
+                                                <option value="20 liter">20 liter</option>
+                                                <option value="30 liter">30 liter</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="bottle_per_box" name="bottle_per_box" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="Bottle per box">
+                                        </label>
+                                    </div>
+                                    <!-- end section -->
+                                </div>
+                                <div class="section row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="av_composition_ppm" name="av_composition_ppm" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="AV Composition PPM">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <input type="text" id="discount" name="discount" maxlength="3" class="form-control V_select filter-selection-box no" placeholder="Discount">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- end section row section -->
+                                @*<div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label class="field prepend-icon">
+                                            <textarea class="textarea br-light" rows="5" id="Description" name="Description" placeholder="Description"></textarea>
+                                        </label>
+                                    </div>*@
+
+                                <!-- end section row section -->
+                                <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text-left">
+                                        <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                        </div>
+                                    </p>
+                                </div>
+
+                                <hr class="short alt">
+                                <div class="section row mbn">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="field option mt10">
+                                            <input type="checkbox" name="info">
+                                            <span class="checkbox"></span>Save Customer <span class="small-text">- A Random Unique ID will be generated</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-right">
+                                            <input type="submit" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- end section -->
+
+                            </div>
+                            <div id="tab1_3" class="tab-pane">
+                                @*<div class="section">
+                                        <label for="lastaddr" class="field prepend-icon">
+                                            <input type="text" name="lastaddr" id="lastaddr" class="gui-input" placeholder="Street address 2">
+                                            <label for="lastaddr" class="field-icon"> <i class="fa fa-map-marker"></i> </label>
+                                        </label>
+                                    </div>*@
+
+                                <!-- end section -->
+                                <!-- end section -->
+
                             </div>
                         </div>
+                    </div>
+                }
+            </div>
+            <!-- recent orders table -->
 
-                        <!-- recent orders table -->
-
-                        <div class="panel border-round">
-                            <div class="panel-menu p12 admin-form theme-primary brdr-none">
-                                <div class="heading-title list-items">
-                                    <h1 class="panel-title vndr-prduct-lst">List of products</h1>
-                                </div>
-                                <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                                    <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
-                                        <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
-                                            <div class="pagination-panel">
-                                                Page &nbsp; <a href="#" class="btn btn-sm default prev disabled"> <i class="fa fa-angle-left"></i></a>
-                                                <input class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" placeholder="1" style="text-align:center; margin: 0 5px;" type="text">
-                                                <a href="#" class="btn btn-sm default next"><i class="fa fa-angle-right"></i></a> of <span class="pagination-panel-total">18 &nbsp;</span>
-                                            </div>
-                                        </div>
-                                        <div class="dataTables_length">
-                                            <label>
-                                                <span class="seperator">| </span> <span class="view">View &nbsp;</span>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> 10 <span class="fa fa-angle-down down-number-btn"></span></button>
-                                                    <span class="records">records</span>
-                                                    <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
-                                                        <li><a href="#">20</a></li>
-                                                        <li><a href="#"> 30</a></li>
-                                                        <li><a href="#"> 40 </a></li>
-                                                        <li><a href="#"> 50</a></li>
-                                                        <li><a href="#">60</a></li>
-                                                        <li><a href="#"> 70</a></li>
-                                                        <li><a href="#"> 80 </a></li>
-                                                        <li><a href="#"> 90</a></li>
-                                                    </ul>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total 178 records </div>
+            <div class="panel">
+                <div class="panel-menu  admin-form theme-primary brdr-none">
+                    <div class="heading-title list-items">
+                        <h1 class="panel-title">List of products</h1>
+                    </div>
+                    <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
+                            <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                <div class="pagination-panel">
+                                    <div class="page-text">
+                                        Page &nbsp;
                                     </div>
-                                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
-                                        <div class="table-group-actions pull-right">
-                                            <span></span>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
-                                                <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                                    <li><a href="#">Edit</a></li>
-                                                    <li><a href="#">Delete</a></li>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddProduct", "AddProduct", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddProduct", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+
+                                </div>
+                            </div>
+                            <div class="dataTables_length">
+                                <label>
+                                    <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                </label>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  dropdown-toggle pagination-sellct-button-toogle " data-toggle="dropdown" style="background:#FFFFFF"> @Model.PageSize <span class="fa fa-angle-down down-number-btn"></span></button>
+                                    <span class="records">&nbsp; records</span>
+
+                                </div>
+                            </div>
+
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>@Model.TotalItemCount records </div>
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                            <div class="table-group-actions pull-right">
+                                <span></span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                    <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<hr class="table_line">-->
+                    <div class="row top-margn pt5 pb5">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-brand" name="filter-group">
+                                    <option value="0">Filter by Brand</option>
+                                    <option value="Aqua Panna">Aqua Panna</option>
+                                    <option value="Kinley">Kinley</option>
+                                    <option value="Arwa">Arwa</option>
+                                    <option value="Alain">Alain</option>
+                                    <option value="Monvio">Monvio</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select ">
+                                <select id="filter-order" name="filter-purchases" class="brdr-color br-light">
+                                    <option value="0">Filter by Order(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
+                                    <option value="0">Filter by Status</option>
+                                    <option value="In Stock">In Stock</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                    <option value="Deleted">Deleted</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-body pn product-mngmnt-table">
+                    <div class="table-responsive border-round brdr-top-none brdr-btm-none">
+                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1 9 borderless main-driver-table mycustomtbl">
+                            <thead>
+                                <tr class=" clr-blck">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn"></span>
+                                        </label>
+                                    </th>
+                                    <th class=" text-center">Image</th>
+                                    <th class="text-center">Product Title</th>
+                                    <th class=" text-center">vendor</th>
+                                    <th class="">SKU</th>
+                                    <th class="">Price</th>
+                                    <th class=" text-center">Stock</th>
+                                    <th class=" text-center">Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class=".tbody">
+                                @foreach (var item in Model)
+                                {
+                                    <tr id="@item.ProductId">
+                                        <td class="text-center" data-val-col="checkbox" data-val="false">
+                                            <label class="option block mn">
+                                                <input type="checkbox" class="ch" name="mobileos" value="@item.ProductId">
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+                                        @if (!string.IsNullOrEmpty(item.Image_path))
+                                        {
+
+                                            <td data-val-col="image_path" data-val="@item.Image_path.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50">
+
+                                                <img src='@item.Image_path.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )' style="max-width:100px; max-height:100px;" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td data-val-col="image_path" data-val="" class="w50">
+
+                                                <img src='' style="max-width:100px; max-height:100px;" />
+                                            </td>
+                                        }
+
+                                        <td class="text-center" data-val-col="Title" data-val="@item.Title">@item.Title</td>
+                                        <td class="text-center" data-val-col="Vendername" data-val="@item.Vendername">@item.Vendername</td>
+                                        <td class="text-center" data-val-col="ProductSKU" data-val="@item.ProductSKU">@item.ProductSKU</td>
+                                        <td class="text-center" data-val-col="customer_price" data-val="@item.customer_price">@item.customer_price</td>
+                                        <td class="text-center" data-val-col="stock" data-val="@item.stock">@item.stock</td>
+                                        <td class="text-center" data-val-col="Status" data-val="@item.Status">@item.Status</td>
+
+                                        <td style="display:none;" class="text-center" data-val-col="av_composition_ppm" data-val="@item.av_composition_ppm">@item.av_composition_ppm</td>
+                                        <td style="display:none;" class="text-center" data-val-col="availabilityName" data-val="@item.availabilityName">@item.availabilityName</td>
+                                        <td style="display:none;" class="text-center" data-val-col="bottle_per_box" data-val="@item.bottle_per_box">@item.bottle_per_box</td>
+                                        <td style="display:none;" class="text-center" data-val-col="brand" data-val="@item.brand">@item.brand</td>
+                                        <td style="display:none;" class="text-center" data-val-col="categoryname" data-val="@item.categoryname">@item.categoryname</td>
+                                        <td style="display:none;" class="text-center" data-val-col="category_id" data-val="@item.category_id">@item.category_id</td>
+                                        <td style="display:none;" class="text-center" data-val-col="customer_max_order" data-val="@item.customer_max_order">@item.customer_max_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="customer_min_order" data-val="@item.customer_min_order">@item.customer_min_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="Description" data-val="@item.Description">@item.Description</td>
+                                        <td style="display:none;" class="text-center" data-val-col="discount" data-val="@item.discount">@item.discount</td>
+                                        <td style="display:none;" class="text-center" data-val-col="Image_path" data-val="@item.Image_path">@item.Image_path</td>
+                                        <td style="display:none;" class="text-center" data-val-col="phno" data-val="@item.phno">@item.phno</td>
+                                        <td style="display:none;" class="text-center" data-val-col="ProductId" data-val="@item.ProductId">@item.ProductId</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_max_order" data-val="@item.store_max_order">@item.store_max_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_min_order" data-val="@item.store_min_order">@item.store_min_order</td>
+                                        <td style="display:none;" class="text-center" data-val-col="store_price" data-val="@item.store_price">@item.store_price</td>
+                                        <td style="display:none;" class="text-center" data-val-col="VenderSource" data-val="@item.VenderSource">@item.VenderSource</td>
+                                        <td style="display:none;" class="text-center" data-val-col="bottle_material" data-val="@item.bottle_material">@item.bottle_material</td>
+                                        <td style="display:none;" class="text-center" data-val-col="volume" data-val="@item.volume">@item.volume</td>
+
+
+                                        <td>
+                                            <div class="btn-group text-right">
+                                                <button type="button" class="btn btn-success bg-dark br2 btn-xs fs12 dropdown-toggle custonbtn" data-toggle="dropdown" aria-expanded="false">
+                                                    <span id="selctedName">@item.Status</span><span class="caret ml5"></span>
+                                                </button>
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.ProductId">
+                                                    <li onclick="makeSelected(this)" title="Edit">
+                                                        Edit
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li onclick="makeSelected(this)">Delete</li>
+                                                    <li onclick="makeSelected(this)">Waiting for approval</li>
+                                                    <li onclick="makeSelected(this)">Active</li>
+                                                    <li onclick="makeSelected(this)">Suspended</li>
+                                                    <li onclick="makeSelected(this)">soldout</li>
                                                 </ul>
                                             </div>
-                                            <button class="btn btn-sm btn-default table-group-action-submit"> <i class="fa fa-check"></i> Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--<div class=" row new-pagination-div">
-                                  <div class=" col-lg-8  col-md-8 col-sm-8 col-xs-8 fs13 fw600 mt5" style="color:#393939">
-                                   <div class="pagination-left-content">
-                                                 <span>Page
-                                                 <a href="#" class="side-arrows"><i class="fa fa-angle-left" aria-hidden="true"></i>
-                                            </a>
-                                            <span class=""><input type="text" placeholder="1" class="text-center input-sm input-inline pl-no pr-no input-box" maxlength="5"></span>
-                                                 <a href="#" class="side-arrows"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <span>Of 10&nbsp;|&nbsp;View</span>
-                                            <button class="btn btn-default dropdown-toggle btn-sm numer-dropdown" type="button" data-toggle="dropdown"><span class="mr10">10</span>
-                                              <span class="fa fa-angle-down down-number-btn-new"></span></button>&nbsp;records
-                                              <span>&nbsp;|&nbsp;Found total 178 records</span>
-                                              <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn">
-                                                <li><a href="#">10</a></li>
-                                                <li><a href="#">20</a></li>
-                                                <li><a href="#">30</a></li>
-                                                <li><a href="#">40</a></li>
-                                                <li><a href="#">50</a></li>
-                                                <li><a href="#">60</a></li>
-                                                <li><a href="#">70</a></li>
-                                                <li><a href="#">80</a></li>
-                                                <li><a href="#">90</a></li>
-                                                <li><a href="#">100</a></li>
-
-                                              </ul>
-
-                                                 </span>
-                                  </div>
-                                 </div>
-
-                                 <div class=" col-lg-4 col-md-4  col-sm-4 c col-xs-4 mt5 fs13">
-                                   <div class="pagination-right-content pull-right">
-
-                                     <div class="dropdown">
-                                  <button class="btn btn-default btn-sm dropdown-toggle select-dropdown-pagi" type="button" data-toggle="dropdown"><span class="mr15 ml15">Select</span>
-                                  <span class="fa fa-angle-down down-btn-new"></span></button>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">Edit</a></li>
-                                    <li><a href="#">Delete</a></li>
-
-                                  </ul>
-                                   <button class="btn btn-sm btn-default pagination-submit-btn">
-                                   <i class="fa fa-check"></i> Submit</button>
-                                </div>
-
-                                 </div>
-                                </div>
-
-                                 </div>-->
-                                <hr class="fline">
-                                <div class="row pt10 vndr-brdr-btm-1">
-                                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
-                                        <label class="field select mt10 first-filter-product">
-                                            <select id="filter-category" name="filter-category" class="from-control filter-selection-box">
-                                                <option value="0">Filter by Brand</option>
-                                                <option value="1">Aquaa</option>
-                                                <option value="2">Panna</option>
-                                                <option value="3">Kinley</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                        <i class="arrow"></i>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-lg-4  col-xs-12 filter-selectpicker">
-                                        <label class="field select mt10">
-                                            <select id="filter-status" name="filter-status" class=" selectpicker filter-selection-box from-control">
-                                                <option value="0">Filter by Price</option>
-                                                <option value="1">$200</option>
-                                                <option value="2">$200</option>
-                                                <option value="1">$300</option>
-                                                <option value="2">$400</option>
-                                                <option value="1">$500</option>
-                                                <option value="2">$600</option>
-                                                <option value="2">$700</option>
-                                                <option value="1">$800</option>
-                                                <option value="1">$900</option>
-                                                <option value="1">$1000</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-4  col-sm-4 col-lg-4 col-xs-12">
-                                        <label class="field select mt10">
-                                            <select id="filter-status" name="filter-status" class="filter-selection-box">
-                                                <option value="0">Filter by Status</option>
-                                                <option value="1">Active</option>
-                                                <option value="2">Inactive</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-body pn">
-                                <div class="table-responsive">
-                                    <table class="table admin-form theme-warning tc-checkbox-1  main-vndr-table main-downloads-table ">
-                                        <thead>
-                                            <tr class="bg-light  brdr-top t-m-tr fs13 clr-blck">
-                                                <th class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </th>
-                                                <th class="">Image</th>
-                                                <th class="">Product Title</th>
-                                                <th class=""> Brand</th>
-                                                <th class="">SKU</th>
-                                                <th class="">Price</th>
-                                                <th class=" text-center">Volume</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-left ml20">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w100"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/6.png"></td>
-                                                <td class="">Panna</td>
-                                                <td class="">Kinley</td>
-                                                <td class="">#21362</td>
-                                                <td class="">$215</td>
-                                                <td class="text-center">1 liter</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning bg-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li class="active"> <a href="">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li> <a href="#">soldout</a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/7.png"></td>
-                                                <td class="">Monvio</td>
-                                                <td class="">Panna</td>
-                                                <td class="">#21362</td>
-                                                <td class="">$215</td>
-                                                <td class="text-center">1 liter</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning bg-dark   btn-xs fs12 dropdown-toggle br-radius-4  pending-btn" data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li class="active"> <a href="">Pending</a> </li>
-                                                            <li class=""> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li> <a href="#">soldout</a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Alain</td>
-                                                <td class="">Kinely</td>
-                                                <td class="">#2875</td>
-                                                <td class="">$16</td>
-                                                <td class="text-center">500ml</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group text-right">
-                                                        <button type="button" class="btn btn-warning btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li class="active"> <a href="#">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li> <a href="#">soldout</a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Kinley</td>
-                                                <td class="">Kinely</td>
-                                                <td class="">#2875</td>
-                                                <td class="">$16</td>
-                                                <td class="text-center">500ml</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group text-right">
-                                                        <button type="button" class="btn btn-info   btn-xs fs12 dropdown-toggle br-radius-4  soldout-btn" data-toggle="dropdown" aria-expanded="false"> Soldout <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li> <a href="#">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li class="active"> <a href="#">soldout</a>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Arwa</td>
-                                                <td class="">Arwa</td>
-                                                <td class="">#21362</td>
-                                                <td class="">$215</td>
-                                                <td class="text-center">1 liter</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-info bg-dark   btn-xs fs12 dropdown-toggle br-radius-4   soldout-btn" data-toggle="dropdown" aria-expanded="false"> soldout <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li> <a href="#">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li class=" active"> <a href="#">soldout</a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Alian</td>
-                                                <td class="">Alian</td>
-                                                <td class="">#2875</td>
-                                                <td class="">$16</td>
-                                                <td class="text-center">500ml</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group text-right">
-                                                        <button type="button" class="btn btn-warning btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 pending-btn " data-toggle="dropdown" aria-expanded="false"> Pending <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li class="active"> <a href="#">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li> <a href="#">soldout</a>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w100"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Arwa</td>
-                                                <td class="">Arwa</td>
-                                                <td class="">#21362</td>
-                                                <td class="">$215</td>
-                                                <td class="text-center">1 liter</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-danger bg-dark   btn-xs fs12 dropdown-toggle br-radius-4  disabled-btn" data-toggle="dropdown" aria-expanded="false"> Disabled <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li> <a href="#">Pending</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li class="active"> <a href="#">Disabled</a> </li>
-                                                            <li> <a href="#">soldout</a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                            <tr class="t-m-tr">
-                                                <td class="text-center">
-                                                    <label class="option block mn">
-                                                        <input type="checkbox" name="mobileos" value="FR">
-                                                        <span class="checkbox mn"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="w50"><img class="img-responsive mw30 ib mr10" title="user" src="~/Content/assets/img/10.png"></td>
-                                                <td class="">Alian</td>
-                                                <td class="">Alian</td>
-                                                <td class="">#2875</td>
-                                                <td class="">$16</td>
-                                                <td class="text-center">500ml</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group text-right">
-                                                        <button type="button" class="btn btn-info btn-dark   btn-xs fs12 dropdown-toggle br-radius-4 soldout-btn " data-toggle="dropdown" aria-expanded="false"> Sold Out <span class="caret ml5"></span> </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li class=""> <a href="#">Sold Out</a> </li>
-                                                            <li> <a href="#">Pending Approval</a> </li>
-                                                            <li> <a href="#">Disabled</a> </li>
-                                                            <li class="active"> <a href="">soldout</a>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>Edit</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-
-                    <!-- end: .tray-center -->
-                    <!-- begin: .tray-right -->
-                    <!-- end: .tray-right -->
-
-                </section>
-
-                <!-- End: Content -->
-
-            </div>
-
-            <!-- End: Content-Wrapper -->
-            <!-- Start: Right Sidebar -->
-            <!--footer-->
-            <div class="row main-footer">
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
-
-
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-                        <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
-
-                    </div>
-
-
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-                        <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a>  </span></p>
-
-                    </div>
-
                 </div>
-
-
-
-
-
             </div>
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- begin: .tray-right -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+
+</div>
+
+<!-- End: Content-Wrapper -->
+<!-- Start: Right Sidebar -->
+<div class="clearfix"></div>
+
+<div class="row main-footer">
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
 
         </div>
 
     </div>
 
-}
-
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap -->
-
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
-
-    <script src="~/Content/assets/js/raphael.min.js"></script>
-
-    <script src="~/Content/assets/js/Chart.min.js"></script>
-
-    <script src="~/Content/assets/js/morris.min.js"></script>
-
-    <script src="~/Content/assets/js/custom.min.js"></script>
-
-    <script src="~/Content/assets/js/wizard.js"></script>
-
-    <script src="~/Content/assets/js/date.js"></script>
-
-    <script src="~/Content/assets/js/moment.min.js"></script>
-
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-
-    <script src="~/Content/assets/js/visitor.js"></script>
-
-    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-
-    <script>
-
-        $(document).ready(function () {
-
-            $(".datepicker").datepicker();
-
-        });
-
-    </script>
-    <script type="text/javascript">
-
-        $(document).ready(function (e) {
-
-            $('.selectpicker').selectpicker();
-
-        });
-
-    </script>
+</div>
 
 
 
+<script src="~/Content/assets/js/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-
-</body>
-
-
-
-</html>
-<!--footer end-->
 <script type="text/javascript">
 
-    $(document).ready(function (e) {
 
-        $('.selectpicker').selectpicker();
+    function validatetabdata(intTab) {
+        var strErrMsg = "";
+        var returnval = true;
+        if ($(".clssummeryval").length > 0) {
+            $(".clssummeryval").html('');
+        }
+        $("#divValidation2").html("");
+        $("#divValidation1").html("");
+        if (intTab == 1) {
 
+            if ($.trim($("#Title").val()) == "") {
+                strErrMsg += "<li>Title is required</li>";
+            }
+            if ($.trim($("#category_id").val()) == "0") {
+                strErrMsg += "<li>Category is required</li>";
+            }
+            if ($.trim($("#VenderSource").val()) == "0") {
+                strErrMsg += "<li>Vendor is required</li>";
+            }
+
+            if (strErrMsg != "") {
+                $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 2) {
+
+            if ($.trim($("#ProductSKU").val()) == "") {
+                strErrMsg += "<li>ProductSKU is required</li>";
+            }
+            if ($.trim($("#stock").val()) != "") {
+
+                var stockdata = $.trim($("#stock").val());
+                if ((!$.isNumeric(stockdata)) || (Math.floor(stockdata) != stockdata)) {
+                    strErrMsg += "<li>Stock value should be in digits only.</li>";
+                }
+            }
+            if ($.trim($("#customer_price").val()) != "") {
+                if (!$.isNumeric($.trim($("#customer_price").val()))) {
+                    strErrMsg += "<li>Customer price should be in numeric only.</li>";
+                }
+            }
+            if ($.trim($("#store_price").val()) != "") {
+                if (!$.isNumeric($.trim($("#store_price").val()))) {
+                    strErrMsg += "<li>Store price should be in numeric only.</li>";
+                }
+            }
+            if (strErrMsg != "") {
+                $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        return returnval;
+    }
+    $(document).ready(function () {
+        //$('#myTable').DataTable();
+
+
+
+
+
+
+        //Igex - Tab Activation
+
+        $("#btnNext").click(function () {
+
+            if (validatetabdata(1))
+                activeTab('2');
+        });
+
+        $("#ProductSKU").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.shiftKey === true || e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    $(".prduct-save-btn").click(function () {
+        //var productSku = $("#ProductSKU").val();
+        //if (productSku == null || productSku == undefined || productSku == NaN || productSku == 0) {
+        //    alert('Please Insert Proper SKU Number');
+        //    $("#sku").html("Please Insert Proper SKU Number");
+        //    return false;
+        //}
+        if (!validatetabdata(2)) {
+            return false;
+        }
+        return true;
+    });
+
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
+
+        $.ajax({
+            url: '@Url.Action("DeleteProduct", "Product")',
+            data: { prodid: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+                //   alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
+    //Igex
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
+
+</script>
+@*<script type="text/javascript">
+    <!--
+            var pager = new Pager('results', 3);
+            pager.init();
+            pager.showPageNav('pager', 'pageNavPosition');
+            pager.showPage(1);
+        //--></script>*@
+
+
+<!-- Bootstrap -->
+
+
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<script src="~/Content/assets/js/raphael.min.js"></script>
+
+<script src="~/Content/assets/js/Chart.min.js"></script>
+
+<script src="~/Content/assets/js/morris.min.js"></script>
+
+<script src="~/Content/assets/js/custom.min.js"></script>
+
+<script src="~/Content/assets/js/date.js"></script>
+
+<script src="~/Content/assets/js/moment.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="~/Content/assets/js/visitor.js"></script>
+
+
+
+@*<script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker();
+        });
+    </script>*@
+
+
+
+<script type="text/javascript">
+
+    var productdtl = {
+        getid: function (val) {
+            var spltval = val.split("_");
+            return parseInt(spltval[1]);
+        },
+        getprojectjobj: function () {
+            return jdata = {
+                productid: "",
+                Image: "",
+                Title: "",
+                ProductSKU: "",
+                productprice: "",
+                Availability: ""
+            };
+        },
+        getselectrowdata: function (id) {
+            var $row = jQuery("#" + id);
+            var $column = $row.find('td');
+
+            $column.addClass('row-highlight');
+            var values = "";
+            var jData = this.getprojectjobj();
+            var objarr = [];
+
+            var obj = {};
+            jQuery.each($column, function (i, item) {
+                var $th = $(item).attr("data-val-col");
+                var $td = $(item).attr("data-val");
+
+                debugger;
+                obj[$th] = $td;
+            });
+            return obj;
+        }
+    };
+
+    function makeSelected(el) {
+        $(el).parent().parent().children().first().text(el.innerText);
+        var prodit = productdtl.getid($(el).parent()[0].id);
+
+        if (el.innerText != "Edit") {
+            $.ajax({
+                url: '@Url.Action("UpdateStatus","Product")',
+                data: { prodid: prodit, sts: el.innerText },
+                type: "POST",
+                success: function (res) {
+                    var $row = jQuery("#" + prodit);
+                    //  console.log($row);
+                    var elnew = $row.find('td[data-val-col="Status"]');
+                    // console.log(elnew);
+
+                    elnew.attr("data-val", res.status);
+                    elnew.html(res.status);
+
+                },
+                error: function (err) {
+
+                }
+            });
+        } else {
+            var rowdata = productdtl.getselectrowdata(prodit);
+
+            $("#output").attr("src", rowdata.image_path);
+            $("#ProductSKU").val(rowdata.ProductSKU);
+            $("#Title").val(rowdata.Title);
+            $("#phno").val(rowdata.phno).attr("selected");
+            //  $("#productprice").val(rowdata.ProductPrice);
+            $("#availabilityName").val(rowdata.availabilityName).attr("selected");
+            $("#Description").val(rowdata.Description);
+            $("#VenderSource").val(rowdata.VenderSource).attr("selected");
+            $("#ProductId").val(rowdata.ProductId);
+            // $("#bottle_per_box").val(rowdata.bottle_per_box).attr("selected");
+            $("#bottle_material").val(rowdata.bottle_material).attr("selected");
+            $("#volume").val(rowdata.volume).attr("selected");
+
+
+            $("#brand").val(rowdata.brand).attr("selected");
+            $("#category_id").val(rowdata.category_id).attr("selected");
+            $("#customer_max_order").val(rowdata.customer_max_order).attr("selected");
+            $("#customer_min_order").val(rowdata.customer_min_order).attr("selected");
+            $("#customer_price").val(rowdata.customer_price);
+            //$("#Status").val(rowdata.Status).attr("selected");
+            $("#stock").val(rowdata.stock);
+            $("#store_max_order").val(rowdata.store_max_order).attr("selected");
+            $("#store_min_order").val(rowdata.store_min_order).attr("selected");
+            $("#store_price").val(rowdata.store_price);
+            $("#discount").val(rowdata.discount);
+            $("#av_composition_ppm").val(rowdata.av_composition_ppm);
+            $("#bottle_per_box").val(rowdata.bottle_per_box);
+
+        }
+    }
+
+</script>
+
+
+
+<script type="text/jscript">
+    //get file size
+    function GetFileSize(fileid) {
+        try {
+            var fileSize = 0;
+            //for IE
+            if ($.browser.msie) {
+                //before making an object of ActiveXObject,
+                //please make sure ActiveX is enabled in your IE browser
+                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                var objFile = objFSO.getFile(filePath);
+                var fileSize = objFile.size; //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+                //for FF, Safari, Opeara and Others
+            else {
+                fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+            return fileSize;
+        }
+        catch (e) {
+            alert("Error is :" + e);
+        }
+    }
+
+    //get file path from client system
+    function getNameFromPath(strFilepath) {
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec(strFilepath);
+
+        if (strName == null) {
+            return null;
+        }
+        else {
+            return strName[0];
+        }
+    }
+
+    $("#btnSubmit").on("click", function () {
+        if ($('#fileToUpload').val() == "") {
+            $("#spanfile").html("Please upload file");
+            return false;
+        }
+        else {
+            return checkfile();
+        }
+    });
+
+    function checkfile() {
+        var file = getNameFromPath($("#fileToUpload").val());
+        if (file != null) {
+            var extension = file.substr((file.lastIndexOf('.') + 1));
+            // alert(extension);
+            switch (extension) {
+                case 'jpg':
+                case 'png':
+                case 'gif':
+                case 'pdf':
+                    flag = true;
+                    break;
+                default:
+                    flag = false;
+            }
+        }
+        if (flag == false) {
+            $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
+            return false;
+        }
+        else {
+            var size = GetFileSize('fileToUpload');
+            if (size > 3) {
+                $("#spanfile").text("You can upload file up to 3 MB");
+                return false;
+            }
+            else {
+                $("#spanfile").text("");
+            }
+        }
+    }
+
+    $(function () {
+        $("#fileToUpload").change(function () {
+            checkfile();
+        });
+    });
+    $(document).ready(function () {
+        $(".no").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+        @if (@ViewBag.status != null && @ViewBag.status == 0)
+        {
+            var p = (Final_ThibanProject.Models.Product)ViewBag.productretrun;
+            <text>
+        $("#ProductSKU").val("@p.ProductSKU");
+        $("#Title").val("@p.Title");
+        $("#phno").val("@p.phno").attr("selected");
+        //  $("#productprice").val(rowdata.ProductPrice");
+        $("#availabilityName").val("@p.availabilityName").attr("selected");
+        $("#Description").val("@p.Description");
+        $("#VenderSource").val("@p.VenderSource").attr("selected");
+        $("#ProductId").val("@p.ProductId");
+        // $("#bottle_per_box").val("@p.bottle_per_box").attr("selected");
+        $("#bottle_material").val("@p.bottle_material").attr("selected");
+        $("#volume").val("@p.volume").attr("selected");
+
+
+        $("#brand").val("@p.brand").attr("selected");
+        $("#category_id").val("@p.category_id").attr("selected");
+        $("#customer_max_order").val("@p.customer_max_order").attr("selected");
+        $("#customer_min_order").val("@p.customer_min_order").attr("selected");
+        $("#customer_price").val("@p.customer_price");
+        //$("#Status").val("@p.Status").attr("selected");
+        $("#stock").val("@p.stock");
+        $("#store_max_order").val("@p.store_max_order").attr("selected");
+        $("#store_min_order").val("@p.store_min_order").attr("selected");
+        $("#store_price").val("@p.store_price");
+        </text>
+        }
+
+        $("#filter-status").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+        $("#filter-order").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=OrderCount&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+        $("#filter-brand").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=Brand&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+
+        var brand = '@ViewBag.filter_brand';
+        if (brand != '' || brand != null) {
+            $("#filter-brand").val(brand).attr('selected', true);
+        }
+        var count = '@ViewBag.filter_order';
+        if (count != '' || count != null) {
+            $("#filter-order").val(count).attr('selected');
+        }
+        var status = '@ViewBag.filter_status';
+        if (status != '' || status != null) {
+            $("#filter-status").val(status).attr('selected', true);
+        }
+
+        if ($("#filter-brand").val() == '' || $("#filter-brand").val() == 0 || $("#filter-brand").val() == null) {
+            $("#filter-brand").val(0).attr('selected');
+        }
+        if ($("#filter-order").val() == '' || $("#filter-order").val() == 0 || $("#filter-order").val() == null) {
+            $("#filter-order").val(0).attr('selected');
+        }
+        if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+            $("#filter-status").val(0).attr('selected');
+        }
     });
 
 </script>

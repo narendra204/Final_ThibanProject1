@@ -268,9 +268,9 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title">
-                        <a href="admin-index.php" class="site_title">
+                        <a href="~/Home/Index" class="site_title">
                             <span class="main-heading"></span>
-                                <p class="test">THIBAN <span class="side-heading">ADMIN</span></p>
+                            <p class="test">THIBAN <span class="side-heading">ADMIN</span></p>
                         </a>
                     </div>
                     <div class="clearfix"></div>
@@ -280,147 +280,295 @@
                         <div class="menu_section">
                             <ul class="nav side-menu">
                                 <li class="">
-                                    <a href="admin-index.php">
+                                    <a href="~/Home/Index">
                                         <img src="~/Content/assets/img/side-menu-icons/home1.png" />
                                         <span class="sidebar-title" id="dashbord"> Dashboard</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" />
-                                        <span class="sidebar-title" id="management">Management</span>
-                                    </a>
-                                </li>
 
-                                <li>
-                                    <a href="~/Customer/AddCustomer" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Customer.png" />
-                                        <span class="sidebar-title" id="customer"> Customer</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Product/AddProduct" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" />
-                                        <span class="sidebar-title" id="product"> Product</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Order/AddOrder" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" />
-                                        <span class="sidebar-title" id="order">Order</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Vender/AddVender" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Vendor.png" />
-                                        <span class="sidebar-title" id="vendor">Vendor</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Driver/AddDriver" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" />
+                                @if (Session["menuPermission"] != null && Session["menuPermission"].ToString() != "" && Session["roleID"] != null)
+                                {
+                                    var per = Session["menuPermission"] as IEnumerable<Final_ThibanProject.Models.MenuItem>;
+                                    var flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Product Management" || @me0.menuname == "Driver Management" || @me0.menuname == "Order Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                        <li>
+                                            <a href="#" class="drop-down-mainmenu">
+                                                <img src="~/Content/assets/img/side-menu-icons/Management.png" />
+                                                <span class="sidebar-title" id="management">Management</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Customer Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="~/Customer/AddCustomer" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Customer.png" />
+                                            <span class="sidebar-title" id="customer"> Customer</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Product Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="~/Product/AddProduct" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Product.png" />
+                                            <span class="sidebar-title" id="product"> Product</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Order Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="~/Order/AddOrder" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Order.png" />
+                                            <span class="sidebar-title" id="order">Order</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Vender Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="~/Vender/AddVender" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Vendor.png" />
+                                            <span class="sidebar-title" id="vendor">Vendor</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Driver Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="~/Driver/AddDriver" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Driver.png" />
 
-                                        <span class="sidebar-title" id="driver">Driver</span>
-                                    </a>
-                                </li>
-                                <li class=" ">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" class="" alt="" />
-                                        <span class="sidebar-title" id="rating">Rating and Review</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Product/ProductRating" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" />
-                                        <span class="sidebar-title" id="productrate">Product</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Driver/DriverRating" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" />
-                                        <span class="sidebar-title" id="driverrate">Driver</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Billing Management.png" />
-                                        <span class="sidebar-title" id="billing">Billing Management </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Billing/ProductPayment" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product Payments.png" />
-                                        <span class="sidebar-title" id="payment">Product Payments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-vendor-requested-transactions.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Vendor Requested Tra.png" />
-                                        <span class="sidebar-title" id="vrt">Vendor Requested Transactions</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-vendor-all-transactions.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Vendor All Transacti.png" />
-                                        <span class="sidebar-title" id="vat"> Vendor All Transactions</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-driver-requested-transactions.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver Requested Transactions.png" />
-                                        <span class="sidebar-title" id="drt">Driver Requested Transactions</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-driver-all-transactions.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver All Transactions.png" />
-                                        <span class="sidebar-title" id="dat">Driver All  Transactions</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="admin-static-pages.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Static Pages.png" />
-                                        <span class="sidebar-title" id="sp">Static Pages</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-geo-fence.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Geo Fence.png" />
-                                        <span class="sidebar-title" id="gf">Geo Fence</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" class="new-smallimgs" alt="" />
-                                        <span class="sidebar-title" id="tmanagement">Team Management </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/TeamManagement/TeamMember" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" />
-                                        <span class="sidebar-title" id="tmember">Team Members</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Role/AddRole" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Roles.png" />
-                                        <span class="sidebar-title" id="role">Roles</span>
-                                    </a>
-                                </li>
-                                <li class="new-smallimgs">
-                                    <a href="admin-analytics.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" class="new-smallimgs" alt="" />
-                                        <span class="sidebar-title" id="analytics"> Analytics </span>
-                                    </a>
-                                </li>
-                                <li class="new-smallimgs">
-                                    <a href="my-profile.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" />
-                                        <span class="sidebar-title" id="setting"> Settings </span>
-                                    </a>
-                                </li>
-
+                                            <span class="sidebar-title" id="driver">Driver</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Rating & Review")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li class=" ">
+                                        <a href="#" class="drop-down-mainmenu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" class="" alt="" />
+                                            <span class="sidebar-title" id="rating">Rating and Review</span>
+                                        </a>
+                                    </li>
+                                   
+                                    <li>
+                                        <a href="~/Product/ProductRating" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Product rating.png" />
+                                            <span class="sidebar-title" id="productrate">Product</span>
+                                        </a>
+                                    </li>
+                                   
+                                    <li>
+                                        <a href="~/Driver/DriverRating" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" />
+                                            <span class="sidebar-title" id="driverrate">Driver</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Payment Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li class="">
+                                        <a href="#" class="drop-down-mainmenu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Billing Management.png" />
+                                            <span class="sidebar-title" id="billing">Billing Management </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Billing/ProductPayment" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Product Payments.png" />
+                                            <span class="sidebar-title" id="payment">Product Payments</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Vendor Requested Tra.png" />
+                                            <span class="sidebar-title" id="vrt">Vendor Requested Transactions</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Vendor All Transacti.png" />
+                                            <span class="sidebar-title" id="vat"> Vendor All Transactions</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Driver Requested Transactions.png" />
+                                            <span class="sidebar-title" id="drt">Driver Requested Transactions</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Driver All Transactions.png" />
+                                            <span class="sidebar-title" id="dat">Driver All  Transactions</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "CMS")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li>
+                                        <a href="#">
+                                            <img src="~/Content/assets/img/side-menu-icons/Static Pages.png" />
+                                            <span class="sidebar-title" id="sp">Static Pages</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/geofence/index">
+                                            <img src="~/Content/assets/img/side-menu-icons/Geo Fence.png" />
+                                            <span class="sidebar-title" id="gf">Geo Fence</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Team Management")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li class="">
+                                        <a href="" class="drop-down-mainmenu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Team Management.png" class="new-smallimgs" alt="" />
+                                            <span class="sidebar-title" id="tmanagement">Team Management </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/TeamManagement/TeamMember" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Team Members.png" />
+                                            <span class="sidebar-title" id="tmember">Team Members</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Role/AddRole" class="dropdown-sub-menu">
+                                            <img src="~/Content/assets/img/side-menu-icons/Roles.png" />
+                                            <span class="sidebar-title" id="role">Roles</span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Analytics")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li class="new-smallimgs">
+                                        <a href="#">
+                                            <img src="~/Content/assets/img/side-menu-icons/Analytics.png" class="new-smallimgs" alt="" />
+                                            <span class="sidebar-title" id="analytics"> Analytics </span>
+                                        </a>
+                                    </li>
+                                    }
+                                    flag = 0;
+                                    foreach (var me0 in per)
+                                    {
+                                        if (@me0.menuname == "Setting")
+                                        {
+                                            flag = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == 1 || Session["roleID"].ToString() == "0")
+                                    {
+                                    <li class="new-smallimgs">
+                                        <a href="#">
+                                            <img src="~/Content/assets/img/side-menu-icons/Settings.png" />
+                                            <span class="sidebar-title" id="setting"> Settings </span>
+                                        </a>
+                                    </li>
+                                    }
+                                }
                             </ul>
                         </div>
                     </div>
@@ -435,7 +583,7 @@
                     <nav class="navbar navbar-default bg">
                         <div class="container-fluid">
                             <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
-                            <form class="  navbar-form navbar-left navbar-search" role="search">
+                            <form class=" navbar-form navbar-left navbar-search" role="search">
                                 <div class="form-group serch-div">
 
                                     <!-- <i class="fa fa-search"></i>-->
@@ -445,107 +593,110 @@
                             </form>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="nav navbar-nav  pull-right">
-                                    <li class="dropdown list">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                            <span class="fa fa-bell-o"></span>
-                                            <span class="badge badge-default b-four"> 4 </span>
-                                        </a>
-                                        <ul class="dropdown-menu media-list width250 animated animated-shorter fadeIn" role="menu">
-                                            <li class="dropdown-header"> <span class="dropdown-title">12 Pending Notifications <a class="viewall-btn clr-wht" href="admin-view-all.php" style="color:#ffffff !important">View All</a></span> </li>
-                                            <li class="media line_1">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">New Vendor Registered <small class="text-muted"><a class="li_btn_1 wdt" href="javascript:">just now</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">5 Payout requests. <small class="text-muted"><a class="li_btn_2" href="javascript:">3 min</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">You have received <small class="text-muted"><a class="li_btn_3" href="javascript:">15 min</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">Vendor Payout amount <small class="text-muted"><a class="li_btn_4" href="javascript:">5 hrs</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">Product stock are low <small class="text-muted"><a class="li_btn_5" href="javascript:">2 days</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">New user registered <small class="text-muted"><a class="li_btn_6" href="javascript:">just now</a></small> </h5>
-                                                </div>
-                                            </li>
-                                            <li class="media listli">
-                                                <a class="media-left" href="#">
-                                                    <div class="lists-block"> </div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading h5">5 amount requested <small class="text-muted"><a class="li_btn_7" href="javascript:">1 day</a></small> </h5>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
-                                            <div class="img-user-pic">
-                                                <div class=" col-md-5 col-sm-5 col-xs-5">
-                                                    <div class="user-profile-photo">
-                                                        <span>
-                                                            <img src="@Session["Image"]" class="img-responsive user-profile-round " /><span>
-                                                                
-                                                            </span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
-                                                    <div class=" user-txt">
-                                                        <h3> @Session["Username"]</h3>
-                                                        <p>@Session["Email"]</p>
-                                                    </div>
-                                                </div>
-                                                <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                <li class="dropdown list">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                        <span class="fa fa-bell-o"></span>
+                                        <span class="badge badge-default b-four"> 4 </span>
+                                    </a>
+                                    <ul class="dropdown-menu media-list width250 animated animated-shorter fadeIn" role="menu">
+                                        <li class="dropdown-header"> <span class="dropdown-title">12 Pending Notifications <a class="viewall-btn clr-wht" href="#" style="color:#ffffff !important">View All</a></span> </li>
+                                        <li class="media line_1">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">New Vendor Registered <small class="text-muted"><a class="li_btn_1 wdt" href="javascript:">just now</a></small> </h5>
                                             </div>
-                                        </a>
-                                        <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
-                                            <li class="list-group-item"> <a href="~/Home/MyProfile" class="animated animated-short fadeInUp"> <span class="fa fa-user icons fs18"></span>&nbsp;&nbsp; Profile </a> </li>
-                                            <li class="list-group-item"> <a href="admin-index.php" class="animated animated-short fadeInUp"> <span class="fa fa-bell-o icons fs18"></span>&nbsp; &nbsp;Notification </a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class=""> <a href="~/MyAccount/Logout" aria-expanded="false">
-                                                      <img src="~/Content/assets/img/images/logout.jpg" class="logout-img" style="" alt="1" />  <span>Logout</span> </a> </li>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">5 Payout requests. <small class="text-muted"><a class="li_btn_2" href="javascript:">3 min</a></small> </h5>
+                                            </div>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">You have received <small class="text-muted"><a class="li_btn_3" href="javascript:">15 min</a></small> </h5>
+                                            </div>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">Vendor Payout amount <small class="text-muted"><a class="li_btn_4" href="javascript:">5 hrs</a></small> </h5>
+                                            </div>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">Product stock are low <small class="text-muted"><a class="li_btn_5" href="javascript:">2 days</a></small> </h5>
+                                            </div>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">New user registered <small class="text-muted"><a class="li_btn_6" href="javascript:">just now</a></small> </h5>
+                                            </div>
+                                        </li>
+                                        <li class="media listli">
+                                            <a class="media-left" href="#">
+                                                <div class="lists-block"> </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading h5">5 amount requested <small class="text-muted"><a class="li_btn_7" href="javascript:">1 day</a></small> </h5>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                        <div class="img-user-pic">
+                                            <div class=" col-md-5 col-sm-5 col-xs-5">
+                                                <div class="user-profile-photo">
+                                                    <span>
+                                                        <img src="@Session["Image"]" class="img-responsive user-profile-round " /><span>
+
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-7 col-xs-7 col-sm-7 ">
+                                                <div class=" user-txt">
+                                                    <h3> @Session["Username"]</h3>
+                                                    <p>@Session["Email"]</p>
+                                                </div>
+                                            </div>
+                                            <span class="caret caret-tp hidden-xs usr-drp-icon"></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
+                                        <li class="list-group-item"> <a href="~/Home/MyProfile" class="animated animated-short fadeInUp"> <span class="fa fa-user icons fs18"></span>&nbsp;&nbsp; Profile </a> </li>
+                                        <li class="list-group-item"> <a href="#" class="animated animated-short fadeInUp"> <span class="fa fa-bell-o icons fs18"></span>&nbsp; &nbsp;Notification </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="~/MyAccount/Logout" aria-expanded="false">
+                                        <img src="~/Content/assets/img/images/logout.jpg" class="logout-img" style="" alt="1" />  <span>Logout</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
             </div>
             @RenderBody()
-           </div>
         </div>
+    </div>
     <script type="text/javascript" src="~/Scripts/appjs.js"></script>
 </body>
 </html>

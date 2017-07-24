@@ -22,7 +22,7 @@
 
 <div class="right_col" role="main">
     <div class="row mb5 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
-        <h1 class="main-top-header">Thiban Team Management <small>Roles</small></h1>
+        <h1 class="main-top-header">Thiban Team Management</h1>
     </div>
 
     <div class="row col-md-12 col-lg-12 col-sm-12 col-xs-12 pr10">
@@ -68,11 +68,12 @@
                     <h1 class="panel-title">List of products</h1>
                 </div>
                 <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                    <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                    <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                         <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                             <div class="pagination-panel">
                                 <div class="page-text">
-                                    Page &nbsp;
+                                    Page
+                                </div>
                                     <div class="show-number">
                                         <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
 
@@ -85,7 +86,7 @@
                                     </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
                                     *@ <div class="of-text">of @Model.PageCount </div>
 
-                                </div>
+                               
                             </div>
                         </div>
                         <div class="dataTables_length">
@@ -99,22 +100,7 @@
                             </div>
                         </div>
 
-                        <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
-                        <div class="table-group-actions pull-right">
-                            <span></span>
-                            <div class="btn-group">
-                                <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
-                                <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                    <li><a href="#">Edit</a></li>
-                                    <li><a href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                            <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
-                        </div>
+                        <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span> @Model.TotalItemCount records </div>
                     </div>
                 </div>
 
@@ -150,7 +136,8 @@
                                         </td>
                                         <td id="roleid" style="display:none;" data-val-col="Address" data-val="@item.Roleid" class="">@item.Roleid</td>
                                         <td>@item.RoleName</td>
-                                        <td><button class="btn btn-default  btn-sm  edit_btn">Edit</button></td>
+                                        <td>@Html.ActionLink("Edit","CreateRole", "Role",  new { roleId = item.Roleid  } , new { @class = "btn btn-default  btn-sm  edit_btn" }  )        
+                                                                         @*<button class="btn btn-default  btn-sm  edit_btn">Edit</button></td>*@
                                         <td><button class="btn btn-default  btn-sm  delete_btn">Delete</button></td>
                                         <td></td>
                                     </tr>

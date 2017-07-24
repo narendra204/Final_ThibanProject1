@@ -21,8 +21,8 @@ namespace Final_ThibanProject.Models.DB
         public string description { get; set; }
         public Nullable<bool> status { get; set; }
     
-        public virtual dgeofence dgeofence { get; set; }
         public virtual driver driver { get; set; }
         public virtual vender vender { get; set; }
+        public virtual dgeofence dgeofence { get; set; }
     }
 }

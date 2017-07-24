@@ -144,202 +144,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\admin-tools\admin-forms\css\admin-forms.css" />
-    <Content Include="Content\assets\admin-tools\admin-forms\css\admin-forms.min.css" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\additional-methods.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery-ui-datepicker.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery-ui-monthpicker.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery.spectrum.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery.stepper.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery.steps.min.js" />
-    <Content Include="Content\assets\admin-tools\admin-forms\js\jquery.validate.min.js" />
-    <Content Include="Content\assets\bootstrap-daterangepicker\daterangepicker.css" />
-    <Content Include="Content\assets\bootstrap-daterangepicker\daterangepicker.js" />
-    <Content Include="Content\assets\css\admin-css.css" />
-    <Content Include="Content\assets\css\animate.min.css" />
-    <Content Include="Content\assets\css\bootstrap-theme.css" />
-    <Content Include="Content\assets\css\bootstrap-theme.min.css" />
-    <Content Include="Content\assets\css\bootstrap.css" />
-    <Content Include="Content\assets\css\bootstrap.min.css" />
-    <Content Include="Content\assets\css\custom.min.css" />
-    <Content Include="Content\assets\css\main.css" />
-    <Content Include="Content\assets\css\modification.css" />
-    <Content Include="Content\assets\css\prettyPhoto.css" />
-    <Content Include="Content\assets\css\vendor-css.css" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\css\font-awesome.css" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\css\font-awesome.min.css" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\HELP-US-OUT.txt" />
-    <Content Include="Content\assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\assets\img\1.png" />
-    <Content Include="Content\assets\img\10.png" />
-    <Content Include="Content\assets\img\2.png" />
-    <Content Include="Content\assets\img\3.png" />
-    <Content Include="Content\assets\img\4.png" />
-    <Content Include="Content\assets\img\5.png" />
-    <Content Include="Content\assets\img\6.png" />
-    <Content Include="Content\assets\img\7.png" />
-    <Content Include="Content\assets\img\8.png" />
-    <Content Include="Content\assets\img\9.png" />
-    <Content Include="Content\assets\img\bred-home.png" />
-    <Content Include="Content\assets\img\calenders.png" />
-    <Content Include="Content\assets\img\home-new.png" />
-    <Content Include="Content\assets\img\images\10.png" />
-    <Content Include="Content\assets\img\images\6.png" />
-    <Content Include="Content\assets\img\images\7.png" />
-    <Content Include="Content\assets\img\images\8.png" />
-    <Content Include="Content\assets\img\images\9.png" />
-    <Content Include="Content\assets\img\images\advertisement.png" />
-    <Content Include="Content\assets\img\images\analytics.png" />
-    <Content Include="Content\assets\img\images\billing.png" />
-    <Content Include="Content\assets\img\images\color-icons\Advertisment_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\Analytics.png" />
-    <Content Include="Content\assets\img\images\color-icons\Analytics_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\downloads.png" />
-    <Content Include="Content\assets\img\images\color-icons\downloads_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\driver 1.png" />
-    <Content Include="Content\assets\img\images\color-icons\Driver Requested Transactions .png" />
-    <Content Include="Content\assets\img\images\color-icons\Driver Transactions .png" />
-    <Content Include="Content\assets\img\images\color-icons\driver.png" />
-    <Content Include="Content\assets\img\images\color-icons\dvert.png" />
-    <Content Include="Content\assets\img\images\color-icons\geo-fenece.png" />
-    <Content Include="Content\assets\img\images\color-icons\geo-fenece_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\management.png" />
-    <Content Include="Content\assets\img\images\color-icons\order-managment.png" />
-    <Content Include="Content\assets\img\images\color-icons\order-managment_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\product payment.png" />
-    <Content Include="Content\assets\img\images\color-icons\product.png" />
-    <Content Include="Content\assets\img\images\color-icons\promotion-code.png" />
-    <Content Include="Content\assets\img\images\color-icons\promotion-code_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\rating-and-review.png" />
-    <Content Include="Content\assets\img\images\color-icons\rating-and-review_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\Roles 1-tools.png" />
-    <Content Include="Content\assets\img\images\color-icons\Roles.png" />
-    <Content Include="Content\assets\img\images\color-icons\team team members .png" />
-    <Content Include="Content\assets\img\images\color-icons\team.png" />
-    <Content Include="Content\assets\img\images\color-icons\team_2.png" />
-    <Content Include="Content\assets\img\images\color-icons\Vendor Requested Transactions.png" />
-    <Content Include="Content\assets\img\images\color-icons\Vendor Transactions .png" />
-    <Content Include="Content\assets\img\images\customer.png" />
-    <Content Include="Content\assets\img\images\Dashboard-home.png" />
-    <Content Include="Content\assets\img\images\download.png" />
-    <Content Include="Content\assets\img\images\driver-management.png" />
-    <Content Include="Content\assets\img\images\geo-fence.png" />
-    <Content Include="Content\assets\img\images\logout.jpg" />
-    <Content Include="Content\assets\img\images\new-Analytics.png" />
-    <Content Include="Content\assets\img\images\new-rating-and-review.png" />
-    <Content Include="Content\assets\img\images\new-team.png" />
-    <Content Include="Content\assets\img\images\order-management.png" />
-    <Content Include="Content\assets\img\images\p-management.png" />
-    <Content Include="Content\assets\img\images\promotioncode.png" />
-    <Content Include="Content\assets\img\images\rating.png" />
-    <Content Include="Content\assets\img\images\search.png" />
-    <Content Include="Content\assets\img\images\static.png" />
-    <Content Include="Content\assets\img\images\team-management.png" />
-    <Content Include="Content\assets\img\images\user-bg.png" />
-    <Content Include="Content\assets\img\images\user.png" />
-    <Content Include="Content\assets\img\images\vendor.png" />
-    <Content Include="Content\assets\img\mobile.png" />
-    <Content Include="Content\assets\img\profile-img.png" />
-    <Content Include="Content\assets\img\profile-pic.png" />
-    <Content Include="Content\assets\img\profile.png" />
-    <Content Include="Content\assets\img\searrch-icon.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Advertisement.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Analytics.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Billing Management.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Advertisement1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Analytics1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Billing Management.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Customer.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Dashboard1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Driver - Copy1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Driver All Transactions1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Driver rating.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Driver Requested Transactions1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Driver1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Geo Fence1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\home11.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Management1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\new-geo-fenece1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Order1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Product Payments1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Product rating1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Product1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Promotion Code1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Rating and Review1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Roles1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Settings1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Static Pages1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Team Management1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Team Members1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Vendor All Transacti1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Vendor Requested Tra1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Vendor1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Customer.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Dashboard.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Downloads.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Driver - Copy.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Driver All Transactions.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Driver rating.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Driver Requested Transactions.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Driver.png" />
-    <Content Include="Content\assets\img\side-menu-icons\dvert.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Geo Fence.png" />
-    <Content Include="Content\assets\img\side-menu-icons\home-new.png" />
-    <Content Include="Content\assets\img\side-menu-icons\home1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\how-wrksbtn1.png" />
-    <Content Include="Content\assets\img\side-menu-icons\how-wrksbtn2.png" />
-    <Content Include="Content\assets\img\side-menu-icons\how-wrksmain.png" />
-    <Content Include="Content\assets\img\side-menu-icons\lft-logo.png" />
-    <Content Include="Content\assets\img\side-menu-icons\login.png" />
-    <Content Include="Content\assets\img\side-menu-icons\logout.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Management.png" />
-    <Content Include="Content\assets\img\side-menu-icons\new-geo-fenece.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Order.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Product Payments.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Product rating.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Product.png" />
-    <Content Include="Content\assets\img\side-menu-icons\profile-img.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Promotion Code.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Rating and Review.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Roles.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Settings.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Static Pages.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Team Management.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Team Members.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Vendor All Transacti.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Vendor Requested Tra.png" />
-    <Content Include="Content\assets\img\side-menu-icons\Vendor.png" />
-    <Content Include="Content\assets\img\upload.png" />
-    <Content Include="Content\assets\img\user-profile.png" />
-    <Content Include="Content\assets\img\user.png" />
-    <Content Include="Content\assets\img\visa.png" />
-    <Content Include="Content\assets\js\bootstrap.js" />
-    <Content Include="Content\assets\js\bootstrap.min.js" />
-    <Content Include="Content\assets\js\Chart.min.js" />
-    <Content Include="Content\assets\js\custom.js" />
-    <Content Include="Content\assets\js\custom.min.js" />
-    <Content Include="Content\assets\js\date.js" />
-    <Content Include="Content\assets\js\jQuery.base64.js" />
-    <Content Include="Content\assets\js\jquery.min.js" />
-    <Content Include="Content\assets\js\jquery.tablesorter.pager.js" />
-    <Content Include="Content\assets\js\moment.min.js" />
-    <Content Include="Content\assets\js\morris.min.js" />
-    <Content Include="Content\assets\js\npm.js" />
-    <Content Include="Content\assets\js\paging.js" />
-    <Content Include="Content\assets\js\raphael.min.js" />
-    <Content Include="Content\assets\js\visitor.js" />
-    <Content Include="Content\assets\js\wizard.js" />
-    <Content Include="Content\assets\skin\css\admin-custom.css" />
-    <Content Include="Content\assets\skin\css\admin-responsive.css" />
-    <Content Include="Content\assets\skin\css\custom.css" />
-    <Content Include="Content\assets\skin\css\modification.css" />
-    <Content Include="Content\assets\skin\css\owl.carousel.css" />
-    <Content Include="Content\assets\skin\css\theme.css" />
-    <Content Include="Content\assets\skin\css\theme2.css" />
-    <Content Include="Content\assets\skin\css\theme3.css" />
-    <Content Include="Content\assets\skin\css\vendor-custom.css" />
-    <Content Include="Content\assets\skin\css\vendor-responsive.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\flags\ad.png" />
@@ -635,6 +439,14 @@
     <Content Include="Content\images\logo-gray.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\waring.png" />
+    <Content Include="Content\images_customer\prod_1.png" />
+    <Content Include="Content\images_customer\prod_3.jpg" />
+    <Content Include="Content\images_product\prod_18.png" />
+    <Content Include="Content\images_product\prod_20.jpg" />
+    <Content Include="Content\images_product\prod_20.png" />
+    <Content Include="Content\images_product\prod_38.jpg" />
+    <Content Include="Content\images_product\prod_38.png" />
+    <Content Include="Content\images_product\prod_38_.png" />
     <Content Include="Content\images_vender\banner-1.png" />
     <Content Include="Content\images_vender\banner-mbl.png" />
     <Content Include="Content\images_vender\banner.png" />
@@ -700,60 +512,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\assets\css\bootstrap-theme.css.map" />
-    <Content Include="Content\assets\css\bootstrap-theme.min.css.map" />
-    <Content Include="Content\assets\css\bootstrap.css.map" />
-    <Content Include="Content\assets\css\bootstrap.min.css.map" />
-    <Content Include="Content\assets\font-awesome-4.7.0\Bold.woff" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\fonts\FontAwesome.otf" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\animated.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\bordered-pulled.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\core.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\fixed-width.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\font-awesome.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\icons.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\larger.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\list.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\mixins.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\path.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\rotated-flipped.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\screen-reader.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\stacked.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\less\variables.less" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\font-awesome.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_animated.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_core.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_fixed-width.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_icons.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_larger.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_list.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_mixins.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_path.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_screen-reader.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_stacked.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\font-awesome-4.7.0\scss\_variables.scss" />
-    <Content Include="Content\assets\font-awesome-4.7.0\Light.woff" />
-    <Content Include="Content\assets\font-awesome-4.7.0\Regular.woff" />
-    <Content Include="Content\assets\fonts\Bold.eot" />
-    <Content Include="Content\assets\fonts\Bold.woff" />
-    <Content Include="Content\assets\fonts\Boldd41d.eot" />
-    <Content Include="Content\assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\assets\fonts\Light.eot" />
-    <Content Include="Content\assets\fonts\Light.woff" />
-    <Content Include="Content\assets\fonts\Lightd41d.eot" />
-    <Content Include="Content\assets\fonts\Regular.eot" />
-    <Content Include="Content\assets\fonts\Regular.woff" />
-    <Content Include="Content\assets\fonts\Regulard41d.eot" />
-    <Content Include="Content\assets\img\side-menu-icons\color-Icons\Thumbs.db" />
     <Content Include="Models\DB\ThibanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ThibanModel.Context.cs</LastGenOutput>
@@ -888,6 +646,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DriverApiController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\geofenceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -1013,6 +772,9 @@
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\dgeofence.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\dgeofencelocation.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\driver.cs">
@@ -1180,6 +942,12 @@
     <Compile Include="Models\DB\venderpayoutrequested.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\vender_zone.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\vender_zone_join.cs">
+      <DependentUpon>ThibanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\Volume.cs">
       <DependentUpon>ThibanModel.tt</DependentUpon>
     </Compile>
@@ -1199,6 +967,7 @@
     <Compile Include="Models\viewmodel\DiverRating.cs" />
     <Compile Include="Models\viewmodel\Driver.cs" />
     <Compile Include="Models\viewmodel\ForgotPassword.cs" />
+    <Compile Include="Models\viewmodel\geofences.cs" />
     <Compile Include="Models\viewmodel\Login.cs" />
     <Compile Include="Models\viewmodel\MenuItem.cs" />
     <Compile Include="Models\viewmodel\Order.cs" />
@@ -1212,6 +981,8 @@
     <Compile Include="Models\viewmodel\VenderAddProff.cs" />
     <Compile Include="Models\viewmodel\VenderProduct.cs" />
     <Compile Include="Models\viewmodel\VenderProductManagement.cs" />
+    <Compile Include="Models\viewmodel\vendorgeofence.cs" />
+    <Compile Include="Models\viewmodel\zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1222,7 +993,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Customer\AddCustomer.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Vender\AddVender.cshtml" />
     <Content Include="Views\Order\AddOrder.cshtml" />
@@ -1257,6 +1027,15 @@
     <Content Include="Views\VenderAccount\ActivationForgotPass.cshtml" />
     <Content Include="Views\VenderAccount\ForgotPassword.cshtml" />
     <Content Include="Views\Product\AddVenderProduct.cshtml" />
+    <Content Include="Views\Customer\AddCustomer.cshtml" />
+    <Content Include="Views\Vender\AddVenderOrder.cshtml" />
+    <Content Include="Views\Vender\AddVenderDriver.cshtml" />
+    <Content Include="Views\Vender\VenderProductRating.cshtml" />
+    <Content Include="Views\Vender\_VenderProductDetails.cshtml" />
+    <Content Include="Views\Vender\DriverRatingDetails.cshtml" />
+    <Content Include="Views\Vender\VenderDriverRating.cshtml" />
+    <Content Include="Views\geofence\index.cshtml" />
+    <Content Include="Views\Vender\geofence.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1266,7 +1045,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\assets\img\logos\" />
+    <Folder Include="Content\assets\" />
+    <Folder Include="Content\data\" />
+    <Folder Include="Content\images_driver\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

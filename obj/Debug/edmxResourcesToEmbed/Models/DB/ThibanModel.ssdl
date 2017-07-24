@@ -16,6 +16,8 @@
     <Property Name="mobile" Type="nvarchar" MaxLength="15" />
     <Property Name="status" Type="bit" />
     <Property Name="Image" Type="int" />
+    <Property Name="roleid" Type="int" />
+    <Property Name="Image_Url" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="advertisement">
     <Key>
@@ -383,17 +385,31 @@
     <Property Name="deliverytime" Type="datetime" />
     <Property Name="weatingtime" Type="int" />
     <Property Name="delaytime" Type="int" />
+    <Property Name="shift_id" Type="int" />
   </EntityType>
   <EntityType Name="dgeofence">
     <Key>
       <PropertyRef Name="geofenceid" />
     </Key>
     <Property Name="geofenceid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="location" Type="geography" />
     <Property Name="zone_name" Type="nvarchar" MaxLength="100" />
     <Property Name="city_name" Type="nvarchar" MaxLength="100" />
     <Property Name="direction_name" Type="nvarchar" MaxLength="100" />
     <Property Name="status" Type="bit" />
+    <Property Name="area" Type="nvarchar" MaxLength="50" />
+    <Property Name="population" Type="nvarchar" MaxLength="50" />
+    <Property Name="location" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ThibanWateDB.dbo.dgeofencelocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="dgeofencelocations">
+    <Key>
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="geofenceid" />
+    </Key>
+    <Property Name="locationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="geofenceid" Type="int" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="driver">
     <Key>
@@ -524,6 +540,7 @@
     <Property Name="orderid" Type="int" />
     <Property Name="rating_date" Type="datetime" />
     <Property Name="comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="driverworkinghours">
     <Key>
@@ -645,6 +662,7 @@
     <Property Name="onspotsaleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="driverid" Type="int" />
     <Property Name="trukid" Type="int" />
+    <Property Name="productid" Type="int" />
     <Property Name="date" Type="datetime" />
     <Property Name="onspotqty" Type="int" />
     <Property Name="onspotprice" Type="money" />
@@ -658,6 +676,7 @@
     <Property Name="total_inventory_price" Type="money" />
     <Property Name="available_inventory" Type="int" />
     <Property Name="orderid" Type="int" />
+    <Property Name="shift_id" Type="int" />
   </EntityType>
   <EntityType Name="order_details">
     <Key>
@@ -807,6 +826,7 @@
     <Property Name="comment" Type="nvarchar" MaxLength="500" />
     <Property Name="orderid" Type="int" />
     <Property Name="ratting_date" Type="datetime" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
@@ -830,7 +850,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="roleid" Type="int" />
-    <Property Name="menuitem" Type="nvarchar" MaxLength="100" />
+    <Property Name="menuid" Type="int" />
     <Property Name="createdby" Type="int" />
     <Property Name="status" Type="bit" />
   </EntityType>
@@ -902,6 +922,7 @@
     <Property Name="roleid" Type="int" />
     <Property Name="status" Type="bit" />
     <Property Name="creadteby" Type="int" />
+    <Property Name="member_type" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="vattandetail">
     <Key>
@@ -954,6 +975,23 @@
     <Property Name="CompanyName" Type="nvarchar" MaxLength="150" />
     <Property Name="image" Type="int" />
     <Property Name="Image_path" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="vender_zone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zone_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="vendor_id" Type="int" />
+    <Property Name="created_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="vender_zone_join">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zoneid" Type="int" />
+    <Property Name="geofenceid" Type="int" />
   </EntityType>
   <EntityType Name="venderaddressproof">
     <Key>
@@ -1134,18 +1172,6 @@
       </Principal>
       <Dependent Role="coupon">
         <PropertyRef Name="venderid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__customer__Image__5D95E53A">
-    <End Role="ImageFile" Type="Self.ImageFile" Multiplicity="0..1" />
-    <End Role="customer" Type="Self.customer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImageFile">
-        <PropertyRef Name="ImageId" />
-      </Principal>
-      <Dependent Role="customer">
-        <PropertyRef Name="Image" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2012,6 +2038,8 @@
     <EntitySet Name="vattandetail" EntityType="Self.vattandetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vechicle" EntityType="Self.vechicle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vender" EntityType="Self.vender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vender_zone" EntityType="Self.vender_zone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vender_zone_join" EntityType="Self.vender_zone_join" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="venderaddressproof" EntityType="Self.venderaddressproof" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="venderbankdetail" EntityType="Self.venderbankdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="venderdefaultaddress" EntityType="Self.venderdefaultaddress" Schema="dbo" store:Type="Tables" />
@@ -2020,6 +2048,13 @@
     <EntitySet Name="venderpayoutrequested" EntityType="Self.venderpayoutrequested" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Volume" EntityType="Self.Volume" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="warehouseaddress" EntityType="Self.warehouseaddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dgeofencelocations" EntityType="Self.dgeofencelocations" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [dgeofencelocations].[locationid] AS [locationid], 
+    [dgeofencelocations].[geofenceid] AS [geofenceid], 
+    [dgeofencelocations].[location] AS [location]
+    FROM [dbo].[dgeofencelocations] AS [dgeofencelocations]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__admin__Image__5E8A0973" Association="Self.FK__admin__Image__5E8A0973">
       <End Role="ImageFile" EntitySet="ImageFile" />
       <End Role="admin" EntitySet="admin" />
@@ -2043,10 +2078,6 @@
     <AssociationSet Name="FK__coupon__vender_i__6B24EA82" Association="Self.FK__coupon__vender_i__6B24EA82">
       <End Role="vender" EntitySet="vender" />
       <End Role="coupon" EntitySet="coupon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__customer__Image__5D95E53A" Association="Self.FK__customer__Image__5D95E53A">
-      <End Role="ImageFile" EntitySet="ImageFile" />
-      <End Role="customer" EntitySet="customer" />
     </AssociationSet>
     <AssociationSet Name="FK__customera__custo__6C190EBB" Association="Self.FK__customera__custo__6C190EBB">
       <End Role="customer" EntitySet="customer" />

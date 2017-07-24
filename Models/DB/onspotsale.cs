@@ -30,6 +30,8 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<decimal> total_inventory_price { get; set; }
         public Nullable<int> available_inventory { get; set; }
         public Nullable<int> orderid { get; set; }
+        public Nullable<int> productid { get; set; }
+        public Nullable<int> shift_id { get; set; }
     
         public virtual driver driver { get; set; }
         public virtual order order { get; set; }

@@ -22,6 +22,7 @@ namespace Final_ThibanProject_api.Controllers
     public class CustomerApiController : ApiController
     {
         CustomResponse objR = new CustomResponse();
+        CustomResponseID obId = new CustomResponseID();
 
         [HttpPost]
         [Route]
@@ -1562,7 +1563,7 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult GetCustomerOrderList(int custid)
+        public IHttpActionResult GetCustomerOrderList_old(int custid)
         {
             try
             {
@@ -1572,9 +1573,9 @@ namespace Final_ThibanProject_api.Controllers
                 var productQuery = (from ord in DB.orders
                                     join prod in DB.products on ord.product_id equals prod.productid
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
-                                    join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
-                                    from img in imgd.DefaultIfEmpty()
-                                        //   where ord.customer_id=custid
+                                    /*   join img in DB.ImageFiles on prod.image equals img.ImageId into imgd
+                                       from img in imgd.DefaultIfEmpty()*/
+                                    //   where ord.customer_id=custid
                                     group prod by new
                                     {
                                         ord.customer_id,
@@ -1630,6 +1631,58 @@ namespace Final_ThibanProject_api.Controllers
                     objR.status = 1;
                     objR.message = "No Order Found";
                 }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetCustomerOrderList(int custid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                var orders = (from t in db.orders
+                                  //join det in db.order_details on t.orderid equals det.orderid
+                              join prod in db.products on t.product_id equals prod.productid
+                              join ve in db.venders on prod.vender_id equals ve.venderid
+                              where t.customer_id == custid
+                              select new order_view
+                              {
+                                  orderid = t.orderid,
+                                  orderdate = t.orderdate,
+                                  product_id = t.product_id,
+                                  product_title = prod.product_title,
+                                  prod_image = prod.Image_path,
+                                  vender_id = ve.venderid,
+                                  vender_name = ve.name,
+                                  quantity = t.quantity,
+                                  price = prod.customer_price,
+                                  status = t.status,
+                                  customer_id = t.customer_id,
+                                  Order_Details = db.order_details.Where(x => x.orderid == t.orderid).Select(p => new order_details_view
+                                  {
+                                      id = p.id,
+                                      orderid = p.orderid,
+                                      productid = p.productid,
+                                      qty = p.qty,
+                                      price = p.price,
+                                      created_date = p.created_date
+                                  })
+                              }).ToList();
+                if (orders.Count > 0)
+                    return Ok(orders);
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Order Data Found";
+                }
+
             }
             catch (Exception ex)
             {
@@ -2699,11 +2752,12 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult TrackOrderStatus(int driverid)
+        public IHttpActionResult TrackOrderStatus(int orderid)
         {
             try
             {
                 ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                int? driverid = db.deliveries.Where(x => x.orderid == orderid).Select(x => x.driverid).FirstOrDefault();
                 driver_track loc = db.driver_track.Where(x => x.driverid == driverid).OrderByDescending(x => x.id).FirstOrDefault();
                 if (loc != null)
                     return Ok(loc);
@@ -2721,9 +2775,10 @@ namespace Final_ThibanProject_api.Controllers
             }
             return Ok(objR);
         }
+
         [HttpPost]
         [Route]
-        public IHttpActionResult GetCustidfromEmail(string email)
+        public IHttpActionResult GetCustidfromEmail(string email, string username = "", string image="", string dob="", string gender="", string phone="")
         {
             try
             {
@@ -2733,14 +2788,27 @@ namespace Final_ThibanProject_api.Controllers
                 int? custid = DB.customers.Where(x => x.emailid == email).Select(x => x.customerid).FirstOrDefault();
                 if (custid > 0)
                 {
-                    // return Ok(productStock);
-                    objR.status = 1;
-                    objR.message = custid.ToString();
+                    obId.status = 1;
+                    obId.id = custid.Value;
+                    return Ok(obId);
                 }
                 else
                 {
-                    objR.status = 0;
-                    objR.message = "No Data Found";
+                    customer obj = new customer();
+                    obj.emailid = email;
+                    obj.name = "";
+                    obj.password = "111";
+                    obj.username = username;
+                    obj.Image_path = image;
+                    obj.DOB = dob;
+                    obj.customer_gender = gender;
+                    obj.mobileno = phone;
+                    DB.customers.Add(obj);
+                    DB.SaveChanges();
+                    int userid = obj.customerid;
+                    obId.status = 1;
+                    obId.id = userid;
+                    return Ok(obId);
                 }
             }
             catch (Exception ex)

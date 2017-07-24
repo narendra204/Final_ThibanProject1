@@ -811,7 +811,7 @@ button.btn.btn-default.icon-btn1.dropdown-toggle {
 	/* font-weight: 600; */
 	color: #949494 !important;
 	/* letter-spacing: 0.5px; */
-	font-weight: 600;
+	font-weight: 400;
 }
 .top_nav .nav li a:hover, .top_nav .nav li a:focus, .top_nav .nav li a.active {
 	background-color: transparent !important;

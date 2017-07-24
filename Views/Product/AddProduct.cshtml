@@ -69,8 +69,9 @@
             <!-- create new order panel -->
 
             <div class="panel mb25 mt5  border-round">
-                <h1 class=" panel-title c-m-h1 pb20 "> PRODUCTS </h1>
-
+                <div class="heading-title">
+                    <h1 class=" panel-title c-m-h1 pb20 "> PRODUCTS </h1>
+                </div>
                 <!--     <hr class="cm-hr">-->
 
                 <div class="panel-heading">
@@ -86,39 +87,40 @@
                     <div class="panel-body p20 pb10">
                         <div class="tab-content pn br-n admin-form">
                             <div id="tab1_1" class="tab-pane active">
-                                <div class="section row mbn">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <p class="text-left" id="sku"></p>
-                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger clssummeryval" })</p>
-                                        <p class="text-left myvalidation">@ViewBag.message</p>
-                                        <p class="text-left">
-                                            <div class="validation-summary-errors text-danger" id="divValidation1">
+                                <div class="mbn p10">
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger clssummeryval" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
 
-                                            </div>
-                                        </p>
-                                        <p class="text-right">
-                                            <button class="btn btn-primary btn-md btn_next  border-radius99" id="btnNext" type="button">Next</button>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="section row mbn">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
-                                            <div class="fileupload-preview thumbnail mb20">
-                                                <img id="output" src="~/Content/assets/img/upload.png" />
-                                            </div>
-                                            <div class="row ">
-                                                @*<div class="col-lg-6 col-md-6 col-sm-7 col-xs-6 inpt-btn">
-                                                    <input type="text" name="name2" id="name2" class="text-center event-name gui-input br-light border-radius99   img-keyword-btn2  " placeholder="Img Keywords">
-                                                    <label for="name2" class="field-icon"></label>
-                                                </div>*@
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6 btn-P">
-                                                    <span class="button btn-system btn-file btn-block border-radius99">
-                                                        <span class="fileupload-new  border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
-                                                        <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
-                                                        <script>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary btn-md btn_next  border-radius99" id="btnNext" type="button">Next</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="section row mbn">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                                <div class="fileupload-preview thumbnail mb20">
+                                                    <img id="output" src="~/Content/assets/img/upload.png" />
+                                                </div>
+                                                <div class="row ">
+                                                    @*<div class="col-lg-6 col-md-6 col-sm-7 col-xs-6 inpt-btn">
+                                <input type="text" name="name2" id="name2" class="text-center event-name gui-input br-light border-radius99   img-keyword-btn2  " placeholder="Img Keywords">
+                                <label for="name2" class="field-icon"></label>
+                            </div>*@
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
+                                                        <span class="button btn-system btn-file btn-block border-radius99">
+                                                            <span class="fileupload-new  border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                            <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                            <script>
                                                             var loadFile = function (event) {
                                                                 var reader = new FileReader();
                                                                 reader.onload = function () {
@@ -127,94 +129,96 @@
                                                                 };
                                                                 reader.readAsDataURL(event.target.files[0]);
                                                             };
-                                                        </script>
-                                                    </span>
+                                                            </script>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 btn-P">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+                                            <div class="row section">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <label for="name2" class="field prepend-icon">
+                                                        <input type="text" name="Title" id="Title" class="event-name gui-input br-light" placeholder="Product Title">
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                            <div class="row section">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="product-vendor" class="field prepend-icon">
+                                                        @*//Igex DropDown Bind for the Vender *@
+                                                        @Html.DropDownList("VenderSource", (List<SelectListItem>)ViewBag.VenderList, new { @class = "br-light" })
+                                                        @*//Igex End*@
+
+                                                        @*<input type="text" name="VenderSource" id="VenderSource" class="gui-input br-light" placeholder="Vendor Source...">*@
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="field select mb5">
+                                                        <select id="phno" name="phno">
+                                                            <option value="-1">PH Number</option>
+                                                            <option value="3.0 PH">3.0 PH</option>
+                                                            <option value="3.5 PH">3.5 PH</option>
+                                                            <option value="4.0 PH">4.0 PH</option>
+                                                            <option value="4.5 PH">4.5 PH</option>
+                                                            <option value="5.0 PH">5.0 PH</option>
+                                                            <option value="5.5 PH">5.5 PH</option>
+                                                            <option value="6.0 PH">6.0 PH</option>
+                                                            <option value="6.5 PH">6.5 PH</option>
+                                                            <option value="7.0 PH">7.0 PH</option>
+                                                            <option value="7.5 PH">7.5 PH</option>
+                                                            <option value="8.0 PH">8.0 PH</option>
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl15">
-                                        <div class="row section">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <label for="name2" class="field prepend-icon">
-                                                    <input type="text" name="Title" id="Title" class="event-name gui-input br-light" placeholder="Product Title">
-                                                </label>
-                                            </div>
 
-                                        </div>
-                                        <div class="row section">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <label for="product-vendor" class="field prepend-icon">
-                                                    @*//Igex DropDown Bind for the Vender *@
-                                                    @Html.DropDownList("VenderSource", (List<SelectListItem>)ViewBag.VenderList, new { @class = "br-light" })
-                                                    @*//Igex End*@
+                                            <div class="row section">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="productcategory" class="field select">
+                                                        <select id="category_id" name="category_id" class=" br-light">
+                                                            <option value="0" selected="selected">Product Category...</option>
+                                                            <option value="1">20 Gallon Water Barrel</option>
+                                                            <option value="2">25 Gallon Water Barrel</option>
 
-                                                    @*<input type="text" name="VenderSource" id="VenderSource" class="gui-input br-light" placeholder="Vendor Source...">*@
-                                                </label>
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="field select mb5">
+                                                        <select id="brand" name="brand">
+                                                            <option value="Brand Name" avtive="">Brand Name</option>
+                                                            <option value="Aqua Panna">Aqua Panna</option>
+                                                            <option value="Kinley">Kinley</option>
+                                                            <option value="Arwa">Arwa</option>
+                                                            <option value="Alain">Alain</option>
+                                                            <option value="Monvio">Monvio</option>
+                                                        </select>
+                                                        <i class="arrow double"></i>
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <label class="field select mb5">
-                                                    <select id="phno" name="phno">
-                                                        <option value="-1">PH Number</option>
-                                                        <option value="3.0 PH">3.0 PH</option>
-                                                        <option value="3.5 PH">3.5 PH</option>
-                                                        <option value="4.0 PH">4.0 PH</option>
-                                                        <option value="4.5 PH">4.5 PH</option>
-                                                        <option value="5.0 PH">5.0 PH</option>
-                                                        <option value="5.5 PH">5.5 PH</option>
-                                                        <option value="6.0 PH">6.0 PH</option>
-                                                        <option value="6.5 PH">6.5 PH</option>
-                                                        <option value="7.0 PH">7.0 PH</option>
-                                                        <option value="7.5 PH">7.5 PH</option>
-                                                        <option value="8.0 PH">8.0 PH</option>
-                                                    </select>
-                                                    <i class="arrow double"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="row section">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <label for="productcategory" class="field select">
-                                                    <select id="category_id" name="category_id" class=" br-light">
-                                                        <option value="0" selected="selected">Product Category...</option>
-                                                        <option value="1">20 Gallon Water Barrel</option>
-                                                        <option value="2">25 Gallon Water Barrel</option>
-
-                                                    </select>
-                                                    <i class="arrow double"></i>
-                                                </label>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <label class="field select mb5">
-                                                    <select id="brand" name="brand">
-                                                        <option value="Brand Name" avtive="">Brand Name</option>
-                                                        <option value="Aqua Panna">Aqua Panna</option>
-                                                        <option value="Kinley">Kinley</option>
-                                                        <option value="Arwa">Arwa</option>
-                                                        <option value="Alain">Alain</option>
-                                                        <option value="Monvio">Monvio</option>
-                                                    </select>
-                                                    <i class="arrow double"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row section">
-                                            <div class="section mb10">
-                                                <label class="field prepend-icon">
-                                                    <textarea style="height: 145px;" class="textarea br-light" rows="4" id="Description" name="Description" placeholder="Product Description"></textarea>
-                                                    <span class="input-footer hidden"> <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
-                                                </label>
+                                            <div class="row section">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="section mb10">
+                                                        <label class="field prepend-icon">
+                                                            <textarea style="height: 145px;" class="textarea br-light" rows="4" id="Description" name="Description" placeholder="Product Description"></textarea>
+                                                            <span class="input-footer hidden"> <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- <hr class=" bdy-line">-->
 
-                                
+
                             </div>
                             <div id="tab1_2" class="tab-pane">
                                 <div class="section row">
@@ -464,24 +468,25 @@
                         <h1 class="panel-title">List of products</h1>
                     </div>
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                             <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                                 <div class="pagination-panel">
                                     <div class="page-text">
                                         Page &nbsp;
-                                        <div class="show-number">
-                                            <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
-
-                                                @for (var i = 10; i <= 90; i += 10)
-                                                {
-                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddProduct", "AddProduct", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
-                                                }
-                                            </ul>
-                                            @Html.PagedListPager(Model, page => Url.Action("AddProduct", new { page, pageSizeValue = Model.PageSize }))
-                                        </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
-                                        *@ <div class="of-text">of @Model.PageCount </div>
-
                                     </div>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddProduct", "AddProduct", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddProduct", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+
                                 </div>
                             </div>
                             <div class="dataTables_length">
@@ -495,7 +500,7 @@
                                 </div>
                             </div>
 
-                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>@Model.TotalItemCount records </div>
                         </div>
 
 
@@ -505,8 +510,7 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
                                     <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
                                     </ul>
                                 </div>
                                 <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
@@ -515,47 +519,49 @@
                     </div>
 
                     <!--<hr class="table_line">-->
-                    <!--<div class="row top-margn pt20 pb10 ">
+                    <div class="row top-margn pt20 pb5">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-brand" name="filter-group">
+                                    <option value="0">Filter by Brand</option>
+                                    <option value="Aqua Panna">Aqua Panna</option>
+                                    <option value="Kinley">Kinley</option>
+                                    <option value="Arwa">Arwa</option>
+                                    <option value="Alain">Alain</option>
+                                    <option value="Monvio">Monvio</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
                             <label class="field select ">
-                                <select id="filter-purchases" name="filter-purchases">
-                                    <option value="0">Filter by Purchases</option>
-                                    <option value="1">1-49</option>
-                                    <option value="2">50-499</option>
-                                    <option value="1">500-999</option>
-                                    <option value="2">1000+</option>
+                                <select id="filter-order" name="filter-purchases" class="brdr-color br-light">
+                                    <option value="0">Filter by Order(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
                             <label class="field select">
-                                <select id="filter-group" name="filter-group">
-                                    <option value="0">Filter by Group</option>
-                                    <option value="1">Customers</option>
-                                    <option value="2">Vendors</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label class="field select">
-                                <select id="filter-status" name="filter-status">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
                                     <option value="0">Filter by Status</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
-                                    <option value="4">Online</option>
-                                    <option value="5">Offline</option>
+                                    <option value="In Stock">In Stock</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                    <option value="Deleted">Deleted</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
                         </div>
-                    </div>-->
+                    </div>
+
                 </div>
                 <div class="panel-body pn product-mngmnt-table">
                     <div class="table-responsive border-round brdr-top-none brdr-btm-none">
-                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1 9 borderless main-driver-table ">
+                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1 9 borderless main-driver-table mycustomtbl">
                             <thead>
                                 <tr class=" clr-blck">
                                     <th class="text-center">
@@ -571,6 +577,7 @@
                                     <th class="">Price</th>
                                     <th class=" text-center">Stock</th>
                                     <th class=" text-center">Status</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class=".tbody">
@@ -579,7 +586,7 @@
                                     <tr id="@item.ProductId">
                                         <td class="text-center" data-val-col="checkbox" data-val="false">
                                             <label class="option block mn">
-                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <input type="checkbox" class="ch" name="mobileos" value="@item.ProductId">
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
@@ -627,19 +634,21 @@
                                         <td style="display:none;" class="text-center" data-val-col="volume" data-val="@item.volume">@item.volume</td>
 
 
-                                        <td class="text-center">
+                                        <td>
                                             <div class="btn-group text-right">
-                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
-                                                        data-toggle="dropdown" aria-expanded="false">
-                                                    @*<span id="selctedName">*@
-                                                    Select Action
-                                                    @*</span>*@ <span class="caret ml5"></span>
+                                                <button type="button" class="btn btn-success bg-dark br2 btn-xs fs12 dropdown-toggle custonbtn" data-toggle="dropdown" aria-expanded="false">
+                                                    <span id="selctedName">@item.Status</span><span  class="caret ml5"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu" id="action_@item.ProductId">
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.ProductId">
                                                     <li onclick="makeSelected(this)" title="Edit">
-                                                       Edit
+                                                        Edit
                                                     </li>
+                                                    <li class="divider"></li>
                                                     <li onclick="makeSelected(this)">Delete</li>
+                                                    <li onclick="makeSelected(this)">Waiting for approval</li>
+                                                    <li onclick="makeSelected(this)">Active</li>
+                                                    <li onclick="makeSelected(this)">Suspended</li>
+                                                    <li onclick="makeSelected(this)">soldout</li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -693,6 +702,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
+
 
     function validatetabdata(intTab) {
         var strErrMsg = "";
@@ -753,6 +763,11 @@
     $(document).ready(function () {
         //$('#myTable').DataTable();
 
+
+
+
+
+
         //Igex - Tab Activation
 
         $("#btnNext").click(function () {
@@ -791,7 +806,26 @@
         return true;
     });
 
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
 
+        $.ajax({
+            url: '@Url.Action("DeleteProduct", "Product")',
+            data: { prodid: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+                //   alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
     //Igex
     function activeTab(tab) {
         $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
@@ -892,11 +926,7 @@
                 type: "POST",
                 success: function (res) {
                     var $row = jQuery("#" + prodit);
-                    console.log($row);
-
                     var elnew = $row.find('td[data-val-col="Status"]');
-                    console.log(elnew);
-
                     elnew.attr("data-val", res.status);
                     elnew.html(res.status);
 
@@ -1073,6 +1103,45 @@
         $("#store_min_order").val("@p.store_min_order").attr("selected");
         $("#store_price").val("@p.store_price");
         </text>
+        }
+
+        $("#filter-status").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+        $("#filter-order").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=OrderCount&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+        $("#filter-brand").change(function () {
+            var statusVal = $(this).val();
+            var href = "AddProduct?pageSizeValue=10&page=1&filter=Brand&filterStatus=" + statusVal;
+            window.location.href = href;
+        });
+
+        var brand = '@ViewBag.filter_brand';
+        if (brand != '' || brand != null) {
+            $("#filter-brand").val(brand).attr('selected', true);
+        }
+        var count = '@ViewBag.filter_order';
+        if (count != '' || count != null) {
+            $("#filter-order").val(count).attr('selected');
+        }
+        var status = '@ViewBag.filter_status';
+        if (status != '' || status != null) {
+            $("#filter-status").val(status).attr('selected', true);
+        }
+
+        if ($("#filter-brand").val() == '' || $("#filter-brand").val() == 0 || $("#filter-brand").val() == null) {
+            $("#filter-brand").val(0).attr('selected');
+        }
+        if ($("#filter-order").val() == '' || $("#filter-order").val() == 0 || $("#filter-order").val() == null) {
+            $("#filter-order").val(0).attr('selected');
+        }
+        if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+            $("#filter-status").val(0).attr('selected');
         }
     });
 

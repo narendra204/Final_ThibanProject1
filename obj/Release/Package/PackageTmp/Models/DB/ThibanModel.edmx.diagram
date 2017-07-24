@@ -34,7 +34,6 @@
         <EntityTypeShape EntityType="ThibanWaterDBModel.customerotheraddress" Width="1.5" PointX="5.25" PointY="68.625" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.customerpaymentcard" Width="1.5" PointX="5.25" PointY="42.5" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.customervillaaddress" Width="1.5" PointX="5.25" PointY="52.375" />
-        <EntityTypeShape EntityType="ThibanWaterDBModel.dgeofence" Width="1.5" PointX="11.25" PointY="119.25" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.driver" Width="1.5" PointX="8.25" PointY="94.375" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.driveraddressproff" Width="1.5" PointX="13.5" PointY="86.25" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.driverbankdetail" Width="1.5" PointX="10.5" PointY="86" />
@@ -59,7 +58,6 @@
         <EntityTypeShape EntityType="ThibanWaterDBModel.productratting" Width="1.5" PointX="12.75" PointY="83" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.Province" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.role" Width="1.5" PointX="3" PointY="111.5" />
-        <EntityTypeShape EntityType="ThibanWaterDBModel.rolemanagement" Width="1.5" PointX="5.25" PointY="110.5" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.shippingaddress" Width="1.5" PointX="15.75" PointY="63.25" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.shippinghistory" Width="1.5" PointX="15.75" PointY="85.375" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.storedetail" Width="1.5" PointX="5.25" PointY="136.75" />
@@ -98,7 +96,6 @@
         <AssociationConnector Association="ThibanWaterDBModel.FK__shippinga__custo__0E6E26BF" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__customera__Image__607251E5" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__customerf__produ__71D1E811" />
-        <AssociationConnector Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__driver__image__662B2B3B" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__driver__vender_i__76969D2E" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__driveradd__drive__778AC167" />
@@ -129,7 +126,6 @@
         <AssociationConnector Association="ThibanWaterDBModel.FK__pandetail__vende__07C12930" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__product__vender___0A9D95DB" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__productra__produ__0C85DE4D" />
-        <AssociationConnector Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__storedeta__vende__123EB7A3" />
         <AssociationConnector Association="ThibanWaterDBModel.FK__teammanag__vende__14270015" />
@@ -167,6 +163,15 @@
         <EntityTypeShape EntityType="ThibanWaterDBModel.currencymaster" Width="1.5" PointX="11.375" PointY="14.75" />
         <EntityTypeShape EntityType="ThibanWaterDBModel.order_details" Width="1.5" PointX="13.375" PointY="10.75" />
         <AssociationConnector Association="ThibanWaterDBModel.FK_order_details_order_details" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.driver_track" Width="1.5" PointX="13.375" PointY="14.75" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK_order_details_order_details1" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.vender_zone_join" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.dgeofence" Width="1.5" PointX="15.375" PointY="4" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.rolemanagement" Width="1.5" PointX="5.25" PointY="110.5" />
+        <AssociationConnector Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.dgeofencelocation" Width="1.5" PointX="3.375" PointY="15.75" />
+        <EntityTypeShape EntityType="ThibanWaterDBModel.vender_zone" Width="1.5" PointX="15.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

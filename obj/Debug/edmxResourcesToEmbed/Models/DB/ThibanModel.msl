@@ -4,6 +4,8 @@
     <EntitySetMapping Name="admins">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.admin">
         <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="Image_Url" ColumnName="Image_Url" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="mobile" ColumnName="mobile" />
@@ -327,18 +329,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="dgeofences">
-      <EntityTypeMapping TypeName="ThibanWaterDBModel.dgeofence">
-        <MappingFragment StoreEntitySet="dgeofence">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="direction_name" ColumnName="direction_name" />
-          <ScalarProperty Name="city_name" ColumnName="city_name" />
-          <ScalarProperty Name="zone_name" ColumnName="zone_name" />
-          <ScalarProperty Name="location" ColumnName="location" />
-          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="drivers">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.driver">
         <MappingFragment StoreEntitySet="driver">
@@ -432,6 +422,7 @@
     <EntitySetMapping Name="driverratings">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.driverrating">
         <MappingFragment StoreEntitySet="driverrating">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="comment" ColumnName="comment" />
           <ScalarProperty Name="rating_date" ColumnName="rating_date" />
           <ScalarProperty Name="orderid" ColumnName="orderid" />
@@ -628,6 +619,7 @@
     <EntitySetMapping Name="productrattings">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.productratting">
         <MappingFragment StoreEntitySet="productratting">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="ratting_date" ColumnName="ratting_date" />
           <ScalarProperty Name="orderid" ColumnName="orderid" />
           <ScalarProperty Name="comment" ColumnName="comment" />
@@ -652,17 +644,6 @@
           <ScalarProperty Name="createdby" ColumnName="createdby" />
           <ScalarProperty Name="rolename" ColumnName="rolename" />
           <ScalarProperty Name="roleid" ColumnName="roleid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="rolemanagements">
-      <EntityTypeMapping TypeName="ThibanWaterDBModel.rolemanagement">
-        <MappingFragment StoreEntitySet="rolemanagement">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="createdby" ColumnName="createdby" />
-          <ScalarProperty Name="menuitem" ColumnName="menuitem" />
-          <ScalarProperty Name="roleid" ColumnName="roleid" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -719,6 +700,7 @@
     <EntitySetMapping Name="teammanagements">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.teammanagement">
         <MappingFragment StoreEntitySet="teammanagement">
+          <ScalarProperty Name="member_type" ColumnName="member_type" />
           <ScalarProperty Name="creadteby" ColumnName="creadteby" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="roleid" ColumnName="roleid" />
@@ -924,6 +906,7 @@
     <EntitySetMapping Name="deliveries">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.delivery">
         <MappingFragment StoreEntitySet="delivery">
+          <ScalarProperty Name="shift_id" ColumnName="shift_id" />
           <ScalarProperty Name="delaytime" ColumnName="delaytime" />
           <ScalarProperty Name="weatingtime" ColumnName="weatingtime" />
           <ScalarProperty Name="deliverytime" ColumnName="deliverytime" />
@@ -972,6 +955,8 @@
     <EntitySetMapping Name="onspotsales">
       <EntityTypeMapping TypeName="ThibanWaterDBModel.onspotsale">
         <MappingFragment StoreEntitySet="onspotsale">
+          <ScalarProperty Name="shift_id" ColumnName="shift_id" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
           <ScalarProperty Name="orderid" ColumnName="orderid" />
           <ScalarProperty Name="available_inventory" ColumnName="available_inventory" />
           <ScalarProperty Name="total_inventory_price" ColumnName="total_inventory_price" />
@@ -1152,6 +1137,59 @@
           <ScalarProperty Name="longitued" ColumnName="longitued" />
           <ScalarProperty Name="latitude" ColumnName="latitude" />
           <ScalarProperty Name="driverid" ColumnName="driverid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vender_zone_join">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.vender_zone_join">
+        <MappingFragment StoreEntitySet="vender_zone_join">
+          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="gid" ColumnName="gid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dgeofences">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.dgeofence">
+        <MappingFragment StoreEntitySet="dgeofence">
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="population" ColumnName="population" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="direction_name" ColumnName="direction_name" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="zone_name" ColumnName="zone_name" />
+          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolemanagements">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.rolemanagement">
+        <MappingFragment StoreEntitySet="rolemanagement">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="menuid" ColumnName="menuid" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dgeofencelocations">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.dgeofencelocation">
+        <MappingFragment StoreEntitySet="dgeofencelocations">
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="geofenceid" ColumnName="geofenceid" />
+          <ScalarProperty Name="locationid" ColumnName="locationid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vender_zone">
+      <EntityTypeMapping TypeName="ThibanWaterDBModel.vender_zone">
+        <MappingFragment StoreEntitySet="vender_zone">
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+          <ScalarProperty Name="zone_name" ColumnName="zone_name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

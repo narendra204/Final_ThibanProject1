@@ -131,7 +131,7 @@ p.text-muted.min-txt {
 	font-size: 10px;
 }
 span.button.btn-system.btn-file.btn-block {
-     height: 30px !important;
+     height: auto !important;
     line-height: 38px;
     font-size: 14px;
     color: #fff !important;
@@ -212,7 +212,7 @@ span.panel-title.hidden-xs {
 }
 span.fileupload-new {
 	font-size: 12px;
-	font-weight: 600;
+/*	font-weight: 600;*/
 	position: relative;
 	top: -4px;
 }
@@ -233,7 +233,7 @@ button.btn.btn-primary.btn-md.btn_next {
 	color: #fff !important;
 	background-color: #57ad68;
 	border-color: #4d9e5d;
-    height: 30px !important;
+    height: auto !important;
    line-height:15px;
 }
 button.btn.btn-primary.btn-md.btn_next:hover {
@@ -475,8 +475,7 @@ hr.filter_line {
 	height: 70px;
 }
 label.option.block.mn {
-	margin-bottom: 10px !important;
-	margin-left: 16px !important;
+	margin-left:0px !important;
 }
 .section.mb20 {
 	margin-bottom: 25px !important;

@@ -20,6 +20,7 @@ namespace Final_ThibanProject.Models.DB
         public string comment { get; set; }
         public Nullable<int> orderid { get; set; }
         public Nullable<System.DateTime> ratting_date { get; set; }
+        public string status { get; set; }
     
         public virtual order order { get; set; }
         public virtual product product { get; set; }

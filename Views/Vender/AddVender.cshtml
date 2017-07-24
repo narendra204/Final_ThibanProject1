@@ -64,61 +64,64 @@
                 @using (Html.BeginForm("AddVender", "Vender", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.Hidden("Venderid", 0)
-                    <div class="panel-body p20 pb10 pl5">
+                    <div class="panel-body">
                         <div class="tab-content pn br-n admin-form">
                             <div id="tab1_1" class="tab-pane active">
-                                <div class="section row mbn">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl5">
-                                        <div class="section row ">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name1" class="field prepend-icon">
-                                                    <input type="text" name="name" id="name1" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="First Name">
-                                                </label>
+                                <div class="p10 mbn">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl5">
+                                            <div class="section row ">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="name1" class="field prepend-icon">
+                                                        <input type="text" name="name" id="name1" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="First Name">
+                                                    </label>
+                                                </div>
+                                                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="name2" class="field prepend-icon">
+                                                        <input type="text" name="emailid" id="name2" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="aamir.ali@gmail.com">
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name2" class="field prepend-icon">
-                                                    <input type="text" name="emailid" id="name2" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="aamir.ali@gmail.com">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="section row ">
-                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="password1" class="field prepend-icon">
-                                                    <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Password">
-                                                </label>
-                                            </div>
-                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="password2" class="field prepend-icon">
-                                                    <input type="password" name="password" id="confirm_password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
-                                                </label>
-                                            </div>
+                                            <div class="section row ">
+                                                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="password1" class="field prepend-icon">
+                                                        <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Password">
+                                                    </label>
+                                                </div>
+                                                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="password2" class="field prepend-icon">
+                                                        <input type="password" name="password" id="confirm_password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
+                                                    </label>
+                                                </div>
 
-                                        </div>
-                                        <div class="section row ">
-                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="companyName" class="field prepend-icon">
-                                                    <input type="text" name="companyName" id="companyName" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="company Name">
-                                                </label>
                                             </div>
-                                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <label for="mobileno" class="field prepend-icon">
-                                                    <input type="text" name="mobileno" id="mobileno" class="event-name gui-input br-light light brdr-color outline brdr-none no" maxlength="10" placeholder="mobile no">
-                                                </label>
+                                            <div class="section row ">
+                                                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="companyName" class="field prepend-icon">
+                                                        <input type="text" name="companyName" id="companyName" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="company Name">
+                                                    </label>
+                                                </div>
+                                                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="mobileno" class="field prepend-icon">
+                                                        <input type="text" name="mobileno" id="mobileno" class="event-name gui-input br-light light brdr-color outline brdr-none no" maxlength="10" placeholder="mobile no">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="section row ">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                                    <label for="vender" class="field prepend-icon">
+                                                        <textarea cols="5" rows="5" name="vendernote1" id="vendernote1" class="form-control brdr-color  resize-no outline br-light" placeholder="Driver Note"></textarea>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                            <label for="vender" class="field prepend-icon">
-                                                <textarea cols="5" rows="5" name="vendernote1" id="vendernote1" class="form-control brdr-color  resize-no outline br-light" placeholder="Driver Note"></textarea>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pd-no">
-                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
-                                            <div class="fileupload-preview thumbnail mb15 bg-wht"> <img id="output" src="~/Content/assets/img/upload.png"> </div>
-                                            <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99 mt10">
-                                                <span class="fileupload-new border-radius99  mt10"></span> <span class="fileupload-exists border-radius99 mt10">Change</span>
-                                                <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
-                                                <script>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pd-no">
+                                            <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                                <div class="fileupload-preview thumbnail mb15 bg-wht"> <img id="output" src="~/Content/assets/img/upload.png"> </div>
+                                                <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99 mt10">
+                                                    <span class="fileupload-new border-radius99  mt10"></span> <span class="fileupload-exists border-radius99 mt10">Change</span>
+                                                    <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                    <script>
                                                     var loadFile = function (event) {
                                                         var reader = new FileReader();
                                                         reader.onload = function () {
@@ -127,33 +130,34 @@
                                                         };
                                                         reader.readAsDataURL(event.target.files[0]);
                                                     };
-                                                </script>
+                                                    </script>
 
 
-                                            </span>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr class="short">
-                                    @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
-                                        <p class="text-left myvalidation">@ViewBag.message</p>
-                                        <p class="text-right next-btn-admin">
-                                            <button class="btn btn-primary border-radius99 prduct-save-btn " id="btnNext" type="button">Next</button>
-                                        </p>
-                                    </div>*@
-                                    <div class="section row mbn">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <p class="text-left" id="sku"></p>
+                                        @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
                                             <p class="text-left myvalidation">@ViewBag.message</p>
-                                            <p class="text-left">
-                                                <div class="validation-summary-errors text-danger" id="divValidation1">
-
-                                                </div>
-                                            </p>
-                                            <p class="text-right">
+                                            <p class="text-right next-btn-admin">
                                                 <button class="btn btn-primary border-radius99 prduct-save-btn " id="btnNext" type="button">Next</button>
                                             </p>
+                                        </div>*@
+                                        <div class="section row mbn">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <hr class="short">
+                                                <p class="text-left" id="sku"></p>
+                                                <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                                <p class="text-left myvalidation">@ViewBag.message</p>
+                                                <p class="text-left">
+                                                    <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                    </div>
+                                                </p>
+                                                <p class="text-right">
+                                                    <button class="btn btn-primary border-radius99 prduct-save-btn " id="btnNext" type="button">Next</button>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -169,13 +173,13 @@
                                                 <label for="vender" class="field prepend-icon">
                                                     <input type="text" name="accountno" id="accountno" class="event-name gui-input br-light " placeholder="Bank Account No">
                                                 </label>
-                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <label for="vender" class="field prepend-icon">
                                                     <input type="text" name="benificary_name" id="benificary_name" class="event-name gui-input br-light " placeholder="Benificary Name In Bank">
                                                 </label>
                                             </div>
-                                            </div>
+                                        </div>
                                         <div class="section row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <label for="vender" class="field prepend-icon">
@@ -237,10 +241,10 @@
                                 </div>
                                 <hr class="short">
                                 @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <p class="text-right next-btn-admin">
-                                        <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext2" type="button">Next</button>
-                                    </p>
-                                </div>*@
+                                        <p class="text-right next-btn-admin">
+                                            <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext2" type="button">Next</button>
+                                        </p>
+                                    </div>*@
                                 <div class="section row mbn">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <p class="text-left">
@@ -252,11 +256,11 @@
                                             <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext2" type="button">Next</button>
                                         </p>
                                     </div>
-                                    </div>
-
-                                    <!-- end section -->
-
                                 </div>
+
+                                <!-- end section -->
+
+                            </div>
                             <div id="tab1_3" class="tab-pane">
                                 <div class="section row mt10">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -335,23 +339,23 @@
                                         </p>
                                     </div>
                                 </div>
-                                    <div class="section row mbn">
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label class="field option mt10">
-                                                <input type="checkbox" name="status" checked>
-                                                <span class="checkbox"></span>Activate <span class="small-text">- Vender activate.</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <p class="text-right next-btn-admin">
-                                                <input type="submit" id="btnSave" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
-                                            </p>
-                                        </div>
+                                <div class="section row mbn">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="field option mt10">
+                                            <input type="checkbox" name="status" checked>
+                                            <span class="checkbox"></span>Activate <span class="small-text">- Vender activate.</span>
+                                        </label>
                                     </div>
-
-                                    <!-- end section -->
-
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-right next-btn-admin">
+                                            <input type="submit" id="btnSave" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
+                                        </p>
+                                    </div>
                                 </div>
+
+                                <!-- end section -->
+
+                            </div>
                         </div>
                     </div>
 
@@ -362,27 +366,28 @@
             <div class="panel">
                 <div class="panel-menu admin-form theme-primary">
                     <div class="heading-title list-items">
-                        <h1 class="panel-title">List of products</h1>
+                        <h1 class="panel-title">List of Venders</h1>
                     </div>
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                             <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                                 <div class="pagination-panel">
                                     <div class="page-text">
-                                        Page &nbsp;
-                                        <div class="show-number">
-                                            <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
-
-                                                @for (var i = 10; i <= 90; i += 10)
-                                                {
-                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddVender", "Vender", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
-                                                }
-                                            </ul>
-                                            @Html.PagedListPager(Model, page => Url.Action("AddVender", new { page, pageSizeValue = Model.PageSize }))
-                                        </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
-                                        *@ <div class="of-text">of @Model.PageCount </div>
-
+                                        Page
                                     </div>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddVender", "Vender", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddVender", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+
                                 </div>
                             </div>
                             <div class="dataTables_length">
@@ -396,61 +401,55 @@
                                 </div>
                             </div>
 
-                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span> @Model.TotalItemCount records </div>
                         </div>
-
-
                         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
                             <div class="table-group-actions pull-right">
                                 <span></span>
                                 <div class="btn-group">
                                     <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
                                     <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
                                     </ul>
                                 </div>
                                 <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
                             </div>
                         </div>
                     </div>
-
-
-
-                    <div class="row filters-border pt20 pb10 ">
+                    <div class="row top-margn pt20 pb5">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label class="field select">
-                                <select id="filter-purchases" name="filter-purchases">
-                                    <option value="0">Filter by Products</option>
-                                    <option value="1">Panna</option>
-                                    <option value="2">Monvio</option>
-                                    <option value="1">Kinley</option>
-                                    <option value="2">Alian</option>
+                                <select id="filter-product" name="filter-group">
+                                    <option value="0">Filter by Product(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label class="field select">
-                                <select id="filter-group" name="filter-group">
-                                    <option value="0">Filter by Sales</option>
-                                    <option value="1">Users</option>
-                                    <option value="2">Vendors</option>
-                                    <option value="3">Distributors</option>
-                                    <option value="4">Employees</option>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select ">
+                                <select id="filter-order" name="filter-purchases" class="brdr-color br-light">
+                                    <option value="0">Filter by Order(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
                             <label class="field select">
-                                <select id="filter-status" name="filter-status">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
                                     <option value="0">Filter by Status</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
-                                    <option value="4">Online</option>
-                                    <option value="5">Offline</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Deleted">Deleted</option>
+                                    <option value="Suspend">Suspend</option>
+                                    <option value="Approved">Approved</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
@@ -459,7 +458,7 @@
                 </div>
                 <div class="panel-body pn">
                     <div class="table-responsive border-round brdr-top-none">
-                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1  main-driver-table">
+                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1  main-driver-table mycustomtbl">
                             <thead>
                                 <tr class=" clr-blck fs13">
                                     <th class="text-center">
@@ -472,9 +471,10 @@
                                     <th class="">Name</th>
                                     <th class="">Email</th>
                                     <th class="">Registered</th>
-                                    <th class=" text-center">Total Sales</th>
-                                    <th class="  ">Status</th>
+                                    <th class="text-center">Total Sales</th>
+                                    <th class="">Status</th>
                                     <th class="pl20">Actions</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -483,7 +483,7 @@
                                     <tr class="t-m-tr" id="@item.Venderid">
                                         <td class="text-center" data-val-col="checkbox" data-val="false">
                                             <label class="option block mn">
-                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <input type="checkbox" class="ch" name="mobileos" value="@item.Venderid">
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
@@ -494,7 +494,7 @@
                                                 var base64 = Convert.ToBase64String(item.image);
                                                 imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                                             }
-                                            else if(item.image_path != null)
+                                            else if (item.image_path != null)
                                             {
                                                 imgSrc = item.image_path;
                                             }
@@ -503,11 +503,12 @@
 
                                             <img src='@imgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )' style="max-width:100px; max-height:100px;" />
                                         </td>
-                                        <td class="text-center" data-val-col="Name" data-val="@item.name" >@item.name</td>
-                                        <td class="text-center" data-val-col="Email" data-val="@item.emailid" >@item.emailid</td>
-                                        <td class="text-center" data-val-col="RegDate" data-val="@item.regdate" >@item.regdate</td>
-                                        <td class="text-center" data-val-col="TotalSal" data-val="@item.totalsale" >@item.totalsale</td>
+                                        <td class="text-center" data-val-col="Name" data-val="@item.name">@item.name</td>
+                                        <td class="text-center" data-val-col="Email" data-val="@item.emailid">@item.emailid</td>
+                                        <td class="text-center" data-val-col="RegDate" data-val="@item.regdate">@item.regdate</td>
+                                        <td class="text-center" data-val-col="TotalSal" data-val="@item.totalsale">@item.totalsale</td>
                                         <td class="text-center" data-val-col="Status" data-val="@item.Status">@item.Status</td>
+                                       
                                         <td style="display:none;" data-val-col="vendernote1" data-val="@item.vendernote1" class="">$@item.vendernote1</td>
                                         <td style="display:none;" data-val-col="vendernote2" data-val="@item.vendernote2" class="">$@item.vendernote2</td>
                                         <td style="display:none;" data-val-col="Address" data-val="@item.address" class="">$@item.address</td>
@@ -527,16 +528,14 @@
                                         <td style="display:none;" data-val-col="State" data-val="@item.state" class="">$@item.state</td>
                                         <td style="display:none;" data-val-col="Country" data-val="@item.country" class="">$@item.country</td>
                                         <td style="display:none;" data-val-col="VenderId" data-val="@item.Venderid" class="">$@item.Venderid</td>
-                                        <td class=" ">
+                                        <td class="">
 
                                             <div class="btn-group text-right">
-                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
-                                                        data-toggle="dropdown" aria-expanded="false">
-                                                    <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
+                                                <button type="button" class="btn btn-success bg-dark br2 btn-xs fs12 dropdown-toggle custonbtn" data-toggle="dropdown" aria-expanded="false">
+                                                    <span id="selctedName">@item.Status</span><span class="caret ml5"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu" id="action_@item.Venderid">
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.Venderid">
                                                     <li onclick="makeSelected(this)">Edit</li>
-                                                    <li onclick="makeSelected(this)">Contact</li>
                                                     <li class="divider"></li>
                                                     <li onclick="makeSelected(this)">Active</li>
                                                     <li onclick="makeSelected(this)">Pending</li>
@@ -649,7 +648,7 @@
         $("#divValidation2").html("");
         $("#divValidation1").html("");
         if (intTab == 1) {
-            
+
             if ($.trim($("#name1").val()) == "") {
                 strErrMsg += "<li>First Name is required</li>";
             }
@@ -675,15 +674,15 @@
 
         }
         else if (intTab == 2) {
-            if ($("#accountno").val() == "" || $("#accountno").val() == "0" ) {
+            if ($("#accountno").val() == "" || $("#accountno").val() == "0") {
                 strErrMsg += "<li>Account No is required</li>";
             }
             if ($.trim($("#bankName").val()) == "") {
-                    strErrMsg += "<li>Bank name is required.</li>";
+                strErrMsg += "<li>Bank name is required.</li>";
             }
-            
+
             if ($.trim($("#branchName").val()) == "") {
-                    strErrMsg += "<li>Branch Name is required.</li>";
+                strErrMsg += "<li>Branch Name is required.</li>";
             }
             if ($.trim($("#ifscCode").val()) == "") {
                 strErrMsg += "<li>IFSC Code is required.</li>";
@@ -693,7 +692,7 @@
             }
             if (strErrMsg != "") {
                 $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
-               // returnval = false;
+                // returnval = false;
             }
 
         }
@@ -731,7 +730,7 @@
 
 
 
-         @if (@ViewBag.status != null && @ViewBag.status == 0)
+        @if (@ViewBag.status != null && @ViewBag.status == 0)
         {
             var ve = (Final_ThibanProject.Models.Vender)ViewBag.clientreturn;
             <text>
@@ -832,28 +831,50 @@
             return obj;
         }
     };
+
     function makeSelected(el) {
-        //$(el).parent().children().removeClass("selected");
-        //$(el).parent().children().removeClass("active");
-
-        //$(el).addClass("selected");
-        //$(el).addClass("active");
         $(el).parent().parent().children().first().children().first().text(el.innerText);
-
         var venId = venderDtl.getId($(el).parent()[0].id);
+        if (el.innerText != "Edit") {
+            $.ajax({
+                url: '@Url.Action("UpdateStatus", "Vender")',
+                data: { venId: venId, sts: el.innerText },
+                type: "POST",
+                success: function (res) {
+                    var $row = jQuery("#" + venId);
+                    var elnew = $row.find('td[data-val-col="Status"]');
+                    elnew.attr("data-val", res.status);
+                    elnew.html(res.status);
+                    debugger;
+                },
+                error: function (res) {
+                    debugger;
+                }
+            });
+        }
+    }
 
+  @*function makeSelected(el) {
+       $(el).parent().parent().children().first().children().first().text(el.innerText);
+        var venId = venderDtl.getId($(el).parent()[0].id);
         if (el.innerText != "Edit") {
             $.ajax({
                 url: '@Url.Action("UpdateStatus", "Vender")',
                 data: { venId: venId, sts: el.innerText },
                 type: 'POST',
                 success: function (res) {
+                    var $row = jQuery("#" + venId);
+                    var elnew = $row.find('td[data-val-col="Status"]');
+                    elnew.attr("data-val", res.status);
+                    elnew.html(res.status);
                     debugger;
                 },
                 error: function (err) {
                     debugger;
                 }
             });
+
+
         } else {
             var rowData = venderDtl.getSelectdRowData(venId);
             $("#output").attr("src", rowData.Avatar);
@@ -884,8 +905,66 @@
             $("#ibanCode").val(rowData.ibanCode);
             $("#GSTNo").val(rowData.GSTNo);
         }
+    }*@
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
+
+        $.ajax({
+            url: '@Url.Action("DeleteVender", "Vender")',
+            data: { ids: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+                //  alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
     }
 
+    $("#filter-status").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddVender?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+    $("#filter-order").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddVender?pageSizeValue=10&page=1&filter=OrderCount&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+    $("#filter-product").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddVender?pageSizeValue=10&page=1&filter=ProductCount&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+
+    var brand = '@ViewBag.filter_product';
+    if (brand != '' || brand != null) {
+        $("#filter-product").val(brand).attr('selected', true);
+    }
+    var count = '@ViewBag.filter_order';
+    if (count != '' || count != null) {
+        $("#filter-order").val(count).attr('selected');
+    }
+    var status = '@ViewBag.filter_status';
+    if (status != '' || status != null) {
+        $("#filter-status").val(status).attr('selected', true);
+    }
+
+    if ($("#filter-product").val() == '' || $("#filter-product").val() == 0 || $("#filter-product").val() == null) {
+        $("#filter-product").val(0).attr('selected');
+    }
+    if ($("#filter-order").val() == '' || $("#filter-order").val() == 0 || $("#filter-order").val() == null) {
+        $("#filter-order").val(0).attr('selected');
+    }
+    if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+        $("#filter-status").val(0).attr('selected');
+    }
 </script>
 
 
@@ -904,7 +983,7 @@
                 var fileSize = objFile.size; //size in kb
                 fileSize = fileSize / 1048576; //size in mb
             }
-            //for FF, Safari, Opeara and Others
+                //for FF, Safari, Opeara and Others
             else {
                 fileSize = $("#" + fileid)[0].files[0].size //size in kb
                 fileSize = fileSize / 1048576; //size in mb

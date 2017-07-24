@@ -21,6 +21,7 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<int> orderid { get; set; }
         public Nullable<System.DateTime> rating_date { get; set; }
         public string comment { get; set; }
+        public string status { get; set; }
     
         public virtual customer customer { get; set; }
         public virtual driver driver { get; set; }

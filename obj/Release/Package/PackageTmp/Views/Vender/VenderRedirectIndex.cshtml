@@ -1,7 +1,7 @@
 ﻿@model Final_ThibanProject.Models.viewmodel.VenderDetails
 @{
     ViewBag.Title = "VenderRedirectIndex";
-    Layout = null;
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -188,144 +188,8 @@
 <body class="nav-md">
     <div class="container body main-container-body">
         <div class="main_container">
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                    <div class="col-md-3 left_col">
-                        <div class="left_col scroll-view">
-                            <div class="navbar nav_title">
-                                <a href="vendor-index.php" class="site_title">
-                                    <span class="main-heading">
-                                        <p class="test">THIBAN <span class="side-heading">VENDOR</span></p>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <!-- sidebar menu -->
-
-                            <ul class="nav side-menu">
-                                <li class="">
-                                    <a href="vendor-index.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/home1.png" alt="">
-                                        <span class="sidebar-title"> Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Management.png" alt="">
-                                        <span class="sidebar-title">Management </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Product/AddVenderProduct" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product.png" alt="">
-                                        <span class="sidebar-title"> Product </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="vendor-driver-management.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver.png" alt="">
-                                        <span class="sidebar-title">Driver</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_order-management.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Order.png" alt="">
-                                        <span class="sidebar-title">Order</span>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Rating and Review.png" alt="">
-                                        <span class="sidebar-title">Rating and Review </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="product-rating-review.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Product rating.png" alt="">
-                                        <span class="sidebar-title">Product</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="driver-rating-review.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Driver rating.png" alt="">
-                                        <span class="sidebar-title">Driver</span>
-                                    </a>
-                                </li>
-
-
-                                <li>
-                                    <a href="vendor-analytics.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Analytics.png" alt="">
-                                        <span class="sidebar-title">Analytics </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor-geo-fence.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/new-geo-fenece.png" alt="">
-                                        <span class="sidebar-title">Geo Fence</span>
-                                    </a>
-                                </li>
-
-
-                                <li class="">
-                                    <a href="#" class="drop-down-mainmenu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Management.png" alt="">
-                                        <span class="sidebar-title">Team</span>
-                                    </a>
-
-                                </li>
-
-
-                                <li>
-                                    <a href="vendor_team-member.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
-                                        <span class="sidebar-title">Team Member</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor_team-management-role.php" class="dropdown-sub-menu">
-                                        <img src="~/Content/assets/img/side-menu-icons/Team Members.png" alt="">
-                                        <span class="sidebar-title">Roles</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="~/Advertisement/AddAdvertisement">
-                                        <img src="~/Content/assets/img/side-menu-icons/dvert.png" />
-                                        <span class="sidebar-title"> advertisement </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/Advertisement/CouponList">
-                                        <img src="~/Content/assets/img/side-menu-icons/Promotion Code.png" alt="">
-                                        <span class="sidebar-title"> Promotion Code </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="vendor-downloads.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Downloads.png" alt="">
-                                        <span class="sidebar-title">Downloads </span>
-                                    </a>
-                                </li>
-                                <li class="new-smallimgs">
-                                    <a href="user-agreement.php">
-                                        <img src="~/Content/assets/img/side-menu-icons/Settings.png" alt="">
-                                        <span class="sidebar-title"> Settings </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
-
             <!-- top navigation -->
-            <div class="top_nav">
+            @*<div class="top_nav">
                 <div class="nav_menu">
                     <nav class="navbar navbar-default bg">
                         <div class="container-fluid">
@@ -377,7 +241,7 @@
                                         <ul class="dropdown-menu list-group dropdown-persist width150 vendor-hdr-drpdwn" role="menu">
                                             <li class="list-group-item">
                                                 <a href="#" class="animated animated-short fadeInUp ">
-                                                   @Model.name<br>
+                                                    @Model.name<br>
                                                     @Model.emailid
                                                 </a>
                                             </li>
@@ -390,157 +254,9 @@
                         </div>
                     </nav>
                 </div>
-            </div>
+            </div>*@
 
-            <style>
-                span.field-validation-error {
-        color: red;
-    }
-                .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-                    color: #ffffff;
-                    text-decoration: none;
-                    outline: 0;
-                    background-color: #97C898;
-                }
-
-
-
-                .cancel-drop-menu > .active > a,
-                .cancel-drop-menu > .active > a:hover,
-                .cancel-drop-menu > .active > a:focus {
-                    color: #ffffff;
-                    text-decoration: none;
-                    outline: 0;
-                    background-color: #F9989C;
-                }
-
-                .btn-success:focus {
-                    background: #97C898 !important;
-                    border: 1px solid #97C898;
-                    color: #ffffff !important;
-                }
-
-                .btn-table:focus {
-                    background: #F9989C !important;
-                    border: 1px solid #F9989C !important;
-                    color: #fff !important;
-                }
-
-                .dash-bred-cumb {
-                    padding-top: 3px !important;
-                }
-
-                span.fa.fa-angle-down {
-                    float: right;
-                    margin-right: 5px;
-                    border-left: 1px solid #dddddd;
-                    margin-top: 0;
-                    height: 26px;
-                    line-height: 26px;
-                    padding-left: 5px;
-                }
-
-                span.fa.fa-angle-down1 {
-                    float: right;
-                    margin-right: 5px;
-                    border-left: 1px solid #dddddd;
-                    margin-top: 0;
-                    height: 26px;
-                    line-height: 26px;
-                    padding-left: 5px;
-                }
-
-                button.inn-head-btn {
-                    width: 250px;
-                    height: 28px;
-                    text-align: left;
-                    line-height: 26px;
-                    padding-left: 7px;
-                    font-size: 13px;
-                    color: #666;
-                    font-weight: normal;
-                    border-color: #dddddd !important;
-                }
-
-                ul.dropdown-menu.index-drpdown {
-                    left: 0px !important;
-                }
-
-                .datepicker-down-arrow {
-                    border-left: 1px solid #ddd;
-                    height: 26px;
-                    margin-top: -3px;
-                    line-height: 32px;
-                    padding-left: 6px;
-                    margin-right: -5px;
-                    position: relative;
-                    top: 3px;
-                    ;
-                }
-
-                .fa-angle-down1:before {
-                    content: "\f107";
-                    position: relative;
-                    top: 0px;
-                    left: 0px;
-                    font-size: 16px;
-                }
-
-                .fa-angle-down2:before {
-                    content: "\f107";
-                    position: relative;
-                    top: -3px;
-                    left: -2px;
-                    font-size: 16px;
-                }
-
-                .font {
-                    font-size: 13px;
-                }
-
-                .daterangepicker.opensleft:after {
-                    right: 4px;
-                }
-
-                span.inn-head-text {
-                    margin-left: 13px;
-                }
-
-                table.table.d2-table ul.dropdown-menu {
-                    padding: 0px;
-                    top: 28px !important;
-                }
-
-                table.table.d2-table .dropdown-menu > li > a:hover {
-                    text-decoration: none;
-                    color: #595959;
-                    background-color: #f2f2f2;
-                }
-
-                table.table.d2-table ul.dropdown-menu {
-                    padding: 0px;
-                    top: 28px !important;
-                }
-
-                table.table.d2-table .dropdown-menu > li > a:hover {
-                    text-decoration: none;
-                    color: #595959;
-                    background-color: #f2f2f2;
-                }
-
-                .btn-group.inn-head-btn-grp.pull-right {
-                    position: relative;
-                    left: -2px;
-                }
-
-                .d-table > tbody > tr > td {
-                    line-height: 40px !important;
-                }
-
-                .d2-table > tbody > tr > td {
-                    line-height: 40px !important;
-                }
-            </style>
+            
             <div class="right_col" role="main">
                 <div class="row mb10 col-md-12 mb20 top-title-bar">
                     <h1 class="main-top-header ml5">Welcome to Thiban Vendor Dashboard&nbsp;<small class="small" style="  color: #47525d !important;">statistics,charts and reports</small></h1>
@@ -1393,20 +1109,20 @@
 
     <script>
 
-  $(document).ready(function() {
+        $(document).ready(function () {
 
-    $(".datepicker").datepicker();
+            $(".datepicker").datepicker();
 
-  });
+        });
 
     </script>
     <script type="text/javascript">
 
-        $(document).ready(function(e) {
+        $(document).ready(function (e) {
 
-  $('.selectpicker').selectpicker();
+            $('.selectpicker').selectpicker();
 
-});
+        });
 
     </script>
 
@@ -1420,4 +1136,3 @@
 
 
 </html>
-

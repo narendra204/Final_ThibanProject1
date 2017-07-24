@@ -39,7 +39,7 @@
 @Html.ValidationSummary(true, "")
 
 
-<div class="right_col main-admincustmngmnt-section" role="main">
+<div class="right_col main-admincustmngmnt-section" role="main" id="Main">
     <div class="row col-md-12 col-lg-12 col-sm-12 xol-xs-12 mb10 col-md-12 top-title-bar">
         <h1 class="main-top-header">Thiban Customer Management</h1>
     </div>
@@ -66,70 +66,282 @@
             <!-- create new order panel -->
 
             <div class="panel mb25 mt5  border-round">
-                <h1 class="panel-title  c-m-h1 pb20"> CUSTOMERS </h1>
-
-                <!-- <hr class="cm-hr"  >-->
-
-                <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> Add New Customer</span>
-                    <ul class="nav panel-tabs-border panel-tabs">
-                        <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
-                        <li> <a href="#tab1_2" data-toggle="tab">Settings</a> </li>
-                        <li> <a href="#tab1_3" data-toggle="tab">Billing</a> </li>
-                    </ul>
+                <div class="heading-title">
+                    <h1 class="panel-title  c-m-h1 pb20"> CUSTOMERS </h1>
                 </div>
-            </div>
-            @using (Html.BeginForm("AddCustomer", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.Hidden("Customerid", 0)
-                <div class="panel-body p20 pb10 pl5">
-                    <div class="tab-content pn br-n admin-form">
-                        <div id="tab1_1" class="tab-pane active">
-                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 mbn">
-                                <div class=" col-lg-8 col-md-8 col-sm-7 col-xs-12  pl5">
-                                    <div class="section row mb15">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                            <label for="name1" class="field prepend-icon outline">
-                                                <input type="text" name="name" id="name" class="event-name gui-input br-light light inp-brder brdr-none brdr-color" placeholder="Full Name">
-                                            </label>
+                    <!-- <hr class="cm-hr"  >-->
+
+                    <div class="panel-heading">
+                        <span class="panel-title hidden-xs"> Add New Customer</span>
+                        <ul class="nav panel-tabs-border panel-tabs">
+                            <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
+                            <li> <a href="#tab1_2" data-toggle="tab">Settings</a> </li>
+                            <li> <a href="#tab1_3" data-toggle="tab">Billing</a> </li>
+                        </ul>
+                    </div>
+                    @using (Html.BeginForm("AddCustomer", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                    @Html.Hidden("Customerid", 0)
+                    <div class="panel-body p20 pb10 pl5">
+                        <div class="tab-content pn br-n admin-form">
+                            <div id="tab1_1" class="tab-pane active">
+                                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 mbn">
+                                    <div class=" col-lg-8 col-md-8 col-sm-7 col-xs-12 pl5">
+                                        <div class="section row mb15">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                <label for="name1" class="field prepend-icon outline">
+                                                    <input type="text" name="name" id="name" class="event-name gui-input br-light light inp-brder brdr-none brdr-color" placeholder="Full Name">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                <label for="name2" class="field prepend-icon outline">
+                                                    <input type="text" name="emailid" id="email" class="event-name gui-input br-light light inp-brder brdr-none brdr-color" placeholder="aamir.ali@gmail.com">
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                            <label for="name2" class="field prepend-icon outline">
-                                                <input type="text" name="emailid" id="email" class="event-name gui-input br-light light inp-brder brdr-none brdr-color" placeholder="aamir.ali@gmail.com">
+                                        <div class="section row mb15">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                <label for="password" class="field prepend-icon outline">
+                                                    <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-none brdr-color" placeholder="********">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="password2" class="field prepend-icon outline">
+                                                    <input type="password" name="conform_password" id="conform_password" class="event-name gui-input br-light light brdr-none brdr-color" placeholder="Confirm Password">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row mb15">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="cust-phone" class="field prepend-icon">
+                                                    <input type="text" name="mobileno" id="phone" class="event-name gui-input br-light no" maxlength="10" placeholder="Customer Phone Number...">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="customer-group" class="field select">
+                                                    <select id="customer-group" name="customer_type" class="outline br-light">
+                                                        <option value="0" selected="selected">Customer Group...</option>
+                                                        <option value="vender">Vendor</option>
+                                                        <option value="supplier">Supplier</option>
+                                                        <option value="distributor">Distributor</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row mb15">
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="customer-language" class="field select">
+                                                    <select id="language" name="language" class="outline br-light">
+                                                        <option value="0" selected="selected">Customer Language...</option>
+                                                        <option value="english">English</option>
+                                                        <option value="spanish">Spanish</option>
+                                                        <option value="german">German</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 col-sm-5 col-xs-12 img_p">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb15 img-width">
+                                                <img id="output" src="~/Content/assets/img/upload.png" style="padding: 20px;">
+                                            </div>
+                                            <span class="button btn-system btn-file btn-block  mb15 ph5 border-radius99">
+                                                <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                <script>
+                                                    var loadFile = function (event) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            var output = document.getElementById('output');
+                                                            output.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(event.target.files[0]);
+                                                    };
+                                                </script>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="section row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <label for="email" class="field prepend-icon">
+                                                <textarea class="textarea br-light" id="cust-note" rows="5" name="custnote1" placeholder="Customer Note"></textarea>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="section row mb15">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                            <label for="password" class="field prepend-icon outline">
-                                                <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-none brdr-color" placeholder="********">
-                                            </label>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <label for="password2" class="field prepend-icon outline">
-                                                <input type="password" name="conform_password" id="conform_password" class="event-name gui-input br-light light brdr-none brdr-color" placeholder="Confirm Password">
-                                            </label>
+                                    <hr class="short">
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                </div>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn  btn-md btn_next border-radius99 prduct-save-btn mt10" id="btnNext" type="button">Next</button>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="section mb15 p10">
-                                        <label for="email" class="field prepend-icon">
-                                            <textarea class="textarea br-light" id="cust-note" rows="5" name="custnote1" placeholder="Customer Note"></textarea>
+                                </div>
+
+                                <!-- end section row -->
+
+                            </div>
+                            <div id="tab1_2" class="tab-pane">
+                                <div class="section row mbn">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="accountNo" id="accountNo" class="event-name gui-input br-light " placeholder="Bank Account No">
+                                        </label>
+                                    </div>
+                                    <!-- end section -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="benificary_name" id="benificary_name" class="event-name gui-input br-light " placeholder="Benificary Name In Bank">
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-lg-4 col-sm-5 col-xs-12 img_p">
-                                    <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
-                                        <div class="fileupload-preview thumbnail mb15 img-width">
-                                            <img id="output" src="~/Content/assets/img/upload.png"  style="padding: 20px;">
+                                <div class="section row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="bankName" id="bankName" class="event-name gui-input br-light " placeholder="Bank Name">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="branchName" id="branchName" class="event-name gui-input br-light " placeholder="Branch Name">
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <!-- end section -->
+                                <div class="section-row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="ifscCode" id="ifscCode" class="event-name gui-input br-light " placeholder="IFSC Code">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <hr class="short ">
+                                @*<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <p class="text-right">
+                                        <button class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" id="btnNext2" type="button">Next</button>
+                                    </p>
+                                </div>*@
+                                <div class="section row mbn">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                            </div>
+                                        </p>
+                                        <p class="text-right">
+                                            <button class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" id="btnNext2" type="button">Next</button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- end section -->
+
+                            </div>
+                            <div id="tab1_3" class="tab-pane">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="section row">
+                                        <div class="col-md-6 col-sm-6  col-lg-6 col-xs-12">
+                                            <label for="zip" class="field prepend-icon">
+                                                <input type="text" name="address" id="address" class="gui-input br-light" placeholder="Street Address">
+                                            </label>
                                         </div>
-                                        <span class="button btn-system btn-file btn-block  mb15 ph5 border-radius99">
+
+                                        <!-- end section -->
+
+                                        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+                                            <label for="city" class="field prepend-icon">
+                                                <input type="text" name="city" id="city" class="gui-input br-light" placeholder="City">
+                                            </label>
+                                        </div>
+
+                                        <!-- end section -->
+                                        <!-- end .col8 section -->
+
+                                    </div>
+
+                                    <div class="section row">
+                                        <div class="col-md-6 col-sm-6  col-lg-6 col-xs-12">
+                                            <label for="zip" class="field prepend-icon">
+                                                <input type="text" name="zip" id="zip" class="gui-input br-light no" placeholder="Zip">
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                                            <label for="states" class="field select ">
+                                                <select id="state" name="state" class="gui-input br-light">
+                                                    <option value="">Choose state</option>
+                                                    <option value="Alabama">Alabama</option>
+                                                    <option value="Alaska">Alaska</option>
+                                                    <option value="Arizona">Arizona</option>
+                                                    <option value="Arkansas">Arkansas</option>
+                                                    <option value="California">California</option>
+                                                    <option value="Colorado">Colorado</option>
+                                                    <option value="Connecticut">Connecticut</option>
+                                                    <option value="Alabama">Alabama</option>
+                                                    <option value="Alaska">Alaska</option>
+                                                    <option value="Arizona">Arizona</option>
+                                                    <option value="Arkansas">Arkansas</option>
+                                                    <option value="California">California</option>
+                                                    <option value="Colorado">Colorado</option>
+                                                    <option value="Connecticut">Connecticut</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+                                    <!-- end section -->
+
+                                    <div class="section row">
+                                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                                            <label class="field select ">
+                                                <select id="country" name="country" class="gui-input  br-light">
+                                                    <option value="">Select country...</option>
+                                                    <option value="Albania">Albania</option>
+                                                    <option value="Algeria">Algeria</option>
+                                                    <option value="Andorra">Andorra</option>
+                                                    <option value="Angola">Angola</option>
+                                                    <option value="Anguilla">Anguilla</option>
+                                                    <option value="Albania">Albania</option>
+                                                    <option value="Algeria">Algeria</option>
+                                                    <option value="Andorra">Andorra</option>
+                                                    <option value="Angola">Angola</option>
+                                                    <option value="Anguilla">Anguilla</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                        <div class="fileupload-preview thumbnail mb35"> <img id="addressProfoutput" src="~/Content/assets/img/upload.png"> </div>
+                                        <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99">
                                             <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
-                                            <input type="file" id="file" name="file" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                            <input type="file" class="br-radius-4" id="addressProf" name="addressProf" accept="image/*" alt="holder" onchange="loadFile1(event)" />Change
                                             <script>
-                                                var loadFile = function (event) {
+                                                var loadFile1 = function (event) {
                                                     var reader = new FileReader();
                                                     reader.onload = function () {
-                                                        var output = document.getElementById('output');
+                                                        var output = document.getElementById('addressProfoutput');
                                                         output.src = reader.result;
                                                     };
                                                     reader.readAsDataURL(event.target.files[0]);
@@ -139,249 +351,75 @@
                                         </span>
                                     </div>
                                 </div>
-                                <hr class="short">
+                                <hr class="short alt mtn">
+                                <div class="section mb15 ml10">
+                                    <label class="field prepend-icon">
+                                        <textarea class="textarea outline br-light" rows="5" id="cust-note" name="customernote2" placeholder="Customer Notes"></textarea>
+                                    </label>
+                                </div>
+                                <hr class="short" />
+                                <!-- end section -->
+                                <!-- end section row section -->
                                 <div class="section row mbn">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <p class="text-left" id="sku"></p>
-                                        <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
-                                        <p class="text-left myvalidation">@ViewBag.message</p>
+                                    <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <p class="text-left">
-                                            <div class="validation-summary-errors text-danger" id="divValidation1">
+                                            <div class="validation-summary-errors text-danger" id="divValidation3">
 
                                             </div>
                                         </p>
+                                    </div>
+                                </div>
+                                <div class="section row mbn">
+                                    <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+                                        <label class="field option mt10">
+                                            <input type="checkbox" id="Status" name="info" class=" outline gui-input br-light">
+                                            <span class="checkbox mt"> </span><span>&nbsp;Activate</span> <span class="small-text">- Customer Active.</span>
+
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
                                         <p class="text-right">
-                                            <button class="btn  btn-md btn_next border-radius99 prduct-save-btn mt10" id="btnNext" type="button">Next</button>
+                                            <input type="submit" id="save" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
                                         </p>
                                     </div>
                                 </div>
-                                @*<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                    <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
-                                    <p class="text-left myvalidation">@ViewBag.message</p>
-                                    <p class="text-right">
-                                        <button class="btn  btn-md btn_next border-radius99 prduct-save-btn mt10" id="btnNext" type="button">Next</button>
-                                    </p>
-                                </div>*@
-                            </div>
-
-                            <!-- end section row -->
-
-                        </div>
-                        <div id="tab1_2" class="tab-pane">
-                            <div class="section row mbn">
-                                <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 pr15">
-                                    <div class="section mb15">
-                                        <label for="cust-phone" class="field prepend-icon">
-                                            <input type="text" name="mobileno" id="phone" class="event-name gui-input br-light no" maxlength="10" placeholder="Customer Phone Number...">
-                                        </label>
-                                    </div>
-                                    <div class="section mb15">
-                                        <label for="customer-group" class="field select">
-                                            <select id="customer-group" name="customer_type" class="outline br-light">
-                                                <option value="0" selected="selected">Customer Group...</option>
-                                                <option value="vender">Vendor</option>
-                                                <option value="supplier">Supplier</option>
-                                                <option value="distributor">Distributor</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-                                    <div class="section">
-                                        <label for="customer-language" class="field select">
-                                            <select id="language" name="language" class="outline br-light">
-                                                <option value="0" selected="selected">Customer Language...</option>
-                                                <option value="english">English</option>
-                                                <option value="spanish">Spanish</option>
-                                                <option value="german">German</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                                @*<div class="col-xs-12 col-sm-6 col-md-6 col-sm-6 col-lg-6">
-                                    <label class="field option ">
-                                        <input type="checkbox" name="info">
-                                        <span class="checkbox mr10 mb10 outline"></span> <span class="text_c">Customer is Tax Exempt</span>
-                                    </label>
-                                    <br>
-                                    <label class="field option ">
-                                        <input type="checkbox" name="info">
-                                        <span class="checkbox mr10 mb10 outline"></span><span class="text_c"> Customer Accepts Marketing</span>
-                                    </label>
-                                    <br>
-                                    <label class="field option ">
-                                        <input type="checkbox" name="info">
-                                        <span class="checkbox mr10 outline"></span> <span class="text_c p_t ">Activate/Enable Account?</span>
-                                    </label>
-                                    <hr class="alt short mt">
-                                    <p class="text-muted min-txt ml5"> <span class="fa fa-exclamation-circle text-warning quote"></span> Grants the Customer limited store access.</p>
-                                </div>*@
-                            </div>
-                            <hr class="short alt mtn">
-                            <div class="section mb15 ml10">
-                                <label class="field prepend-icon">
-                                    <textarea class="textarea outline br-light" rows="5" id="cust-note" name="customernote2" placeholder="Customer Notes"></textarea>
-                                </label>
-                            </div>
-                            <hr class="short ">
-                            @*<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                <p class="text-right">
-                                    <button class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" id="btnNext2" type="button">Next</button>
-                                </p>
-                            </div>*@
-                            <div class="section row mbn">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <p class="text-left">
-                                        <div class="validation-summary-errors text-danger" id="divValidation2">
-
-                                        </div>
-                                    </p>
-                                    <p class="text-right">
-                                        <button class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" id="btnNext2" type="button">Next</button>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- end section -->
-
-                        </div>
-                        <div id="tab1_3" class="tab-pane">
-
-                            <div class="section row">
-                                <div class="col-md-6 col-sm-6  col-lg-6 col-xs-12">
-                                    <label for="zip" class="field prepend-icon">
-                                        <input type="text" name="address" id="address" class="gui-input br-light" placeholder="Street Address">
-                                    </label>
-                                </div>
 
                                 <!-- end section -->
 
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
-                                    <label for="city" class="field prepend-icon">
-                                        <input type="text" name="city" id="city" class="gui-input br-light" placeholder="City">
-                                    </label>
-                                </div>
-
-                                <!-- end section -->
-                                <!-- end .col8 section -->
-
                             </div>
-
-                            <div class="section row">
-                                <div class="col-md-6 col-sm-6  col-lg-6 col-xs-12">
-                                    <label for="zip" class="field prepend-icon">
-                                        <input type="text" name="zip" id="zip" class="gui-input br-light no" placeholder="Zip">
-                                    </label>
-                                </div>
-
-                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                                    <label for="states" class="field select ">
-                                        <select id="state" name="state" class="gui-input br-light">
-                                            <option value="">Choose state</option>
-                                            <option value="Alabama">Alabama</option>
-                                            <option value="Alaska">Alaska</option>
-                                            <option value="Arizona">Arizona</option>
-                                            <option value="Arkansas">Arkansas</option>
-                                            <option value="California">California</option>
-                                            <option value="Colorado">Colorado</option>
-                                            <option value="Connecticut">Connecticut</option>
-                                            <option value="Alabama">Alabama</option>
-                                            <option value="Alaska">Alaska</option>
-                                            <option value="Arizona">Arizona</option>
-                                            <option value="Arkansas">Arkansas</option>
-                                            <option value="California">California</option>
-                                            <option value="Colorado">Colorado</option>
-                                            <option value="Connecticut">Connecticut</option>
-                                        </select>
-                                        <i class="arrow double"></i>
-                                    </label>
-                                </div>
-
-
-                            </div>
-
-                            <!-- end section -->
-
-                            <div class="section row">
-                                <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
-                                    <label class="field select ">
-                                        <select id="country" name="country" class="gui-input  br-light">
-                                            <option value="">Select country...</option>
-                                            <option value="Albania">Albania</option>
-                                            <option value="Algeria">Algeria</option>
-                                            <option value="Andorra">Andorra</option>
-                                            <option value="Angola">Angola</option>
-                                            <option value="Anguilla">Anguilla</option>
-                                            <option value="Albania">Albania</option>
-                                            <option value="Algeria">Algeria</option>
-                                            <option value="Andorra">Andorra</option>
-                                            <option value="Angola">Angola</option>
-                                            <option value="Anguilla">Anguilla</option>
-                                        </select>
-                                        <i class="arrow double"></i>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- end section -->
-                            <!-- end section row section -->
-                            <div class="section row mbn">
-                                <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <p class="text-left">
-                                        <div class="validation-summary-errors text-danger" id="divValidation3">
-
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="section row mbn">
-                                <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-                                    <label class="field option mt10">
-                                        <input type="checkbox" id="Status" name="info" class=" outline gui-input br-light">
-                                        <span class="checkbox mt"> </span><span>&nbsp;Activate</span> <span class="small-text">- Customer Active.</span>
-
-                                    </label>
-                                </div>
-                                <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                                    <p class="text-right">
-                                        <input type="submit" id="save" class="btn btn-primary btn-md btn_next  border-radius99 prduct-save-btn mt10" value="Save">
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- end section -->
-
                         </div>
                     </div>
-                </div>
 
-            }
-            <!-- recent orders table -->
+                    }
+                    <!-- recent orders table -->
+                </div>
+            
 
             <div class="panel ">
                 <div class="panel-menu admin-form theme-primary">
                     <div class="heading-title list-items">
-                        <h1 class="panel-title">List of products</h1>
+                        <h1 class="panel-title">List of Customer(s)</h1>
                     </div>
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                             <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                                 <div class="pagination-panel">
                                     <div class="page-text">
-                                        Page &nbsp;
-                                        <div class="show-number">
-                                            <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
-
-                                                @for (var i = 10; i <= 90; i += 10)
-                                                {
-                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddCustomer", "Customer", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
-                                                }
-                                            </ul>
-                                            @Html.PagedListPager(Model, page => Url.Action("AddCustomer", new { page, pageSizeValue = Model.PageSize }))
-                                        </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
-                                        *@ <div class="of-text">of @Model.PageCount </div>
-
+                                        Page
                                     </div>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddCustomer", "Customer", routeValues: new { pageSizeValue = i, page = Model.PageNumber, filter = string.Empty, filterStatus = string.Empty }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddCustomer", new { page, pageSizeValue = Model.PageSize, filter = string.Empty, filterStatus = string.Empty }))
+                                    </div>
+                                    <div class="of-text">of @Model.PageCount </div>
+
+
                                 </div>
                             </div>
                             <div class="dataTables_length">
@@ -395,7 +433,7 @@
                                 </div>
                             </div>
 
-                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span> @Model.TotalItemCount records </div>
                         </div>
 
 
@@ -405,8 +443,7 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
                                     <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a href="javascript:void(0)" onclick="deleteCust()">Delete</a></li>
                                     </ul>
                                 </div>
                                 <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
@@ -418,21 +455,11 @@
                         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
                             <label class="field select ">
                                 <select id="filterpurchases" onchange="GetVal(this)" name="filter-purchases" class="brdr-color br-light">
-                                    <option value="0">Filter by Purchases</option>
-                                    <option value="1">1-49</option>
-                                    <option value="2">50-499</option>
-                                    <option value="3">500-999</option>
-                                    <option value="4">1000+</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
-                            <label class="field select">
-                                <select id="filter-group" name="filter-group" class=" brdr-color br-light">
-                                    <option value="0">Filter by Group</option>
-                                    <option value="1">Customers</option>
-                                    <option value="2">Vendors</option>
+                                    <option value="0">Filter by Order(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
@@ -441,11 +468,11 @@
                             <label class="field select">
                                 <select id="filter-status" name="filter-status" class="brdr-color br-light">
                                     <option value="0">Filter by Status</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
-                                    <option value="4">Online</option>
-                                    <option value="5">Offline</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Suspend">Suspend</option>
+                                    @*<option value="Online">Online</option>
+                                        <option value="Offline">Offline</option>*@
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
@@ -454,7 +481,8 @@
                 </div>
                 <div class="panel-body pn">
                     <div class="table-responsive border-round brdr-top-none">
-                        <table class="table admin-form theme-warning tc-checkbox-1  main-admin-table main-driver-table">
+                        <table id="example" class="dataTable table admin-form theme-warning tc-checkbox-1  main-admin-table main-driver-table mycustomtbl">
+                            @*<table id="example" class="display">*@
                             <thead>
                                 <tr class="clr-blck fs13">
                                     <th class="text-center">
@@ -463,37 +491,31 @@
                                             <span class="checkbox mn"></span>
                                         </label>
                                     </th>
-                                    <th class="">Avatar</th>
-                                    <th class=" text-center">Name</th>
-                                    <th class="">Email</th>
-                                    <th class="">Registered</th>
-                                    <th class="">Purchases</th>
-                                    <th class="">Total Spent</th>
-                                    <th class="">Status</th>
+                                    <th class="text-center">Avatar</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Registered</th>
+                                    <th class="text-center">Purchases</th>
+                                    <th class="text-center">Total Spent</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center"></th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach (var item in Model)
                                 {
                                     <tr class=" t-m-tr" id="@item.customerid">
                                         <td class="text-center" data-val-col="checkbox" data-val="false">
                                             <label class="option block mn">
-                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <input type="checkbox" class="ch" id="customerid" name="customerid" value="@item.customerid">
                                                 <span class="checkbox mn outline"></span>
                                             </label>
                                         </td>
-                                        @if (item.image != null && item.image_path != null)
-                                                {
-                                                    var imgSrc = "";
-                                                    if (item.image != null) {
-
-                                                        var base64 = Convert.ToBase64String(item.image == null ? null : item.image);
-                                                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                                    }
-                                                    else if(item.image_path != null)
-                                                    {
-                                                        imgSrc = item.image_path;
-                                                    }
+                                        @if (item.image_path != null)
+                                        {
+                                            var imgSrc = "";
+                                            imgSrc = item.image_path;
 
                                             <td data-val-col="Avatar" data-val="@imgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50">
 
@@ -522,14 +544,29 @@
                                         <td style="display:none;" data-val-col="Country" data-val="@item.country" class="">$@item.country</td>
                                         <td style="display:none;" data-val-col="Password" data-val="@item.password" class="">$@item.password</td>
                                         <td style="display:none;" data-val-col="Customer_type" data-val="@item.customer_type" class="">$@item.customer_type</td>
-                                        <td style="display:none;" data-val-col="Language" data-val="@item.language" class="">$@item.language</td>
+                                        <td style="display:none;" data-val-col="language" data-val="@item.language" class="">$@item.language</td>
+                                        <td style="display:none;" data-val-col="accountNo" data-val="@item.accountNo" class="">$@item.accountNo</td>
+                                        <td style="display:none;" data-val-col="benificary_name" data-val="@item.benificary_name" class="">$@item.benificary_name</td>
+                                        <td style="display:none;" data-val-col="bankName" data-val="@item.bankName" class="">$@item.bankName</td>
+                                        <td style="display:none;" data-val-col="branchName" data-val="@item.branchName" class="">$@item.branchName</td>
+                                        <td style="display:none;" data-val-col="ifscCode" data-val="@item.ifscCode" class="">$@item.ifscCode</td>
+                                        @{
+                                            var aImgScr = string.Empty;
+                                            if (item.addressProfImage != null)
+                                            {
+                                                aImgScr = item.addressProfImage;
+                                                <td style="display:none;" data-val-col="addressProfImage" data-val="@aImgScr.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="">
+                                                    <img src='@aImgScr.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )' style="max-width:100px; max-height:100px;" />
+                                                </td>
+                                            }
+                                        }
                                         <td data-val-col="Status" class="">
                                             <div class="btn-group  text-right">
-                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success"
+                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success custonbtn"
                                                         data-toggle="dropdown" aria-expanded="false">
                                                     <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu" id="action_@item.customerid">
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.customerid">
                                                     <li onclick="makeSelected(this)" title="Edit">Edit</li>
                                                     <li onclick="makeSelected(this)" title="Contact">Contact</li>
                                                     <li class="divider"></li>
@@ -541,7 +578,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                }
+                                            }
                             </tbody>
                         </table>
                     </div>
@@ -562,31 +599,9 @@
 <!--    </section>-->
 <!-- End: Content-Wrapper -->
 <!-- Start: Right Sidebar -->
-<div class="clearfix"></div>
-
-<div class="row main-footer">
-
-    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
-
-        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-            <p class="font-size-13 pull-right"><span>©2017 all Rights Reserved</span></p>
-
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-            <p class="font-size-13 pull-right"> <span><a href="" class="color-hash">Terms and Conditions |Privacy Police</a> </span></p>
-
-        </div>
-
-    </div>
-
-</div>
 
 
 <script src="~/Content/assets/js/jquery.min.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
@@ -604,6 +619,7 @@
 </script>
 
 <!-- Bootstrap -->
+
 
 <script src="~/Content/assets/js/bootstrap.min.js"></script>
 
@@ -629,7 +645,7 @@
 
 <script type="text/javascript">
 
-     function validatetabdata(intTab) {
+    function validatetabdata(intTab) {
         var strErrMsg = "";
         var returnval = true;
         $("#divValidation3").html("");
@@ -651,7 +667,15 @@
             if (password != confirmPassword) {
                 strErrMsg += "<li>Passwords do not match.</li>";
             }
-           
+            if ($.trim($("#phone").val()) == "") {
+                strErrMsg += "<li>Mobile No is required</li>";
+            }
+            if ($("#customer-group").val() == "" || $("#accountno").val() == "0") {
+                strErrMsg += "<li>Account No is required</li>";
+            }
+            if ($.trim($("#language").val()) == "" || $("#language").val() == "0") {
+                strErrMsg += "<li>Customer Language.</li>";
+            }
             if (strErrMsg != "") {
                 $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
                 returnval = false;
@@ -659,16 +683,27 @@
 
         }
         else if (intTab == 2) {
-            if ($.trim($("#phone").val()) == "") {
-                strErrMsg += "<li>Mobile No is required</li>";
-            }
-            if ($("#customer-group").val() == "" || $("#accountno").val() == "0" ) {
+
+            if ($("#accountno").val() == "" || $("#accountno").val() == "0") {
                 strErrMsg += "<li>Account No is required</li>";
             }
-            if ($.trim($("#language").val()) == "" || $("#language").val() == "0") {
-                    strErrMsg += "<li>Customer Language.</li>";
+            if ($.trim($("#bankName").val()) == "") {
+                strErrMsg += "<li>Bank name is required.</li>";
             }
-            
+
+            if ($.trim($("#branchName").val()) == "") {
+                strErrMsg += "<li>Branch Name is required.</li>";
+            }
+            if ($.trim($("#ifscCode").val()) == "") {
+                strErrMsg += "<li>IFSC Code is required.</li>";
+            }
+            if ($.trim($("#HolderName").val()) == "") {
+                strErrMsg += "<li>Bank Account Holder Name is required.</li>";
+            }
+            if (strErrMsg != "") {
+                $("#divValidation3").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
             if (strErrMsg != "") {
                 $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
                 returnval = false;
@@ -699,9 +734,56 @@
         return returnval;
     }
 
-    $(document).ready(function (e) {
+    $("#filter-status").change(function () {
+        var statusVal = $(this).val();
+        @*var response = '@Url.Action("AddCustomer", "Customer",new{ pageSizeValue = 1, page = 10, filter = "Status", filterStatus = "Active" })';*@
+
+        var href = "AddCustomer?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+        window.location.href = href;
+
+    });
+
+    $("#filterpurchases").change(function () {
+        var statusVal = $(this).val();
+        @*var response = '@Url.Action("AddCustomer", "Customer",new{ pageSizeValue = 1, page = 10, filter = "Status", filterStatus = "Active" })';*@
+
+        var href = "AddCustomer?pageSizeValue=10&page=1&filter=OrderCount&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+
+    function deleteCust() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
+
+        $.ajax({
+            url: '@Url.Action("DeleteCoustomer", "Customer")',
+            data: { customerid: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+             //   alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
+
+    $(document).ready(function () {
+
+        var count = '@ViewBag.selectOrderCount';
+        if (count != '' || count != null) {
+            $("#filterpurchases").val(count).attr('selected');
+        }
 
 
+        var status = '@ViewBag.statusFilter';
+        if (status != '' || status != null) {
+            $("#filter-status").val(status).attr('selected', true);
+        }
 
         @if (@ViewBag.status != null && @ViewBag.status == 0)
         {
@@ -721,20 +803,27 @@
         $("#zip").val("@c.zip");
         $("#state").val("@c.state").attr("selected");
         $("#country").val("@c.country").attr("selected");
+        $("#addressProfoutput").attr("src", "@c.addressProfImage");
+        $("#accountNo").val("@c.accountNo");
+        $("#bankName").val("@c.bankName");
+        $("#benificary_name").val("@c.benificary_name");
+        $("#branchName").val("@c.branchName");
+        $("#ifscCode").val("@c.ifscCode");
+
         </text>
             }
 
-        $("#gridAction").on("change", function (e) {
-            debugger;
-            var elmnt = $(e);
-        });
+        //$("#gridAction").on("change", function (e) {
+        //    debugger;
+        //    var elmnt = $(e);
+        //});
         //Igex - Tab Activation
         $("#btnNext").click(function () {
             if (validatetabdata(1))
-            activeTab('2');
+                activeTab('2');
         });
         $("#btnNext2").click(function () {
-            if (validatetabdata(2))
+            //if (validatetabdata(2))
             activeTab('3')
         });
 
@@ -744,6 +833,13 @@
             }
             return true;
         });
+
+        if ($("#filterpurchases").val() == '' || $("#filterpurchases").val() == 0 || $("#filterpurchases").val() == null) {
+            $("#filterpurchases").val(0).attr('selected');
+        }
+        if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+            $("#filter-status").val(0).attr('selected');
+        }
         // end
         //Igex Number Validation
         $(".no").keydown(function (e) {
@@ -761,8 +857,12 @@
                 e.preventDefault();
             }
         });
+
+
+
         //end
     });
+
     //Igex
     function activeTab(tab) {
         $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
@@ -817,6 +917,7 @@
                 url: '@Url.Action("UpdateStatus", "Customer")',
                 data: { custId: custId, sts: el.innerText },
                 type: 'POST',
+                dataType: 'json',
                 success: function (res) {
                     debugger;
                 },
@@ -836,12 +937,17 @@
             $("#address").val(rowData.Address);
             $("#customer-group").val(rowData.Customer_type);
             $("#customer-group option[value='" + rowData.Customer_type + "']").attr('selected', true);
-            alert(rowData.Language);
-            $("#language").val(rowData.Language).attr("selected");
+            $("#language").val(rowData.language).attr("selected");
             $("#city").val(rowData.City).attr("selected");
             $("#zip").val(rowData.Zip);
             $("#state").val(rowData.State).attr("selected");
             $("#country").val(rowData.Country).attr("selected");
+            $("#addressProfoutput").attr("src", rowData.addressProfImage);
+            $("#accountNo").val(rowData.accountNo);
+            $("#bankName").val(rowData.bankName);
+            $("#benificary_name").val(rowData.benificary_name);
+            $("#branchName").val(rowData.branchName);
+            $("#ifscCode").val(rowData.ifscCode);
             debugger;
         }
 
@@ -865,7 +971,7 @@
                 var fileSize = objFile.size; //size in kb
                 fileSize = fileSize / 1048576; //size in mb
             }
-            //for FF, Safari, Opeara and Others
+                //for FF, Safari, Opeara and Others
             else {
                 fileSize = $("#" + fileid)[0].files[0].size //size in kb
                 fileSize = fileSize / 1048576; //size in mb

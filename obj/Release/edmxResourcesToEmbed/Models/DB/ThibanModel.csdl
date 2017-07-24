@@ -30,7 +30,6 @@
     <EntitySet Name="customerotheraddresses" EntityType="ThibanWaterDBModel.customerotheraddress" />
     <EntitySet Name="customerpaymentcards" EntityType="ThibanWaterDBModel.customerpaymentcard" />
     <EntitySet Name="customervillaaddresses" EntityType="ThibanWaterDBModel.customervillaaddress" />
-    <EntitySet Name="dgeofences" EntityType="ThibanWaterDBModel.dgeofence" />
     <EntitySet Name="drivers" EntityType="ThibanWaterDBModel.driver" />
     <EntitySet Name="driveraddressproffs" EntityType="ThibanWaterDBModel.driveraddressproff" />
     <EntitySet Name="driverbankdetails" EntityType="ThibanWaterDBModel.driverbankdetail" />
@@ -55,7 +54,6 @@
     <EntitySet Name="productrattings" EntityType="ThibanWaterDBModel.productratting" />
     <EntitySet Name="Provinces" EntityType="ThibanWaterDBModel.Province" />
     <EntitySet Name="roles" EntityType="ThibanWaterDBModel.role" />
-    <EntitySet Name="rolemanagements" EntityType="ThibanWaterDBModel.rolemanagement" />
     <EntitySet Name="shippingaddresses" EntityType="ThibanWaterDBModel.shippingaddress" />
     <EntitySet Name="shippinghistories" EntityType="ThibanWaterDBModel.shippinghistory" />
     <EntitySet Name="storedetails" EntityType="ThibanWaterDBModel.storedetail" />
@@ -165,10 +163,6 @@
     <AssociationSet Name="FK__customerf__produ__71D1E811" Association="ThibanWaterDBModel.FK__customerf__produ__71D1E811">
       <End Role="product" EntitySet="products" />
       <End Role="customerfavoriteproduct" EntitySet="customerfavoriteproducts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__geofence__geofen__01142BA1" Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1">
-      <End Role="dgeofence" EntitySet="dgeofences" />
-      <End Role="geofence" EntitySet="geofences" />
     </AssociationSet>
     <AssociationSet Name="FK__driver__image__662B2B3B" Association="ThibanWaterDBModel.FK__driver__image__662B2B3B">
       <End Role="ImageFile" EntitySet="ImageFiles" />
@@ -290,10 +284,6 @@
       <End Role="product" EntitySet="products" />
       <End Role="productratting" EntitySet="productrattings" />
     </AssociationSet>
-    <AssociationSet Name="FK__rolemanag__rolei__5AB9788F" Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F">
-      <End Role="role" EntitySet="roles" />
-      <End Role="rolemanagement" EntitySet="rolemanagements" />
-    </AssociationSet>
     <AssociationSet Name="FK__teammanag__rolei__57DD0BE4" Association="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4">
       <End Role="role" EntitySet="roles" />
       <End Role="teammanagement" EntitySet="teammanagements" />
@@ -382,6 +372,24 @@
       <End Role="order_details" EntitySet="order_details" />
       <End Role="order_details1" EntitySet="order_details" />
     </AssociationSet>
+    <EntitySet Name="driver_track" EntityType="ThibanWaterDBModel.driver_track" />
+    <AssociationSet Name="FK_order_details_order_details1" Association="ThibanWaterDBModel.FK_order_details_order_details1">
+      <End Role="order" EntitySet="orders" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <EntitySet Name="vender_zone_join" EntityType="ThibanWaterDBModel.vender_zone_join" />
+    <EntitySet Name="dgeofences" EntityType="ThibanWaterDBModel.dgeofence" />
+    <AssociationSet Name="FK__geofence__geofen__01142BA1" Association="ThibanWaterDBModel.FK__geofence__geofen__01142BA1">
+      <End Role="dgeofence" EntitySet="dgeofences" />
+      <End Role="geofence" EntitySet="geofences" />
+    </AssociationSet>
+    <EntitySet Name="rolemanagements" EntityType="ThibanWaterDBModel.rolemanagement" />
+    <AssociationSet Name="FK__rolemanag__rolei__5AB9788F" Association="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F">
+      <End Role="role" EntitySet="roles" />
+      <End Role="rolemanagement" EntitySet="rolemanagements" />
+    </AssociationSet>
+    <EntitySet Name="dgeofencelocations" EntityType="ThibanWaterDBModel.dgeofencelocation" />
+    <EntitySet Name="vender_zone" EntityType="ThibanWaterDBModel.vender_zone" />
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -400,6 +408,8 @@
     <Property Name="status" Type="Boolean" />
     <Property Name="Image" Type="Int32" />
     <NavigationProperty Name="ImageFile" Relationship="ThibanWaterDBModel.FK__admin__Image__5E8A0973" FromRole="admin" ToRole="ImageFile" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="Image_Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="advertisement">
     <Key>
@@ -715,18 +725,6 @@
     <Property Name="villa_address_status" Type="Boolean" />
     <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__customerv__custo__75A278F5" FromRole="customervillaaddress" ToRole="customer" />
   </EntityType>
-  <EntityType Name="dgeofence">
-    <Key>
-      <PropertyRef Name="geofenceid" />
-    </Key>
-    <Property Name="geofenceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="location" Type="Geography" />
-    <Property Name="zone_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="city_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="direction_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="status" Type="Boolean" />
-    <NavigationProperty Name="geofences" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="dgeofence" ToRole="geofence" />
-  </EntityType>
   <EntityType Name="driver">
     <Key>
       <PropertyRef Name="driverid" />
@@ -848,6 +846,7 @@
     <NavigationProperty Name="customer" Relationship="ThibanWaterDBModel.FK__driverrat__custo__7C4F7684" FromRole="driverrating" ToRole="customer" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__driverrat__drive__7D439ABD" FromRole="driverrating" ToRole="driver" />
     <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__driverrat__order__7E37BEF6" FromRole="driverrating" ToRole="order" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="driverworkinghour">
     <Key>
@@ -885,9 +884,9 @@
     <Property Name="driver_id" Type="Int32" />
     <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="Boolean" />
-    <NavigationProperty Name="dgeofence" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="geofence" ToRole="dgeofence" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__geofence__driver__00200768" FromRole="geofence" ToRole="driver" />
     <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__geofence__vender__02084FDA" FromRole="geofence" ToRole="vender" />
+    <NavigationProperty Name="dgeofence" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="geofence" ToRole="dgeofence" />
   </EntityType>
   <EntityType Name="ImageFile">
     <Key>
@@ -966,6 +965,7 @@
     <NavigationProperty Name="shippinghistories" Relationship="ThibanWaterDBModel.FK__shippingh__order__114A936A" FromRole="order" ToRole="shippinghistory" />
     <NavigationProperty Name="onspotsales" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="order" ToRole="onspotsale" />
     <Property Name="address_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order_details" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order" ToRole="order_details" />
   </EntityType>
   <EntityType Name="oredercanclefeedback">
     <Key>
@@ -1066,6 +1066,7 @@
     <Property Name="ratting_date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__productra__order__0B91BA14" FromRole="productratting" ToRole="order" />
     <NavigationProperty Name="product" Relationship="ThibanWaterDBModel.FK__productra__produ__0C85DE4D" FromRole="productratting" ToRole="product" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
@@ -1082,19 +1083,8 @@
     <Property Name="rolename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="createdby" Type="Int32" />
     <Property Name="status" Type="Boolean" />
-    <NavigationProperty Name="rolemanagements" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="role" ToRole="rolemanagement" />
     <NavigationProperty Name="teammanagements" Relationship="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" FromRole="role" ToRole="teammanagement" />
-  </EntityType>
-  <EntityType Name="rolemanagement">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="roleid" Type="Int32" />
-    <Property Name="menuitem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="createdby" Type="Int32" />
-    <Property Name="status" Type="Boolean" />
-    <NavigationProperty Name="role" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="rolemanagement" ToRole="role" />
+    <NavigationProperty Name="rolemanagements" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="role" ToRole="rolemanagement" />
   </EntityType>
   <EntityType Name="shippingaddress">
     <Key>
@@ -1164,6 +1154,7 @@
     <Property Name="creadteby" Type="Int32" />
     <NavigationProperty Name="role" Relationship="ThibanWaterDBModel.FK__teammanag__rolei__57DD0BE4" FromRole="teammanagement" ToRole="role" />
     <NavigationProperty Name="vender" Relationship="ThibanWaterDBModel.FK__teammanag__vende__14270015" FromRole="teammanagement" ToRole="vender" />
+    <Property Name="member_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="vattandetail">
     <Key>
@@ -1629,18 +1620,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__geofence__geofen__01142BA1">
-    <End Type="ThibanWaterDBModel.dgeofence" Role="dgeofence" Multiplicity="0..1" />
-    <End Type="ThibanWaterDBModel.geofence" Role="geofence" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="dgeofence">
-        <PropertyRef Name="geofenceid" />
-      </Principal>
-      <Dependent Role="geofence">
-        <PropertyRef Name="geofence_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__driver__image__662B2B3B">
     <End Type="ThibanWaterDBModel.ImageFile" Role="ImageFile" Multiplicity="0..1" />
     <End Type="ThibanWaterDBModel.driver" Role="driver" Multiplicity="*" />
@@ -2001,18 +1980,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__rolemanag__rolei__5AB9788F">
-    <End Type="ThibanWaterDBModel.role" Role="role" Multiplicity="0..1" />
-    <End Type="ThibanWaterDBModel.rolemanagement" Role="rolemanagement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="role">
-        <PropertyRef Name="roleid" />
-      </Principal>
-      <Dependent Role="rolemanagement">
-        <PropertyRef Name="roleid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__teammanag__rolei__57DD0BE4">
     <End Type="ThibanWaterDBModel.role" Role="role" Multiplicity="0..1" />
     <End Type="ThibanWaterDBModel.teammanagement" Role="teammanagement" Multiplicity="*" />
@@ -2180,6 +2147,7 @@
     <Property Name="weatingtime" Type="Int32" />
     <Property Name="delaytime" Type="Int32" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__delivery__driver__4B422AD5" FromRole="delivery" ToRole="driver" />
+    <Property Name="shift_id" Type="Int32" />
   </EntityType>
   <EntityType Name="national_address">
     <Key>
@@ -2231,6 +2199,8 @@
     <Property Name="orderid" Type="Int32" />
     <NavigationProperty Name="driver" Relationship="ThibanWaterDBModel.FK__onspotsal__drive__51EF2864" FromRole="onspotsale" ToRole="driver" />
     <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK__onspotsal__order__54CB950F" FromRole="onspotsale" ToRole="order" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="shift_id" Type="Int32" />
   </EntityType>
   <EntityType Name="orderdeliveryweather">
     <Key>
@@ -2447,6 +2417,7 @@
     <Property Name="created_date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_details1" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details" ToRole="order_details1" />
     <NavigationProperty Name="order_details2" Relationship="ThibanWaterDBModel.FK_order_details_order_details" FromRole="order_details1" ToRole="order_details" />
+    <NavigationProperty Name="order" Relationship="ThibanWaterDBModel.FK_order_details_order_details1" FromRole="order_details" ToRole="order" />
   </EntityType>
   <Association Name="FK_order_details_order_details">
     <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="1" />
@@ -2460,4 +2431,101 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="driver_track">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driverid" Type="Int32" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="longitued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_order_details_order_details1">
+    <End Type="ThibanWaterDBModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.order_details" Role="order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vender_zone_join">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="zoneid" Type="Int32" />
+    <Property Name="geofenceid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="dgeofence">
+    <Key>
+      <PropertyRef Name="geofenceid" />
+    </Key>
+    <Property Name="geofenceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="zone_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="direction_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="population" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="geofences" Relationship="ThibanWaterDBModel.FK__geofence__geofen__01142BA1" FromRole="dgeofence" ToRole="geofence" />
+  </EntityType>
+  <Association Name="FK__geofence__geofen__01142BA1">
+    <End Type="ThibanWaterDBModel.dgeofence" Role="dgeofence" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.geofence" Role="geofence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dgeofence">
+        <PropertyRef Name="geofenceid" />
+      </Principal>
+      <Dependent Role="geofence">
+        <PropertyRef Name="geofence_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="rolemanagement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="menuid" Type="Int32" />
+    <Property Name="createdby" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="role" Relationship="ThibanWaterDBModel.FK__rolemanag__rolei__5AB9788F" FromRole="rolemanagement" ToRole="role" />
+  </EntityType>
+  <Association Name="FK__rolemanag__rolei__5AB9788F">
+    <End Type="ThibanWaterDBModel.role" Role="role" Multiplicity="0..1" />
+    <End Type="ThibanWaterDBModel.rolemanagement" Role="rolemanagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="roleid" />
+      </Principal>
+      <Dependent Role="rolemanagement">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="dgeofencelocation">
+    <Key>
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="geofenceid" />
+    </Key>
+    <Property Name="locationid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="geofenceid" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vender_zone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="zone_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vendor_id" Type="Int32" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

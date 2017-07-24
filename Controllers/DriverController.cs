@@ -20,7 +20,7 @@ namespace Final_ThibanProject.Controllers
         ThibanWaterDBEntities db = new ThibanWaterDBEntities();
         LogError objLogError = new LogError();
         // GET: Driver
-        public ActionResult AddDriver(int? page, int? pageSizeValue)
+        public ActionResult AddDriver(int? page, int? pageSizeValue, string filter, string filterStatus)
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
@@ -28,10 +28,29 @@ namespace Final_ThibanProject.Controllers
                 int pageNumber = (page ?? 1);
                 var objdriveruser = new List<Driver>();
                 objdriveruser = CallDriverList();
+                if (filter == null || filter == "")
+                {
+                    ViewBag.filter_status = filterStatus;
+                }
+                else if (filterStatus != null || filterStatus != "")
+                {
+                    //    objFilterProduct = CallProductList();
+                    if (filter == "Status")
+                    {
+                        if (filterStatus == "0" || (filterStatus == "" || filterStatus == ""))
+                        {
+                            // objFilterProduct = objProduct.ToList();
+                        }
+                        else
+                        {
+                            objdriveruser = objdriveruser.Where(x => x.Status == filterStatus).ToList();
+                        }
+                        ViewBag.filter_status = filterStatus;
+                    }
+                }
                 return View(objdriveruser.ToPagedList(pageNumber, pageSize));
             }
         }
-
 
         private List<Driver> CallDriverList()
         {
@@ -40,6 +59,7 @@ namespace Final_ThibanProject.Controllers
 
                 List<Driver> objDriver = new List<Driver>();
                 var VenderQuery = (from d in db.drivers
+                                   where d.status != "Deleted"
                                    join s in db.shippinghistories on d.driverid equals s.driver_id into sD
                                    from s in sD.DefaultIfEmpty()
                                    join o in db.orders on s.order_id equals o.orderid into oD
@@ -82,40 +102,40 @@ namespace Final_ThibanProject.Controllers
                                        d.password
                                    }
                                        into rc
-                                       select new
-                                       {
-                                           id = rc.Key.driverid,
-                                           Name = rc.Key.name,
-                                           Avatar = rc.Key.Imageattachment,
-                                           password = rc.Key.password,
-                                           Email = rc.Key.emailid,
-                                           RegDate = rc.Key.registration_date,
-                                           TotalDelivery = rc.Count(),
-                                           Amount = rc.Sum(r => r.total),
-                                           Mobile = rc.Key.mobile_no,
-                                           Address = rc.Key.streetaddress,
-                                           City = rc.Key.city,
-                                           Zip = rc.Key.zip,
-                                           State=rc.Key.state,
-                                           Country=rc.Key.country,
-                                           Note1 = rc.Key.drivernote1,
-                                           Note2 = rc.Key.drivernote2,
-                                           status = rc.Key.status,
-                                           Nationality=rc.Key.driver_nationality,
-                                           Gender=rc.Key.gender,
-                                           deviceID = rc.Key.driver_divice_id,
-                                           phoneType =rc.Key.driver_phone_type,
-                                           telecomm = rc.Key.driver_telicom_carrer,
-                                           accountNo = rc.Key.accountno == null ? 0 : rc.Key.accountno,
-                                           bankName = rc.Key.bank_name,
-                                           benificaryName = rc.Key.benificary_name_in_bank,
-                                           branchName = rc.Key.branch_name,
-                                           ifscCode = rc.Key.ifsc_code,
-                                           addressProf = rc.Key.address_image,
-                                           imageInfo = rc.Key.Image_path,
+                                   select new
+                                   {
+                                       id = rc.Key.driverid,
+                                       Name = rc.Key.name,
+                                       Avatar = rc.Key.Imageattachment,
+                                       password = rc.Key.password,
+                                       Email = rc.Key.emailid,
+                                       RegDate = rc.Key.registration_date,
+                                       TotalDelivery = rc.Count(),
+                                       Amount = rc.Sum(r => r.total),
+                                       Mobile = rc.Key.mobile_no,
+                                       Address = rc.Key.streetaddress,
+                                       City = rc.Key.city,
+                                       Zip = rc.Key.zip,
+                                       State = rc.Key.state,
+                                       Country = rc.Key.country,
+                                       Note1 = rc.Key.drivernote1,
+                                       Note2 = rc.Key.drivernote2,
+                                       status = rc.Key.status,
+                                       Nationality = rc.Key.driver_nationality,
+                                       Gender = rc.Key.gender,
+                                       deviceID = rc.Key.driver_divice_id,
+                                       phoneType = rc.Key.driver_phone_type,
+                                       telecomm = rc.Key.driver_telicom_carrer,
+                                       accountNo = rc.Key.accountno == null ? 0 : rc.Key.accountno,
+                                       bankName = rc.Key.bank_name,
+                                       benificaryName = rc.Key.benificary_name_in_bank,
+                                       branchName = rc.Key.branch_name,
+                                       ifscCode = rc.Key.ifsc_code,
+                                       addressProf = rc.Key.address_image,
+                                       imageInfo = rc.Key.Image_path,
 
 
-                                       }).ToList();
+                                   }).ToList();
                 foreach (var item in VenderQuery)
                 {
                     objDriver.Add(new Driver()
@@ -157,7 +177,7 @@ namespace Final_ThibanProject.Controllers
 
 
         [HttpPost]
-        public ActionResult AddDriver(Driver dr, HttpPostedFileBase drivInfo, int? page, int? pageSizeValue,HttpPostedFileBase addressProf)
+        public ActionResult AddDriver(Driver dr, HttpPostedFileBase drivInfo, int? page, int? pageSizeValue, HttpPostedFileBase addressProf)
         {
             try
             {
@@ -231,21 +251,26 @@ namespace Final_ThibanProject.Controllers
                                     dda.drivernote2 = dr.DriverNote2;
                                     db.driverdefaultaddresses.Add(dda);
                                     db.SaveChanges();
-                                    driverbankdetail dbd = new driverbankdetail();
-                                    dbd.accountno = dr.accountNo;
-                                    dbd.bank_name = dr.bankName;
-                                    dbd.branch_name = dr.branchName;
-                                    dbd.benificary_name_in_bank = dr.benificary_name;
-                                    dbd.ifsc_code = dr.ifscCode;
-                                    dbd.driver_id = did;
-                                    db.driverbankdetails.Add(dbd);
-                                    db.SaveChanges();
-                                    if(dr.addressProfImage != null) { 
-                                    driveraddressproff dap = new driveraddressproff();
-                                    dap.driver_id = did;
-                                    dap.address_image = dr.addressProfImage;
-                                    db.driveraddressproffs.Add(dap);
-                                    db.SaveChanges();
+                                    if (dr.accountNo != 0 && dr.bankName != null && dr.bankName != null 
+                                        && dr.branchName != null && dr.benificary_name != null  && dr.ifscCode != null)
+                                    {
+                                        driverbankdetail dbd = new driverbankdetail();
+                                        dbd.accountno = dr.accountNo;
+                                        dbd.bank_name = dr.bankName;
+                                        dbd.branch_name = dr.branchName;
+                                        dbd.benificary_name_in_bank = dr.benificary_name;
+                                        dbd.ifsc_code = dr.ifscCode;
+                                        dbd.driver_id = did;
+                                        db.driverbankdetails.Add(dbd);
+                                        db.SaveChanges();
+                                    }
+                                    if (dr.addressProfImage != null)
+                                    {
+                                        driveraddressproff dap = new driveraddressproff();
+                                        dap.driver_id = did;
+                                        dap.address_image = dr.addressProfImage;
+                                        db.driveraddressproffs.Add(dap);
+                                        db.SaveChanges();
                                     }
                                     ViewBag.message = "Driver Added Sucessfully.";
                                 }
@@ -305,7 +330,7 @@ namespace Final_ThibanProject.Controllers
                                 var driverBank = db.driverbankdetails.Select(x => x.driver_id == dr.driverid).Count();
                                 if (driverBank > 0)
                                 {
-                                    driverbankdetail edbd = db.driverbankdetails.First(x => x.driver_id == dr.driverid);
+                                    driverbankdetail edbd = db.driverbankdetails.Where(x => x.driver_id == dr.driverid).FirstOrDefault();
                                     edbd.accountno = dr.accountNo;
                                     edbd.bank_name = dr.bankName;
                                     edbd.branch_name = dr.branchName;
@@ -333,11 +358,12 @@ namespace Final_ThibanProject.Controllers
                                 }
                                 else
                                 {
-                                    if(dr.addressProfImage != null) { 
-                                    driveraddressproff edap = db.driveraddressproffs.First(x => x.driver_id == dr.driverid);
-                                    edap.address_image = dr.addressProfImage;
-                                    db.driveraddressproffs.Add(edap);
-                                    db.SaveChanges();
+                                    if (dr.addressProfImage != null)
+                                    {
+                                        driveraddressproff edap = db.driveraddressproffs.First(x => x.driver_id == dr.driverid);
+                                        edap.address_image = dr.addressProfImage;
+                                        db.driveraddressproffs.Add(edap);
+                                        db.SaveChanges();
                                     }
                                 }
                                 ViewBag.message = "Driver Edited Successfully.";
@@ -397,8 +423,8 @@ namespace Final_ThibanProject.Controllers
 
                     var objRatings = (from d in db.drivers
                                       join dr in db.driverratings on d.driverid equals dr.driver_id
-                                      join img in db.ImageFiles on d.image equals img.ImageId
-                                      where d.driverid == listdrivers.driverid
+                                      //    join img in db.ImageFiles on d.image equals img.ImageId
+                                      where d.driverid == listdrivers.driverid && dr.status != "Deleted"
                                       select new
                                       {
                                           dusername = d.dusername,
@@ -406,7 +432,7 @@ namespace Final_ThibanProject.Controllers
                                           comment = dr.comment,
                                           rating = dr.rating,
                                           name = d.name,
-                                          image = img.Imageattachment,
+                                          image = d.Image_path,
                                           drateid = dr.drateid
                                       }).ToList();
 
@@ -420,7 +446,7 @@ namespace Final_ThibanProject.Controllers
                             comment = a.comment,
                             rating = a.rating,
                             name = a.name,
-                            image = a.image,
+                            driver_image = a.image,
                             drateid = a.drateid
                         });
 
@@ -456,7 +482,7 @@ namespace Final_ThibanProject.Controllers
                                   comment = dr.comment,
                                   rating = dr.rating,
                                   name = d.name,
-                                  image = img.Imageattachment,
+                                  image = d.Image_path,
                                   drateid = dr.drateid
                               }).FirstOrDefault();
             if (objRatings != null)
@@ -466,7 +492,7 @@ namespace Final_ThibanProject.Controllers
                 objDriver.comment = objRatings.comment;
                 objDriver.rating = objRatings.rating;
                 objDriver.name = objRatings.name;
-                objDriver.image = objRatings.image;
+                objDriver.driver_image = objRatings.image;
                 objDriver.drateid = objRatings.drateid;
 
             }
@@ -484,6 +510,38 @@ namespace Final_ThibanProject.Controllers
             return Json(new { driverid = drvId, status = sts });
         }
 
+        [HttpPost]
+        public JsonResult DeleteDriver(string[] ids)
+        {
+            JsonResult res = new JsonResult();
+            if (ids != null && ids.Length > 0)
+            {
+                foreach (string i in ids)
+                {
+                    int id = Convert.ToInt16(i);
+                    db.drivers.Find(id).status = "Deleted";
+                }
+                db.SaveChanges();
+            }
+            return Json(true);
 
+        }
+
+        [HttpPost]
+        public JsonResult DeleteRating(string[] ids)
+        {
+            JsonResult res = new JsonResult();
+            if (ids != null && ids.Length > 0)
+            {
+                foreach (string i in ids)
+                {
+                    int id = Convert.ToInt16(i);
+                    db.driverratings.Find(id).status = "Deleted";
+                }
+                db.SaveChanges();
+            }
+            return Json(true);
+
+        }
     }
 }

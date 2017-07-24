@@ -36,8 +36,8 @@ namespace Final_ThibanProject.Controllers
                 {
                     objrole.Add(new RoleManagement()
                     {
-                        Roleid=item.roleid,
-                        RoleName =Convert.ToString(item.rolename),
+                        Roleid = item.roleid,
+                        RoleName = Convert.ToString(item.rolename),
                     });
                 }
                 return objrole;
@@ -46,14 +46,73 @@ namespace Final_ThibanProject.Controllers
         }
 
         //GET: AddRole
-        public ActionResult CreateRole()
+        public ActionResult CreateRole(int? roleId)
         {
-            return View();
+            RoleManagement roleMgt = new RoleManagement();
+            using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
+            {
+                if (roleId != null && roleId == 0)
+                {
+                    List<MenuItem> menuItems = new List<MenuItem>();
+                    menuItems = db.menuitems.Select(x => new MenuItem()
+                    {
+                        menuid = x.menuid,
+                        menuname = x.menuname
+                    }).ToList();
+
+                    roleMgt.menuItem = menuItems;
+                }
+                else
+                {
+
+                    var roleName = db.roles.Where(x => x.roleid == roleId).Select(x => x.rolename).FirstOrDefault();
+
+                    roleMgt.RoleName = roleName;
+                    var menu = (from rm in db.rolemanagements
+                                where rm.roleid == roleId
+                                select new
+                                {
+                                    menuid = (int)rm.menuid
+                                }).AsEnumerable();
+
+
+                    var finalMenu = (from m in db.menuitems
+                                     join sm in menu on m.menuid equals sm.menuid into smd
+                                     from sm in smd.DefaultIfEmpty()
+                                     group m by new
+                                     {
+                                         m.menuname,
+                                         m.menuid
+                                       , m1 = sm.menuid
+                                     }
+                                      into rc
+                                     select new MenuItem
+                                     {
+                                         menuname = rc.Key.menuname,
+                                         menuid = rc.Key.menuid//,
+                                       //  selected=rc.Key.m1 !=null?1:0
+                                     }).ToList();
+                    List<MenuItem> Obj1 = new List<MenuItem>();
+                    foreach (var item in finalMenu)
+                    {
+                        Obj1.Add(new MenuItem()
+                        {
+                          menuid=item.menuid,
+                          menuname=item.menuname
+                           // ,
+                      //    ,selected = item.Or_stock == null ? 0 : item.Or_stock
+                           
+                        });
+                    }
+                    roleMgt.menuItem = Obj1;// finalMenu;
+                }
+            }
+            return View(roleMgt);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateRole(RoleManagement rm, string[] menuitem, int? page, int? pageSizeValue)
+        public ActionResult CreateRole(RoleManagement rm, int[] menuid, int? page, int? pageSizeValue)
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
@@ -64,31 +123,41 @@ namespace Final_ThibanProject.Controllers
                 if (s == rm.Password)
                 {
 
-                    var result = (from d in db.menuitems.Where(a => a.menuname.Equals(rm.Management)) select d.menuname).ToList();
-                    role ro = new role();
-                    ro.rolename = rm.RoleName;
-                    ro.createdby = id;
-                    ro.status = true;
-                    db.roles.Add(ro);
-                    db.SaveChanges();
-                    var memid = ro.roleid;
-                    rolemanagement rmanag = new rolemanagement();
-                    foreach (var it in menuitem)
+                    //var result = (from d in db.menuitems.Where(a => a.menuid.Equals(rm.Management)) select d.menuid).ToList();//
+                    if (menuid.Length > 0)
                     {
-                        rmanag.roleid = memid;
-                        rmanag.menuitem = it;
-                        rmanag.createdby = id;
-                        rmanag.status = true;
-                        db.rolemanagements.Add(rmanag);
+                        role ro = new role();
+                        ro.rolename = rm.RoleName;
+                        ro.createdby = id;
+                        ro.status = true;
+                        db.roles.Add(ro);
                         db.SaveChanges();
+                        var memid = ro.roleid;
+                        rolemanagement rmanag = new rolemanagement();
+                        foreach (int it in menuid)
+                        {
+                            rmanag.roleid = memid;
+                            rmanag.menuid = it;
+                            rmanag.createdby = id;
+                            rmanag.status = true;
+                            db.rolemanagements.Add(rmanag);
+                            db.SaveChanges();
+                        }
                     }
-                    
                 }
-                var objrole = new List<RoleManagement>();
-                objrole = CallRoleList();
+
                 int pageSize = (pageSizeValue ?? 10);
                 int pageNumber = (page ?? 1);
-                return View(objrole.ToPagedList(pageNumber, pageSize));
+                var objmember = new List<RoleManagement>();
+                objmember = CallRoleList();
+                return View("AddRole", objmember.ToPagedList(pageNumber, pageSize));
+
+
+                //var objrole = new List<RoleManagement>();
+                //objrole = CallRoleList();
+                //int pageSize = (pageSizeValue ?? 10);
+                //int pageNumber = (page ?? 1);
+                //return View(objrole.ToPagedList(pageNumber, pageSize));
             }
         }
 
@@ -98,7 +167,7 @@ namespace Final_ThibanProject.Controllers
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
-                var tid = (from s in db.rolemanagements where s.roleid==id select s);
+                var tid = (from s in db.rolemanagements where s.roleid == id select s);
                 foreach (var item in tid)
                 {
                     db.rolemanagements.Remove(item);
@@ -111,7 +180,7 @@ namespace Final_ThibanProject.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
-       
+
 
     }
 }

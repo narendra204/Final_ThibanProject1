@@ -20,7 +20,7 @@ namespace Final_ThibanProject.Controllers
         // GET: Product
         [HttpGet]
         [Authorize]
-        public ActionResult AddProduct(int? page, int? pageSizeValue)
+        public ActionResult AddProduct(int? page, int? pageSizeValue, string filter, string filterStatus)
         {
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
@@ -30,6 +30,66 @@ namespace Final_ThibanProject.Controllers
 
                 var objProduct = new List<Product>();
                 objProduct = CallProductList();
+                //   var objFilterProduct = new List<Product>();
+                if (filter == null || filter == "")
+                {
+                    ViewBag.filter_status = filterStatus;
+                    ViewBag.filter_order = filterStatus;
+                    ViewBag.filter_brand = filterStatus;
+                }
+                else if (filterStatus != null || filterStatus != "")
+                {
+                //    objFilterProduct = CallProductList();
+                    if (filter == "Status")
+                    {
+
+                        if (filterStatus == "All" || (filterStatus == "" || filterStatus == ""))
+                        {
+                           // objFilterProduct = objProduct.ToList();
+                        }
+                        else
+                        {
+                            objProduct = objProduct.Where(x => x.Status == filterStatus).ToList();
+                        }
+                        ViewBag.filter_status = filterStatus;
+                    }
+                    else if (filter == "OrderCount")
+                    {
+                        //Order Count Filter
+                        if (filterStatus != "" && filterStatus != "0")
+                        {
+
+                            int startCount = Convert.ToInt16(filterStatus.Split('-')[0]);
+                            int secondCount = Convert.ToInt16(filterStatus.Split('-')[1]);
+                            if (secondCount != 0)
+                            {
+                                List<int?> ProductIDs = new List<int?>();
+                                ProductIDs = db.orders.GroupBy(x => x.product_id).Where(grp => grp.Count() > startCount && grp.Count() < secondCount).Select(x => x.Key).ToList();
+                                var obj = from a in objProduct
+                                          join p in ProductIDs on a.ProductId equals (p.HasValue ? p.Value : 0)
+                                          select a;
+                                objProduct = obj.ToList();
+                            }
+                            else
+                            {
+                                List<int?> ProductIDs = new List<int?>();
+                                ProductIDs = db.orders.GroupBy(x => x.product_id).Where(grp => grp.Count() > startCount).Select(x => x.Key).ToList();
+                                var obj = from a in objProduct
+                                          join p in ProductIDs on a.ProductId equals (p.HasValue ? p.Value : 0)
+                                          select a;
+                                objProduct = obj.ToList();
+                            }
+                        }
+                        ViewBag.filter_order = filterStatus;
+                    }
+                    else if (filter == "Brand")
+                    {
+                        ViewBag.filter_brand = filterStatus;
+                    }
+
+                }
+
+              
                 return View(objProduct.ToPagedList(pageNumber, pageSize));
             }
         }
@@ -74,6 +134,7 @@ namespace Final_ThibanProject.Controllers
             {
                 List<Product> objProduct = new List<Product>();
                 var productQuery = (from prod in DB.products
+                                    where prod.status != "Deleted"
                                     join ve in DB.venders on prod.vender_id equals ve.venderid
                                     join ca in DB.categories on prod.category_id equals ca.categoryid
                                     select new
@@ -177,7 +238,7 @@ namespace Final_ThibanProject.Controllers
                                 bool exists = System.IO.Directory.Exists(targetFolder);
                                 if (!exists)
                                     System.IO.Directory.CreateDirectory(targetFolder);
-                                string targetPath = Path.Combine(targetFolder, "prod_" + p.ProductId  + file.FileName.Substring(file.FileName.LastIndexOf(".")));
+                                string targetPath = Path.Combine(targetFolder, "prod_" + p.ProductId + file.FileName.Substring(file.FileName.LastIndexOf(".")));
                                 flagimg = 1;
                                 file.SaveAs(targetPath);
                                 prod.Image_path = "~/content/images_product/prod_" + p.ProductId + file.FileName.Substring(file.FileName.LastIndexOf("."));
@@ -304,7 +365,7 @@ namespace Final_ThibanProject.Controllers
                                       join pr in db.productrattings on p.productid equals pr.product_id
                                       join vend in db.venders on p.vender_id equals vend.venderid
                                       join img in db.ImageFiles on vend.image equals img.ImageId
-                                      where p.productid == listproducts.productid
+                                      where p.productid == listproducts.productid && pr.status!="Deleted"
                                       select new
                                       {
                                           rateid = pr.rateid,
@@ -392,9 +453,40 @@ namespace Final_ThibanProject.Controllers
             return Json(new { productid = prodid, status = sts });
         }
 
+        [HttpPost]
+        public JsonResult DeleteProduct(string[] prodid)
+        {
+            JsonResult res = new JsonResult();
+            //res = cu.Where(x => x.Status == status).ToList();
+            if (prodid != null && prodid.Length > 0)
+            {
+                foreach (string i in prodid)
+                {
+                    int id = Convert.ToInt16(i);
+                    db.products.Find(id).status = "Deleted";
+                }
+                db.SaveChanges();
+            }
+            return Json(true);
 
+        }
 
+        [HttpPost]
+        public JsonResult DeleteRating(string[] ids)
+        {
+            JsonResult res = new JsonResult();
+           if (ids != null && ids.Length > 0)
+            {
+                foreach (string i in ids)
+                {
+                    int id = Convert.ToInt16(i);
+                    db.productrattings.Find(id).status = "Deleted";
+                }
+                db.SaveChanges();
+            }
+            return Json(true);
 
+        }
         //********************************************************************************************
         /// <summary>
         /// This is a vender module and we are adding the product from the vender.

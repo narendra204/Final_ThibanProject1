@@ -52,12 +52,33 @@
 
         });
     });
+
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
+
+        $.ajax({
+            url: '@Url.Action("DeleteRating", "Product")',
+            data: { ids: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+              //  alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
 </script>
 
 
 <div class="right_col" role="main">
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
-        <h1 class="main-top-header">Thiban Rating &amp Review <small style="  color: #47525d !important;">PRODUCT RATING & REVIEW</small></h1>
+        <h1 class="main-top-header">Product Rating &amp Review</h1>
     </div>
     <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr15">
         <div class="inner-header  bred-inner-header mb20">
@@ -82,14 +103,9 @@
             <!-- recent orders table -->
 
             <div class="panel">
-                <div class="panel-menu admin-form theme-primary brdr-none pbn">
-                    <div class="heading-title list-items">
-                        <h1 class=" panel-title product-rting-reviewhead">PRODUCT RATING & REVIEW</h1>
-                    </div>
-
-                   
+                <div class="panel-menu admin-form theme-primary brdr-none pbn nospace">
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none brdr-btm-none">
-                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                             <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                                 <div class="pagination-panel">
 
@@ -123,7 +139,7 @@
                                         <span class="records">records</span>
                                         <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
 
-                                            @for (var i = 10; i <= 90; i += 10)
+                                            @for (var i =10; i <= 90; i += 10)
                                             {
                                                 <li>@Html.ActionLink(Convert.ToString(i), "productrating", "Product", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
                                             }
@@ -133,7 +149,7 @@
                                     </div>
                             </div>
                             
-                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>@Model.TotalItemCount records </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
                             <div class="table-group-actions pull-right">
@@ -141,8 +157,7 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
                                     <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
                                     </ul>
                                 </div>
                                 <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
@@ -153,7 +168,7 @@
                 </div>
                 <div class="panel-body pn">
                     <div class="table-responsive border-round brdr-top-none">
-                        <table class="table admin-form theme-warning tc-checkbox-1 main-admin-table">
+                        <table class="table admin-form theme-warning tc-checkbox-1 main-admin-table mycustomtbl">
                             <thead>
                                 <tr class=" clr-blck fs13">
                                     <th class="text-center">
@@ -178,7 +193,7 @@
                                     <tr class="t-m-tr">
                                         <td class="text-center">
                                             <label class="option block mn">
-                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <input type="checkbox" name="mobileos"  class="ch" value="@rating.rateid">
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>

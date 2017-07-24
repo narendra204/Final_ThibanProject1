@@ -17,5 +17,6 @@ namespace Final_ThibanProject.Models.viewmodel
         public string name { get; set; }
         public string dusername { get; set; }
         public byte[] image { get; set; }
+        public string driver_image { get; set; }
     }
 }

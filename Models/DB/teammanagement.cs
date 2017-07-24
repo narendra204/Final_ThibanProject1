@@ -24,6 +24,7 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<int> roleid { get; set; }
         public Nullable<bool> status { get; set; }
         public Nullable<int> creadteby { get; set; }
+        public string member_type { get; set; }
     
         public virtual role role { get; set; }
         public virtual vender vender { get; set; }

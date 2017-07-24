@@ -18,6 +18,23 @@ namespace Final_ThibanProject.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            int roleID = Convert.ToInt16(Session["RoleID"]);
+            var roleMenuI = (from rm in DB.rolemanagements
+                             join m in DB.menuitems on rm.menuid equals m.menuid
+                             where rm.roleid == roleID
+                             select new
+                             {
+                                 m.menuname,
+                                 rm.menuid
+                             }).ToList()
+                                    .Select(x => new MenuItem()
+                                    {
+                                        menuid = (int)x.menuid,
+                                        menuname = x.menuname
+                                    }).AsEnumerable();
+
+            Session["menuPermission"] = roleMenuI;
+            Session["roleID"] = roleID;
             return View();
         }
 

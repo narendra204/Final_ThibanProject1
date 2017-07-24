@@ -1,0 +1,884 @@
+﻿@model PagedList.IPagedList<Final_ThibanProject.Models.Driver>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AddVenderDriver";
+    Layout = "~/Views/Shared/_VenderLayout.cshtml";
+    var a = Model.TotalItemCount / Model.PageSize;
+    var b = Model.TotalItemCount / 10;
+}
+
+<div class="right_col main-admindriver-section" role="main">
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Driver Management</h1>
+    </div>
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr30">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/Content/assets/img/bred-home.png" />
+                            </span> Home
+                        </a>
+                    </li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Driver Management</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+
+    <section id="content" class="table-layout animated fadeIn main-admin-drivermngmnt">
+
+        <!-- begin: .tray-center -->
+
+        <div class="tray tray-center pr30">
+
+            <!-- create new order panel -->
+
+            <div class="panel mb25 border-round">
+                <div class="heading-title">
+
+                    <!--  <h1 class="panel-title"> Driver</h1>-->
+
+                    <h1 class=" panel-title c-m-h1 pb20 "> Driver</h1>
+                </div>
+                <div class="panel-heading brdr-btm-none ">
+                    <span class="panel-title hidden-xs "> Add New Driver</span>
+                    <ul class="nav panel-tabs-border panel-tabs">
+                        <li class="active"> <a href="#tab1_1" data-toggle="tab" id="tab" class="">General</a> </li>
+                        <li> <a href="#tab1_2" data-toggle="tab">Address</a> </li>
+                        <li> <a href="#tab1_3" data-toggle="tab">Bank Details</a> </li>
+                    </ul>
+                </div>
+                @using (Html.BeginForm("AddVenderDriver", "Vender", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.Hidden("driverid", 0)
+                    <div class="panel-body p20 pb10 pl5">
+                        <div class="tab-content pn br-n admin-form">
+                            <div id="tab1_1" class="tab-pane active">
+                                <div class="section row mbn">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pl5">
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="Name" class="field prepend-icon">
+                                                    <input type="text" name="Name" id="Name" class="event-name gui-input br-light" placeholder="First Name">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="Email" class="field prepend-icon">
+                                                    <input type="text" name="Email" id="Email" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="aamir.ali@gmail.com">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="password" class="field prepend-icon">
+                                                    <input type="password" name="password" id="password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Password">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="Confirm_Password" class="field prepend-icon">
+                                                    <input type="password" name="Confirm_Password" id="Confirm_Password" class="event-name gui-input br-light light brdr-color outline brdr-none" placeholder="Confirm Password">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="gender" class="field select">
+                                                    <select id="Gender" name="Gender" class="br-light">
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="cust-phone" class="field prepend-icon">
+                                                    <input type="text" name="Mobile" id="Mobile" class="event-name gui-input  br-light no" placeholder="Driver Phone Number...">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="nationality" class="field select">
+                                                    <select id="Nationality" name="Nationality" class=" br-light">
+                                                        <option value="0" selected="selected">Driver Nationality...</option>
+                                                        <option value="1">English</option>
+                                                        <option value="2">Spanish</option>
+                                                        <option value="3">German</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="phoneType" class="field select">
+                                                    <select id="phoneType" name="phoneType" class=" br-light">
+                                                        <option value="0" selected="selected">Driver PhoneType...</option>
+                                                        <option value="IOS">IOS</option>
+                                                        <option value="Android">Android</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="deviceID" class="field prepend-icon">
+                                                    <input type="text" name="deviceID" id="deviceID" class="event-name gui-input  br-light " placeholder="Driver Device ID...">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="telecomCarrier" class="field prepend-icon">
+                                                    <input type="text" name="telecomCarrier" id="telecomCarrier" class="event-name gui-input  br-light " placeholder="Driver Telecom Carrier...">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="email" class="field prepend-icon">
+                                                    <textarea class=" form-control outline br-light resize-no" rows="6" id="DriverNote1" name="DriverNote1" placeholder="Driver Note"></textarea>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb35"> <img id="output" src="~/Content/assets/img/upload.png" alt="holder"> </div>
+                                            <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99">
+                                                <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                <input type="file" class="br-radius-4" id="drivInfo" name="drivInfo" accept="image/*" alt="holder" onchange="loadFile(event)" />Change
+                                                <script>
+                                                    var loadFile = function (event) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            var output = document.getElementById('output');
+                                                            output.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(event.target.files[0]);
+                                                    };
+                                                </script>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <hr class="short">
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left" id="sku"></p>
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-left">
+                                                <div class="validation-summary-errors text-danger" id="divValidation1">
+
+                                                </div>
+                                            </p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary border-radius99 prduct-save-btn" id="btnNext" type="button">Next</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-left">@Html.ValidationSummary(false, "", new { @class = "text-danger" })</p>
+                                            <p class="text-left myvalidation">@ViewBag.message</p>
+                                            <p class="text-right">
+                                                <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext">Next</button>
+                                            </p>
+                                        </div>*@
+                                </div>
+
+                                <!-- end section row -->
+
+                            </div>
+                            <div id="tab1_2" class="tab-pane">
+                                <div class="section row mbn">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb35"> <img id="addressProfoutput" src="~/Content/assets/img/upload.png"> </div>
+                                            <span class="button btn-system btn-file btn-block ph5 mb15 border-radius99">
+                                                <span class="fileupload-new border-radius99"></span> <span class="fileupload-exists border-radius99"></span>
+                                                <input type="file" class="br-radius-4" id="addressProf" name="addressProf" accept="image/*" alt="holder" onchange="loadFile1(event)" />Change
+                                                <script>
+                                                    var loadFile1 = function (event) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            var output = document.getElementById('addressProfoutput');
+                                                            output.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(event.target.files[0]);
+                                                    };
+                                                </script>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="zip" class="field prepend-icon">
+                                                    <input type="text" name="Address" id="Address" class="gui-input outline br-light" placeholder="Street Address">
+                                                </label>
+                                            </div>
+
+                                            <!-- end section -->
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="city" class="field prepend-icon">
+                                                    <input type="text" name="City" id="City" class="gui-input outline br-light" placeholder="City">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="state" class="field select">
+                                                    <select id="State" name="State" class="br-light">
+                                                        <option value="">Choose state</option>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <label for="zip" class="field prepend-icon">
+                                                    <input type="text" name="Zip" id="Zip" class="gui-input outline br-light no" placeholder="Zip">
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="section-row">
+                                            <div class=" section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label class="field select ">
+                                                    <select id="Country" name="Country" class="br-light">
+                                                        <option value="">Select country...</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                    </select>
+                                                    <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="short">
+                                <div class="section row mbn">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation2">
+
+                                            </div>
+                                        </p>
+                                        <p class="text-right">
+                                            <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext1">Next</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-right">
+                                            <button class="btn btn-primary border-radius99 add-geo-btn" type="button" id="btnnext1">Next</button>
+                                        </p>
+                                    </div>*@
+
+                                <!-- end section -->
+
+                            </div>
+                            <div id="tab1_3" class="tab-pane ">
+                                <div class="section row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="accountNo" id="accountNo" class="event-name gui-input br-light " placeholder="Bank Account No">
+                                        </label>
+                                    </div>
+                                    <!-- end section -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="benificary_name" id="benificary_name" class="event-name gui-input br-light " placeholder="Benificary Name In Bank">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="section row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="bankName" id="bankName" class="event-name gui-input br-light " placeholder="Bank Name">
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="branchName" id="branchName" class="event-name gui-input br-light " placeholder="Branch Name">
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <!-- end section -->
+                                <div class="section-row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="vender" class="field prepend-icon">
+                                            <input type="text" name="ifscCode" id="ifscCode" class="event-name gui-input br-light " placeholder="IFSC Code">
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <!-- end section -->
+                                <!-- end section row section -->
+                                <div class="section row mbn">
+                                    <div class="section mb15 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text-left">
+                                            <div class="validation-summary-errors text-danger" id="divValidation3">
+
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section row mbn">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="field option mt10   ">
+                                            <input type="checkbox" name="info">
+                                            <span class="checkbox"></span>Save User <span class="small-text ">- A Random Unique ID will be generated</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-right next-btn-admin mt5">
+                                            <input type="submit" id="btnSave" class="btn btn-primary  border-radius99 prduct-save-btn mt5" value="Save" />
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- end section -->
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+            <!-- recent orders table -->
+
+            <div class="panel">
+                <div class="panel-menu admin-form theme-primary">
+                    <div class="heading-title list-items">
+                        <h1 class="panel-title">List of Drivers</h1>
+                    </div>
+                    <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
+                            <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                                <div class="pagination-panel">
+                                    <div class="page-text">
+                                        Page
+                                    </div>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddVenderDriver", "Vender", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddVenderDriver", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+
+                                </div>
+                            </div>
+                            <div class="dataTables_length">
+                                <label>
+                                    <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                                </label>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  dropdown-toggle pagination-sellct-button-toogle " data-toggle="dropdown" style="background:#FFFFFF"> @Model.PageSize <span class="fa fa-angle-down down-number-btn"></span></button>
+                                    <span class="records">&nbsp; records</span>
+
+                                </div>
+                            </div>
+
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span> @Model.TotalItemCount records </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                            <div class="table-group-actions pull-right">
+                                <span></span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                                    <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row top-margn pt20 pb5">
+
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
+                                    <option value="0">Filter by Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">InActive</option>
+                                    <option value="Deleted">Deleted</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body pn">
+                    <div class="table-responsive border-round brdr-top-none">
+                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1 vendr-table-row main-admin-table main-driver-table display mycustomtbl">
+                            <thead>
+                                <tr class="clr-blck fs13  t-m-tr">
+                                    <th class="text-center">
+                                        <label class="option block mn">
+                                            <input type="checkbox" name="mobileos" value="FR">
+                                            <span class="checkbox mn"></span>
+                                        </label>
+                                    </th>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Registered</th>
+                                    <th>Total Deliverys</th>
+                                    <th>Amount </th>
+
+                                    <!--   <th class="">Total Sales</th>-->
+
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="t-m-tr" id="@item.driverid">
+                                        <td class="text-center" data-val-col="checkbox" data-val="false">
+                                            <label class="option block mn">
+                                                <input type="checkbox" name="mobileos" class="ch" value="@item.driverid">
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+
+                                        @{
+                                            var imgSrc = string.Empty;
+                                            if (item.Image != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Image);
+                                                imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                            }
+                                            else if (item.image_path != null)
+                                            {
+                                                imgSrc = item.image_path;
+                                            }
+                                        }
+                                        <td data-val-col="Avatar" data-val="@imgSrc.Replace("~/", Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, "/"))" class="w50">
+
+                                            <img src='@imgSrc.Replace("~/", Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, "/"))' style="max-width:100px; max-height:100px;" />
+                                        </td>
+
+                                        @{
+                                            var aImgSrc = string.Empty;
+                                            if (item.addressProfImage != null)
+                                            {
+                                                aImgSrc = item.addressProfImage;
+                                            }
+                                        }
+                                        <td style="display:none" data-val-col="addressProf" data-val="@aImgSrc.Replace("~/",Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery,"/") )" class="w50"></td>
+                                        <td data-val-col="Name" data-val="@item.Name">@item.Name</td>
+                                        <td data-val-col="Email" data-val="@item.Email">@item.Email</td>
+                                        <td data-val-col="Gender" data-val="@item.Gender" style="display:none;">@item.Gender</td>
+                                        <td data-val-col="Nationality" data-val="@item.Nationality" style="display:none;">@item.Nationality</td>
+                                        <td data-val-col="RegDate" data-val="@item.Regdate">@item.Regdate</td>
+                                        <td data-val-col="TotalDelivery" data-val="@item.TotalDelivery">@item.TotalDelivery</td>
+                                        <td data-val-col="Amount" data-val="@item.Amount">$@item.Amount</td>
+                                        <td data-val-col="Status" data-val="@item.Status">@item.Status</td>
+                                        <td style="display:none;" data-val-col="Driverid" data-val="@item.driverid" class="">$@item.driverid</td>
+                                        <td style="display:none;" data-val-col="accountNo" data-val="@item.accountNo" class="">$@item.accountNo</td>
+                                        <td style="display:none;" data-val-col="bankName" data-val="@item.bankName" class="">$@item.bankName</td>
+                                        <td style="display:none;" data-val-col="benificary_name" data-val="@item.benificary_name" class="">$@item.benificary_name</td>
+                                        <td style="display:none;" data-val-col="branchName" data-val="@item.branchName" class="">$@item.branchName</td>
+                                        <td style="display:none;" data-val-col="deviceID" data-val="@item.deviceID" class="">$@item.deviceID</td>
+                                        <td style="display:none;" data-val-col="ifscCode" data-val="@item.ifscCode" class="">$@item.ifscCode</td>
+                                        <td style="display:none;" data-val-col="telecomCarrier" data-val="@item.telecomCarrier" class="">$@item.telecomCarrier</td>
+                                        <td style="display:none;" data-val-col="phoneType" data-val="@item.phoneType" class="">$@item.phoneType</td>
+                                        <td style="display:none;" data-val-col="Password" data-val="@item.Password" class="">$@item.Password</td>
+                                        <td style="display:none;" data-val-col="DriverNote1" data-val="@item.DriverNote1" class="">$@item.DriverNote1</td>
+                                        <td style="display:none;" data-val-col="DriverNote2" data-val="@item.DriverNote2" class="">$@item.DriverNote2</td>
+                                        <td style="display:none;" data-val-col="Address" data-val="@item.Address" class="">$@item.Address</td>
+                                        <td style="display:none;" data-val-col="City" data-val="@item.City" class="">$@item.City</td>
+                                        <td style="display:none;" data-val-col="State" data-val="@item.State" class="">$@item.State</td>
+                                        <td style="display:none;" data-val-col="Zip" data-val="@item.Zip" class="">$@item.Zip</td>
+                                        <td style="display:none;" data-val-col="Phone" data-val="@item.Mobile" class="">$@item.Mobile</td>
+                                        <td style="display:none;" data-val-col="Country" data-val="@item.Country" class="">$@item.Country</td>
+
+                                        <td>
+                                            <div class="btn-group text-right">
+                                                <button type="button" class="btn  bg-dark br2 btn-xs fs12 dropdown-toggle br-radius-4 btn-success custonbtn"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                    <span id="selctedName">Select Action</span> <span class="caret ml5"></span>
+                                                </button>
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.driverid">
+                                                    <li onclick="makeSelected(this)">Edit</li>
+                                                    <li onclick="makeSelected(this)">Contact</li>
+                                                    <li class="divider"></li>
+                                                    <li onclick="makeSelected(this)">Active</li>
+                                                    <li onclick="makeSelected(this)">Pending</li>
+                                                    <li onclick="makeSelected(this)">Suspend</li>
+                                                    <li onclick="makeSelected(this)">Remove</li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        @*                                  <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button"><i class="fa fa-search fs12"></i>View</button></td>*@
+                                    </tr>
+                                            }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end: .tray-center -->
+        <!-- begin: .tray-right -->
+        <!-- end: .tray-right -->
+
+    </section>
+
+    <!-- End: Content -->
+    <!-- </section>-->
+
+</div>
+<div class="clearfix"></div>
+
+
+
+<!-- Script Section-->
+<!-- Section can be move to common place-->
+<script src="~/Content/assets/js/jquery.min.js"></script>
+
+<script src="~/Content/assets/js/jquery-ui.min.js"></script>
+
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+
+
+<!-- End of Move to common Place section-->
+<script>
+
+    function validatetabdata(intTab) {
+        var strErrMsg = "";
+        var returnval = true;
+        $("#divValidation3").html("");
+        $("#divValidation2").html("");
+        $("#divValidation1").html("");
+        if (intTab == 1) {
+            if ($.trim($("#Name").val()) == "") {
+                strErrMsg += "<li>First Name is required</li>";
+            }
+            if ($.trim($("#Email").val()) == "") {
+                strErrMsg += "<li>Email ID is required</li>";
+            }
+            if ($.trim($("#password").val()) == "") {
+                strErrMsg += "<li>Password is required</li>";
+            }
+            var password = $("#password").val();
+            var confirmPassword = $("#Confirm_Password").val();
+            if (password != confirmPassword) {
+                strErrMsg += "<li>Passwords do not match.</li>";
+            }
+            if ($.trim($("#Gender").val()) == "") {
+                strErrMsg += "<li>Gender is required</li>";
+            }
+            if ($.trim($("#Mobile").val()) == "") {
+                strErrMsg += "<li>Mobile No is required</li>";
+            }
+            if ($.trim($("#Nationality").val()) == "" || $("#Nationality").val() == "0") {
+                strErrMsg += "<li>Nationality is required</li>";
+            }
+            if ($.trim($("#phoneType").val()) == "") {
+                strErrMsg += "<li>Driver Phone type is required</li>";
+            }
+
+            if (strErrMsg != "") {
+                $("#divValidation1").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 2) {
+            if ($.trim($("#Address").val()) == "") {
+                strErrMsg += "<li>Address is required</li>";
+            }
+            if ($.trim($("#City").val()) == "") {
+                strErrMsg += "<li>City is required</li>";
+            }
+            if ($.trim($("#State").val()) == "") {
+                strErrMsg += "<li>States is required</li>";
+            }
+            if ($.trim($("#Zip").val()) == "") {
+                strErrMsg += "<li>Zip is required</li>";
+            }
+            if ($.trim($("#Country").val()) == "") {
+                strErrMsg += "<li>Country is required</li>";
+            }
+
+
+            if (strErrMsg != "") {
+                $("#divValidation2").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+
+        }
+        else if (intTab == 3) {
+            if ($("#accountno").val() == "" || $("#accountno").val() == "0") {
+                strErrMsg += "<li>Account No is required</li>";
+            }
+            if ($.trim($("#bankName").val()) == "") {
+                strErrMsg += "<li>Bank name is required.</li>";
+            }
+
+            if ($.trim($("#branchName").val()) == "") {
+                strErrMsg += "<li>Branch Name is required.</li>";
+            }
+            if ($.trim($("#ifscCode").val()) == "") {
+                strErrMsg += "<li>IFSC Code is required.</li>";
+            }
+            if ($.trim($("#HolderName").val()) == "") {
+                strErrMsg += "<li>Bank Account Holder Name is required.</li>";
+            }
+            if (strErrMsg != "") {
+                $("#divValidation3").html("<ul>" + strErrMsg + "</ul>")
+                returnval = false;
+            }
+        }
+        return returnval;
+    }
+    function activeTab(tab) {
+        $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
+    }
+    $(document).ready(function () {
+
+        $("#btnNext").click(function () {
+            if (validatetabdata(1))
+                activeTab('2');
+        });
+        $("#btnnext1").click(function () {
+            if (validatetabdata(2))
+                activeTab('3')
+        });
+
+        $(".no").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+        @if (ViewBag.status != null && ViewBag.status == 0)
+        {
+            var d = (Final_ThibanProject.Models.Driver)ViewBag.driverReturn;
+            <text>
+        $("#name").val("@d.Name");
+        $("#driverid").val("@d.driverid");
+        $("#email").val("@d.Email");
+        $("#password").val("@d.Password");
+        $("#conform_password").val("@d.Password");
+        $("#gender").val("@d.Gender").attr("selected");
+        $("#mobile").val("@d.Mobile");
+        $("#address").val("@d.Address");
+        $("#drivernote1").val("@d.DriverNote1");
+        $("#drivernote2").val("@d.DriverNote2");
+
+        //$("#customer-group").val(rowData.Customer_type);
+        //$("#customer-group option[value='" + rowData.Customer_type + "']").attr('selected', true);
+        $("#nationality").val("@d.Nationality").attr("selected");
+        $("#city").val("@d.City");
+        $("#zip").val("@d.Zip");
+        $("#state").val("@d.State").attr("selected");
+        $("#country").val("@d.Country").attr("selected");
+        $("#output").attr("src", "@d.image_path");
+        $("#addressProfoutput").attr("src", "@d.addressProfImage");
+        $("#accountNo").val("@d.accountNo");
+        $("#bankName").val("@d.bankName");
+        $("#benificary_name").val("@d.benificary_name");
+        $("#branchName").val("@d.branchName");
+        $("#deviceID").val("@d.deviceID");
+        $("#ifscCode").val("@d.ifscCode");
+        $("#telecomCarrier").val("@d.telecomCarrier");
+        $("#phoneType").val("@d.phoneType").attr("selected");
+        </Text>
+    }
+        // $(".datepicker").datepicker();
+    });
+
+
+    $(function () {
+        $("#btnSave").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#Confirm_Password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+
+
+    var DriverDtl = {
+        getId: function (val) {
+            var spltVal = val.split("_");
+            return parseInt(spltVal[1]);
+        },
+        getDriverjObj: function () {
+            return jData = {
+                id: "",
+                image: "",
+                name: "",
+                emailid: "",
+                regdate: "",
+                totaldilivery: ""
+            };
+        },
+        getSelectdRowData: function (id) {
+            var $row = jQuery("#" + id);
+            var $columns = $row.find('td');
+
+            $columns.addClass('row-highlight');
+            var values = "";
+            var jData = this.getDriverjObj();
+            var objArr = [];
+
+            var obj = {};
+            jQuery.each($columns, function (i, item) {
+                var $th = $(item).attr("data-val-col");
+                var $td = $(item).attr("data-val");
+
+
+                obj[$th] = $td;
+
+            });
+            return obj;
+        }
+    };
+    function makeSelected(el) {
+        $(el).parent().parent().children().first().children().first().text(el.innerText);
+
+        var driverId = DriverDtl.getId($(el).parent()[0].id);
+
+        if (el.innerText != "Edit") {
+            $.ajax({
+                url: '@Url.Action("UpdateDriverStatus", "Vender")',
+                data: { drvid: driverId, sts: el.innerText },
+                type: 'POST',
+                success: function (res) {
+                    debugger;
+                },
+                error: function (err) {
+                    debugger;
+                }
+            });
+        } else {
+            var rowData = DriverDtl.getSelectdRowData(driverId);
+            $("#Name").val(rowData.Name);
+            $("#driverid").val(rowData.Driverid);
+            $("#Email").val(rowData.Email);
+            $("#password").val(rowData.Password);
+            $("#Confirm_Password").val(rowData.Password);
+            $("#gender").val(rowData.Gender).attr("selected");
+            $("#Mobile").val(rowData.Phone);
+            $("#Address").val(rowData.Address);
+            $("#drivernote1").val(rowData.DriverNote1);
+            $("#drivernote2").val(rowData.DriverNote2);
+
+            //$("#customer-group").val(rowData.Customer_type);
+            //$("#customer-group option[value='" + rowData.Customer_type + "']").attr('selected', true);
+            $("#Nationality").val(rowData.Nationality).attr("selected");
+            $("#City").val(rowData.City);
+            $("#Zip").val(rowData.Zip);
+            $("#State").val(rowData.State).attr("selected");
+            $("#Country").val(rowData.Country).attr("selected");
+            $("#output").attr("src", rowData.Avatar);
+            $("#addressProfoutput").attr("src", rowData.addressProf);
+            $("#accountNo").val(rowData.accountNo);
+            $("#bankName").val(rowData.bankName);
+            $("#benificary_name").val(rowData.benificary_name);
+            $("#branchName").val(rowData.branchName);
+            $("#deviceID").val(rowData.deviceID);
+            $("#ifscCode").val(rowData.ifscCode);
+            $("#telecomCarrier").val(rowData.telecomCarrier);
+            $("#phoneType").val(rowData.phoneType).attr("selected");
+
+        }
+
+    }
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
+
+        $.ajax({
+            url: '@Url.Action("DeleteDriver", "Vender")',
+            data: { ids: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+                // alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
+    $("#filter-status").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddVenderDriver?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+
+    var status = '@ViewBag.filter_status';
+    if (status != '' || status != null) {
+        $("#filter-status").val(status).attr('selected', true);
+    }
+
+    if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+        $("#filter-status").val(0).attr('selected');
+    }
+</script>
+

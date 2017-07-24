@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Final_ThibanProject.Models.RoleManagement>
+﻿@model Final_ThibanProject.Models.RoleManagement
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "CreateRole";
@@ -47,7 +47,8 @@
                                 <div class="form-group mt10">
                                     <label class="control-label col-sm-1 ldl-lft " for="text">Role Name*</label>
                                     <div class=" col-lg-5 col-sm-5 col-md-5 col-xs-8 width-inp">
-                                        <input type="text" name="RoleName" required class="form-control ">
+                                        @*<input type="text" name="RoleName" required class="form-control ">*@
+                                        @Html.TextBoxFor(m=>Model.RoleName ,new {@class= "form-control " })
                                     </div>
                                 </div>
                                 <div class="form-group sec-inp">
@@ -57,11 +58,24 @@
                                     </div>
                                 </div>
                                 <p>Resources</p>
-                                <div class="form-group">
+                                foreach (var item in Model.menuItem)
+                                    {
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2 ldl-lft"></label>
+                                        <div class="col-sm-5 check_arrage">
+                                            <input type="checkbox" name="menuid" value="@item.menuid">
+                                            <span class="c_management">@item.menuname</span>
+                                        </div>
+                                    </div>
+                                        }
+
+
+
+                                @*<div class="form-group">
                                     <label class="control-label col-sm-2 ldl-lft"></label>
                                     <div class="col-sm-5 check_arrage">
                                         <input type="checkbox" name="Menuitem" value="Product Management">
-                                        <span class="c_management"> Product Management</span>
+                                        <span class="c_management"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -112,7 +126,7 @@
                                         <input type="checkbox" name="Menuitem" value="Analytics">
                                         <span class="c_management">Analytics</span>
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-4 col-sm-10">
                                         <button type="submit" class="btn  create-submit-grnbtn  btn-md t-btn mt20 border-radius99">Create New Role</button>
@@ -266,32 +280,17 @@
     });
 </script>
 
-
-
 <!-- Bootstrap -->
-
-
-
 <script src="~/Content/assets/js/bootstrap.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
-
 <script src="~/Content/assets/js/raphael.min.js"></script>
-
 <script src="~/Content/assets/js/Chart.min.js"></script>
-
 <script src="~/Content/assets/js/morris.min.js"></script>
-
 <script src="~/Content/assets/js/custom.min.js"></script>
-
 <script src="~/Content/assets/js/date.js"></script>
-
 <script src="~/Content/assets/js/moment.min.js"></script>
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
-
 <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-
 <script src="~/Content/assets/js/visitor.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
@@ -300,9 +299,6 @@
     });
 
 </script>
-
-
-
 
 <script>
 
@@ -321,7 +317,6 @@
 
 
 </script>
-
 
 <script type="text/javascript">
 
@@ -590,16 +585,3 @@
     });
 
 </script>
-<!--<script>
-
-$(document).ready(function(){
-
-    $(".accordion-toggle").hover(function(){
-
-    $('.dropdown-menu123').animate({width: 'toggle'}, "slow")
-
-  });
-
-});
-
-</script>-->

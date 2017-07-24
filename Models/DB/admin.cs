@@ -26,6 +26,8 @@ namespace Final_ThibanProject.Models.DB
         public string mobile { get; set; }
         public Nullable<bool> status { get; set; }
         public Nullable<int> Image { get; set; }
+        public Nullable<int> roleid { get; set; }
+        public string Image_Url { get; set; }
     
         public virtual ImageFile ImageFile { get; set; }
     }

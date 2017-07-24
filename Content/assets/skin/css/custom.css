@@ -194,9 +194,9 @@ form.form-horizontal.add-new-form .radio-custom input[type=radio]:checked + labe
 	border: 1px solid #ccc;
 	border-radius: 50%;
 	float: left;
-	height: 15px;
+	height: 5px;
 	margin-top: 0;
-	width: 15px;
+	width: 5px;
 }
 .content-bar .panel {
 	background-color: #fff !important;
@@ -378,9 +378,11 @@ h1.panel-title.c-m-h1 {
 	border-bottom: 1px solid #eee;
 }
 .table-layout .panel-tabs.panel-tabs-border > li.active > a {
-	border-top: 1px solid #ddd !important;
-	border-bottom: 4px solid #A7A7A7;
-	margin-top: -1px;
+	border-top: 1px solid #57ad68 !important;
+	border-bottom: 4px solid #57ad68;
+	margin-top: 0px;
+    line-height:15px !important;
+    color:#57ad68;
 }
 .heading-title .panel-title {
 	border-bottom: 1px solid #eeeeee !important;
@@ -591,8 +593,8 @@ button.btn.btn-default.btn-block.btn-sm.ph25.search-btn-list:hover{
 }
 /*.login-box-div {
 	top: 55px;
-	left: -10px;*/
-}
+	left: -10px;
+}*/
 /*======================NEW-HEADER-CSS=================================*/
 
 
@@ -1161,8 +1163,10 @@ table.table.admin-form{
 	padding-top: 2px !important;
 	top: 2px !important;
 }
-.table thead tr th .checkbox {
-	top: 9px !important;
+.table thead tr th .checkbox,
+.table tbody tr td .checkbox {
+	top:0px !important;
+    left: 0px !important;
 }
  .panel-menu.admin-form.theme-primary .heading-title h1.panel-title {
 	 font-weight: 600;
@@ -1274,4 +1278,84 @@ section.table-layout.animated.fadeIn.main-admin-drivermngmnt .admin-form div#tab
     position: absolute;
     top: 32px !important;
 	    padding: 0px;
+}
+
+/********************dhaval-21-7-17**********************/
+.btn-group ul.dropdown-menu.customdrop li {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-size:13px;
+    color: #666666;
+    font-weight: normal;
+    line-height: 1.49;
+    white-space: nowrap;
+}
+.btn-group ul.dropdown-menu.customdrop li:hover {
+    background: #2196F3 !important;
+    color: #fff !important;
+}
+.btn-group ul.dropdown-menu.customdrop li.divider {
+    padding: 0;
+}
+.btn-group ul.dropdown-menu.customdrop li.divider:hover {
+    background: transparent !important;
+    color: #fff !important;
+}
+button.btn.custonbtn span {
+    line-height: inherit;
+}
+table.table.mycustomtbl tr:nth-last-child(-n+4)  ul.dropdown-menu {
+    bottom: 28px !important;
+    top: inherit !important;
+    left:-40px;
+}
+table.table.mycustomtbl tr ul.dropdown-menu {
+    left: -40px;
+}
+.col-md-9.col-sm-9.col-lg-9.col-xs-12.pad-no.pagns-list {
+    display: flex;
+    align-items: center;
+}
+
+.pagns-list .dataTables_paginate.paging_bootstrap_extended {
+}
+
+.pagns-list .dataTables_paginate.paging_bootstrap_extended .pagination-panel {
+    display: flex;
+    align-items: center;
+}
+
+.pagns-list .dataTables_paginate.paging_bootstrap_extended .pagination-panel .pagination-container {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+.pagns-list .dataTables_length {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+.pagns-list .dataTables_info {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 !important;
+    flex:0 0 12%;
+}
+.pagns-list .dataTables_length .btn-group span.records {
+    margin-left: 5px;
+}
+.pagns-list .dataTables_paginate.paging_bootstrap_extended .pagination-panel .show-number ul li a {
+    margin: 0 1px;
+}
+table.table.mycustomtbl thead tr th{
+    padding:15px 10px;
+    height:auto !important;
+}
+table.table.mycustomtbl thead tr.t-m-tr{
+    height:auto;
+}
+.panel-menu.nospace {
+    padding: 0;
 }

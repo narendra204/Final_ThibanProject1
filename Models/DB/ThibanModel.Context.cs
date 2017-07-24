@@ -54,7 +54,6 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<customerotheraddress> customerotheraddresses { get; set; }
         public virtual DbSet<customerpaymentcard> customerpaymentcards { get; set; }
         public virtual DbSet<customervillaaddress> customervillaaddresses { get; set; }
-        public virtual DbSet<dgeofence> dgeofences { get; set; }
         public virtual DbSet<driver> drivers { get; set; }
         public virtual DbSet<driveraddressproff> driveraddressproffs { get; set; }
         public virtual DbSet<driverbankdetail> driverbankdetails { get; set; }
@@ -79,7 +78,6 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<productratting> productrattings { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<role> roles { get; set; }
-        public virtual DbSet<rolemanagement> rolemanagements { get; set; }
         public virtual DbSet<shippingaddress> shippingaddresses { get; set; }
         public virtual DbSet<shippinghistory> shippinghistories { get; set; }
         public virtual DbSet<storedetail> storedetails { get; set; }
@@ -115,5 +113,10 @@ namespace Final_ThibanProject.Models.DB
         public virtual DbSet<currencymaster> currencymasters { get; set; }
         public virtual DbSet<order_details> order_details { get; set; }
         public virtual DbSet<driver_track> driver_track { get; set; }
+        public virtual DbSet<vender_zone_join> vender_zone_join { get; set; }
+        public virtual DbSet<dgeofence> dgeofences { get; set; }
+        public virtual DbSet<rolemanagement> rolemanagements { get; set; }
+        public virtual DbSet<dgeofencelocation> dgeofencelocations { get; set; }
+        public virtual DbSet<vender_zone> vender_zone { get; set; }
     }
 }

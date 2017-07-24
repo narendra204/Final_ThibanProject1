@@ -43,251 +43,253 @@
             <!-- create new order panel -->
 
             <div class="panel mb25  border-round main-admin-ordermngmnt">
-                <h1 class=" panel-title c-m-h1 sub-header pb20"> ORDERS</h1>
-                <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> Create New Orders</span>
-                    <ul class="nav panel-tabs-border panel-tabs order-mngmnt-tabs">
-                        <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
-                        <li> <a href="#tab1_2" data-toggle="tab">Payment</a> </li>
-                        <li> <a href="#tab1_3" data-toggle="tab">Shipping</a> </li>
-                    </ul>
+                <div class="heading-title">
+                    <h1 class=" panel-title c-m-h1 sub-header pb20"> ORDERS</h1>
                 </div>
-                @using (Html.BeginForm("AddOrder", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="panel-body p25 pb5">
-                        <div class="tab-content pn br-n admin-form">
-                            <div id="tab1_1" class="tab-pane active">
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="firstname" class="field prepend-icon">
-                                            <input type="text" name="FirstName" id="firstname" class="br-light gui-input input-clr-hash rdr-color outline brdr-none" placeholder="First name...">
-                                        </label>
+                    <div class="panel-heading">
+                        <span class="panel-title hidden-xs"> Create New Orders</span>
+                        <ul class="nav panel-tabs-border panel-tabs order-mngmnt-tabs">
+                            <li class="active"> <a href="#tab1_1" data-toggle="tab">General</a> </li>
+                            <li> <a href="#tab1_2" data-toggle="tab">Payment</a> </li>
+                            <li> <a href="#tab1_3" data-toggle="tab">Shipping</a> </li>
+                        </ul>
+                    </div>
+                    @using (Html.BeginForm("AddOrder", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="panel-body p25 pb5">
+                            <div class="tab-content pn br-n admin-form">
+                                <div id="tab1_1" class="tab-pane active">
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="firstname" class="field prepend-icon">
+                                                <input type="text" name="FirstName" id="firstname" class="br-light gui-input input-clr-hash rdr-color outline brdr-none" placeholder="First name...">
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="email" class="field prepend-icon">
+                                                <input type="email" name="Email" id="email" class="gui-input input-clr-hash rdr-color outline br-light  brdr-none" placeholder="Email address">
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="email" class="field prepend-icon">
-                                            <input type="email" name="Email" id="email" class="gui-input input-clr-hash rdr-color outline br-light  brdr-none" placeholder="Email address">
-                                        </label>
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="lastname" class="field prepend-icon">
+                                                <input type="text" name="LastName" id="lastname" class="gui-input input-clr-hash rdr-color br-light  outline brdr-none" placeholder="Last name...">
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="mobile" class="field prepend-icon">
+                                                <input type="tel" name="Mobile" id="mobile" class="gui-input input-clr-hash rdr-color outline  br-light brdr-none" placeholder="Telephone / moble number">
+                                            </label>
+                                        </div>
                                     </div>
+                                    <div class="section row mbn">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p class="text-right next-btn-admin">
+                                                <button id="btnNext1" class="btn btn-primary  border-radius99 prduct-save-btn mt10" type="button">Next</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- end section -->
                                 </div>
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="lastname" class="field prepend-icon">
-                                            <input type="text" name="LastName" id="lastname" class="gui-input input-clr-hash rdr-color br-light  outline brdr-none" placeholder="Last name...">
+                                <div id="tab1_2" class="tab-pane">
+                                    <div class="section">
+                                        <label class="field option">
+                                            <input type="radio" name="CardType" checked>
+                                            <span class="radio select-card-radio" style="top:1px !important"></span>Credit Card
+                                        </label>
+                                        <label class="field option">
+                                            <input type="radio" name="CardType">
+                                            <span class="radio select-card-radio" style="top:1px !important"></span>Paypal
+                                        </label>
+                                        <label class="field option">
+                                            <input type="radio" name="CardType">
+                                            <span class="radio select-card-radio" style="top:1px !important"></span>Check
                                         </label>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="mobile" class="field prepend-icon">
-                                            <input type="tel" name="Mobile" id="mobile" class="gui-input input-clr-hash rdr-color outline  br-light brdr-none" placeholder="Telephone / moble number">
-                                        </label>
+                                    <!-- end section -->
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no ">
+
+                                            <label for="cardname" class="field prepend-icon">
+                                                <input type="text" name="cardname" id="cardname" class="gui-input br-light  outline brdr-none" placeholder="Name on card...">
+                                            </label>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-no ">
+                                            <label for="cardno" class="field  prepend-icon">
+                                                <input type="text" name="CardNumber" id="lastname" class="gui-input  br-light  outline brdr-none" placeholder="Card number...">
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="section row mbn">
+
+                                    <!-- end section -->
+
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no">
+                                            <label for="cardmonth" class="field select">
+                                                <select id="cardmonth" name="cardmonth" class=" selectpicker outline br-light ">
+                                                    <option value="">Expiry month...</option>
+                                                    <option value="01">01 - Jan</option>
+                                                    <option value="02">02 - Feb</option>
+                                                    <option value="03">03 - Mar</option>
+                                                    <option value="04">04 - Apr</option>
+                                                    <option value="05">05 - May</option>
+                                                    <option value="06">06 - Jun</option>
+                                                    <option value="07">07 - Jul</option>
+                                                    <option value="08">08 - Aug</option>
+                                                    <option value="09">09 - Sep</option>
+                                                    <option value="10">10 - Oct</option>
+                                                    <option value="11">11 - Nov</option>
+                                                    <option value="12">12 - Dec</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
+
+                                        <!-- end section -->
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-no">
+                                            <label class="field select">
+                                                <select id="cardyear" name="cardyear" class=" selectpicker outline br-light ">
+                                                    <option value="">Expiry year...</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
+
+                                        <!-- end section -->
+
+                                    </div>
+
+                                    <!-- end section row section -->
+
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no">
+                                            <label for="secno" class="field prepend-icon">
+                                                <input type="text" name="CardCvv" id="secno" class="gui-input outline br-light brdr-none" placeholder="CVV number..." style="border-color:#ccc !important;">
+                                                <b class="tooltip tip-left-top"><em> This is a four diigit number at the back of your card </em></b>
+                                            </label>
+                                        </div>
+
+                                        <!-- end section -->
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <p class="field-align"> <a href="#" class="theme-link"> What is this? </a> </p>
+                                        </div>
+
+                                        <!-- end section -->
+
+                                    </div>
+                                    <hr class="short">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <p class="text-right next-btn-admin">
-                                            <button id="btnNext1" class="btn btn-primary  border-radius99 prduct-save-btn mt10" type="button">Next</button>
+                                            <button id="btnNext2" class="btn btn-primary border-radius99 prduct-save-btn" type="button">Next</button>
                                         </p>
                                     </div>
-                                </div>
-                                <!-- end section -->
-                            </div>
-                            <div id="tab1_2" class="tab-pane">
-                                <div class="section">
-                                    <label class="field option">
-                                        <input type="radio" name="CardType" checked>
-                                        <span class="radio select-card-radio" style="top:1px !important"></span>Credit Card
-                                    </label>
-                                    <label class="field option">
-                                        <input type="radio" name="CardType">
-                                        <span class="radio select-card-radio" style="top:1px !important"></span>Paypal
-                                    </label>
-                                    <label class="field option">
-                                        <input type="radio" name="CardType">
-                                        <span class="radio select-card-radio" style="top:1px !important"></span>Check
-                                    </label>
-                                </div>
-                                <!-- end section -->
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no ">
 
-                                        <label for="cardname" class="field prepend-icon">
-                                            <input type="text" name="cardname" id="cardname" class="gui-input br-light  outline brdr-none" placeholder="Name on card...">
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-no ">
-                                        <label for="cardno" class="field  prepend-icon">
-                                            <input type="text" name="CardNumber" id="lastname" class="gui-input  br-light  outline brdr-none" placeholder="Card number...">
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <!-- end section -->
-
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no">
-                                        <label for="cardmonth" class="field select">
-                                            <select id="cardmonth" name="cardmonth" class=" selectpicker outline br-light ">
-                                                <option value="">Expiry month...</option>
-                                                <option value="01">01 - Jan</option>
-                                                <option value="02">02 - Feb</option>
-                                                <option value="03">03 - Mar</option>
-                                                <option value="04">04 - Apr</option>
-                                                <option value="05">05 - May</option>
-                                                <option value="06">06 - Jun</option>
-                                                <option value="07">07 - Jul</option>
-                                                <option value="08">08 - Aug</option>
-                                                <option value="09">09 - Sep</option>
-                                                <option value="10">10 - Oct</option>
-                                                <option value="11">11 - Nov</option>
-                                                <option value="12">12 - Dec</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-
-                                    <!-- end section -->
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-no">
-                                        <label class="field select">
-                                            <select id="cardyear" name="cardyear" class=" selectpicker outline br-light ">
-                                                <option value="">Expiry year...</option>
-                                                <option value="2014">2014</option>
-                                                <option value="2015">2015</option>
-                                                <option value="2016">2016</option>
-                                                <option value="2017">2017</option>
-                                                <option value="2018">2018</option>
-                                                <option value="2019">2019</option>
-                                                <option value="2020">2020</option>
-                                                <option value="2021">2021</option>
-                                                <option value="2022">2022</option>
-                                                <option value="2023">2023</option>
-                                                <option value="2024">2024</option>
-                                                <option value="2025">2025</option>
-                                                <option value="2026">2026</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-
-                                    <!-- end section -->
+                                    <!-- end section row section -->
 
                                 </div>
+                                <div id="tab1_3" class="tab-pane">
+                                    <div class="section row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                            <label for="zip" class="field prepend-icon">
+                                                <input type="text" name="Address" id="zip" class="gui-input br-light  outline brdr-none" placeholder="Street Address">
+                                            </label>
+                                        </div>
 
-                                <!-- end section row section -->
+                                        <!-- end section -->
 
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pl-no">
-                                        <label for="secno" class="field prepend-icon">
-                                            <input type="text" name="CardCvv" id="secno" class="gui-input outline br-light brdr-none" placeholder="CVV number..." style="border-color:#ccc !important;">
-                                            <b class="tooltip tip-left-top"><em> This is a four diigit number at the back of your card </em></b>
-                                        </label>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="city" class="field prepend-icon">
+                                                <input type="text" name="City" id="city" class="gui-input  br-light outline brdr-none" placeholder="City">
+                                            </label>
+                                        </div>
+
                                     </div>
+                                    <div class="section row">
+                                        <!-- end section -->
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="states" class="field select">
+                                                <select id="states" name="State" class=" selectpicker outline br-light ">
+                                                    <option value="">Choose state</option>
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="AZ">Arizona</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="CA">California</option>
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="AZ">Arizona</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="CA">California</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
 
-                                    <!-- end section -->
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="city" class="field prepend-icon">
+                                                <input type="text" name="Zip" id="city" class="gui-input  br-light outline brdr-none" placeholder="Zip">
+                                            </label>
+                                        </div>
 
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <p class="field-align"> <a href="#" class="theme-link"> What is this? </a> </p>
+                                    </div>
+                                    <div class="section row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <label class="field select">
+                                                <select id="location" name="Country" class=" selectpicker outline br-light " style="width:100% !important">
+                                                    <option value="">Select country...</option>
+                                                    <option value="AL">Albania</option>
+                                                    <option value="DZ">Algeria</option>
+                                                    <option value="AD">Andorra</option>
+                                                    <option value="AO">Angola</option>
+                                                    <option value="AI">Anguilla</option>
+                                                    <option value="AL">Albania</option>
+                                                    <option value="DZ">Algeria</option>
+                                                    <option value="AD">Andorra</option>
+                                                    <option value="AO">Angola</option>
+                                                    <option value="AI">Anguilla</option>
+                                                </select>
+                                                <i class="arrow double"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="section row mbn">
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label class="field option mt10">
+                                                <input type="checkbox" name="info">
+                                                <span class="checkbox"></span>Save Customer <span class="small-text">- A Random Unique ID will be generated</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <p class="text-right next-btn-admin">
+                                                <input type="submit" class="btn btn-primary  border-radius99 prduct-save-btn mt10" value="Save Order" />
+                                            </p>
+                                        </div>
                                     </div>
 
                                     <!-- end section -->
 
                                 </div>
-                                <hr class="short">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <p class="text-right next-btn-admin">
-                                        <button id="btnNext2" class="btn btn-primary border-radius99 prduct-save-btn" type="button">Next</button>
-                                    </p>
-                                </div>
-
-                                <!-- end section row section -->
-
-                            </div>
-                            <div id="tab1_3" class="tab-pane">
-                                <div class="section row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                        <label for="zip" class="field prepend-icon">
-                                            <input type="text" name="Address" id="zip" class="gui-input br-light  outline brdr-none" placeholder="Street Address">
-                                        </label>
-                                    </div>
-
-                                    <!-- end section -->
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="city" class="field prepend-icon">
-                                            <input type="text" name="City" id="city" class="gui-input  br-light outline brdr-none" placeholder="City">
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <div class="section row">
-                                    <!-- end section -->
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="states" class="field select">
-                                            <select id="states" name="State" class=" selectpicker outline br-light ">
-                                                <option value="">Choose state</option>
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="AZ">Arizona</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="CA">California</option>
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="AZ">Arizona</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="CA">California</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label for="city" class="field prepend-icon">
-                                            <input type="text" name="Zip" id="city" class="gui-input  br-light outline brdr-none" placeholder="Zip">
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <div class="section row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label class="field select">
-                                            <select id="location" name="Country" class=" selectpicker outline br-light  " style="width:100% !important">
-                                                <option value="">Select country...</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AO">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AO">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                            </select>
-                                            <i class="arrow double"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="section row mbn">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                        <label class="field option mt10">
-                                            <input type="checkbox" name="info">
-                                            <span class="checkbox"></span>Save Customer <span class="small-text">- A Random Unique ID will be generated</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <p class="text-right next-btn-admin">
-                                            <input type="submit" class="btn btn-primary  border-radius99 prduct-save-btn mt10" value="Save Order" />
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- end section -->
-
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
 
             <!-- recent orders table -->
 
@@ -297,24 +299,25 @@
                         <h1 class="panel-title">List of products</h1>
                     </div>
                     <div class="row pagination-block  font-size-13 admin-agintion mn brdr-top-none">
-                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no pagns-list">
                             <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
                                 <div class="pagination-panel">
                                     <div class="page-text">
-                                        Page &nbsp;
-                                        <div class="show-number">
-                                            <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
-
-                                                @for (var i = 10; i <= 90; i += 10)
-                                                {
-                                                    <li>@Html.ActionLink(Convert.ToString(i), "AddOrder", "Order", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
-                                                }
-                                            </ul>
-                                            @Html.PagedListPager(Model, page => Url.Action("AddOrder", new { page, pageSizeValue = Model.PageSize }))
-                                        </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
-                                        *@ <div class="of-text">of @Model.PageCount </div>
-
+                                        Page
                                     </div>
+                                    <div class="show-number">
+                                        <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+
+                                            @for (var i = 10; i <= 90; i += 10)
+                                            {
+                                                <li>@Html.ActionLink(Convert.ToString(i), "AddOrder", "Order", routeValues: new { pageSizeValue = i, page = Model.PageNumber }, htmlAttributes: null) </li>
+                                            }
+                                        </ul>
+                                        @Html.PagedListPager(Model, page => Url.Action("AddOrder", new { page, pageSizeValue = Model.PageSize }))
+                                    </div>@*@for (int i = Model.PageNumber; i <= Math.Min(Model.PageNumber , Model.PageCount); i++)
+                                    *@ <div class="of-text">of @Model.PageCount </div>
+
+
                                 </div>
                             </div>
                             <div class="dataTables_length">
@@ -328,7 +331,7 @@
                                 </div>
                             </div>
 
-                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total @Model.TotalItemCount records </div>
+                            <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span> @Model.TotalItemCount records </div>
                         </div>
 
 
@@ -338,8 +341,7 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
                                     <ul class="dropdown-menu pagination-drpdwn" role="menu">
-                                        <li><a href="#">Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a href="javascript:void(0)" onclick="deleteMask()">Delete</a></li>
                                     </ul>
                                 </div>
                                 <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
@@ -349,40 +351,40 @@
 
 
 
-
-                    <div class="row filters-border pt20 pb10 ">
+                    <div class="row top-margn pt20 pb5">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label class="field select">
-                                <select id="filter-status" name="filter By Purchases">
+                                <select id="filter-brand" name="filter-group">
+                                    <option value="0">Filter by Brand</option>
+                                    <option value="Aqua Panna">Panna</option>
+                                    <option value="Kinley">Kinley</option>
+                                    <option value="Arwa">Arwa</option>
+                                    <option value="Alain">Alain</option>
+                                    <option value="Monvio">Monvio</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select ">
+                                <select id="filter-order" name="filter-purchases" class="brdr-color br-light">
+                                    <option value="0">Filter by Order(s)</option>
+                                    <option value="1-49">1-49</option>
+                                    <option value="50-499">50-499</option>
+                                    <option value="500-999">500-999</option>
+                                    <option value="1000">1000+</option>
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                            <label class="field select">
+                                <select id="filter-status" name="filter-status" class="brdr-color br-light">
                                     <option value="0">Filter by Status</option>
-                                    <option value="1">Edit</option>
-                                    <option value="2">Delete</option>
-                                    <option value="3">Active</option>
-                                    <option value="4">Inactive</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label class="field select">
-                                <select id="filter-status" name="filter-status">
-                                    <option value="0">Filter By Group</option>
-                                    <option value="1">Edit</option>
-                                    <option value="2">Delete</option>
-                                    <option value="3">Active</option>
-                                    <option value="4">Inactive</option>
-                                </select>
-                                <i class="arrow double"></i>
-                            </label>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label class="field select">
-                                <select id="filter-customer" name="filter-customer">
-                                    <option value="0">Filter By staus</option>
-                                    <option value="1">Alan</option>
-                                    <option value="2">Susan</option>
-                                    <option value="3">Louis</option>
-                                    <option value="4">Randy</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Out for Delivery">Out for Delivery</option>
+                                    <option value="Delivered">Delivered</option>
+                                    <option value="Cancelled">Cancelled</option>
                                 </select>
                                 <i class="arrow double"></i>
                             </label>
@@ -391,7 +393,7 @@
                 </div>
                 <div class="panel-body pn">
                     <div class="table-responsive border-round brdr-top-none">
-                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1  main-driver-table">
+                        <table id="myTable" class="table admin-form theme-warning tc-checkbox-1  main-driver-table mycustomtbl">
                             <thead>
                                 <tr class="bg-light fs13 clr-blck">
                                     <th class="text-center">
@@ -405,9 +407,10 @@
                                     <th class=""> Est.Arrival Date</th>
                                     <th class="">Delivery Time </th>
                                     <th class="">Quintity</th>
-                                    <th class=" text-center">Shipping Address</th>
-                                    <th class=" ">Status</th>
-                                    <th class="text-left ml20">Action</th>
+                                    <th class="text-center">Shipping Address</th>
+                                    <th class="">Status</th>
+                                    <th></th>
+                                    @*<th class="text-left ml20">Action</th>*@
                                 </tr>
                             </thead>
                             <tbody class="">
@@ -416,7 +419,7 @@
                                     <tr id="@item.OrderNo" class="t-m-tr">
                                         <td class="text-center" data-val-col="checkbox" data-val="false">
                                             <label class="option block mn">
-                                                <input type="checkbox" name="mobileos" value="FR">
+                                                <input type="checkbox"  class="ch" name="mobileos" value="@item.OrderNo">
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
@@ -426,6 +429,7 @@
                                         <td class="" data-val-col="DeliveryTime" data-val="@item.DeliveryTime">@item.DeliveryTime</td>
                                         <td class="" data-val-col="Quantity" data-val="@item.Quantity">@item.Quantity</td>
                                         <td class="text-center" data-val-col="Address" data-val="@item.Address">@item.Address</td>
+                                        <td class="text-center" data-val-col="Status" data-val="@item.Status">@item.Status</td>
                                         <td style="display:none;" data-val-col="Name" data-val="@item.FirstName" class="">$@item.FirstName</td>
                                         <td style="display:none;" data-val-col="Email" data-val="@item.Email" class="">$@item.Email</td>
                                         <td style="display:none;" data-val-col="Phone" data-val="@item.Mobile" class="">$@item.Mobile</td>
@@ -434,12 +438,12 @@
                                         <td style="display:none;" data-val-col="City" data-val="@item.City" class="">$@item.City</td>
                                         <td style="display:none;" data-val-col="Country" data-val="@item.Country" class="">$@item.Country</td>
                                         <td style="display:none;" data-val-col="Zip" data-val="@item.Zip" class="">$@item.Zip</td>
-                                        <td class=" ">
+                                        <td class="">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-success bg-dark br2 btn-xs fs12 dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn btn-success bg-dark br2 btn-xs fs12 dropdown-toggle custonbtn" data-toggle="dropdown" aria-expanded="false">
                                                     @item.Status<span id="selctedName" class="caret ml5"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu" id="action_@item.OrderNo">
+                                                <ul class="dropdown-menu customdrop" role="menu" id="action_@item.OrderNo">
                                                     <li onclick="makeSelected(this)">On the Way</li>
                                                     <li onclick="makeSelected(this)">Pending</li>
                                                     <li onclick="makeSelected(this)">Pending Approval</li>
@@ -448,9 +452,7 @@
                                                 </ul>
                                             </div>
                                         </td>
-
-                                        <td class=""><button class="btn btn-default btn-sm border-radius99 vendor-view-btn" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-search fs12"></i>View</button></td>
-                                    </tr>
+                                   </tr>
 
                                 }
                             </tbody>
@@ -531,7 +533,7 @@
         $('.panel-tabs a[href="#tab1_' + tab + '"]').tab('show');
     }
 
-};
+    };
 
     $(function () {
         $("#update").click(function () {
@@ -629,6 +631,10 @@
                 data: { ordId: ordId, sts: el.innerText },
                 type: "POST",
                 success: function (res) {
+                    var $row = jQuery("#" + ordId);
+                    var elnew = $row.find('td[data-val-col="Status"]');
+                    elnew.attr("data-val", res.status);
+                    elnew.html(res.status);
                     debugger;
                 },
                 error: function (res) {
@@ -638,7 +644,26 @@
         }
     }
 
+    function deleteMask() {
+        var values = $('.ch:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
 
+        $.ajax({
+            url: '@Url.Action("DeleteOrder", "Order")',
+            data: { orderid: values },
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                window.location.reload();
+                //alert("Deleted Successfully.");
+            },
+            error: function (err) {
+                debugger;
+            }
+        });
+        console.log(values);
+    }
 </script>
 
 
@@ -729,4 +754,43 @@
         });
     });
 
+    //Filters
+    $("#filter-status").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddOrder?pageSizeValue=10&page=1&filter=Status&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+    $("#filter-order").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddOrder?pageSizeValue=10&page=1&filter=OrderCount&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+    $("#filter-brand").change(function () {
+        var statusVal = $(this).val();
+        var href = "AddOrder?pageSizeValue=10&page=1&filter=Brand&filterStatus=" + statusVal;
+        window.location.href = href;
+    });
+
+    var brand = '@ViewBag.filter_brand';
+        if (brand != '' || brand != null) {
+            $("#filter-brand").val(brand).attr('selected', true);
+        }
+        var count = '@ViewBag.filter_order';
+        if (count != '' || count != null) {
+            $("#filter-order").val(count).attr('selected');
+        }
+        var status = '@ViewBag.filter_status';
+        if (status != '' || status != null) {
+            $("#filter-status").val(status).attr('selected', true);
+        }
+
+        if ($("#filter-brand").val() == '' || $("#filter-brand").val() == 0 || $("#filter-brand").val() == null) {
+            $("#filter-brand").val(0).attr('selected');
+        }
+        if ($("#filter-order").val() == '' || $("#filter-order").val() == 0 || $("#filter-order").val() == null) {
+            $("#filter-order").val(0).attr('selected');
+        }
+        if ($("#filter-status").val() == '' || $("#filter-status").val() == 0 || $("#filter-status").val() == null) {
+            $("#filter-status").val(0).attr('selected');
+        }
 </script>

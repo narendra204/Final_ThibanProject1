@@ -17,12 +17,67 @@ namespace Final_ThibanProject.Controllers
         // GET: Order
         [Authorize]
         [HttpGet]
-        public ActionResult AddOrder(int? page, int? pageSizeValue)
+        public ActionResult AddOrder(int? page, int? pageSizeValue, string filter, string filterStatus)
         {
             int pageSize = (pageSizeValue ?? 10);
             int pageNumber = (page ?? 1);
             var objdriver = new List<Order>();
             objdriver = CallOrderList();
+            if (filter == null || filter == "")
+            {
+                ViewBag.filter_status = filterStatus;
+                ViewBag.filter_order = filterStatus;
+                ViewBag.filter_brand = filterStatus;
+            }
+            else if (filterStatus != null || filterStatus != "")
+            {
+                //    objFilterProduct = CallProductList();
+                if (filter == "Status")
+                {
+                    if (filterStatus == "All" || (filterStatus == "" || filterStatus == ""))
+                    {
+                        // objFilterProduct = objProduct.ToList();
+                    }
+                    else
+                    {
+                        objdriver = objdriver.Where(x => x.Status == filterStatus).ToList();
+                    }
+                    ViewBag.filter_status = filterStatus;
+                }
+                else if (filter == "OrderCount")
+                {
+                    //ProductOrder
+                    if (filterStatus != "" && filterStatus != "0")
+                    {
+                        int startCount = Convert.ToInt16(filterStatus.Split('-')[0]);
+                        int secondCount = Convert.ToInt16(filterStatus.Split('-')[1]);
+                        if (secondCount != 0)
+                        {
+                            List<int?> ProductIDs = new List<int?>();
+                            ProductIDs = db.orders.GroupBy(x => x.product_id).Where(grp => grp.Count() > startCount && grp.Count() < secondCount).Select(x => x.Key).ToList();
+                            var obj = from a in objdriver
+                                      join p in ProductIDs on a.productid equals (p.HasValue ? p.Value : 0)
+                                      select a;
+                            objdriver = obj.ToList();
+                        }
+                        else
+                        {
+                            List<int?> ProductIDs = new List<int?>();
+                            ProductIDs = db.orders.GroupBy(x => x.product_id).Where(grp => grp.Count() > startCount).Select(x => x.Key).ToList();
+                            var obj = from a in objdriver
+                                      join p in ProductIDs on a.productid equals (p.HasValue ? p.Value : 0)
+                                      select a;
+                            objdriver = obj.ToList();
+                        }
+                    }
+                    ViewBag.filter_order = filterStatus;
+                }
+                else if (filter == "Brand")
+                {
+                    ViewBag.filter_brand = filterStatus;
+                }
+
+            }
             return View(objdriver.ToPagedList(pageNumber, pageSize));
         }
 
@@ -32,15 +87,18 @@ namespace Final_ThibanProject.Controllers
             using (ThibanWaterDBEntities db = new ThibanWaterDBEntities())
             {
                 var OrderQuery = (from ord in db.orders
-                                  join add in db.shippingaddresses on ord.orderid equals add.orderid
+                                  where ord.status!="Deleted"
+                                 // join add in db.shippingaddresses on ord.orderid equals add.orderid
                                   join cust in db.customers on ord.customer_id equals cust.customerid
-                                  join card in db.customerpaymentcards on cust.customerid equals card.customerid
+                                  join card in db.customerpaymentcards on cust.customerid equals card.customerid into dcard
+                                  from card in dcard.DefaultIfEmpty()
                                   select new
                                   {
-                                      add.streetaddress,
+                                    /*  add.streetaddress,
                                       add.city,
                                       add.country,
-                                      add.zip,
+                                      add.zip,*/
+                                      ord.ship_address,
                                       ord.status,
                                       ord.orderid,
                                       ord.orderdate,
@@ -59,10 +117,11 @@ namespace Final_ThibanProject.Controllers
                                       orderno = rc.orderid,
                                       purchasedate = rc.orderdate,
                                       deliverytime = rc.ship_date,
-                                      Address = rc.streetaddress,
+                                      Address =rc.ship_address,
+                                     /* Address=rc.streetaddress,
                                       City = rc.city,
                                       Zip = rc.zip,
-                                      Country = rc.country,
+                                      Country = rc.country,*/
                                       Quantity = rc.quantity,
                                       Status = rc.status
                                   }).ToList();
@@ -75,9 +134,9 @@ namespace Final_ThibanProject.Controllers
                         DeliveryTime = Convert.ToDateTime(item.deliverytime),
                         Address = item.Address,
                         Quantity = item.Quantity,
-                        City = item.City,
+                     /*   City = item.City,
                         Country = item.Country,
-                        Zip = Convert.ToInt32(item.Zip),
+                        Zip = Convert.ToInt32(item.Zip),*/
                         Status = item.Status
                     });
                 }
@@ -154,6 +213,28 @@ namespace Final_ThibanProject.Controllers
             ord.status = sts;
             db.SaveChanges();
             return Json(new { orderid = ordId, status = sts });
+        }
+
+        [HttpPost]
+        public JsonResult DeleteOrder(string[] orderid)
+        {
+            JsonResult res = new JsonResult();
+            //res = cu.Where(x => x.Status == status).ToList();
+            if (orderid != null && orderid.Length > 0)
+            {
+                foreach (string i in orderid)
+                {
+                    int id = Convert.ToInt16(i);
+                    db.orders.Find(id).status = "Deleted";
+                }
+                db.SaveChanges();
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+
         }
     }
 }

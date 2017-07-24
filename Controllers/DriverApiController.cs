@@ -27,19 +27,19 @@ namespace Final_ThibanProject_api.Controllers
                 ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
 
                 List<Driver_product_view> objProduct = new List<Driver_product_view>();
-                var produ_qty_list = (from de in DB.deliveries
-                                      join or in DB.orders on de.orderid equals or.orderid
-                                      where de.driverid == driverid
-                                      group or by new
-                                      {
-                                          or.product_id
-                                      }
-                                        into rc
-                                      select new
-                                      {
-                                          ProdId = rc.Key.product_id,
-                                          Or_quantity = rc.Sum(or => or.quantity)
-                                      }).AsEnumerable();
+                /*    var produ_qty_list = (from de in DB.deliveries
+                                          join or in DB.orders on de.orderid equals or.orderid
+                                          where de.driverid == driverid
+                                          group or by new
+                                          {
+                                              or.product_id
+                                          }
+                                            into rc
+                                          select new
+                                          {
+                                              ProdId = rc.Key.product_id,
+                                              Or_quantity = rc.Sum(or => or.quantity)
+                                          }).AsEnumerable();*/
 
                 var prodid_date = (from drin in DB.driverinventories
                                    where DbFunctions.TruncateTime(drin.date1) == DbFunctions.TruncateTime(DateTime.Now)
@@ -53,8 +53,8 @@ namespace Final_ThibanProject_api.Controllers
                                     from drin in drind.DefaultIfEmpty()
                                         /*  join drin in DB.driverinventories on prod.productid equals drin.productid into drind
                                           from drin in drind.DefaultIfEmpty()*/
-                                    join drst in produ_qty_list on prod.productid equals drst.ProdId into drstd
-                                    from drst in drstd.DefaultIfEmpty()
+                                        /*    join drst in produ_qty_list on prod.productid equals drst.ProdId into drstd
+                                            from drst in drstd.DefaultIfEmpty()*/
                                     where dr.driverid == driverid
                                     && (DbFunctions.TruncateTime(drin.date1) == DbFunctions.TruncateTime(DateTime.Now) || drin.date1 == null)
                                     group prod by new
@@ -64,8 +64,7 @@ namespace Final_ThibanProject_api.Controllers
                                         prod.Image_path
                                         ,
                                         drin.stock
-                                        ,
-                                        drst.Or_quantity
+                                        //,drst.Or_quantity
                                     }
                                         into rc
                                     select new
@@ -74,8 +73,7 @@ namespace Final_ThibanProject_api.Controllers
                                         ProductTitle = rc.Key.product_title,
                                         Stock = rc.Key.stock,
                                         Image_path = rc.Key.Image_path
-                                        ,
-                                        Or_stock = rc.Key.Or_quantity
+                                        //,Or_stock = rc.Key.Or_quantity
                                     }).ToList();
 
 
@@ -120,7 +118,7 @@ namespace Final_ThibanProject_api.Controllers
                 List<Driver_product_view> objProduct = new List<Driver_product_view>();
                 var produ_qty_list = (from de in DB.deliveries
                                       join or in DB.orders on de.orderid equals or.orderid
-                                      where de.driverid == driverid
+                                      where de.driverid == driverid && DbFunctions.TruncateTime(or.expected_delivery_time) == DbFunctions.TruncateTime(DateTime.Now)
                                       group or by new
                                       {
                                           or.product_id
@@ -197,7 +195,7 @@ namespace Final_ThibanProject_api.Controllers
                 List<Driver_product_view> objProduct = new List<Driver_product_view>();
                 var produ_qty_list = (from de in DB.deliveries
                                       join or in DB.orders on de.orderid equals or.orderid
-                                      where de.driverid == driverid
+                                      where de.driverid == driverid && DbFunctions.TruncateTime(or.expected_delivery_time) == DbFunctions.TruncateTime(DateTime.Now)
                                       group or by new
                                       {
                                           or.product_id
@@ -281,7 +279,7 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult AddProdcttoDriverInventory(int driverid, int productid, int qty, int? shift_id=1)
+        public IHttpActionResult AddProdcttoDriverInventory(int driverid, int productid, int qty, int? shift_id = 1)
         {
             try
             {
@@ -468,7 +466,7 @@ namespace Final_ThibanProject_api.Controllers
                         totalorder = totalorder,
                         deliverorder = deliveroder,
                         pendingorder = remainorder,
-                        DOB=item.DOB
+                        DOB = item.DOB
                     });
                 }
                 if (objProduct.Count > 0)
@@ -492,7 +490,7 @@ namespace Final_ThibanProject_api.Controllers
 
         [HttpPost]
         [Route]
-        public IHttpActionResult AddOdometerReading(int driverid,  int reading, int? shift_id = 1)
+        public IHttpActionResult AddOdometerReading(int driverid, int reading, int? shift_id = 1)
         {
             try
             {
@@ -506,6 +504,334 @@ namespace Final_ThibanProject_api.Controllers
                 db.SaveChanges();
                 objR.status = 1;
                 objR.message = "Reading added Successfully";
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetDriverCurrentExtraStockInventory(int driverid, int? shiftid = 1)
+        {
+            try
+            {
+                ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
+
+                List<Driver_product_view> objProduct = new List<Driver_product_view>();
+                //Order Stock
+                var produ_qty_list = (from de in DB.deliveries
+                                      join or in DB.orders on de.orderid equals or.orderid
+                                      where de.driverid == driverid && DbFunctions.TruncateTime(or.expected_delivery_time) == DbFunctions.TruncateTime(DateTime.Now)
+                                      group or by new
+                                      {
+                                          or.product_id
+                                      }
+                                        into rc
+                                      select new
+                                      {
+                                          ProdId = rc.Key.product_id,
+                                          Or_quantity = rc.Sum(or => or.quantity)
+                                      }).AsEnumerable();
+
+                //Loaded Stock
+                var prodid_date = (from drin in DB.driverinventories
+                                   where DbFunctions.TruncateTime(drin.date1) == DbFunctions.TruncateTime(DateTime.Now)
+                                   && drin.driverid == driverid && drin.shift_id == shiftid
+                                   select new { drin.date1, drin.productid, drin.stock }).AsEnumerable();
+                //On Spot Sale
+                var spot_sale = (from drin in DB.onspotsales
+                                 where DbFunctions.TruncateTime(drin.date) == DbFunctions.TruncateTime(DateTime.Now)
+                                 && drin.driverid == driverid && drin.shift_id == shiftid
+                                 select new { drin.date, drin.productid, drin.onspotqty }).AsEnumerable();
+
+                var productQuery = (from prod in DB.products
+                                    join ve in DB.venders on prod.vender_id equals ve.venderid
+                                    join dr in DB.drivers on ve.venderid equals dr.vender_id
+                                    join drin in prodid_date on prod.productid equals drin.productid
+                                    //       into drind  from drin in drind.DefaultIfEmpty()
+
+                                    join drst in produ_qty_list on drin.productid equals drst.ProdId into drstd
+                                    from drst in drstd.DefaultIfEmpty()
+                                    join spot in spot_sale on drin.productid equals spot.productid into spotd
+                                    from spot in spotd.DefaultIfEmpty()
+
+                                    where dr.driverid == driverid && ((drin.stock > drst.Or_quantity) || drst.ProdId == null)
+                                    //     && (DbFunctions.TruncateTime(drin.date1) == DbFunctions.TruncateTime(DateTime.Now) || drin.date1 == null)
+                                    group prod by new
+                                    {
+                                        prod.productid,
+                                        prod.product_title,
+                                        prod.Image_path,
+                                        prod.customer_price,
+                                        drin.stock
+                                         ,
+                                        drst.Or_quantity,
+                                        spot.onspotqty
+                                    }
+                                        into rc
+                                    select new
+                                    {
+                                        ProdId = rc.Key.productid,
+                                        ProductTitle = rc.Key.product_title,
+                                        Stock = rc.Key.stock,
+                                        Image_path = rc.Key.Image_path,
+                                        Price = rc.Key.customer_price,
+                                        Or_stock = rc.Key.Or_quantity
+                                        ,
+                                        onspotqty = rc.Key.onspotqty
+                                    }).ToList();
+
+
+                foreach (var item in productQuery)
+                {
+                    objProduct.Add(new Driver_product_view()
+                    {
+                        ProductId = item.ProdId,
+                        Title = item.ProductTitle,
+                        Image_path = item.Image_path,
+                        productprice = item.Price,
+                        Stock = item.Stock == null ? 0 : item.Stock
+                        ,
+                        OrderQty = (item.Or_stock == null ? 0 : item.Or_stock) + (item.onspotqty == null ? 0 : item.onspotqty)
+                        ,
+                        ExtraStock = ((item.Stock == null ? 0 : item.Stock) - (item.Or_stock == null ? 0 : item.Or_stock) - (item.onspotqty == null ? 0 : item.onspotqty))
+                    });
+                }
+                if (objProduct.Count > 0)
+                    return Ok(objProduct);
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Product Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+
+            }
+            return Ok(objR);
+
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetDriverOnSpotOrder(int driverid, int? shiftid = 1)
+        {
+            try
+            {
+                ThibanWaterDBEntities DB = new ThibanWaterDBEntities();
+
+                List<Driver_product_view> objProduct = new List<Driver_product_view>();
+                //Order Stock
+                /*     var produ_qty_list = (from de in DB.deliveries
+                                           join or in DB.orders on de.orderid equals or.orderid
+                                           where de.driverid == driverid && DbFunctions.TruncateTime(or.expected_delivery_time) == DbFunctions.TruncateTime(DateTime.Now)
+                                           group or by new
+                                           {
+                                               or.product_id
+                                           }
+                                             into rc
+                                           select new
+                                           {
+                                               ProdId = rc.Key.product_id,
+                                               Or_quantity = rc.Sum(or => or.quantity)
+                                           }).AsEnumerable();*/
+
+                //Loaded Stock
+                /*    var prodid_date = (from drin in DB.driverinventories
+                                       where DbFunctions.TruncateTime(drin.date1) == DbFunctions.TruncateTime(DateTime.Now)
+                                       && drin.driverid == driverid && drin.shift_id == shiftid
+                                       select new { drin.date1, drin.productid, drin.stock }).AsEnumerable();*/
+                //On Spot Sale
+                var spot_sale = (from drin in DB.onspotsales
+                                 where DbFunctions.TruncateTime(drin.date) == DbFunctions.TruncateTime(DateTime.Now)
+                                 && drin.driverid == driverid && drin.shift_id == shiftid
+                                 select new { drin.date, drin.productid, drin.onspotqty }).AsEnumerable();
+
+                var productQuery = (from prod in DB.products
+                                    join ve in DB.venders on prod.vender_id equals ve.venderid
+                                    join dr in DB.drivers on ve.venderid equals dr.vender_id
+                                    join spot in spot_sale on prod.productid equals spot.productid
+                                    where dr.driverid == driverid
+                                    group prod by new
+                                    {
+                                        prod.productid,
+                                        prod.product_title,
+                                        prod.Image_path,
+                                        prod.customer_price,
+                                        spot.onspotqty,
+                                        ve.name
+                                    }
+                                        into rc
+                                    select new
+                                    {
+                                        ProdId = rc.Key.productid,
+                                        ProductTitle = rc.Key.product_title,
+                                        Image_path = rc.Key.Image_path,
+                                        Price = rc.Key.customer_price,
+                                        onspotqty = rc.Key.onspotqty,
+                                        Brand=rc.Key.name
+                                    }).ToList();
+
+
+                foreach (var item in productQuery)
+                {
+                    objProduct.Add(new Driver_product_view()
+                    {
+                        ProductId = item.ProdId,
+                        Title = item.ProductTitle,
+                        Image_path = item.Image_path,
+                        productprice = item.Price,
+                        OrderQty = (item.onspotqty == null ? 0 : item.onspotqty),
+                        Brand=item.Brand
+                    });
+                }
+                if (objProduct.Count > 0)
+                    return Ok(objProduct);
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Product Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+
+            }
+            return Ok(objR);
+
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult GetOrderDetail(int orderid)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                var orders = (from t in db.orders
+                              join prod in db.products on t.product_id equals prod.productid
+                              join ve in db.venders on prod.vender_id equals ve.venderid
+                              where t.orderid == orderid
+                              select new order_view
+                              {
+                                  orderid = t.orderid,
+                                  orderdate = t.orderdate,
+                                  product_id = t.product_id,
+                                  product_title = prod.product_title,
+                                  prod_image = prod.Image_path,
+                                  vender_id = ve.venderid,
+                                  vender_name = ve.name,
+                                  quantity = t.quantity,
+                                  price = prod.customer_price,
+                                  status = t.status,
+                                  customer_id = t.customer_id,
+                                  ship_address=t.ship_address,
+                                  Order_Details = db.order_details.Where(x => x.orderid == t.orderid).Select(p => new order_details_view
+                                  {
+                                      id = p.id,
+                                      orderid = p.orderid,
+                                      productid = p.productid,
+                                      qty = p.qty,
+                                      price = p.price,
+                                      created_date = p.created_date
+                                  })
+                              }).ToList();
+                if (orders.Count > 0)
+                    return Ok(orders);
+                else
+                {
+                    objR.status = 0;
+                    objR.message = "No Order Data Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult ConfirmOrderDelivery(int orderid, int driverid, decimal latitude, decimal longitude, DateTime delivertime)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                delivery driIn = db.deliveries.Where(x => x.driverid == driverid && x.orderid == orderid).FirstOrDefault();
+                if (driIn != null)
+                {
+                    driIn.driverid = driverid;
+                    driIn.endlatitude = latitude;
+                    driIn.endlongitude = longitude;
+                    driIn.deliverytime = delivertime;
+                    db.SaveChanges();
+                    objR.status = 1;
+                    objR.message = "Order Delivered Successfully";
+                }
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "No Order Detail Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objR.status = 0;
+                objR.message = ex.Message;
+            }
+            return Ok(objR);
+        }
+
+        [HttpPost]
+        [Route]
+        public IHttpActionResult OnSpotSaleRelatedToOrder(int orderid,int driverid, string productids, string qtys, decimal latitude, decimal longitude, DateTime delivertime, int? truckid =0, int? shiftid = 1)
+        {
+            try
+            {
+                ThibanWaterDBEntities db = new ThibanWaterDBEntities();
+                string[] product_id = productids.Split(',');
+                string[] qty = qtys.Split(',');
+                if (product_id.Length == qty.Length)
+                {
+                    for (int i = 0; i < product_id.Length; i++)
+                    {
+                        onspotsale objsale = new onspotsale();
+                        int pid = Convert.ToInt32(product_id[i]);
+                        decimal? price = db.products.Where(x => x.productid ==pid).Select(x => x.customer_price).FirstOrDefault();
+                        objsale.driverid = driverid;
+                        objsale.trukid = truckid;
+                        objsale.onsopt_sale_latitude = latitude;
+                        objsale.onspot_sale_longitude = longitude;
+                        objsale.productid =Convert.ToInt32(product_id[i]);
+                        objsale.onspotqty = Convert.ToInt32(qty[i]);
+                        objsale.onspotprice = price;
+                        objsale.totalprice = (price * Convert.ToInt32(qty[i]));
+                        objsale.shift_id = shiftid;
+                        objsale.date = delivertime;
+                        db.onspotsales.Add(objsale);
+                        db.SaveChanges();  
+                    }
+                    objR.status = 1;
+                    objR.message = "Order Delivered Successfully";
+                }
+                else
+                {
+                    objR.status = 1;
+                    objR.message = "Pass same no of Products and Quantities";
+                }
             }
             catch (Exception ex)
             {

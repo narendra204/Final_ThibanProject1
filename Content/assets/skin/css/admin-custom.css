@@ -164,104 +164,17 @@
 	padding-top: 1px !important;
 }
 /*---------------LOGIN-FORM-----------------*/
-
-
-
-
-
-
-
 .login-form-vendor {
 	background: #f4f4f4;
 }
 /*------------vendor-header-----*/
-
-
-
-
-
-
-
-/*.siderbar-aside .sidebar-menu li.active-menu:after {
-
-
-
-    content: " ";
-
-
-
-    display: block;
-
-
-
-    width: 0;
-
-
-
-    height: 0;
-
-
-
-    border-top: 10px solid transparent;
-
-
-
-    border-bottom: 10px solid transparent;
-
-
-
-    border-right: 10px solid #EFEFEF;
-
-
-
-    position: absolute;
-
-
-
-    top: 40%;
-
-
-
-    right: 0;
-
-
-
-    left: auto;
-
-
-
-    margin-left: -26px;
-
-
-
-    z-index: 2;
-
-
-
-}*/
-
-
-
-
-
-
-
 .vendr-dashboard-menulist > li.open > a, .vendr-dashboard-menulist > li:hover > a, .vendr-dashboard-menulist > li:focus > a, .vendr-dashboard-menulist > li.active > a, .vendr-dashboard-menulist > li > a:hover, .vendr-dashboard-menulist > li > a:focus {
 	color: #222;
 	background-color: transparent !important;
 }
 /* ================DASHBOARD-INDEX================= */
 
-
-
-
-
-
-
 /*-----------------TOP-HEADER--------------------*/
-
-
-
 .btn.btn-default.btn-sm.last {
 	height: 28px;
 	margin-top: 2px;
@@ -360,63 +273,7 @@ span.mt10.textalign {
 
 .main-dashboard-section {
 	padding: 14px 7px 77px 6px !important;
-}/*
-
-
-
-.main-vendr-right{
-
-
-
-	margin-left:173px !important;
-
-
-
 }
-
-
-
-
-
-
-
-.main-sub-vendr-right{
-
-
-
-	margin-left:173px !important;
-
-
-
-}
-
-
-
-.main-sub-driver-right{
-
-
-
-	margin-left:173px !important;
-
-
-
-}
-
-
-
-
-
-
-
-.main-sub-all-transc-right{
-
-
-
-	margin-left:173px !important;
-
-
-
-}*/
 .dashbrd-top-box {
 	padding: 2px 8px 2px 8px !important;
 }
@@ -425,11 +282,9 @@ span.mt10.textalign {
 	color: #666 !important;
 	margin-top: 65px !important;
 }
-.inner-header {
-	padding: 4px 8px 4px 8px !important;
-}
+
 .bred-inner-header {
-	padding: 5px 8px 6px 8px !important;
+	padding: 10px 8px 10px 8px !important;
 	/* margin-left: 5px;*/
    background: #f5f5f5 !important;
 	
@@ -731,9 +586,6 @@ input#email {
 	margin-top: 5px;
 }
 /*-------------------HEADER-CSS-------------------*/
-
-
-
 .vendor-app-dwnld p img {
 	width: 130px;
 	margin-top: 15px;
@@ -801,9 +653,6 @@ input#email {
 	margin-top: -11px;
 }
 /*------------------USER-AGREEMENT--------------*/
-
-
-
 .main-user-agreement {
 	margin-top: 85px;
 }
@@ -816,22 +665,6 @@ a {
 .m--30 {
 	margin: 30px 0 !important;
 }
-/*
-
-
-
-.user-dtls{
-
-
-
-	border-bottom:none !important;
-
-
-
-}*/
-
-
-
 .user-dtls li {
 }
 .user-dtls li a {
@@ -839,10 +672,7 @@ a {
 	border: none !important;
 	background: transparent;
 	/* font-size: 14px; */
-
-
-
-	font-weight: 600;
+font-weight: 600;
 	margin-right: 0px;
 	border-right: 1px solid #bbb6b6 !important;
 	padding-left: 50px;
@@ -869,15 +699,9 @@ a {
 	margin: 10px 0 20px 0 !important;
 }
 /*------bank-css----*/
-
-
-
 .identify-dtls label {
 	/*color:#171717;*/
-
-
-
-	font-size: 12px;
+font-size: 12px;
 	text-transform: uppercase;
 }
 .identify-dtls .fa-calendar {
@@ -898,12 +722,6 @@ a {
 }
 /*-----------------ACCOUNT-SEETING-------*/
 
-
-
-
-
-
-
 .accunt-setting P {
 	font-size: 15px;
 	font-weight: 600;
@@ -921,12 +739,6 @@ a {
 	;
 }
 /*-----------------Agreement-css-------*/
-
-
-
-
-
-
 
 .agrmnt-tbl table td {
 	font-size: 14px;
@@ -947,8 +759,6 @@ a {
 	padding-bottom: 20px;
 }
 /*-----------------Wizard-css---------------------*/
-
-
 
 .stepwizard-step p {
 	margin-top: 10px;
@@ -1021,8 +831,6 @@ select.V_select {
 }
 /*==========================ADMIN-PRODUCT-MANAGEMENT=================*/
 
-
-
 button.btn.btn-primary.btn-md.btn_next.br-radius-4 {
 	padding: 5px 25px;
 }
@@ -1093,7 +901,7 @@ input.text-center.event-name.gui-input.br-light.border-radius99.img-keyword-btn2
 }
 .filter-selection-box {
 	font-size: 12px !important;
-	/*font-weight: 600 !important;*/
+	font-weight: 600 !important;
 	color: #696969 !important;
 	letter-spacing: 0.5px;
 }
@@ -1479,13 +1287,6 @@ input:focus, select:focus, textarea:focus {
 	width: 40px;
 }
 /*==================GEO-add-FENCE========================*/
-
-
-
-  
-
-
-
 .tr.t-m-tr {
 	height: 52px;
 }
@@ -1494,18 +1295,11 @@ input:focus, select:focus, textarea:focus {
 }
 .geo-fenc-header {
 	/* padding-bottom: 10px !important;*/
-
-
-
-	font-size: 15px !important;
+font-size: 15px !important;
 	font-weight: none !important;
 	/* padding-top: 0 !important;*/
 
-
-
     /*margin-top: 5px !important;*/
-
-
 
 	margin-left: 0px !important;
 	letter-spacing: 1px;
@@ -2127,7 +1921,26 @@ div#menu2 h4{
  span.input-group-btn:hover {
 	border-color:red !important;
 }
-
+/*==============LEFT-MENU-IMAGE-CHANGE-CSS============*/
+ul.nav.side-menu li a img.active-img{
+	display:none;
+}
+ul.nav.side-menu li.current-page a img.inactive-img{
+	display:none;
+}
+ul.nav.side-menu li.current-page a img.active-img{
+	display: inline-block;
+}
+ul.nav.side-menu li a:hover img.active-img{
+	display:none;
+}
+/*ul.nav.side-menu li a:hover img.inactive-img{
+	display:none;
+}
+ul.nav.side-menu li a:hover img.active-img{
+	display: inline-block;
+}*/
+/*=====================TABLES-CSS======================*/
 table.table.admin-form.theme-warning.tc-checkbox-1.fs13.main-admin-table.main-driver-table, table.table.admin-form.theme-warning.tc-checkbox-1.fs13.borderless.main-driver-table, table.table.admin-form.theme-warning.tc-checkbox-1.fs13.main-driver-table, table.table.admin-form.theme-warning.tc-checkbox-1.fs13 {
 	border: 1px solid #eee !important;
 	border-top: none !important;
@@ -2137,7 +1950,4 @@ label.field.option.mtop.mbn {
 }
 .row.pagination-block.font-size-13.admin-agintion.mn.bordr {
 	border-bottom: none;
-}
-.section.mb10 {
-    margin: 0 11px;
 }

@@ -17,8 +17,8 @@ namespace Final_ThibanProject.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public role()
         {
-            this.rolemanagements = new HashSet<rolemanagement>();
             this.teammanagements = new HashSet<teammanagement>();
+            this.rolemanagements = new HashSet<rolemanagement>();
         }
     
         public int roleid { get; set; }
@@ -27,8 +27,8 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<bool> status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<rolemanagement> rolemanagements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<teammanagement> teammanagements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<rolemanagement> rolemanagements { get; set; }
     }
 }

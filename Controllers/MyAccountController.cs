@@ -31,17 +31,20 @@ namespace Final_ThibanProject.Controllers
                 {
                     
                     var user = (from data in DB.admins.Where(a => a.username.Equals(l.Username) && a.password.Equals(l.Password)) select data).FirstOrDefault();
-                    var image = (from img in DB.ImageFiles.Where(a => a.ImageId==(user.Image)) select img.Imageattachment).FirstOrDefault();
+                 /*   var image = (from img in DB.ImageFiles.Where(a => a.ImageId==(user.Image)) select img.Imageattachment).FirstOrDefault();
                     //var image = "D:\Project\Final_ThibanProject\ProfileImage\k3.png";
                     var base64 = Convert.ToBase64String(image);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);*/
                     if (user!=null)
                     {
                         FormsAuthentication.SetAuthCookie(user.username, true);
                         Session["Username"] = user.username;
                         Session["Email"] = user.email;
                         Session["Adminid"] = user.adminid;
-                        Session["Image"] = imgSrc;
+                        Session["Image"] = user.Image_Url;
+                        Session["Image_URL"] = user.Image_Url;
+                        Session["Image_URL"] = user.Image_Url;
+                        Session["RoleID"] = user.roleid;
                         if (Url.IsLocalUrl(RequestedUrl))
                         {
                             return Redirect(RequestedUrl);

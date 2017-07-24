@@ -16,7 +16,7 @@ namespace Final_ThibanProject.Models.DB
     {
         public int id { get; set; }
         public Nullable<int> roleid { get; set; }
-        public string menuitem { get; set; }
+        public Nullable<int> menuid { get; set; }
         public Nullable<int> createdby { get; set; }
         public Nullable<bool> status { get; set; }
     

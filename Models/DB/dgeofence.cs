@@ -21,11 +21,13 @@ namespace Final_ThibanProject.Models.DB
         }
     
         public int geofenceid { get; set; }
-        public System.Data.Entity.Spatial.DbGeography location { get; set; }
         public string zone_name { get; set; }
         public string city_name { get; set; }
         public string direction_name { get; set; }
         public Nullable<bool> status { get; set; }
+        public string area { get; set; }
+        public string population { get; set; }
+        public string location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<geofence> geofences { get; set; }

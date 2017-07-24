@@ -18,6 +18,11 @@ namespace Final_ThibanProject.Models
         public string message { get; set; }
         public string errorcode { get; set; }
     }
+    public class CustomResponseID
+    {
+        public int status { get; set; }
+        public int id { get; set; }
+    }
 
     public class BrandList
     {
@@ -44,7 +49,7 @@ namespace Final_ThibanProject.Models
     }
     public class OrderTrack_view
     {
-      //  public int currentorderid { get; set; }
+        //  public int currentorderid { get; set; }
         public int lastorderid { get; set; }
         public string latitude { get; set; }
         public string longitude { get; set; }
@@ -251,6 +256,18 @@ namespace Final_ThibanProject.Models
         //Vehicle
         public string vehicle_type { get; set; }
         public string plat_no { get; set; }
+        public string ship_address { get; set; }
+        public IEnumerable<order_details_view> Order_Details { get; set; }
+    }
+    public partial class order_details_view
+    {
+        public int id { get; set; }
+        public Nullable<int> orderid { get; set; }
+        public Nullable<int> productid { get; set; }
+        public Nullable<int> qty { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<System.DateTime> created_date { get; set; }
+
     }
 
     public partial class driver_view
@@ -283,6 +300,8 @@ namespace Final_ThibanProject.Models
         public int? Stock { get; set; }
         public int? OrderQty { get; set; }
         public int? ExtraStock { get; set; }
+        public Nullable<decimal> productprice { get; set; }
+        public string Brand { get; set; }
     }
 
     public partial class coupon_view
@@ -311,4 +330,8 @@ namespace Final_ThibanProject.Models
         public string mobile_no { get; set; }
         public string status { get; set; }
     }
+
+
+   
+
 }

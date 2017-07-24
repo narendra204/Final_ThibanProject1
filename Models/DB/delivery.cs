@@ -28,6 +28,7 @@ namespace Final_ThibanProject.Models.DB
         public Nullable<System.DateTime> deliverytime { get; set; }
         public Nullable<int> weatingtime { get; set; }
         public Nullable<int> delaytime { get; set; }
+        public Nullable<int> shift_id { get; set; }
     
         public virtual driver driver { get; set; }
     }

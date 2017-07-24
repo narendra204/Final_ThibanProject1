@@ -1,0 +1,1298 @@
+﻿@model Final_ThibanProject.Models.viewmodel.vendorgeofence
+@{
+    ViewBag.Title = "Vender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/assets/css/vendor-css.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-custom.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/skin/css/vendor-responsive.css">
+<!---NEW-GEO-FENCE---->
+<!---NEW-GEO-FENCE---->
+<style>
+    .nav_menu {
+        border-bottom: none;
+    }
+
+    .bg {
+        background: #fff;
+    }
+
+    .menu_section {
+        margin-bottom: 0px;
+    }
+    /*ul.nav.navbar-nav.navbar-right {
+        width: 60%;
+    }*/
+    .nav_title {
+        width: 233px;
+    }
+
+    input, select, textarea {
+        border-radius: 3px !important;
+    }
+
+    ul.dropdown-menu.side-dropdown {
+        position: absolute;
+        top: 48px !important;
+        left: 0px !important;
+        border: 1px solid #eee !important;
+        border-radius: 1px;
+        background: #f2f2f2 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        background-clip: none !important;
+    }
+
+        ul.dropdown-menu.side-dropdown a {
+            color: #888 !important;
+        }
+
+    .dropdown:hover ul.dropdown-menu.side-dropdown {
+        display: block;
+        padding: 0px;
+    }
+
+    .dropdown.current-page.active .side-dropdown {
+        display: none !important;
+    }
+
+    .dropdown.current-page.active:hover .side-dropdown {
+        display: block !important;
+    }
+
+    .left_col {
+        background: #f7f7f7;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100% !important;
+        position: fixed;
+    }
+
+    .col-md-3.left_col {
+        overflow: hidden;
+    }
+
+    .nav-sm #menu_toggle {
+        margin-left: 10px;
+    }
+
+    .nav-sm .navbar-search {
+        margin-left: 0px;
+    }
+
+    .side-menu li.current-page a {
+        color: #57ad68 !important;
+        background: #f2f2f2;
+    }
+
+    li.dropdown.current-page a:hover ul.dropdown-menu.side-dropdown {
+        display: block !important;
+    }
+
+    .side-dropdown li a {
+        background: #f7f7f7 !important;
+        color: #888 !important;
+    }
+
+        .side-dropdown li a:hover {
+            background: #f2f2f2 !important;
+            color: #222;
+        }
+
+    ul.nav.side-menu.sub-menu li a {
+        padding-left: 30px;
+    }
+
+    ul.nav.side-menu li.active a {
+        background: transparent !important;
+        color: #888;
+    }
+
+    ul.nav.side-menu.sub-menu li.current-page a {
+        color: #57ad68 !important;
+        background: #f2f2f2 !important;
+    }
+
+    a.dropdown-sub-menu {
+        padding-left: 40px !important;
+    }
+
+    a.drop-down-mainmenu {
+        cursor: default;
+    }
+
+    .dropdown-sub-menu img {
+        width: 16px !important;
+    }
+
+    a.drop-down-mainmenu {
+        color: #687888 !important;
+        font-weight: 400 !important;
+        font-family: FrutigerArabic-Bold,FrutigerArabic-Regular,Tahoma,Helvetica,sans-serif;
+    }
+
+        a.drop-down-mainmenu:hover {
+            color: #687888 !important;
+        }
+    /*   input.form-control {
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-left: 0px;
+    }
+     form.navbar-form.navbar-left .input-group-btn button.btn.btn-default{
+            border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        background: #fff;
+        border-right: 0px;
+    }
+     form.navbar-form.navbar-left input.form-control{
+         border-top-right-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        border-top-left-radius: 1px !important;
+        border-bottom-left-radius: 0px !important;
+        padding-left:0px;
+        border-color: #dddddd !important;
+    }*/
+    .scroll-content::-webkit-scrollbar {
+        width: 5px;
+        height: 500px;
+        border-radius: 25px;
+    }
+
+    .scroll-content::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px #57ad68;
+        border-radius: 25px;
+    }
+
+    .scroll-content::-webkit-scrollbar-thumb {
+        background-color: #57ad68;
+        outline: 1px solid #57ad68;
+        border-radius: 25px;
+    }
+
+    .row.create-section-zone.create-zonediv .table-responsive {
+        display: block;
+    }
+
+    .row.create-section-zone.create-zonediv table.scroll {
+        display: block;
+    }
+
+        .row.create-section-zone.create-zonediv table.scroll tbody {
+            height: 365px;
+            overflow-y: scroll;
+            display: block;
+        }
+
+    .scrooll-tbody .table-span-search img.table-search-icon {
+        width: 17px !important;
+        position: absolute !important;
+        top: 7px !important;
+        left: 10px !important;
+    }
+
+    .scrooll-tbody tbody {
+        display: block;
+        height: 350px;
+        overflow: auto;
+    }
+
+        .scrooll-tbody thead, .scrooll-tbody tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed; /* even columns width , fix width of table too*/
+        }
+
+    .scrooll-tbody thead {
+        /* width: calc( 100% - 1em ) scrollbar is average 1em/16px width, remove it from thead width */
+    }
+
+    .scrooll-tbody .table tbody tr td {
+    }
+
+    .scrooll-tbody .geofence-div {
+        width: 150px;
+    }
+
+    .scrooll-tbody th.table-span-search {
+        padding-bottom: 6px;
+        border-bottom: 0px;
+    }
+
+    .row.create-section-zone.edit-zone-table .scrooll-tbody tbody {
+        display: block;
+        height: 255px !important;
+        overflow: auto;
+    }
+
+    .row.create-section-zone.edit-zone-table .scrooll-tbody th.table-span-search {
+        padding-bottom: 5px;
+        border-bottom: 0;
+        padding-top: 5px;
+    }
+
+    .edit-zone-table .control-label {
+        font-weight: 400;
+    }
+
+    .create-zonediv label {
+        font-weight: 400;
+    }
+
+    .right_col.new-geo-fence .map2 {
+        display: none;
+    }
+
+    .right_col.new-geo-fence .main-edit-drivers {
+        display: none;
+    }
+
+    .right_col.new-geo-fence .table-responsive a:active, a:hover, a:focus {
+        color: #555;
+    }
+
+    .right_col.new-geo-fence .toggle {
+        float: left;
+        margin: 0;
+        padding-top: 5px;
+        width: 18px;
+        border: 1px solid #ddd;
+        height: 40px;
+        line-height: 30px;
+        position: relative;
+        top: 50px;
+        bottom: 0;
+        background: #f1f1f1;
+        left: -12px;
+        border-left: 0;
+    }
+
+    .right_col.new-geo-fence .geo_toggle .fa-bars {
+        font-size: 14px;
+        font-weight: normal;
+        color: #57ad68;
+        border-right: 0;
+        padding-right: 1px;
+        margin-top: 5px;
+    }
+
+    .right_col.new-geo-fence .geo_toggle {
+        padding: 0px 0px 0;
+        margin-left: 0px;
+    }
+
+    .right_col.new-geo-fence .toggle a i {
+        font-size: 18px;
+        position: relative;
+        left: 3px;
+        top: 0px;
+        color: #57ad68;
+    }
+
+    .right_col.new-geo-fence .toggle a {
+        padding: 15px 0px 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .fullwidth {
+        width: 100%;
+        border-left: 1px solid #eee;
+    }
+
+    i#right-arrow {
+        display: none;
+    }
+
+    .geofence-assign-box .table-responsive thead img {
+        width: 16px !important;
+    }
+
+    i#right-arrow {
+        left: 5px;
+    }
+
+    .zones-right-box iframe {
+        margin-top: -4px;
+        border-top: 1px solid #eee !important;
+    }
+
+    .geo-fence-header ..heading-title .col-xs-12.col-md-3.col-lg-3.col-sm-3 {
+        position: relative;
+        top: -4px;
+    }
+
+    .geo-fence-header .form-group.geo-search-box {
+        position: relative;
+        top: -1px;
+    }
+
+    .create-zone-view .panel.geo-fence-drvierlist {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+
+    .assign-zone-details {
+        border-bottom: 0px;
+        border-top: 0px;
+        margin-top: -25px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .submainassign-zone-details {
+        border-bottom: 0px;
+        border-top: 0px;
+        padding-top: 15px;
+    }
+
+    .main-edit-drivers .list-items .panel-title {
+        padding-bottom: 10px !important;
+        padding-top: 10px !important;
+    }
+
+    .zone-driver-assigntbl.subzone-driver-assigntbl .list-items .panel-title {
+        padding-bottom: 10px !important;
+        padding-top: 10px !important;
+        margin-top: 0px !important;
+    }
+
+    .zone-driver-assigntbl.subzone-driver-assigntbl .border-round {
+        border-bottom: 0px !important;
+    }
+
+    .main-edit-drivers .border-round {
+        border-bottom: 0px !important;
+    }
+
+    .create-zone-view .panel-headIndx {
+        padding: 7px 2px 0px 2px;
+        font-weight: 600;
+    }
+
+    .admin-form.tc-checkbox-1.table-responsive.scrooll-tbody th.table-span-search {
+        padding-bottom: 0px;
+    }
+
+    .edit-zone-table th.table-span-search {
+        padding-bottom: 3px !important;
+    }
+
+    .assign-zone-drivers {
+        margin-top: -8px !important;
+    }
+
+    .hide-zone .scrooll-tbody tbody {
+        display: block;
+        height: 455px !important;
+        overflow: auto;
+    }
+
+    .assign-captain .scrooll-tbody tbody {
+        display: block;
+        height: 455px !important;
+        overflow: auto;
+    }
+</style>
+<div class="right_col new-geo-fence" role="main">
+    <div class="row mb5 col-lg-12 col-md-12 col-sm-12 col-xs-12 top-title-bar">
+        <h1 class="main-top-header">Thiban Geo Fence</h1>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row mb10 col-lg-12 col-md-12 col-sm-12 col-xs-12 pr10">
+        <div class="inner-header  bred-inner-header mb20">
+            <div class="bread-cumLeft">
+                <ol class="breadcrumb dash-bred-cumb">
+                    <li> <a href="#"><span><img src="~/Content/assets/img/bred-home.png"></span> Home</a></li>
+                    <li><i class="fa fa-angle-right ml5" aria-hidden="true"></i> </li>
+                    <li class="ml5"><a href="#">Geo Fence</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin: Content -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="geofence-assign-box">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 zones-left-box">
+                <ul class="nav nav-tabs">
+                    <li class="active tab-one"><a data-toggle="tab" href="#home">Zones</a></li>
+                    <li><a data-toggle="tab" href="#menu1"></a></li>
+
+
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <!----------FIRST-BOX-SEARCH AND CREATE ZONE------------------------>
+                        <div class="hide-zone">
+
+                            <div class="row main-create-zone">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <form class="pull-right">
+                                        <div class="form-group geo-search-box">
+                                            <input type="text" class="form-control" name="zonename" value="@ViewBag.zonename" placeholder="Search">
+                                            <img src="~/Content/assets/img/images/search.png" class="geo-search-icon">
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <a href="javascript:" class="btn btn-primary border-radius99 create-zone mt10" type="button">Create Zone</a>
+                                </div>
+
+                            </div>
+                            <div class="table-responsive scrooll-tbody">
+                                <table class="table table admin-form theme-warning tc-checkbox-1  main-driver-table dataTable no-footer" style="border-bottom:1px solid #eee !important;">
+                                    <thead>
+                                        <tr>
+
+                                            <th><img src="~/Content/assets/img/geo-img1.png" alt="" class="mr5">Zones</th>
+                                            <th><img src="~/Content/assets/img/geo-img2.png" alt="" class="mr5">GeoFence</th>
+                                            <th><img src="~/Content/assets/img/geo-edit.png" alt="" class="mr5">Edit</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="scroll-data scroll-content">
+                                        @foreach (var item in Model.zonelist)
+                                        {
+                                            <tr>
+                                                <td><a href="javascript:void(0);" class="view-zonetable"  onclick="getzonefilepath('@item.id')">@item.zone_name</a></td>
+                                                
+                                                @*<td class="text-center"><a href="javascript:" class="view-zonetable text-center">09</a></td>*@
+                                                <td><a href="javascript:void(0)" class="edit-zones" data-rel-val="@item.id"><img src="~/Content/assets/img/Edit-black.png" alt="edit" class="img-responsive" style="width:15px !important; margin-left:5px;"></a></td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <!---------------------ADD-ZONES-TABLE--HIDE-TABLE--------------------->
+
+                        <div class="row create-section-zone create-zonediv">
+                            <div class="row">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="email">Zone Name:</label>
+                                        <input type="text" name="txtzonenameinsert" id="txtzonenameinsert" class="" placeholder="Zone Name">
+                                        <input type="hidden" name="hdzoneid" id="hdzoneid" value=""/>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class=" admin-form tc-checkbox-1 table-responsive scrooll-tbody">
+                                <table class="table">
+                                    <thead>
+
+                                        <tr>
+                                            <th class="geofence-div"><img src="~/Content/assets/img/geo-img2.png" alt="" class="mr5"> Geo Fence</th>
+                                            <th>Area m<sup>2</sup></th>
+                                            <th>Population</th>
+                                        </tr>
+                                        @*<tr>
+                                                <th colspan="3" class="table-span-search" style="border-bottom:1px solid #eee;">
+                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pn">
+                                                        <form class="">
+                                                            <div class="form-group table-search-box">
+                                                                <input type="text" class="form-control" placeholder="Search geofence">
+                                                                <img src="~/Content/assets/img/images/search.png" class="table-search-icon">
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </th>
+                                            </tr>*@
+
+                                    </thead>
+
+                                    <tbody class="scroll-data scroll-content">
+                                        @foreach (var item in Model.geofenceslst)
+                                        {
+                                            <tr>
+                                                <td class="text-center footable-first-visible">
+                                                    @*<label class="option block mn">*@
+                                                        <input type="checkbox" class="chkgeofence" name="chk_@item.geofenceid" id="chk_@item.geofenceid" value="@item.geofenceid">
+                                                        @*<span class="checkbox mn outline"></span>*@ 
+                                                   <span onclick="displayregion('@item.geofenceid')">@item.city_name</span>
+@*                                                    </label>*@
+                                                    </td>
+                                                    <td style="text-align: center !important;">@item.area</td>
+                                                    <td>@item.population</td>
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="buttoensss">
+                                    <a href="javascript:void(0);" class="btn  border-radius99  geo-cancel-btn bg-wht pull-right"
+                                       style="background:#ffffff !important; border-color:#888 !important; color:#888;">Cancel</a>
+                                    <a href="javascript:void(0);" class="btn border-radius99 save-zone pull-right">Save</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!---------------------TAB-2-ASSIGN cAPATIN--------------------->
+                        <div id="menu1" class="tab-pane fade assign-captain">
+                            <div class="main-assign-list">
+                                <div class="row assign-captin-box">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pn">
+                                        <form class="pull-right">
+                                            <div class="form-group geo-search-box">
+                                                <input type="text" class="form-control" placeholder="Search">
+                                                <img src="/Content/assets/img/images/search.png" class="geo-search-icon">
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                                <div class="table-responsive scrooll-tbody ">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th><img src="/Content/assets/img/geo-img1.png" alt="" class="mr5">Zones</th>
+                                                <th><img src="/Content/assets/img/geo-img2.png" alt="" class="mr5">GeoFence</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="scroll-data scroll-content">
+
+                                            <tr>
+
+                                                <td class=""><a href="javascript:" class="assign-zonelist">Northern Frontier</a></td>
+                                                <td class="" style="text-center; !important"><a href="javascript:" class="edited-driver"> 09 </a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class=""><a href="javascript:" class="assign-zonelist">Eastren Riyadh</a></td>
+                                                <td class="" style="text-center; !important"><a href="javascript:" class="edited-driver">10</a></td>
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!---------------------TAB-3-ASSIGN cAPATIN--------------------->
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------------------------GEO-FENCE-MAP------------------->
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 zones-right-box map1 ">
+
+                    <section id="content" class="table-layout animated fadeIn">
+                        <!-- begin: .tray-center -->
+                        <div class="tray tray-center main-product-rtnf-tray">
+                            <!-- recent orders table -->
+                            <div class="panel">
+                                <!-- <div class="panel-menu admin-form theme-primary geo-fence-header" style="border:0px;">
+                                    <div class="heading-title  ">
+                                        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                                            <div class="col-xs-12 col-md-3 col-lg-3 col-sm-3 pn">
+                                                <span class="toggle">
+                                                    <a id="" class="geo_toggle">
+                                                        <i class="fa fa-caret-left" aria-hidden="true" id="left-arrow"></i>
+                                                        <i class="fa fa-caret-right" aria-hidden="true" id="right-arrow"></i>
+                                                    </a>
+                                                </span>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle width150" data-toggle="dropdown" style="background:#FFFFFF">countries<span class="fa fa-angle-down down-number-btn"></span></button>
+
+                                                    <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu" style=" padding 0px !important;
+                                                        margin-top 12px !important;">
+                                                        <li><a href="#">Saudi Arabia</a></li>
+                                                        <li><a href="#"> UAE</a></li>
+                                                        <li><a href="#"> Dubai </a></li>
+                                                        <li><a href="#"> Jordan</a></li>
+                                                        <li><a href="#">Kuwait</a></li>
+                                                        <li><a href="#"> Qatar</a></li>
+                                                        <li><a href="#"> Bharain </a></li>
+                                                        <li><a href="#"> Yeman</a></li>
+                                                        <li><a href="#"> Oman</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-xs-12 col-md-3 col-lg-3 col-sm-3">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle width150" data-toggle="dropdown" style="background:#FFFFFF">Citys...<span class="fa fa-angle-down down-number-btn"></span></button>
+
+                                                    <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu" style=" padding 0px !important;
+                                                        margin-top 12px !important;">
+                                                        <li><a href="#">Albania</a></li>
+                                                        <li><a href="#"> Algeria</a></li>
+                                                        <li><a href="#"> Andorra </a></li>
+                                                        <li><a href="#"> Angola</a></li>
+                                                        <li><a href="#">Anguilla</a></li>
+                                                        <li><a href="#"> Algeria</a></li>
+                                                        <li><a href="#"> Angola </a></li>
+                                                        <li><a href="#"> Andorra</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-md-6 col-lg-6 col-sm-6">
+
+                                                <form class="pull-right">
+                                                    <div class="form-group geo-search-box">
+
+                                                        <input type="text" class="form-control" placeholder="Search for a location">
+                                                        <img src="~/Content/assets/img/images/search.png" class="geo-search-icon">
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--<iframe src="https://google-developers.appspot.com/maps/documentation/javascript/examples/full/drawing-tools" width="100%" height="550" frameborder="0" style="border:0px; padding:0px;" allowfullscreen></iframe>-->
+                                <div id="map" style="width:700px;height:550px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- end: .tray-center -->
+
+                    </section>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--===================CREATE-ZONES-VIEW=======================-->
+        <div class="clearfix"></div>
+        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 create-zone-view">
+
+            <div class="panel geo-fence-drvierlist" style="border-top:0px;">
+                <div class="panel-headIndx">
+                    <p class="panel-title p10"> List of GeoFence in Northenn Frontier Zone</p>
+                </div>
+                <hr class="g-line">
+                <div class="panel-body pn">
+                    <div class="table-responsive">
+                        <table class="table admin-form theme-warning tc-checkbox-1 ">
+                            <thead>
+                                <tr class=" clr-blck fs13">
+                                    <th class="">Geo Fence</th>
+                                    <th class="">Square Meter</th>
+                                    <th class="">Population</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ala asdadadd</td>
+                                    <td class="">509</td>
+                                    <td class="">25463</td>
+                                </tr>
+                                <tr>
+                                    <td>Al Safarat</td>
+                                    <td class="">232</td>
+                                    <td class="">38758</td>
+                                </tr>
+                                <tr>
+                                    <td>Aljwaf</td>
+                                    <td class="">425</td>
+                                    <td class="">87548</td>
+                                </tr>
+                                <tr>
+                                    <td>Ala Mathai</td>
+                                    <td class="">509</td>
+                                    <td class="">25463</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--===============Northen Frontier Zone-DETAILS===================-->
+        <div class="clearfix"></div>
+        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 mainassign-zone-details">
+
+            <div class="assign-zone-details">
+                <h4>Northen Frontier Zone</h4>
+                <p><span class="col-md-2">Total Sqaure Meter&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">3847</span></p>
+                <p><span class="col-md-2">Total Population&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">284785</span></p>
+
+
+            </div>
+            <div class="assign-zone-drivers">
+                <p>Assign Drivers in Northen Frontier Zone</p>
+                <a href="javascript:" class="btn border-radius99 assign-zone" id="assign-drivers">Assign Drivers</a>
+            </div>
+        </div>
+        <!--===============ZONES-DRIVER-DETAILS-TABLE===================-->
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 zone-driver-assigntbl subzone-driver-assigntbl">
+            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 submainassign-zone-details">
+
+                <div class="assign-zone-details">
+                    <h4>Northen Frontier Zone</h4>
+                    <p><span class="col-md-2">Total Sqaure Meter&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">3847</span></p>
+                    <p><span class="col-md-2">Total Population&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">284785</span></p>
+
+
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="panel-menu admin-form theme-primary">
+                <div class="heading-title list-items" style="border:0px !important;">
+                    <h1 class="panel-title" style="border-bottom:0px !important;">Assign Drivers</h1>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="name">Search Drivers&nbsp;:</label>
+                            <div class="col-md-4">
+                                <input id="name" name="name" type="text" placeholder="Search Drivers" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="heading-title list-items ">
+                <h1 class="panel-title" style=" border-bottom 0px !important;">List of Drivers</h1>
+            </div>
+            <div class="row pagination-block font-size-13 admin-agintion mn" style="border:1px solid #e5e5e5;border-bottom:0px;">
+                <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 pad-no">
+                    <div class="dataTables_paginate paging_bootstrap_extended" style="color:#454545 !important">
+                        <div class="pagination-panel">
+                            Page &nbsp; <a href="#" class="btn btn-sm default prev disabled"> <i class="fa fa-angle-left"></i></a>
+                            <input class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" placeholder="1" style="text-align:center; margin: 0 5px;" type="text">
+                            <a href="#" class="btn btn-sm default next"><i class="fa fa-angle-right"></i></a> of <span class="pagination-panel-total">18 &nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="dataTables_length">
+                        <label>
+                            <span class="seperator">| </span> <span class="view">View &nbsp;</span>
+                            <div class="btn-group">
+                                <button type="button" class="btn  pagination-sellct-button-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> 10 <span class="fa fa-angle-down down-number-btn"></span></button>
+                                <span class="records">records</span>
+                                <ul class="dropdown-menu pagination-numeber-drpdwn pagination-drpdwn" role="menu">
+                                    <li><a href="#">20</a></li>
+                                    <li><a href="#"> 30</a></li>
+                                    <li><a href="#"> 40 </a></li>
+                                    <li><a href="#"> 50</a></li>
+                                    <li><a href="#">60</a></li>
+                                    <li><a href="#"> 70</a></li>
+                                    <li><a href="#"> 80 </a></li>
+                                    <li><a href="#"> 90</a></li>
+                                </ul>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dataTables_info" role="status" aria-live="polite"> <span class="seperator">|</span>Found total 178 records </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 pagination-right-divs">
+                    <div class="table-group-actions pull-right">
+                        <span></span>
+                        <div class="btn-group">
+                            <button type="button" class="btn  pagination-dropdwn-toogle dropdown-toggle" data-toggle="dropdown" style="background:#FFFFFF"> Select... <span class="fa fa-angle-down down-btn"></span></button>
+                            <ul class="dropdown-menu pagination-drpdwn" role="menu">
+                                <li><a href="#">Edit</a></li>
+                                <li><a href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-default table-group-action-submit  bg-wht"> <i class="fa fa-check"></i> Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="border:1px solid #eeeeee !important">
+                <div class="table-responsive border-round brdr-top-none " style="">
+                    <table class="table admin-form theme-warning tc-checkbox-1  main-admin-table main-driver-table">
+                        <thead style="border-top:1px solid #e5e5e5">
+                            <tr class="clr-blck fs13">
+                                <th class="text-center">
+                                    <label class="option block mn" style="margin-left:24px !important;">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn"></span>
+                                    </label>
+                                </th>
+                                <th class="footable-sortable footable-first-visible">Captain</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class=" t-m-tr">
+                                <td class="col-md-1 col-lg-1 col-sm-1 text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/1.png"><span class="table-img-name">Brain</span></td>
+
+
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/2.png"><span class="table-img-name">Nick Cannoneer</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/3.png"><span class="table-img-name">Larry Kingster</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/4.png"><span class="table-img-name">Sara Marshall</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/5.png"><span class="table-img-name">Dave Robert</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="buttonsss"> <a href="#" class="btn  border-radius99  geo-cancel-btn bg-wht pull-right" style="background:#ffffff !important; border-color:#888 !important; color:#888;" id="cancel-capatain">Cancel</a> <a href="#" class="btn border-radius99  pull-right" id="assign-capatain">Save</a> </div>
+            </div>
+        </div>
+        <!-- End: Content -->
+        <!--===============driver-EDIT-TABLE===================-->
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12  main-edit-drivers">
+            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 submainassign-zone-details">
+
+                <div class="assign-zone-details">
+                    <h4>Northen Frontier Zone</h4>
+                    <p><span class="col-md-2">Total Sqaure Meter&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">3847</span></p>
+                    <p><span class="col-md-2">Total Population&nbsp;<span class="zone-dots">:</span></span><span class="zone-count">284785</span></p>
+
+
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="heading-title list-items " style="border:1px solid #eee; border-bottom:0px;">
+                <h1 class="panel-title" style="border-bottom:0px !important;">
+                    Assigned Drivers    <span>
+                        <a href="javascript:" class="back-to-edit" style="
+                           margin-left:15px; font-size:12px;"><img src="~/Content/assets/img/geo-edit.png" alt="" style="width:15px;">Edit</a>
+                    </span>
+                </h1>
+
+            </div>
+
+
+            <div class="panel-body" style="border:1px solid #e5e5e5 !important; margin-bottom:10px;">
+                <div class="table-responsive border-round brdr-top-none " style="">
+                    <table class="table admin-form theme-warning tc-checkbox-1  main-admin-table main-driver-table">
+                        <thead style="border-top:1px solid #e5e5e5">
+                            <tr class="clr-blck fs13">
+                                <th class="text-center">
+                                    <label class="option block mn" style="margin-left:24px !important;">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn"></span>
+                                    </label>
+                                </th>
+                                <th class="footable-sortable footable-first-visible">Captain</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class=" t-m-tr">
+                                <td class="col-md-1 col-lg-1 col-sm-1 text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/1.png"><span class="table-img-name">Brain</span></td>
+
+
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/2.png"><span class="table-img-name">Nick Cannoneer</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/3.png"><span class="table-img-name">Larry Kingster</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/4.png"><span class="table-img-name">Sara Marshall</span></td>
+                            </tr>
+                            <tr class=" t-m-tr">
+                                <td class="text-center">
+                                    <label class="option block mn">
+                                        <input type="checkbox" name="mobileos" value="FR">
+                                        <span class="checkbox mn outline"></span>
+                                    </label>
+                                </td>
+                                <td class="w50"><img class="img-responsive mw40 ib mr10" title="user" src="~/Content/assets/img/5.png"><span class="table-img-name">Dave Robert</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="buttonsss"> <a href="#" class="btn  border-radius99  geo-cancel-btn bg-wht pull-right" style="background:#ffffff !important; border-color:#888 !important; color:#888;" id="cancel-capatain">Cancel</a> <a href="#" class="btn border-radius99  pull-right" id="assign-capatain">Save</a> </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/assets/js/raphael.min.js"></script>
+
+    <script src="~/Content/assets/js/Chart.min.js"></script>
+
+    <script src="~/Content/assets/js/morris.min.js"></script>
+
+    <script src="~/Content/assets/js/custom.min.js"></script>
+
+
+
+    <script src="~/Content/assets/js/wizard.js"></script>
+
+    <script src="~/Content/assets/js/date.js"></script>
+
+    <script src="~/Content/assets/js/moment.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="~/Content/assets/js/visitor.js"></script>
+
+    <script src="~/Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".create-zone").click(function () {
+                $("#txtzonenameinsert").val();
+                    $('.chkgeofence[type=checkbox]').attr('checked', false);
+                
+                $("hdzoneid").val("0");
+                $(".hide-zone").hide();
+                $(".create-zonediv").show();
+            });
+            $(".edit-zones").click(function () {
+                //$("#txtzonenameinsert").val()
+                var currid = $(this).attr("data-rel-val");
+                $.ajax({
+                    url: '@Url.Action("getZoneData", "vender")',
+                    data: { zoneid: currid },
+                    type: "POST",
+                    success: function (res) {
+                        $("#txtzonenameinsert").val(res.zone_name);
+                        if ($.trim(res.geofences) != "") {
+                            var arr = res.geofences.split(",");
+                            for (var i = 0; i < arr.length ; i++) {
+                                $('.chkgeofence[type=checkbox][value=' + $.trim(arr[i]) + ']').attr('checked', true);
+                            }
+                        }
+                        $("#hdzoneid").val(res.id);
+                        $(".hide-zone").hide();
+                        $(".create-zonediv").show();
+                    },
+                    error: function (err) {
+
+                    }
+                });
+                
+            });
+            $(".geo-cancel-btn").click(function () {
+                $(".create-zonediv").hide();
+                $(".hide-zone").show();
+            });
+            $(".save-zone").click(function () {
+                if ($.trim($("#txtzonenameinsert").val()).length <= 0)
+                {
+                    alert("enter zonename");
+                    $("#txtzonenameinsert").focus;
+                    return false;
+                }
+                var check = false;
+                var totalSelected = "";
+                $('.chkgeofence').each(function () {
+                    if (this.checked)
+                    {
+                        check = true;
+                        if (totalSelected != "")
+                        {
+                            totalSelected = totalSelected + ",";
+                        }
+                        totalSelected = totalSelected + this.value;
+                    }
+                });
+                if (!check)
+                {
+                    alert("select atleast one geofence for zone");
+                    return false;
+                }
+                $.ajax({
+                    url: '@Url.Action("AddUpdateZone", "vender")',
+                    data: { id: $("#hdzoneid").val(), zonename: $("#txtzonenameinsert").val(), geofenceids: totalSelected },
+                    type: "POST",
+                    success: function (res) {
+                        if (res == "1") {
+                            alert("Record has been succesfully saved.");
+                            window.location.href = window.location.href;
+                            $(".create-zonediv").hide();
+                            $(".hide-zone").show();
+
+                        }
+                        else {
+                            alert("there is some issue in data save. kindly try it again");
+                        }
+
+                        
+                    },
+                    error: function (err) {
+
+                    }
+                });
+
+
+            });
+            //$(".edit-zones").click(function () {
+            //    $(".zones-list").hide();
+            //    $(".edit-zone-table").show();
+
+            //});
+            //$(".edit-save-zone").click(function () {
+            //    $(".edit-zone-table").hide();
+            //    $(".zones-list").show();
+
+            //});
+            //$(".create-zone").click(function () {
+            //    $(".zones-list").hide();
+            //    $(".create-zonediv").show();
+
+            //});
+            //$(".view-zonetable").click(function () {
+            //    $(".create-zone-view").show();
+
+            //});
+            //$(".edit-zones").click(function () {
+            //    $(".create-zone-view").hide();
+
+            //});
+
+            //$(".tab-two").click(function () {
+            //    $(".create-zone-view").hide();
+
+            //});
+
+            //$(".tab-one").click(function () {
+            //    $(".mainassign-zone-details").hide();
+
+            //});
+            //$(".create-zone").click(function () {
+            //    $(".create-zone-view").hide();
+
+            //});
+            //$(".create-zone").click(function () {
+            //    //$(".map1").hide();
+            //    //$(".map2").show();
+
+            //});
+            //$(".save-zone").click(function () {
+            //    //$(".map2").hide();
+            //    //$(".map1").show();
+
+            //});
+            ////$(".edit-zones").click(function(){
+            ////    $(".map1").hide();
+            ////    $(".map2").show();
+
+            ////});
+            ////$(".edit-save-zone").click(function(){
+            ////    $(".map2").hide();
+            ////    $(".map1").show();
+
+            ////});
+            ////$(".geo-cancel-btn").click(function(){
+            ////    $(".map2").hide();
+            ////    $(".map1").show();
+
+            ////});
+
+            ////$(".tab-two").click(function(){
+            ////    $(".map2").hide();
+            ////    $(".map1").show();
+
+            ////});
+            ////$(".tab-one").click(function(){
+            ////    $(".map2").hide();
+            ////    $(".map1").show();
+
+            ////});
+            $("#left-arrow").click(function () {
+                $("#left-arrow").hide();
+                $("#right-arrow").show();
+
+            });
+            $("#right-arrow").click(function () {
+                $("#right-arrow").hide();
+                $("#left-arrow").show();
+            });
+
+            $(".geo_toggle").click(function () {
+                $(".zones-left-box").toggle();
+                $(".zones-right-box").toggleClass('fullwidth');
+            });
+
+
+
+        });
+
+        $(document).ready(function () {
+            //$(".assign-zonelist").click(function () {
+            //    $(".create-zone-view").hide();
+            //    $(".mainassign-zone-details").show();
+            //});
+            //$("#assign-drivers").click(function () {
+            //    $(".mainassign-zone-details").hide();
+            //    $(".zone-driver-assigntbl").show();
+
+
+            //});
+            //$("#assign-capatain").click(function () {
+            //    $(".subzone-driver-assigntbl").hide();
+
+            //});
+            //$("#cancel-capatain").click(function () {
+            //    $(".subzone-driver-assigntbl").hide();
+
+            //})
+
+            //$(".edited-driver").click(function () {
+            //    $(".mainassign-zone-details").hide();
+            //    $(".main-edit-drivers").show();
+            //});
+
+            //$(".assign-zonelist").click(function () {
+            //    $(".mainassign-zone-details").show();
+            //    $(".main-edit-drivers").hide();
+            //});
+
+            //$(".back-to-edit").click(function () {
+            //    $(".subzone-driver-assigntbl").show();
+            //    $(".main-edit-drivers").hide();
+            //});
+
+            //$(".tab-one").click(function () {
+            //    $(".main-edit-drivers").hide();
+            //});
+
+            //$(".tab-one").click(function () {
+            //    $(".zone-driver-assigntbl").hide();
+            //});
+
+
+        });
+    </script>
+<script type="text/javascript">
+    var strURLFileName = "";
+    var ctaLayer;
+    var map;
+    var map1 = 0;
+    function getzonefilepath(zoneid) {
+        $.ajax({
+            url: "/vender/getzonefilepath?zoneid=" + zoneid, success: function (result) {
+                strURLFileName = result;
+                loadMapwithKML();
+            }
+        });
+    }
+    function displayregion(regionid) {
+        $.ajax({
+            url: "/geofence/getregionfilepath?regionid=" + regionid, success: function (result) {
+                strURLFileName = result;
+                loadMapwithKML();
+            }
+        });
+    }
+    function initMap() {
+        if (map == null) {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: { lat: 23.885942, lng: 45.079162 }
+                //     center: new google.maps.LatLng(-19.257753, 146.823688)
+
+            });
+        }
+        if (strURLFileName != "") {
+            if (ctaLayer != null) {
+                ctaLayer.setMap(null);
+            }
+
+            var strurl = 'http://thibandemo.com/content/data/' + strURLFileName;
+            //strurl = strURLFileName;
+            ctaLayer = new google.maps.KmlLayer({
+                url: strurl,
+                map: map
+            });
+        }
+    }
+    function loadMapwithKML() {
+        var in1 = Math.random();
+        strURLFileName = strURLFileName + "?" + in1;
+        initMap();
+    }
+    initMap();
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjr6RIHReBKL6eCc1ormxXoOzibBAo4d4&callback=initMap">
+</script>

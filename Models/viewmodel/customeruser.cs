@@ -59,5 +59,12 @@ namespace Final_ThibanProject.Models
         public int? totalpurchase { get; set; }
         public decimal? totalspent { get; set; }
         public string image_path { get; set; }
+
+        public int accountNo { get; set; }
+        public string benificary_name { get; set; }
+        public string bankName { get; set; }
+        public string branchName { get; set; }
+        public string ifscCode { get; set; }
+        public string addressProfImage { get; set; }
     }
 }
